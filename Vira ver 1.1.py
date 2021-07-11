@@ -1,7 +1,26 @@
 from tkinter import *
-import pyttsx3
+try:
+    print("Loading usernames.py")
 
+    import usernames
+
+    print("Loaded usernames.py is successfully")
+    print("Starting to verify the module")
+    usernames.verify_usernames()
+    if usernames.verify_usernames.verify == False:
+        print("Usernames.py verified successful")
+    else:
+        print("ERROR:Verification failed")
+        time.sleep(2)
+        exit()
+except:
+    print("ERROR:Could not load usernames.py")
+    time.sleep(2)
+    exit()
+
+from talk1 import *
 from tSK_ver_1 import task
+import time
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')  # getting details of current voice
@@ -22,7 +41,6 @@ except:
     engine.say("Sorry i couldnt open the icon..")
     engine.runAndWait()
 
-
 t1.attributes("-topmost", 1)
 t1.title("Vira Version 1.1")
 t1.resizable(0, 0)
@@ -36,6 +54,39 @@ task.greeting()
 
 t1.deiconify()
 
+print("Starting the security process")
+print("\n")
+talk("Hello")
+talk("I am Vira version 1 point 1")
+security_state = True
+security_trial = 0
+
+# password and username checks
+while security_state == True:
+    usernames.check_user()
+    if usernames.check_user.security == True:
+
+        print("Access Granted")
+        talk("Access Granted")
+        talk(f"Welcome {usernames.check_user.loginname}")
+
+        break
+
+    else:
+        print("Access denied")
+        security_trial += 1
+
+        if security_trial >= 3:
+            print("You have reached th maximum error limit")
+            talk("You have reached the maximum error limit")
+            talk("Bye Bye")
+            time.sleep(2)
+            exit()
+        else:
+            talk("Access denied")
+            talk("please try again")
+
+name = usernames.check_user.loginname
 
 
 def work(event):
@@ -44,8 +95,6 @@ def work(event):
 
     eo.delete(0, END)
     if a == True:
-
-
 
         if "search" in ord.lower():
             ord = ord.replace("search", "")
@@ -61,22 +110,17 @@ def work(event):
             task.web(ord)
             eo.delete(0, END)
             print("I have opened Firefox")
-        if "msg" ==  ord.lower():
+        if "msg" == ord.lower():
             task.whatsapp()
-        if "whatsapp" ==  ord.lower():
+        if "whatsapp" == ord.lower():
             task.whatsapp()
-            
+
         if "bye" == ord.lower():
-            engine.say(" Tata Bye Bye ")
-
-
-            engine.runAndWait()
+            talk("Tata Bye Bye ")
             t1.destroy()
         if "close" == ord.lower():
-            engine.say(" Tata Bye Bye ")
-            engine.runAndWait()
+            talk("Tata Bye Bye")
             t1.destroy()
-
 
         if "open" and " firefox" in ord.lower():
             task.firefox()
@@ -106,41 +150,31 @@ def work(event):
             task.photoshop()
             eo.delete(0, END)
 
-
         if "who is your father" in ord.lower():
             print("i was created by George")
-            engine.say("i was created by George")
-            engine.runAndWait()
+            talk("i was created by George")
             eo.delete(0, END)
 
         if "what is your version" in ord.lower():
-            engine.say("My version is 1 point 1")
-            engine.runAndWait()
+            talk("My version is 1 point 1")
             eo.delete(0, END)
         if "what is your name" in ord.lower():
-            print("My name is vira and my version is 1.1")
-            engine.say("My name is vira and my version is 1.1")
-            engine.runAndWait()
+            talk("My name is vira and my version is 1.1")
         if "hlo" in ord.lower():
-            print("Hello")
-            engine.say("Hello")
-            engine.say("What can i do for you")
-            engine.runAndWait()
+            talk("Hello")
+            talk("What can i do for you")
+
             eo.delete(0, END)
 
         if "hello" in ord.lower():
-            print("Hello")
-            engine.say("Hello")
-            engine.say("What can i do for you")
+            talk("Hello")
+            talk("What can i do for you")
 
-            engine.runAndWait()
             eo.delete(0, END)
 
         if "hi" in ord.lower():
-            print("Hello")
-            engine.say("Hello")
-            engine.say("What can i do for you")
-            engine.runAndWait()
+            talk("Hello")
+            talk("What can i do for you")
             eo.delete(0, END)
         if "study" in ord.lower():
             task.study()
