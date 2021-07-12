@@ -1,9 +1,10 @@
 from tkinter import *
+from talk1 import *
+import tSK_ver_1 as task
+import time
 try:
     print("Loading usernames.py")
-
     import usernames
-
     print("Loaded usernames.py is successfully")
     print("Starting to verify the module")
     usernames.verify_usernames()
@@ -18,10 +19,8 @@ except:
     time.sleep(2)
     exit()
 
-from talk1 import *
-from tSK_ver_1 import task
-import time
 
+#.............Sound Engine Initialising start...............
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')  # getting details of current voice
 # engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
@@ -29,30 +28,15 @@ engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 f
 
 rate = engine.getProperty('rate')  # getting details of current speaking rate
 engine.setProperty('rate', 120)  # setting up new voice rate
+#.............Sound Engine Initialising ends...............
 
-t1 = Tk()
-t1.withdraw()
-t1.attributes("-alpha", 0.7)
 
-try:
-    t1.iconbitmap(r'icon.ico')
-
-except:
-    engine.say("Sorry i couldnt open the icon..")
-    engine.runAndWait()
-
-t1.attributes("-topmost", 1)
-t1.title("Vira Version 1.1")
-t1.resizable(0, 0)
-t1.geometry("+1200+680")
-eo = Entry(t1, bg="light green")
-eo.pack()
 
 a = True
 
 task.greeting()
 
-t1.deiconify()
+
 
 print("Starting the security process")
 print("\n")
@@ -73,6 +57,7 @@ while security_state == True:
         break
 
     else:
+
         print("Access denied")
         security_trial += 1
 
@@ -87,6 +72,28 @@ while security_state == True:
             talk("please try again")
 
 name = usernames.check_user.loginname
+
+#..............tkinter initialising starts...............................
+t1 = Tk()
+t1.withdraw()
+t1.attributes("-alpha", 0.7)
+
+try:
+    t1.iconbitmap(r'icon.ico')
+
+except:
+    engine.say("Sorry i couldnt open the icon..")
+    engine.runAndWait()
+
+t1.attributes("-topmost", 1)
+t1.title("Vira Version 1.1")
+t1.resizable(0, 0)
+t1.geometry("+1200+680")
+eo = Entry(t1, bg="light green")
+eo.pack()
+t1.deiconify()
+
+#..............tkinter initialising ends...............................
 
 
 def work(event):

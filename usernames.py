@@ -1,5 +1,6 @@
 '''Created by George Rahul'''
 import pyttsx3
+from GUI import SecurityUI
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')  # getting details of current voice
@@ -23,12 +24,13 @@ def check_user():
     try:
         # initialise the security variable
         check_user.security = verify_usernames.verify
-        abc = True
-        # accept the username and password
+        # .....accept the username and password.......
         engine.say("Please enter the username and password")
         engine.runAndWait()
-        username = input("Enter the username: ")
-        password = input("Enter the password: ")
+        # ...running GUI.py............
+        username, password = SecurityUI()
+        # username = password.usergui
+        # password =  password.passgui
         # database
         mysqlmake.makesql.cur.execute(f"select passw from usernames where username='{username}' ")
         passw = mysqlmake.makesql.cur.fetchall()
@@ -41,7 +43,9 @@ def check_user():
             check_user.security = False
 
         check_user.loginname = username
-    except:
+
+    except Exception as e:
+        print(e)
         check_user.security = False
 
 
