@@ -1,16 +1,16 @@
 import os
 from multiprocessing import Process
 from pathlib import Path
-
+import time
 # get path of the current file os.getcwd
 # convert it into path use path(os.getcwd) use is_file() to check if it is a file
-
+t=time.perf_counter()
 desktop = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop'))
 documents = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Documents'))
 downloads = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads'))
 music = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Music'))
 videos = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Videos'))
-directories = ["C:\\Windows", desktop, documents, downloads, music, videos]
+directories = [ desktop, documents, downloads, music, videos]
 
 cache=open('cache.txt','w')
 
@@ -21,7 +21,7 @@ def index(pathn):
             i = Path(i)
             if i.is_file() == True:
                 print(i, name, sep=" !@#$%^& ")
-                cache.write(f"{name} @#$%^& {i} \n")
+                cache.write(f"{name} @#$%^& {i} @#$%^& \n")
             else:
                 if name.startswith('.') == False and name.startswith('__') == False:
                     try:
@@ -33,12 +33,20 @@ def index(pathn):
 
 
 if __name__ == "__main__":
-    process = []
-    for i in directories:
+    index('C:')
+    index('D:')
+   # for i in directories:
+    #   index(i)
+
+
+    print("Time taken to index files:",time.perf_counter()-t)
+    cache = open("cache.txt", "r")
+    m=cache.readlines()
+    print(m)
+    cachedict=dict()
+    for i in m:
+        i=i.split(' @#$%^& ')
         print(i)
-        p = Process(target=index, args=(i,))
-        p.start()
-        process.append(p)
-'''
-    for p in process:
-        p.join()'''
+        cachedict[i[0]]=i[1]
+
+
