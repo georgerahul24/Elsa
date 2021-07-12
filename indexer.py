@@ -33,23 +33,26 @@ def index(pathn):
 
 
 if __name__ == "__main__":
-    index('C:')
-    index('D:')
+   '''
+    index('C:\\Windows')
+    index('C:\\Program Files')
+    index('C:\\Users')
+    index('C:\\Program Files(x86)')
+    index('D:')'''
 
-    cache.close()
-   # for i in directories:
-    #   index(i)
+   cache.close()
+   for i in directories:
+      index(i)
 
-    t1=time.perf_counter()
-    print("Time taken to index files:",t1-t)
+   t1=time.perf_counter()
+   print("Time taken to index files:",t1-t)
 
-    cache = open("cache.txt", "r")
-    m=cache.readlines()
-    print(m)
-    cachedict=dict()
+   cache = open("cache.txt", "r")
+   m=cache.readlines()
+   cachedict=dict()
 
-    for i in m:
+   for i in m:
         i=i.split(' @#$%^& ')
         cachedict[i[0]]=i[1]
 
-    print("Time convert filedata to dictionary:", time.perf_counter() - t1)
+   print("Time convert filedata to dictionary:", time.perf_counter() - t1)
