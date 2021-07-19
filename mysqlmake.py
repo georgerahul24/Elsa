@@ -24,6 +24,9 @@ def makesql():
             pass
         else:
             makesql.cur.execute("create table usernames(username varchar(100),passw varchar(100)) ")
+            makesql.cur.execute("insert into usernames values('admin','1234') ")
+            makesql.con.commit()
+
             print("'usernames' table created")
 
 

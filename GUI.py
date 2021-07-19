@@ -2,16 +2,10 @@
 
 from tkinter import *
 
-import pyttsx3
+
 
 # Created by George Rahul
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')  # getting details of current voice
-# engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
-engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female
 
-rate = engine.getProperty('rate')  # getting details of current speaking rate
-engine.setProperty('rate', 150)  # setting up new voice rate
 def SecurityUI():
 
     t = Tk()
@@ -22,19 +16,19 @@ def SecurityUI():
     win = Toplevel(t)
     win.title("Vira Ver 1.1")
     win.resizable(0, 0)
-    win.geometry("300x300+500+250")
+    win.geometry("200x100+700+300")
     win.config(bg="light green")
     win.attributes("-topmost", 1)
     win.iconbitmap(r'icon.ico')
     # win.overrideredirect(1)
 
     e = Entry(win, show="*", width=10)
-    e.place(x=104, y=60)
+    e.place(x=104, y=30)
 
     e1 = Entry(win, width=10)
-    e1.place(x=104, y=40)
-    t1 = Label(win, text="Username:", bg="light green", font="Nebula 10 bold").place(x=20, y=40)
-    t2 = Label(win, text="Password:", bg="light green", font="Nebula 10 bold").place(x=20, y=60)
+    e1.place(x=104, y=10)
+    t1 = Label(win, text="Username:", bg="light green", font="Nebula 10 bold").place(x=20, y=10)
+    t2 = Label(win, text="Password:", bg="light green", font="Nebula 10 bold").place(x=20, y=30)
 
     win1 = Toplevel(t)
     win1.withdraw()
@@ -53,7 +47,7 @@ def SecurityUI():
 
     def button(a):
         b = Button(win, text=a, command=lambda:password("blah"))
-        b.place(x=90, y=100)
+        b.place(x=90, y=60)
 
 
     button("Verify")
