@@ -22,6 +22,9 @@ global usr
 usr = "USER"
 
 
+
+
+
 # .....Time and Greeting............
 def greeting():
     try:
