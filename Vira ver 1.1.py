@@ -1,10 +1,13 @@
-from tkinter import *
-from talk1 import *
-import tSK_ver_1 as task
 import time
+from tkinter import *
+
+import tSK_ver_1 as task
+from talk1 import *
+
 try:
     print("Loading usernames.py")
     import usernames
+
     print("Loaded usernames.py is successfully")
     print("Starting to verify the module")
     usernames.verify_usernames()
@@ -19,8 +22,7 @@ except:
     time.sleep(2)
     exit()
 
-
-#.............Sound Engine Initialising start...............
+# .............Sound Engine Initialising start...............
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')  # getting details of current voice
 # engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
@@ -28,15 +30,12 @@ engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 f
 
 rate = engine.getProperty('rate')  # getting details of current speaking rate
 engine.setProperty('rate', 120)  # setting up new voice rate
-#.............Sound Engine Initialising ends...............
-
+# .............Sound Engine Initialising ends...............
 
 
 a = True
 
 task.greeting()
-
-
 
 print("Starting the security process")
 print("\n")
@@ -73,7 +72,7 @@ while security_state == True:
 
 name = usernames.check_user.loginname
 
-#..............tkinter initialising starts...............................
+# ..............tkinter initialising starts...............................
 t1 = Tk()
 t1.withdraw()
 t1.attributes("-alpha", 0.7)
@@ -93,7 +92,8 @@ eo = Entry(t1, bg="light green")
 eo.pack()
 t1.deiconify()
 
-#..............tkinter initialising ends...............................
+
+# ..............tkinter initialising ends...............................
 
 
 def work(event):
@@ -147,19 +147,8 @@ def work(event):
         if "time" in ord.lower():
             task.tell_time()
             eo.delete(0, END)
-        if "open dreamweaver" in ord.lower():
-            task.dreamweaver()
-            eo.delete(0, END)
         if "open gimp" in ord.lower():
             task.gimp()
-            eo.delete(0, END)
-        if "open photoshop" in ord.lower():
-            task.photoshop()
-            eo.delete(0, END)
-
-        if "who is your father" in ord.lower():
-            print("i was created by George")
-            talk("i was created by George")
             eo.delete(0, END)
 
         if "what is your version" in ord.lower():
@@ -183,14 +172,9 @@ def work(event):
             talk("Hello")
             talk("What can i do for you")
             eo.delete(0, END)
-        if "study" in ord.lower():
-            task.study()
-        if "brilli" in ord.lower():
-            task.brilli()
         if "down" in ord.lower():
             task.download()
-        if "story" in ord.lower():
-            task.story_books()
+
         ord == ""
         print("Over")
 

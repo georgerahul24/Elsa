@@ -3,7 +3,7 @@ import pyttsx3
 import datetime
 import subprocess
 import webbrowser
-
+from pathlib import Path
 import os
 
 nam = "George"
@@ -63,24 +63,8 @@ def whatsapp():
         print("Sorry i couldnt do what you requested Try again later")
 
 
-def dreamweaver():
-    try:
-        subprocess.Popen("C:\\Program Files\\Adobe\\Adobe Dreamweaver CC 2017\\Dreamweaver.exe")
-        engine.say("I have opened dreamweaver for you")
-        engine.runAndWait()
-    except:
-        engine.say("Sorry i could not open dreamweaver")
-        engine.runAndWait()
 
 
-def photoshop():
-    try:
-        subprocess.Popen("C:\\Program Files\\Adobe\\Adobe Photoshop CC 2017\\Photoshop.exe")
-        engine.say("I have opened photoshop for you")
-        engine.runAndWait()
-    except:
-        engine.say("Sorry i could not open Photoshop ")
-        engine.runAndWait()
 
 
 def gimp():
@@ -130,40 +114,16 @@ def youtube(srch):
 
 
 # .............folders......................
-def study():
-    try:
-        engine.say(f"Happy Studying {nam}")
-        engine.runAndWait()
-        os.startfile("E:/Study")
-    except:
-        print("Sorry i couldnt do what you requested Try again later")
 
 
-def brilli():
-    try:
-        engine.say(f"I have opened the site for you  {nam}")
-        engine.runAndWait()
-        webbrowser.open("https://www.brilliantpalaclasses.com/")
-    except:
-        print("Sorry i couldnt do what you requested Try again later")
+
 
 
 def download():
     try:
         engine.say(f"Here is what you requested   {nam}")
         engine.runAndWait()
-        os.startfile(f"C:/Users/{usr}/Downloads")
+        os.startfile(Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')))
     except:
         print("Sorry i couldnt do what you requested Try again later")
-
-
-def story_books():
-    try:
-        engine.say(f"Happy Reading {nam}")
-        engine.runAndWait()
-        os.startfile("E:/Story Books")
-    except:
-        print("Sorry i couldnt open storybooks folder.Try again later")
-
-
 
