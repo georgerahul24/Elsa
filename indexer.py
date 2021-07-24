@@ -14,6 +14,10 @@ directories = [desktop, documents, downloads, music, videos]
 
 cache = open('cache.vira', 'w')
 
+<<<<<<< Updated upstream
+=======
+cache=open('cache.vira','w')
+>>>>>>> Stashed changes
 
 def index(pathn):
     try:
@@ -34,6 +38,7 @@ def index(pathn):
 
 
 if __name__ == "__main__":
+<<<<<<< Updated upstream
     '''
     index('C:\\Windows')
     index('C:\\Program Files')
@@ -54,12 +59,35 @@ if __name__ == "__main__":
     for i in m:
         i = i.split(' @#$%^& ')
         cachedict[i[0]] = i[1]
+=======
+   
+   index('C:\\Windows')
+   index('C:\\Program Files')
+   index('C:\\Users')
+   index('C:\\Program Files(x86)')
+    
+
+
+   for i in directories:
+      index(i)
+   cache.close()
+   t1=time.perf_counter()
+   print("Time taken to index files:",t1-t)
+
+   cache = open("cache.vira", "r")
+   m=cache.readlines()
+   cachedict=dict()
+>>>>>>> Stashed changes
 
     print("Time convert filedata to dictionary:", time.perf_counter() - t1)
 
+<<<<<<< Updated upstream
     while True:
         try:
             na = input("FileName:")
             print(cachedict[na])
         except:
             pass
+=======
+   print("Time convert filedata to dictionary:", time.perf_counter() - t1)
+>>>>>>> Stashed changes

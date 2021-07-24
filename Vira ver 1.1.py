@@ -78,7 +78,7 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 t1.withdraw()
-t1.attributes("-alpha", 0.7)
+t1.attributes("-alpha", 0.6)
 
 try:
     t1.iconbitmap(r'icon.ico')

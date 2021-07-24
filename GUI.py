@@ -19,6 +19,7 @@ def SecurityUI():
     win.geometry("200x100+700+300")
     win.config(bg="light green")
     win.attributes("-topmost", 1)
+    win.attributes("-alpha",0.8)
     win.iconbitmap(r'icon.ico')
     # win.overrideredirect(1)
 
