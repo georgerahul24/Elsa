@@ -3,10 +3,7 @@ from tkinter import *
 
 import tSK_ver_1 as task
 from talk1 import *
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 try:
     print("Loading usernames.py")
     import usernames
