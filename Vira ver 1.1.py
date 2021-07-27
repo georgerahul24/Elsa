@@ -1,9 +1,9 @@
 import time
 from tkinter import *
-
 import tSK_ver_1 as task
 from talk1 import *
-#........importing modules................
+
+
 
 try:
     print("Loading usernames.py")
@@ -26,18 +26,14 @@ except:
 # .............Sound Engine Initialising start...............
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')  # getting details of current voice
-# engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
-engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female
-
+engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female 0 for male voice
 rate = engine.getProperty('rate')  # getting details of current speaking rate
 engine.setProperty('rate', 120)  # setting up new voice rate
 # .............Sound Engine Initialising ends...............
 
 
-a = True
-
+run_state = True
 task.greeting()
-
 print("Starting the security process")
 print("\n")
 talk("Hello")
@@ -101,35 +97,25 @@ t1.deiconify()#show the tkinter window back
 def work(event):
     print("Work")
     ord = eo.get()
-
     eo.delete(0, END)
-    if a == True:
+    parts=ord.split()
+    if run_state == True:
 
-        if "search" in ord.lower():
+        if parts[0].lower()=="search" or parts.lower()=="browse":
             ord = ord.replace("search", "")
             ord = ord.replace("SEARCH", "")
             ord = ord.replace("browser", "")
             task.web(ord)
             eo.delete(0, END)
-            print("I have opened Firefox")
-        if "browse" in ord.lower():
-            ord = ord.replace("search", "")
-            ord = ord.replace("SEARCH", "")
-            ord = ord.replace("browse", "")
-            task.web(ord)
-            eo.delete(0, END)
-            print("I have opened Firefox")
-        if "msg" == ord.lower():
-            task.whatsapp()
-        if "whatsapp" == ord.lower():
+            print("Opened Firefox and searched:",ord)
+
+        if "msg" == ord.lower() or "whatsapp" == ord.lower():
             task.whatsapp()
 
-        if "bye" == ord.lower():
+        if "bye" == ord.lower() or "close" == ord.lower() or "exit" == ord.lower():
             talk("Tata Bye Bye ")
             t1.destroy()
-        if "close" == ord.lower():
-            talk("Tata Bye Bye")
-            t1.destroy()
+
 
         if "open" and " firefox" in ord.lower():
             task.firefox()
@@ -149,6 +135,7 @@ def work(event):
         if "time" in ord.lower():
             task.tell_time()
             eo.delete(0, END)
+
         if "open gimp" in ord.lower():
             task.gimp()
             eo.delete(0, END)
@@ -156,8 +143,10 @@ def work(event):
         if "what is your version" in ord.lower():
             talk("My version is 1 point 1")
             eo.delete(0, END)
+
         if "what is your name" in ord.lower():
             talk("My name is vira and my version is 1.1")
+
         if "hlo" in ord.lower():
             talk("Hello")
             talk("What can i do for you")
@@ -165,16 +154,16 @@ def work(event):
             eo.delete(0, END)
 
         if "hello" in ord.lower():
-            talk("Hello")
+            talk("Hi")
             talk("What can i do for you")
-
             eo.delete(0, END)
 
         if "hi" in ord.lower():
             talk("Hello")
             talk("What can i do for you")
             eo.delete(0, END)
-        if "down" in ord.lower():
+
+        if "download" in ord.lower():
             task.download()
 
         ord == ""
