@@ -47,7 +47,7 @@ def SecurityUI():
 
 
     def button(a):
-        b = Button(win, text=a, command=lambda:password("blah"))
+        b = Button(win, text=a,bd=0, command=lambda:password("blah"))
         b.place(x=90, y=60)
 
 
