@@ -23,7 +23,7 @@ def index(pathn):
             if i.is_file() == True:
                 print(i, name, sep=" !@#$%^& ")
                 cache.write(f"{name} @#$%^& {i} @#$%^& \n")
-            else:
+            else: #check for the files in a directories by calling the function recursively
                 if name.startswith('.') == False and name.startswith('__') == False:
                     try:
                         index(i)
@@ -34,18 +34,20 @@ def index(pathn):
 
 
 if __name__ == "__main__":
+    #...........sending the directories.............
     for i in directories:
         index(i)
     cache.close()
     t1 = time.perf_counter()
     print("Time taken to index files:", t1 - t)
 
+    #...........opening the cache file..................
     cache = open("cache.vira", "r")
-    m = cache.readlines()
+    datas = cache.readlines()
     cachedict = dict()
-
-    for i in m:
-        i = i.split(' @#$%^& ')
-        cachedict[i[0]] = i[1]
+    #.............read data to dictionary........
+    for data in datas:
+        data = data.split(' @#$%^& ')
+        cachedict[data[0]] = data[1]
 
     print("Time convert filedata to dictionary:", time.perf_counter() - t1)

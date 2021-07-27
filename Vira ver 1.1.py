@@ -3,6 +3,7 @@ from tkinter import *
 
 import tSK_ver_1 as task
 from talk1 import *
+#........importing modules................
 
 try:
     print("Loading usernames.py")
@@ -74,7 +75,7 @@ name = usernames.check_user.loginname
 
 # ..............tkinter initialising starts...............................
 t1 = Tk()
-t1.withdraw()
+t1.withdraw()#hide the tkinter window to initialise logo,opacity etc
 t1.attributes("-alpha", 0.6)
 
 try:
@@ -90,12 +91,12 @@ t1.resizable(0, 0)
 t1.geometry("+1200+680")
 eo = Entry(t1, bg="light green")
 eo.pack()
-t1.deiconify()
+t1.deiconify()#show the tkinter window back
 
 
 # ..............tkinter initialising ends...............................
 
-
+#................command input and processing starts.....................
 def work(event):
     print("Work")
     ord = eo.get()
@@ -182,3 +183,4 @@ def work(event):
 t1.bind("<Return>", work)
 
 t1.mainloop()
+#................command input and processing starts.....................
