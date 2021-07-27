@@ -76,6 +76,7 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 t1.withdraw()#hide the tkinter window to initialise logo,opacity etc
+t1.overrideredirect(True)#remove borders
 t1.attributes("-alpha", 0.6)
 
 try:
