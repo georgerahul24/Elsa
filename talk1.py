@@ -1,4 +1,5 @@
-'''Created by George Rahul'''
+'''Created by George Rahul
+To simplify the pyttsx3 module'''
 import pyttsx3
 
 engine = pyttsx3.init()

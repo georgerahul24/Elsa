@@ -1,6 +1,8 @@
+'''Created by George Rahul
+This module integrates the mysql with the python and is used to check if the neccesary tables exists or not'''
+
+
 import mysql.connector as my
-
-
 def makesql():
     # passd=input("Please enter your MYSQL password: ")
     makesql.con = my.connect(host="localhost", user="root", password="1234")

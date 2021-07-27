@@ -22,16 +22,6 @@ except:
     print("ERROR:Could not load usernames.py")
     time.sleep(2)
     exit()
-
-# .............Sound Engine Initialising start...............
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')  # getting details of current voice
-engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female 0 for male voice
-rate = engine.getProperty('rate')  # getting details of current speaking rate
-engine.setProperty('rate', 120)  # setting up new voice rate
-# .............Sound Engine Initialising ends...............
-
-
 run_state = True
 task.greeting()
 print("Starting the security process")
@@ -79,8 +69,7 @@ try:
     t1.iconbitmap(r'icon.ico')
 
 except:
-    engine.say("Sorry i couldnt open the icon..")
-    engine.runAndWait()
+    talk("Sorry i couldnt open the icon..")
 
 t1.attributes("-topmost", 1)
 t1.title("Vira Version 1.1")

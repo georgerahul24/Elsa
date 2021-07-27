@@ -1,16 +1,11 @@
-'''Created by George Rahul'''
-import pyttsx3
-from GUI import SecurityUI
+'''Created by George Rahul
+Calls the login page and verifies the username and password entered'''
 
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')  # getting details of current voice
-# engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
-engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female
-rate = engine.getProperty('rate')  # getting details of current speaking rate
-engine.setProperty('rate', 130)  # setting up new voice rate
+from GUI import SecurityUI
+from talk1 import *
+
 try:
     import mysqlmake
-
     mysqlmake.makesql()
 except:
     print("Could not connect with database")
@@ -25,13 +20,10 @@ def check_user():
         # initialise the security variable
         check_user.security = verify_usernames.verify
         # .....accept the username and password.......
-        engine.say("Please enter the username and password")
-        engine.runAndWait()
+        talk("Please enter the username and password")
         # ...running GUI.py............
         username, password = SecurityUI()
-        # username = password.usergui
-        # password =  password.passgui
-        # database
+        # verifying with database
         mysqlmake.makesql.cur.execute(f"select passw from usernames where username='{username}' ")
         passw = mysqlmake.makesql.cur.fetchall()
 

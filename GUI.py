@@ -1,4 +1,5 @@
-'''Created by George Rahul'''
+'''Created by George Rahul
+GUI for the login page'''
 
 from tkinter import *
 # Created by George Rahul
