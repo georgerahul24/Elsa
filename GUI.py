@@ -36,7 +36,7 @@ def SecurityUI():
 
 
 
-    def password(event):
+    def password(event=''):
         password.passgui = e.get()
         password.usergui = e1.get()
 
@@ -46,11 +46,12 @@ def SecurityUI():
 
     def button(a):
 
-        b = Button(win, text=a,bd=0, command=lambda:password(""))
+        b = Button(win, text=a,bd=0, command=password)
         b.place(x=90, y=60)
 
 
     button("Verify")
+    win.bind("<Return>",password)
     t.mainloop()
     return password.usergui, password.passgui
 

@@ -6,7 +6,7 @@ import subprocess
 import webbrowser
 from pathlib import Path
 import os
-
+from talk1 import talk
 nam = "George"
 
 
@@ -82,7 +82,10 @@ def web(a):
     try:
         searchword = a
         webbrowser.open('https://www.google.com/search?client=firefox-b-d&q=' + searchword, new=1)
+        
         talk("This is what I found for" + a)
+
+
         '''# webbrowser.open(searchword)
        # def google(a):
        # searchword  = a
@@ -94,6 +97,7 @@ def web(a):
        # engine.say("These are the links I Found for Your Search")
        # engine.runAndWait()'''
     except:
+        webbrowser.open(webbrowser.open(searchword, new=1))
         print("Sorry i couldnt do what you requested Try again later")
 
 
@@ -113,5 +117,5 @@ def download():
        os.startfile(Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')))
        talk(f"Here is what you requested   {nam}")
     except:
-        talk("Sorry, could not open the downloads folder)
+        talk("Sorry, could not open the downloads folder")
         print("Sorry i couldnt do what you requested Try again later")

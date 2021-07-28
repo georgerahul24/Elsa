@@ -114,7 +114,6 @@ def work(event):
             print("I have opened Firefox")
 
         if "firefox" in ord.lower():
-            task.firefox()
             eo.delete(0, END)
             print("I have opened Firefox")
 
