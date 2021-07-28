@@ -88,9 +88,11 @@ def work(event):
     ord = eo.get()
     eo.delete(0, END)
     parts=ord.split()
+    keyword=parts[0]
+    keyword=keyword.lower()
     if run_state == True:
 
-        if parts[0].lower()=="search" or parts.lower()=="browse":
+        if keyword=="search" or keyword=="browse":
             ord = ord.replace("search", "")
             ord = ord.replace("SEARCH", "")
             ord = ord.replace("browser", "")
