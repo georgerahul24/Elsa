@@ -25,37 +25,33 @@ def greeting():
         x = datetime.datetime.now().hour
 
         if x < 12:
-            engine.say(f"Good morning {nam}")
-            engine.runAndWait()
+            talk(f"Good morning {nam}")
         else:
-            engine.say(f"Good evening {nam}")
-            engine.runAndWait()
+            talk(f"Good evening {nam}")
     except:
         print("Sorry i couldnt do what you requested Try again later")
 
 
 def tell_time():
-    engine.say(f"It is {datetime.datetime.now().hour} hours")
-
-    engine.runAndWait()
+    talk(f"It is {datetime.datetime.now().hour} hours")
 
 
 # ...........Programmes..........................
 def wordpad():
     try:
-        engine.say(f"I have opened wordpad for you  {nam}")
-        engine.runAndWait()
         subprocess.Popen('C:\\Windows\\System32\\write.exe')
+        talk(f"I have opened wordpad for you  {nam}")
     except:
         print("Sorry i couldnt do what you requested Try again later")
 
 
 def whatsapp():
     try:
+        
         subprocess.Popen(f'C:\\Users\\{usr}\\AppData\\Local\\WhatsApp\\WhatsApp.exe')
-        engine.say("I have opened whatsapp for you", nam)
-        engine.runAndWait()
         print("Opened WhatsApp")
+        talk("I have opened whatsapp for you", nam)
+        
     except:
         print("Sorry i couldnt do what you requested Try again later")
 
@@ -67,20 +63,18 @@ def whatsapp():
 def gimp():
     try:
         subprocess.Popen("C:\\Program Files\\GIMP 2\\bin\\gimp-2.10.exe")
-        engine.say("I have opened gimp for you")
-        engine.runAndWait()
+        talk("I have opened gimp for you")
     except:
-        engine.say("Sorry i could not open gimp ")
-        engine.runAndWait()
+        talk("Sorry i could not open gimp ")
 
 
 def firefox():
-    try:
-        engine.say(f"I have opened firefox for you  {nam}")
-        engine.runAndWait()
+    try:        
         subprocess.Popen('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
-    except:
-        print("Sorry i couldnt do what you requested Try again later")
+        talk("i have opened firefox for you")
+    except Exception as e:
+        talk("Sorry, could not open firefox")
+        print("Sorry i couldnt do what you requested Try again later",e)
 
 
 # .........browser and net related................
@@ -88,8 +82,7 @@ def web(a):
     try:
         searchword = a
         webbrowser.open('https://www.google.com/search?client=firefox-b-d&q=' + searchword, new=1)
-        engine.say("This is what I found for" + a)
-        engine.runAndWait()
+        talk("This is what I found for" + a)
         '''# webbrowser.open(searchword)
        # def google(a):
        # searchword  = a
@@ -106,8 +99,7 @@ def web(a):
 
 def youtube(srch):
     webbrowser.open(f"https://www.youtube.com/results?search_query={srch}")
-    engine.say(f"Here is what I found about {srch}")
-    engine.runAndWait()
+    talk(f"Here is what I found about {srch}")
 
 
 # .............folders......................
@@ -118,8 +110,8 @@ def youtube(srch):
 
 def download():
     try:
-        engine.say(f"Here is what you requested   {nam}")
-        engine.runAndWait()
-        os.startfile(Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')))
+       os.startfile(Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')))
+       talk(f"Here is what you requested   {nam}")
     except:
+        talk("Sorry, could not open the downloads folder)
         print("Sorry i couldnt do what you requested Try again later")
