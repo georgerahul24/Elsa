@@ -26,10 +26,12 @@ def makesql():
             pass
         else:
             makesql.cur.execute("create table usernames(username varchar(100),passw varchar(100)) ")
+            print("created table 'usernames'")
             makesql.cur.execute("insert into usernames values('admin','1234') ")
             makesql.con.commit()
+            print("Added user admin")
 
-            print("'usernames' table created")
+
 
 
 
@@ -39,7 +41,10 @@ def makesql():
         makesql.cur.execute("use viraver2")
         print("Database 'viraver2' created")
         makesql.cur.execute("create table usernames(username varchar(100),passw varchar(100)) ")
-        print("'usernames' table created")
+        print("created table 'usernames'")
+        makesql.cur.execute("insert into usernames values('admin','1234') ")
+        makesql.con.commit()
+        print("Added user admin")
 
 
 if __name__ == "__main__":

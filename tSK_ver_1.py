@@ -8,18 +8,11 @@ from pathlib import Path
 import os
 
 nam = "George"
-from googlesearch import search
+
 
 #rewrite the entire pyttsxe using the talk from talk1 to simplify the code
 
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')  # getting details of current voice
-# engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
-engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female
-rate = engine.getProperty('rate')  # getting details of current speaking rate
-engine.setProperty('rate', 150)  # setting up new voice rate
 
-global usr
 usr = "USER"
 
 
@@ -130,4 +123,3 @@ def download():
         os.startfile(Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')))
     except:
         print("Sorry i couldnt do what you requested Try again later")
-
