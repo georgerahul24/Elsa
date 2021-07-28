@@ -40,7 +40,7 @@ def SecurityUI():
         password.passgui = e.get()
         password.usergui = e1.get()
 
-        t.destroy()
+
 
 
 
