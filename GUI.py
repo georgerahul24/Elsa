@@ -7,7 +7,9 @@ def SecurityUI():
     #.................initialising tkinter........................
     t = Tk()
     t.geometry("1x1")
-    t.iconbitmap(r'icon.ico')
+    try:
+     t.iconbitmap(r'icon.ico')
+    except:print('Could not open icon in gui.py') 
     t.withdraw()
     # t.deiconify() to make it appear again
     win = Toplevel(t)

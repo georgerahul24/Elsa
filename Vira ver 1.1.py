@@ -1,10 +1,9 @@
 import time
 from tkinter import *
-import tSK_ver_1 as task
-from talk1 import *
-
-
-
+try:
+ import tSK_ver_1 as task
+ from talk1 import *
+except:print("it seems some system files are missing");time.sleep(2);exit()
 try:
     print("Loading usernames.py")
     import usernames
@@ -23,7 +22,9 @@ except:
     time.sleep(2)
     exit()
 run_state = True
-task.greeting()
+
+
+ #p.join()
 print("Starting the security process")
 print("\n")
 talk("Hello")
@@ -62,14 +63,14 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 t1.withdraw()#hide the tkinter window to initialise logo,opacity etc
-t1.overrideredirect(True)#remove borders
+#t1.overrideredirect(True)#remove borders
 t1.attributes("-alpha", 0.6)
 
 try:
     t1.iconbitmap(r'icon.ico')
 
 except:
-    talk("Sorry i couldnt open the icon..")
+    print("Sorry i couldnt open the icon..")
 
 t1.attributes("-topmost", 1)
 t1.title("Vira Version 1.1")
@@ -111,16 +112,17 @@ def work(event):
         if "open" and " firefox" in ord.lower():
             task.firefox()
             eo.delete(0, END)
-            print("I have opened Firefox")
+
 
         if "firefox" in ord.lower():
+            task.firefox()
             eo.delete(0, END)
-            print("I have opened Firefox")
+
 
         if "open wordpad" in ord.lower():
             task.wordpad()
             eo.delete(0, END)
-            print("I have opened Wordpad")
+
 
         if "time" in ord.lower():
             task.tell_time()
