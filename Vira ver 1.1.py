@@ -63,7 +63,7 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 t1.withdraw()#hide the tkinter window to initialise logo,opacity etc
-#t1.overrideredirect(True)#remove borders
+t1.overrideredirect(True)#remove borders
 t1.attributes("-alpha", 0.6)
 
 try:
@@ -109,7 +109,7 @@ def work(event):
             t1.destroy()
 
 
-        if "open" and " firefox" in ord.lower():
+        if "open firefox" in ord.lower():
             task.firefox()
             eo.delete(0, END)
 

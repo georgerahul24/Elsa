@@ -49,5 +49,13 @@ if __name__ == "__main__":
     for data in datas:
         data = data.split(' @#$%^& ')
         cachedict[data[0]] = data[1]
-
+            
     print("Time convert filedata to dictionary:", time.perf_counter() - t1)
+
+
+#..........elizabeth.................... name of dictionary=cachedict
+def file_search(name):
+    pass
+    
+
+
