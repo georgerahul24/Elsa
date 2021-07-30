@@ -1,12 +1,23 @@
 import time
 from tkinter import *
+from pathlib import Path
+import initial_setup
+print("Checking for file 'initial.vira' ")
+my_file = Path("initial.vira")
+if my_file.exists():
+    print("'initial.vira' found")
+    
+else:
+    print("'initial.vira' not found")
+    initial_setup.install_packages()
+    print('Necessary packages installed')
 
 try:
  import tSK_ver_1 as task
  from talk1 import *
  import settings
  print('loaded settings.py')
-except:print("it seems some system files are missing");time.sleep(2);exit()
+except Exception as e:print(e,"it seems some system files are missing");time.sleep(2);exit()
 try:
     print("Loading usernames.py")
     import usernames
@@ -88,7 +99,6 @@ t1.deiconify()#show the tkinter window back
 
 #................command input and processing starts.....................
 def work(event):
-    print("Work")
     ord = eo.get()
     eo.delete(0, END)
     parts=ord.split()
@@ -107,7 +117,7 @@ def work(event):
         if "msg" == ord.lower() or "whatsapp" == ord.lower():
             task.whatsapp()
 
-        if "bye" == ord.lower() or "close" == ord.lower() or "exit" == ord.lower():
+        if "bye" == ord.lower() or "close" == ord.lower() or "exit" == ord.lower() or "tata" == ord.lower():
             talk("Tata Bye Bye ")
             t1.destroy()
 
@@ -126,7 +136,9 @@ def work(event):
             task.wordpad()
             eo.delete(0, END)
         if keyword=="settings" or keyword=="setting":
+            talk('I have opened the settings page for you')
             settings.setting_page()
+            
 
         if "time" in ord.lower():
             task.tell_time()
