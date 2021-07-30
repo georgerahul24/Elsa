@@ -4,7 +4,7 @@ import about_page
 from talk1 import *
 import history
 
-def setting_page(username=''):  
+def setting_page(username='',state=True):  
     a=Tk()    
     def usr_page(event=''):
         talk('Please add a new user')
@@ -18,8 +18,9 @@ def setting_page(username=''):
     adduser.pack()
     about=Button(a,text="About",command=abt_page)
     about.pack()
-    showhis=Button(a,text="Show History",command=lambda:history.user_read(username)).pack()
-    clearhis=Button(a,text="Clear History",command=lambda:history.clear_history(username)).pack()
+    if state==True:
+     showhis=Button(a,text="Show History",command=lambda:history.user_read(username)).pack()
+     clearhis=Button(a,text="Clear History",command=lambda:history.clear_history(username)).pack()
     about.pack()
     a.mainloop()
 
