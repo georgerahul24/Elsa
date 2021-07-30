@@ -13,7 +13,7 @@ def install_packages():
    install_package('mysql-connector-python')
    print("Installed 'mysql-connector-python'")
    install_package('playsound')
-   print("Installed 'playsound')
+   print("Installed 'playsound'")
    f=open('initial.vira','w')
    f.write('initisalised')
    f.close()
