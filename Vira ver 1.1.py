@@ -3,6 +3,7 @@ from tkinter import *
 from pathlib import Path
 import initial_setup
 import history
+import playsound
 
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
@@ -199,7 +200,16 @@ def work(event):
         
         if  ord.lower()=="clear history":
             history.clear_history(name) 
-            talk('Cleared history')   
+            talk('Cleared history') 
+        
+        if ord.lower()=="play rhyme":
+            playsound.playsound('rhyme.mp3')
+            history.user_file(name,ord,f"played 'rhyme.mp3'")
+        if ord.lower()=="tell jokes" or ord.lower()=="tell a joke" or ord.lower()=="joke":
+            task.joke()
+            history.user_file(name,ord,f"Told joke'")
+
+
         ord == ""
         print("Over")
 

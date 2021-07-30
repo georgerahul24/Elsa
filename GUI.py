@@ -52,7 +52,8 @@ def SecurityUI():
         b = Button(win, text=a,bd=0, command=password)
         b.place(x=70, y=60)
 
-    settins=Button(win,text="Settings",bd=0,command=lambda:settings.setting_page(state=False)).place(x=120, y=60)
+    setins=Button(win,text="Settings",bd=0,command=lambda:settings.setting_page(state=False))
+    setins.place(x=120, y=60)
     button("Verify")
     win.bind("<Return>",password)
     t.mainloop()

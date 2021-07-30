@@ -7,6 +7,7 @@ import webbrowser
 from pathlib import Path
 import os
 from talk1 import talk
+import random
 nam = "George"
 
 
@@ -103,7 +104,7 @@ def web(a):
 
 def youtube(srch):
     webbrowser.open(f"https://www.youtube.com/results?search_query={srch}")
-    talk(f"Here is what I found about {srch}")
+    talk(f"Here is what you requested")
 
 
 # .............folders......................
@@ -119,3 +120,12 @@ def download():
     except:
         talk("Sorry, could not open the downloads folder")
         print("Sorry i couldnt do what you requested Try again later")
+
+def joke():
+    try:
+        jokeslist=['My friend was explaining electricity to me, but I was like, wat ?','I failed math so many times at school, I can’t even count','Never trust atoms; they make up everything','The future, the present, and the past walk into a bar. Things got a little tense','It was an emotional wedding. Even the cake was in tiers']
+        jokeselected=random.choice(jokeslist)
+        talk(jokeselected)
+    except:
+        talk('Let me think please try again')
+   
