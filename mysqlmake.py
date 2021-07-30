@@ -25,7 +25,7 @@ def makesql():
             print("Table found")
             pass
         else:
-            makesql.cur.execute("create table usernames(username varchar(100),passw varchar(100)) ")
+            makesql.cur.execute("create table usernames(username varchar(100) primary key,passw varchar(100)) ")
             print("created table 'usernames'")
             makesql.cur.execute("insert into usernames values('admin','1234') ")
             makesql.con.commit()
@@ -40,7 +40,7 @@ def makesql():
         makesql.cur.execute("create database viraver2")
         makesql.cur.execute("use viraver2")
         print("Database 'viraver2' created")
-        makesql.cur.execute("create table usernames(username varchar(100),passw varchar(100)) ")
+        makesql.cur.execute("create table usernames(username varchar(100) primary key,passw varchar(100)) ")
         print("created table 'usernames'")
         makesql.cur.execute("insert into usernames values('admin','1234') ")
         makesql.con.commit()
