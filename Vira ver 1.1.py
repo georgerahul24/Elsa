@@ -146,7 +146,7 @@ def work(event):
 
         if keyword=="settings" or keyword=="setting":
             talk('I have opened the settings page for you')            
-            settings.setting_page()
+            settings.setting_page(name)
             history.user_file(name,ord,"Opened Settings")
             
 
@@ -172,20 +172,20 @@ def work(event):
         if ord.lower() == "hlo":
             talk("Hello")
             talk("What can i do for you")
-            history.user_file(name,ord,"Greeted user")
+            history.user_file(name,ord,"Greated user")
 
             eo.delete(0, END)
 
         if ord.lower()=="hello":
             talk("Hi")
             talk("What can i do for you")
-            history.user_file(name,ord,"Greeted user")
+            history.user_file(name,ord,"Greated user")
             eo.delete(0, END)
 
         if ord.lower() == "hi":
             talk("Hello")
             talk("What can i do for you")
-            history.user_file(name,ord,"Greeted user")
+            history.user_file(name,ord,"Greated user")
             eo.delete(0, END)
 
         if "download" in ord.lower():

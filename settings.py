@@ -2,8 +2,9 @@ from tkinter import *
 import add_user
 import about_page
 from talk1 import *
+import history
 
-def setting_page():  
+def setting_page(username=''):  
     a=Tk()    
     def usr_page(event=''):
         talk('Please add a new user')
@@ -17,6 +18,8 @@ def setting_page():
     adduser.pack()
     about=Button(a,text="About",command=abt_page)
     about.pack()
+    showhis=Button(a,text="Show History",command=lambda:history.user_read(username)).pack()
+    clearhis=Button(a,text="Clear History",command=lambda:history.clear_history(username)).pack()
+    about.pack()
     a.mainloop()
 
- 
