@@ -2,6 +2,8 @@ import time
 from tkinter import *
 from pathlib import Path
 import initial_setup
+import history
+
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
 if my_file.exists():
@@ -112,68 +114,92 @@ def work(event):
             ord = ord.replace("browser", "")
             task.web(ord)
             eo.delete(0, END)
+            history.user_file(name,ord,f'"Opened Firefox and searched:" {ord}')
             print("Opened Firefox and searched:",ord)
 
         if "msg" == ord.lower() or "whatsapp" == ord.lower():
             task.whatsapp()
+            history.user_file(name,ord,"Opened Whatsapp")
 
         if "bye" == ord.lower() or "close" == ord.lower() or "exit" == ord.lower() or "tata" == ord.lower():
             talk("Tata Bye Bye ")
+            history.user_file(name,ord,"User closed")
             t1.destroy()
 
 
         if "open firefox" in ord.lower():
             task.firefox()
+            history.user_file(name,ord,"Opened firefox")
             eo.delete(0, END)
 
 
         if "firefox" in ord.lower():
             task.firefox()
+            history.user_file(name,ord,"Opened firefox")
             eo.delete(0, END)
 
 
         if "open wordpad" in ord.lower():
             task.wordpad()
+            history.user_file(name,ord,"Opened wordpad")
             eo.delete(0, END)
+
         if keyword=="settings" or keyword=="setting":
-            talk('I have opened the settings page for you')
+            talk('I have opened the settings page for you')            
             settings.setting_page()
+            history.user_file(name,ord,"Opened Settings")
             
 
         if "time" in ord.lower():
             task.tell_time()
             eo.delete(0, END)
+            history.user_file(name,ord,"Time told")
 
         if "open gimp" in ord.lower():
             task.gimp()
+            history.user_file(name,ord,"Opened gimp")
             eo.delete(0, END)
 
         if "what is your version" in ord.lower():
             talk("My version is 1 point 1")
+            history.user_file(name,ord,"Told Vira version")
             eo.delete(0, END)
 
         if "what is your name" in ord.lower():
             talk("My name is vira and my version is 1.1")
+            history.user_file(name,ord,"Told Vira version")
 
-        if "hlo" in ord.lower():
+        if ord.lower() == "hlo":
             talk("Hello")
             talk("What can i do for you")
+            history.user_file(name,ord,"Greeted user")
 
             eo.delete(0, END)
 
-        if "hello" in ord.lower():
+        if ord.lower()=="hello":
             talk("Hi")
             talk("What can i do for you")
+            history.user_file(name,ord,"Greeted user")
             eo.delete(0, END)
 
-        if "hi" in ord.lower():
+        if ord.lower() == "hi":
             talk("Hello")
             talk("What can i do for you")
+            history.user_file(name,ord,"Greeted user")
             eo.delete(0, END)
 
         if "download" in ord.lower():
             task.download()
+            history.user_file(name,ord,"Opened downloads folder")
 
+        if  ord.lower()=="show history":
+            history.user_file(name,ord,"Opened history")
+            history.user_read(name) 
+            talk('Opened history')
+        
+        if  ord.lower()=="clear history":
+            history.clear_history(name) 
+            talk('Cleared history')   
         ord == ""
         print("Over")
 
