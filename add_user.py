@@ -2,15 +2,15 @@ from tkinter import *
 import mysqlmake
 from talk1 import *
 
-s=Tk()
+
 def user_page():
+   s=Tk()
    lu=Label(s,text="Enter the username:")
    lp=Label(s,text="Enter the password:")
    eu=Entry(s)
    ep=Entry(s)
-   def add_user_layout():    
-      
-      lu.grid(row = 0, column = 0);eu.grid(row = 0, column = 1);
+   def add_user_layout():         
+      lu.grid(row = 0, column = 0);eu.grid(row = 0, column = 1)
       lp.grid(row=1,column=0);ep.grid(row=1,column=1)
    def add(event=''):
       mysqlmake.makesql()
@@ -25,7 +25,7 @@ def user_page():
       except:
          s.destroy
          talk("Sorry,the username is aldready taken. Please take a new one")
-         settings_page()
+         user_page()
             
 
    

@@ -1,8 +1,11 @@
 import time
 from tkinter import *
+
 try:
  import tSK_ver_1 as task
  from talk1 import *
+ import settings
+ print('loaded settings.py')
 except:print("it seems some system files are missing");time.sleep(2);exit()
 try:
     print("Loading usernames.py")
@@ -122,7 +125,8 @@ def work(event):
         if "open wordpad" in ord.lower():
             task.wordpad()
             eo.delete(0, END)
-
+        if keyword=="settings" or keyword=="setting":
+            settings.setting_page()
 
         if "time" in ord.lower():
             task.tell_time()
