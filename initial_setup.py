@@ -12,6 +12,8 @@ def install_packages():
    print("Installed 'pyttsx3'")
    install_package('mysql-connector-python')
    print("Installed 'mysql-connector-python'")
+   install_package('playsound')
+   print("Installed 'playsound'")
    f=open('initial.vira','w')
    f.write('initisalised')
    f.close()
