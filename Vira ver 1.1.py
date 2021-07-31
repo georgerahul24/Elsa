@@ -3,7 +3,7 @@ from tkinter import *
 from pathlib import Path
 import initial_setup
 import history
-import playsound
+
 
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
@@ -19,6 +19,7 @@ try:
  import tSK_ver_1 as task
  from talk1 import *
  import settings
+ import playsound
  print('loaded settings.py')
 except Exception as e:print(e,"it seems some system files are missing");time.sleep(2);exit()
 try:
