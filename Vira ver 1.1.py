@@ -56,7 +56,8 @@ while security_state == True:
 
         print("Access Granted")
         talk("Access Granted")
-        talk(f"Welcome {usernames.check_user.loginname}")
+        task.greeting(usernames.check_user.loginname)
+        
 
         break
 
@@ -106,7 +107,12 @@ def work(event):
     eo.delete(0, END)
     parts=ord.split()
     keyword=parts[0]
+    try:
+     afterkeyword=parts[1]
+     afterkeyword=afterkeyword.lower()
+    except:pass
     keyword=keyword.lower()
+    
     if run_state == True:
 
         if keyword=="search" or keyword=="browse":
@@ -127,12 +133,29 @@ def work(event):
             history.user_file(name,ord,"User closed")
             t1.destroy()
 
-
-        if "open firefox" in ord.lower():
-            task.firefox()
-            history.user_file(name,ord,"Opened firefox")
+        if keyword=='run':
+            if afterkeyword in ['firefox','ff']:
+                task.firefox()
+            if afterkeyword in ['photoshop','ps']:
+                task.photoshop()
+            if afterkeyword in ['word','msword','doc']:
+                task.msword()
+            if afterkeyword in ['powerpoint','ppt']:
+                task.powerpoint()
+            if afterkeyword in ['vsc','vscode']:
+                task.vscode()     
+            if afterkeyword in ['wa','msg','whatsapp']:
+                task.whatsapp()               
+            if afterkeyword in ['wordpad','wp']:
+                task.wordpad()
+            if afterkeyword in ['gimp',]:
+                task.gimp()    
+            if afterkeyword in ['vlc',]:
+                task.vlc()
+            if afterkeyword in ['telegram','tg']:
+                task.telegram()
+            history.user_file(name,ord,f"Opened {afterkeyword}")
             eo.delete(0, END)
-
 
         if "firefox" in ord.lower():
             task.firefox()
@@ -140,10 +163,7 @@ def work(event):
             eo.delete(0, END)
 
 
-        if "open wordpad" in ord.lower():
-            task.wordpad()
-            history.user_file(name,ord,"Opened wordpad")
-            eo.delete(0, END)
+       
 
         if keyword=="settings" or keyword=="setting":
             talk('I have opened the settings page for you')            
@@ -154,12 +174,7 @@ def work(event):
         if "time" in ord.lower():
             task.tell_time()
             eo.delete(0, END)
-            history.user_file(name,ord,"Time told")
-
-        if "open gimp" in ord.lower():
-            task.gimp()
-            history.user_file(name,ord,"Opened gimp")
-            eo.delete(0, END)
+            history.user_file(name,ord,"told Time ")
 
         if "what is your version" in ord.lower():
             talk("My version is 1 point 1")
@@ -170,14 +185,9 @@ def work(event):
             talk("My name is vira and my version is 1.1")
             history.user_file(name,ord,"Told Vira version")
 
-        if ord.lower() == "hlo":
-            talk("Hello")
-            talk("What can i do for you")
-            history.user_file(name,ord,"Greated user")
+      
 
-            eo.delete(0, END)
-
-        if ord.lower()=="hello":
+        if ord.lower() in ["hello","hlo"]:
             talk("Hi")
             talk("What can i do for you")
             history.user_file(name,ord,"Greated user")
@@ -205,6 +215,7 @@ def work(event):
         if ord.lower()=="play rhyme":
             playsound.playsound('rhyme.mp3')
             history.user_file(name,ord,f"played 'rhyme.mp3'")
+       
         if ord.lower()=="tell jokes" or ord.lower()=="tell a joke" or ord.lower()=="joke":
             task.joke()
             history.user_file(name,ord,f"Told joke'")
