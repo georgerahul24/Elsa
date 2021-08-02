@@ -55,4 +55,3 @@ if __name__ == "__main__":
         cachedict[data[0]] = data[1]
 
     print("Time convert filedata to dictionary:", time.perf_counter() - t1)
-
