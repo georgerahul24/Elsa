@@ -1,3 +1,4 @@
+#....Module to enter new user.......
 from tkinter import *
 import mysqlmake
 from talk1 import *
@@ -25,12 +26,12 @@ def user_page():
                 f"INSERT into usernames values('{new_user}','{new_password}') "
             )
             mysqlmake.makesql.con.commit()
-            print(f"Aded user {new_user} ")
+            print(f"Added user {new_user} ")
             s.destroy()
-            talk('Successfully added user')
+            talk(f'Successfully added user {new_user}')
         except:
             s.destroy
-            talk("Sorry,the username is aldready taken. Please take a new one")
+            talk("Sorry,the username is aldready in use. Please select a new one")
             user_page()
 
     add_user_layout()
