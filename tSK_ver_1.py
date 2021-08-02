@@ -9,16 +9,10 @@ import os
 from talk1 import talk
 import random
 import getpass
+
 usr = getpass.getuser()
 
-
 #rewrite the entire pyttsxe using the talk from talk1 to simplify the code
-
-
-
-
-
-
 
 
 # .....Time and Greeting............
@@ -49,13 +43,16 @@ def wordpad():
 
 def whatsapp():
     try:
-        
-        subprocess.Popen(f'C:\\Users\\{usr}\\AppData\\Local\\WhatsApp\\WhatsApp.exe')
+
+        subprocess.Popen(
+            f'C:\\Users\\{usr}\\AppData\\Local\\WhatsApp\\WhatsApp.exe')
         print("Opened WhatsApp")
         talk(f"I have opened whatsapp for you")
-        
+
     except Exception as e:
-        print(e,"Sorry i couldnt do what you requested Try again later")
+        print(e, "Sorry i couldnt do what you requested Try again later")
+
+
 def gimp():
     try:
         subprocess.Popen("C:\\Program Files\\GIMP 2\\bin\\gimp-2.10.exe")
@@ -65,68 +62,75 @@ def gimp():
 
 
 def firefox():
-    try:        
+    try:
         subprocess.Popen('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
         talk("i have opened firefox for you")
     except Exception as e:
         talk("Sorry, could not open firefox")
-        print("Sorry i couldnt do what you requested Try again later",e)
+        print("Sorry i couldnt do what you requested Try again later", e)
+
 
 def photoshop():
-    try:        
+    try:
         os.system('photoshop')
         talk("i have opened photoshop for you")
     except Exception as e:
         talk("Sorry, could not open photoshop")
-        print("Sorry i couldnt do what you requested Try again later",e)
+        print("Sorry i couldnt do what you requested Try again later", e)
+
 
 def vscode():
-    try:        
+    try:
         os.system('code')
         talk("i have opened visual studio code for you")
     except Exception as e:
         talk("Sorry, could not open visual studio code")
-        print("Sorry i couldnt do what you requested Try again later",e)
+        print("Sorry i couldnt do what you requested Try again later", e)
+
 
 def vlc():
-    try:        
+    try:
         os.system('vlc')
         talk("i have opened vlc for you")
     except Exception as e:
         talk("Sorry, could not open vlc")
-        print("Sorry i couldnt do what you requested Try again later",e)  
+        print("Sorry i couldnt do what you requested Try again later", e)
+
+
 def telegram():
-    try:        
+    try:
         os.system('telegram')
         talk("i have opened telegram for you")
     except Exception as e:
         talk("Sorry, could not open telegram ")
-        print("Sorry i couldnt do what you requested Try again later",e)              
+        print("Sorry i couldnt do what you requested Try again later", e)
 
-        
+
 def powerpoint():
-    try:        
+    try:
         os.system('powerpnt')
         talk("i have opened powerpoint for you")
     except Exception as e:
         talk("Sorry, could not open powerpoint ")
-        print("Sorry i couldnt do what you requested Try again later",e)
+        print("Sorry i couldnt do what you requested Try again later", e)
+
 
 def msword():
-    try:        
+    try:
         os.system('winword')
         talk("i have opened word for you")
     except Exception as e:
         talk("Sorry, could not open word")
-        print("Sorry i couldnt do what you requested Try again later",e)
-
+        print("Sorry i couldnt do what you requested Try again later", e)
 
 
 # .........browser and net related................
 def web(a):
     try:
         searchword = a
-        webbrowser.open('https://www.google.com/search?client=firefox-b-d&q=' + searchword, new=1)        
+        webbrowser.open('https://www.google.com/search?client=firefox-b-d&q=' +
+                        searchword,
+                        new=1)
         talk(f"This is what I found for {a}")
     except:
         webbrowser.open(webbrowser.open(searchword, new=1))
@@ -141,16 +145,26 @@ def youtube(srch):
 # .............folders......................
 def download():
     try:
-       os.startfile(Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')))
-       talk(f"Here is what you requested")
+        os.startfile(
+            Path(
+                os.path.join(os.path.join(os.environ['USERPROFILE']),
+                             'Downloads')))
+        talk(f"Here is what you requested")
     except:
         talk("Sorry, could not open the downloads folder")
         print("Sorry i couldnt do what you requested Try again later")
 
+
 def joke():
     try:
-        jokeslist=['My friend was explaining electricity to me, but I was like, wat ?','I failed math so many times at school, I can’t even count','Never trust atoms; they make up everything','The future, the present, and the past walk into a bar. Things got a little tense','It was an emotional wedding. Even the cake was in tiers']
-        jokeselected=random.choice(jokeslist)
+        jokeslist = [
+            'My friend was explaining electricity to me, but I was like, wat ?',
+            'I failed math so many times at school, I can’t even count',
+            'Never trust atoms; they make up everything',
+            'The future, the present, and the past walk into a bar. Things got a little tense',
+            'It was an emotional wedding. Even the cake was in tiers'
+        ]
+        jokeselected = random.choice(jokeslist)
         talk(jokeselected)
     except:
         talk('Let me think please try again')

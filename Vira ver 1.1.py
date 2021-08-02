@@ -1,24 +1,27 @@
 import time
 from tkinter import *
 from pathlib import Path
-import initial_setup,history
+import initial_setup, history
+
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
 if my_file.exists():
-    print("'initial.vira' found")    
+    print("'initial.vira' found")
 else:
     print("'initial.vira' not found")
     initial_setup.install_packages()
     print('Necessary packages installed successfully')
 
 try:
- import tSK_ver_1 as task
- from talk1 import *
- import settings,playsound
- 
- print('loaded settings.py, playsound')
-except Exception as e:print(e,"it seems some system files are missing");time.sleep(2);exit()
+    import tSK_ver_1 as task
+    from talk1 import *
+    import settings, playsound
 
+    print('loaded settings.py, playsound')
+except Exception as e:
+    print(e, "it seems some system files are missing")
+    time.sleep(2)
+    exit()
 
 try:
     print("Loading usernames.py")
@@ -39,8 +42,6 @@ except:
     exit()
 run_state = True
 
-
-
 print("Starting the security process")
 talk("Hello")
 talk("I am Vira version 1 point 1")
@@ -55,7 +56,6 @@ while security_state == True:
         print("Access Granted")
         talk("Access Granted")
         task.greeting(usernames.check_user.loginname)
-        
 
         break
 
@@ -65,19 +65,21 @@ while security_state == True:
         security_trial += 1
 
         if security_trial >= 3:
-            print("You have reached th maximum error limit");talk("You have reached the maximum error limit")
+            print("You have reached th maximum error limit")
+            talk("You have reached the maximum error limit")
             talk("Bye Bye")
             time.sleep(2)
             exit()
         else:
-            talk("Access denied");talk("please try again")
+            talk("Access denied")
+            talk("please try again")
 
 name = usernames.check_user.loginname
 
 # ..............tkinter initialising starts...............................
 t1 = Tk()
-t1.withdraw()#hide the tkinter window to initialise logo,opacity etc
-t1.overrideredirect(True)#remove borders
+t1.withdraw()  #hide the tkinter window to initialise logo,opacity etc
+t1.overrideredirect(True)  #remove borders
 t1.attributes("-alpha", 0.6)
 
 try:
@@ -92,130 +94,131 @@ t1.resizable(0, 0)
 t1.geometry("+1200+680")
 eo = Entry(t1, bg="light green")
 eo.pack()
-t1.deiconify()#show the tkinter window back
-
+t1.deiconify()  #show the tkinter window back
 
 # ..............tkinter initialising ends...............................
+
 
 #................command input and processing starts.....................
 def work(event):
     ord = eo.get()
     eo.delete(0, END)
-    parts=ord.split()
-    keyword=parts[0]
+    parts = ord.split()
+    keyword = parts[0]
     try:
-     afterkeyword=parts[1]
-     afterkeyword=afterkeyword.lower()
-    except:pass
-    keyword=keyword.lower()
-    
+        afterkeyword = parts[1]
+        afterkeyword = afterkeyword.lower()
+    except:
+        pass
+    keyword = keyword.lower()
+
     if run_state == True:
 
-        if keyword=="search" or keyword=="browse":
+        if keyword == "search" or keyword == "browse":
             ord = ord.replace("search", "")
             ord = ord.replace("SEARCH", "")
             ord = ord.replace("browser", "")
             task.web(ord)
             eo.delete(0, END)
-            history.user_file(name,ord,f'"Opened Firefox and searched:" {ord}')
-            print("Opened Firefox and searched:",ord)
+            history.user_file(name, ord,
+                              f'"Opened Firefox and searched:" {ord}')
+            print("Opened Firefox and searched:", ord)
 
         if "msg" == ord.lower() or "whatsapp" == ord.lower():
             task.whatsapp()
-            history.user_file(name,ord,"Opened Whatsapp")
+            history.user_file(name, ord, "Opened Whatsapp")
 
-        if "bye" == ord.lower() or "close" == ord.lower() or "exit" == ord.lower() or "tata" == ord.lower():
+        if "bye" == ord.lower() or "close" == ord.lower(
+        ) or "exit" == ord.lower() or "tata" == ord.lower():
             talk("Tata Bye Bye ")
-            history.user_file(name,ord,"User closed")
+            history.user_file(name, ord, "User closed")
             t1.destroy()
 
-        if keyword=='run':
-            if afterkeyword in ['firefox','ff']:
+        if keyword == 'run':
+            if afterkeyword in ['firefox', 'ff']:
                 task.firefox()
-            if afterkeyword in ['photoshop','ps']:
+            if afterkeyword in ['photoshop', 'ps']:
                 task.photoshop()
-            if afterkeyword in ['word','msword','doc']:
+            if afterkeyword in ['word', 'msword', 'doc']:
                 task.msword()
-            if afterkeyword in ['powerpoint','ppt']:
+            if afterkeyword in ['powerpoint', 'ppt']:
                 task.powerpoint()
-            if afterkeyword in ['vsc','vscode']:
-                task.vscode()     
-            if afterkeyword in ['wa','msg','whatsapp']:
-                task.whatsapp()               
-            if afterkeyword in ['wordpad','wp']:
+            if afterkeyword in ['vsc', 'vscode']:
+                task.vscode()
+            if afterkeyword in ['wa', 'msg', 'whatsapp']:
+                task.whatsapp()
+            if afterkeyword in ['wordpad', 'wp']:
                 task.wordpad()
-            if afterkeyword in ['gimp',]:
-                task.gimp()    
-            if afterkeyword in ['vlc',]:
+            if afterkeyword in [
+                    'gimp',
+            ]:
+                task.gimp()
+            if afterkeyword in [
+                    'vlc',
+            ]:
                 task.vlc()
-            if afterkeyword in ['telegram','tg']:
+            if afterkeyword in ['telegram', 'tg']:
                 task.telegram()
-            history.user_file(name,ord,f"Opened {afterkeyword}")
+            history.user_file(name, ord, f"Opened {afterkeyword}")
             eo.delete(0, END)
 
         if "firefox" in ord.lower():
             task.firefox()
-            history.user_file(name,ord,"Opened firefox")
+            history.user_file(name, ord, "Opened firefox")
             eo.delete(0, END)
 
-
-       
-
-        if keyword=="settings" or keyword=="setting":
-            talk('I have opened the settings page for you')            
+        if keyword == "settings" or keyword == "setting":
+            talk('I have opened the settings page for you')
             settings.setting_page(name)
-            history.user_file(name,ord,"Opened Settings")
-            
+            history.user_file(name, ord, "Opened Settings")
 
         if "time" in ord.lower():
             task.tell_time()
             eo.delete(0, END)
-            history.user_file(name,ord,"told Time ")
+            history.user_file(name, ord, "told Time ")
 
         if "what is your version" in ord.lower():
             talk("My version is 1 point 1")
-            history.user_file(name,ord,"Told Vira version")
+            history.user_file(name, ord, "Told Vira version")
             eo.delete(0, END)
 
         if "what is your name" in ord.lower():
             talk("My name is vira and my version is 1.1")
-            history.user_file(name,ord,"Told Vira version")
+            history.user_file(name, ord, "Told Vira version")
 
-      
-
-        if ord.lower() in ["hello","hlo"]:
+        if ord.lower() in ["hello", "hlo"]:
             talk("Hi")
             talk("What can i do for you")
-            history.user_file(name,ord,"Greated user")
+            history.user_file(name, ord, "Greated user")
             eo.delete(0, END)
 
         if ord.lower() == "hi":
             talk("Hello")
             talk("What can i do for you")
-            history.user_file(name,ord,"Greated user")
+            history.user_file(name, ord, "Greated user")
             eo.delete(0, END)
 
         if "download" in ord.lower():
             task.download()
-            history.user_file(name,ord,"Opened downloads folder")
+            history.user_file(name, ord, "Opened downloads folder")
 
-        if  ord.lower()=="show history":
-            history.user_file(name,ord,"Opened history")
-            history.user_read(name) 
+        if ord.lower() == "show history":
+            history.user_file(name, ord, "Opened history")
+            history.user_read(name)
             talk('Opened history')
-        
-        if  ord.lower()=="clear history":
-            history.clear_history(name) 
-            talk('Cleared history') 
-        
-        if ord.lower()=="play rhyme":
-            playsound.playsound('rhyme.mp3')
-            history.user_file(name,ord,f"played 'rhyme.mp3'")
-       
-        if ord.lower()=="tell jokes" or ord.lower()=="tell a joke" or ord.lower()=="joke":
-            task.joke()
-            history.user_file(name,ord,f"Told joke'")
 
+        if ord.lower() == "clear history":
+            history.clear_history(name)
+            talk('Cleared history')
+
+        if ord.lower() == "play rhyme":
+            playsound.playsound('rhyme.mp3')
+            history.user_file(name, ord, f"played 'rhyme.mp3'")
+
+        if ord.lower() == "tell jokes" or ord.lower(
+        ) == "tell a joke" or ord.lower() == "joke":
+            task.joke()
+            history.user_file(name, ord, f"Told joke'")
 
         ord == ""
         print("Over")

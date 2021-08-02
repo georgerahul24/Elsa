@@ -24,7 +24,8 @@ def check_user():
         # ...running GUI.py............
         username, password = SecurityUI()
         # verifying with database
-        mysqlmake.makesql.cur.execute(f"select passw from usernames where username='{username}' ")
+        mysqlmake.makesql.cur.execute(
+            f"select passw from usernames where username='{username}' ")
         passw = mysqlmake.makesql.cur.fetchall()
 
         if password == passw[0][0]:
