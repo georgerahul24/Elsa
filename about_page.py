@@ -8,5 +8,5 @@ def about_page():
     ab.mainloop()
 
 if __name__=='__main__':
-    about_page()
-    print('Complete')
+    about_page(
+    prnt('Complete')
