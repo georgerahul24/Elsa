@@ -31,7 +31,7 @@ try:
     print("Starting to verify the module")
     usernames.verify_usernames()
     if usernames.verify_usernames.verify == False:
-        print("'Usernames.py' verified successful")
+        print("'Usernames.py' verified successfully")
     else:
         print("ERROR:Verification failed")
         time.sleep(2)
@@ -42,7 +42,7 @@ except:
     exit()
 run_state = True
 
-print("Starting the security process")
+print("Starting to verify the user")
 talk("Hello")
 talk("I am Vira version 1 point 1")
 security_state = True
@@ -97,8 +97,6 @@ eo.pack()
 t1.deiconify()  #show the tkinter window back
 
 # ..............tkinter initialising ends...............................
-
-
 #................command input and processing starts.....................
 def work(event):
     ord = eo.get()
@@ -114,10 +112,11 @@ def work(event):
 
     if run_state == True:
 
-        if keyword == "search" or keyword == "browse":
+        if keyword == "search" or keyword == "browse" or keyword=="srch":
             ord = ord.replace("search", "")
             ord = ord.replace("SEARCH", "")
             ord = ord.replace("browser", "")
+            ord=ord.replace("srch","")
             task.web(ord)
             eo.delete(0, END)
             history.user_file(name, ord,
@@ -179,7 +178,7 @@ def work(event):
 
         if ord.lower() == "what is your version" or ord.lower() == "ver":
             talk("My version is 1 point 1")
-            history.user_file(name, ord, "Told Vira version")
+            history.user_file(name, ord, "Vira Ver 1.1")
             eo.delete(0, END)
 
         if "what is your name" in ord.lower():
