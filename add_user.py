@@ -31,7 +31,9 @@ def user_page():
             talk(f'Successfully added user {new_user}')
         except:
             s.destroy
-            talk("Sorry,the username is aldready in use. Please select a new one")
+            talk(
+                "Sorry,the username is aldready in use. Please select a new one"
+            )
             user_page()
 
     add_user_layout()
