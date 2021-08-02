@@ -177,7 +177,7 @@ def work(event):
             eo.delete(0, END)
             history.user_file(name, ord, "told Time ")
 
-        if "what is your version" in ord.lower():
+        if ord.lower()=="what is your version"   or ord.lower()=="ver":
             talk("My version is 1 point 1")
             history.user_file(name, ord, "Told Vira version")
             eo.delete(0, END)
