@@ -96,6 +96,7 @@ eo = Entry(t1, bg="light green")
 eo.pack()
 t1.deiconify()  #show the tkinter window back
 
+
 # ..............tkinter initialising ends...............................
 #................command input and processing starts.....................
 def work(event):
@@ -112,11 +113,11 @@ def work(event):
 
     if run_state == True:
 
-        if keyword == "search" or keyword == "browse" or keyword=="srch":
+        if keyword == "search" or keyword == "browse" or keyword == "srch":
             ord = ord.replace("search", "")
             ord = ord.replace("SEARCH", "")
             ord = ord.replace("browser", "")
-            ord=ord.replace("srch","")
+            ord = ord.replace("srch", "")
             task.web(ord)
             eo.delete(0, END)
             history.user_file(name, ord,
