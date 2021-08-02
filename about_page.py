@@ -1,6 +1,4 @@
 from tkinter import *
-
-
 def about_page():
     ab=Tk()
     h=Label(ab,text="Created by:").pack()
@@ -11,3 +9,4 @@ def about_page():
 
 if __name__=='__main__':
     about_page()
+    print('Complete')
