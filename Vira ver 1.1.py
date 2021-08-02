@@ -1,15 +1,12 @@
 import time
 from tkinter import *
 from pathlib import Path
-import initial_setup
-import history
-
+import initial_setup,history
 
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
 if my_file.exists():
-    print("'initial.vira' found")
-    
+    print("'initial.vira' found")    
 else:
     print("'initial.vira' not found")
     initial_setup.install_packages()
@@ -18,10 +15,12 @@ else:
 try:
  import tSK_ver_1 as task
  from talk1 import *
- import settings
- import playsound
- print('loaded settings.py')
+ import settings,playsound
+ 
+ print('loaded settings.py, playsound')
 except Exception as e:print(e,"it seems some system files are missing");time.sleep(2);exit()
+
+
 try:
     print("Loading usernames.py")
     import usernames
@@ -42,9 +41,8 @@ except:
 run_state = True
 
 
- #p.join()
+
 print("Starting the security process")
-print("\n")
 talk("Hello")
 talk("I am Vira version 1 point 1")
 security_state = True
@@ -68,14 +66,12 @@ while security_state == True:
         security_trial += 1
 
         if security_trial >= 3:
-            print("You have reached th maximum error limit")
-            talk("You have reached the maximum error limit")
+            print("You have reached th maximum error limit");talk("You have reached the maximum error limit")
             talk("Bye Bye")
             time.sleep(2)
             exit()
         else:
-            talk("Access denied")
-            talk("please try again")
+            talk("Access denied");talk("please try again")
 
 name = usernames.check_user.loginname
 
