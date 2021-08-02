@@ -1,5 +1,5 @@
 '''Created by George Rahul
-Calls the login page and verifies the username and password entered'''
+Calls the login page(Gui.py) and verifies the username and password entered'''
 
 from GUI import SecurityUI
 from talk1 import *
