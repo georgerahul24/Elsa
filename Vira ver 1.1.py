@@ -2,7 +2,6 @@ import time
 from tkinter import *
 from pathlib import Path
 import initial_setup,history
-
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
 if my_file.exists():
@@ -10,7 +9,7 @@ if my_file.exists():
 else:
     print("'initial.vira' not found")
     initial_setup.install_packages()
-    print('Necessary packages installed')
+    print('Necessary packages installed successfully')
 
 try:
  import tSK_ver_1 as task
@@ -29,7 +28,7 @@ try:
     print("Starting to verify the module")
     usernames.verify_usernames()
     if usernames.verify_usernames.verify == False:
-        print("Usernames.py verified successful")
+        print("'Usernames.py' verified successful")
     else:
         print("ERROR:Verification failed")
         time.sleep(2)
