@@ -19,7 +19,7 @@ jobs:
         pip install pylint
         pip install pyttsx3
         pip install playsound
-        pip instll mysql-connector-python
+        pip install mysql-connector-python
     - name: Analysing the code with pylint
       run: |
         pylint `ls -R|grep .py$|xargs`
