@@ -7,7 +7,7 @@ def user_page():
     s = Tk()
     s.withdraw()
     s.attributes("-alpha", 0.8)
-    s.configure(bg="light green")
+    s.configure(bg="dark blue")
     try:
         s.iconbitmap(r'icon.ico')
 
@@ -24,8 +24,8 @@ def user_page():
     def close_window():
         s.destroy()
 
-    lu = Label(s, text="Enter the username:", bg="light green")
-    lp = Label(s, text="Enter the password:", bg="light green")
+    lu = Label(s, text="Enter the username:", bg="light blue")
+    lp = Label(s, text="Enter the password:", bg="light blue")
     eu = Entry(s)
     ep = Entry(s)
 
