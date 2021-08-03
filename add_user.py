@@ -7,7 +7,8 @@ def user_page():
     s = Tk()
     s.withdraw()
     s.attributes("-alpha", 0.8)
-    s.configure(bg="dark blue")
+    s.configure(bg="light blue")
+    s.overrideredirect(True)
     try:
         s.iconbitmap(r'icon.ico')
 
@@ -16,7 +17,6 @@ def user_page():
 
     s.attributes("-topmost", 1)
     s.title("Vira Version 1.1")
-    s.resizable(0, 0)
     s.geometry("+600+340")
 
     s.deiconify()  # show the tkinter window back
