@@ -22,9 +22,6 @@ except Exception as e:
     time.sleep(2)
     exit()
 
-
-
-
 try:
     print("Loading usernames.py")
     import usernames
@@ -213,8 +210,7 @@ def work(event):
         if ord.lower() == "clear history":
             history.clear_history(name)
             talk('Cleared history')
-            
-       
+
         if ord.lower() == "tell jokes" or ord.lower(
         ) == "tell a joke" or ord.lower() == "joke":
             task.joke()

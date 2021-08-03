@@ -6,7 +6,6 @@ from talk1 import *
 import file_database
 
 
-
 def verify_usernames():
     verify_usernames.verify = False
 
@@ -20,8 +19,7 @@ def check_user():
         # ...running GUI.py............
         username, password = SecurityUI()
         # verifying with database
-        passw=file_database.check_user_from_file(username)
-
+        passw = file_database.check_user_from_file(username)
 
         if password == passw:
             check_user.security = True
