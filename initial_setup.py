@@ -1,6 +1,4 @@
 import pip
-
-
 def install_packages():
     print('starting to install packages')
 
@@ -12,8 +10,6 @@ def install_packages():
 
     install_package('pyttsx3')
     print("Installed 'pyttsx3'")
-    install_package('playsound')
-    print("Installed 'playsound'")
     f = open('initial.vira', 'w')
     f.write('initisalised')
     f.close()
@@ -21,3 +17,6 @@ def install_packages():
     f.write("admin-1234")
     f.close()
     print("added file 'initial.vira'")
+if __name__== "__main__":
+    install_packages()
+    

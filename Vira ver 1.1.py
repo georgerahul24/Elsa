@@ -16,12 +16,13 @@ try:
     import tSK_ver_1 as task
     from talk1 import *
     import settings
+    print('loaded settings.py,tsk_ver_1.py,talk1.py')
 except Exception as e:
     print(e, "it seems some system files are missing")
     time.sleep(2)
     exit()
 
-print('loaded settings.py, playsound')
+
 
 
 try:

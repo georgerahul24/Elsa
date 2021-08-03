@@ -3,7 +3,7 @@ def check_user_from_file(username):
     try:
         file = open(f"users.vira", 'r')
         lines = file.read().splitlines()
-
+        part2=None
         for line in lines:
             parts = line.split('-')
             part1 = parts[0]#username
@@ -27,7 +27,7 @@ def write_to_file(username,password):
                     count+=1
 
 
-            if count==0:
+            if count==0 and len(username)!=0:
                 file = open("users.vira", 'a')
                 file.write(f"\n{username}-{password}")
                 file.close()
