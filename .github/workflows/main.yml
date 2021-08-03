@@ -18,9 +18,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install mysql-connector-python
         pip install pyttsx3
-        pip install playsound
+        
     - name: Lint with flake8
       run: |
         pip install flake8
