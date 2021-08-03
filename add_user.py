@@ -53,12 +53,12 @@ def user_page():
                              fg="black",
                              bd=2,
                              command=add,
-                             bg="light green")
+                             bg="light blue")
     add_user_button.grid(row=3, column=1)
     close_button = Button(s,
                           text="X",
                           font="Bold",
-                          bg="light green",
+                          bg="light blue",
                           command=close_window,
                           bd=0).grid(row=3, column=0)
     s.bind("<Return>", add)
