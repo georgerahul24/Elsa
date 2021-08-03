@@ -60,7 +60,7 @@ while security_state == True:
 
     else:
 
-        print("Access denied")
+        print("Access Denied")
         security_trial += 1
 
         if security_trial >= 3:
@@ -70,8 +70,8 @@ while security_state == True:
             time.sleep(2)
             exit()
         else:
-            talk("Access denied")
-            talk("please try again")
+            talk("Access Denied")
+            talk("Please Try Again dear")
 
 name = usernames.check_user.loginname
 
