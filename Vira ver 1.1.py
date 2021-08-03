@@ -43,7 +43,7 @@ run_state = True
 
 print("Starting to verify the user")
 talk("Hello")
-talk("I am Vira version 1 point 1")
+talk("I am Elsa version 1 point 1")
 security_state = True
 security_trial = 0
 
@@ -60,7 +60,7 @@ while security_state == True:
 
     else:
 
-        print("Access Denied")
+        print("Access denied")
         security_trial += 1
 
         if security_trial >= 3:
@@ -70,8 +70,8 @@ while security_state == True:
             time.sleep(2)
             exit()
         else:
-            talk("Access Denied")
-            talk("Please Try Again dear")
+            talk("Access denied")
+            talk("please try again")
 
 name = usernames.check_user.loginname
 
@@ -88,7 +88,7 @@ except:
     print("Sorry i couldnt open the icon..")
 
 t1.attributes("-topmost", 1)
-t1.title("Vira Version 1.1")
+t1.title("Elsa Version 1.1")
 t1.resizable(0, 0)
 t1.geometry("+1200+680")
 eo = Entry(t1, bg="light green")
