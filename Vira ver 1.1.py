@@ -212,7 +212,11 @@ def work(event):
             talk('Cleared history')
 
         if ord.lower() == "play rhyme":
+            #use wisound if playsound isnt working
             playsound.playsound('rhyme.mp3')
+            print('Playing rhyme')
+           #winsound.PlaySound(None, winsound.SND_PURGE)
+            
             history.user_file(name, ord, f"played 'rhyme.mp3'")
 
         if ord.lower() == "tell jokes" or ord.lower(
