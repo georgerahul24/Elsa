@@ -1,4 +1,6 @@
 import pip
+
+
 def install_packages():
     print('starting to install packages')
 
@@ -13,10 +15,11 @@ def install_packages():
     f = open('initial.vira', 'w')
     f.write('initisalised')
     f.close()
-    f=open('users.vira','w')
+    f = open('users.vira', 'w')
     f.write("admin-1234")
     f.close()
     print("added file 'initial.vira'")
-if __name__== "__main__":
+
+
+if __name__ == "__main__":
     install_packages()
-    

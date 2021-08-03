@@ -2,6 +2,7 @@ from tkinter import *
 from talk1 import *
 import file_database
 
+
 def user_page():
     s = Tk()
     lu = Label(s, text="Enter the username:")
@@ -17,25 +18,15 @@ def user_page():
 
     def add(event=''):
 
-
-            new_user = eu.get()
-            new_password = ep.get()
-            state=file_database.write_to_file(new_user,new_password)
-            if state==1:
-                talk(f'Successfully added {new_user}')
-                s.destroy()
-            elif state==-1:
-                 talk("user aldready exists Try again")
-                 s.destroy()
-
-
-
-
-
-
-
-
-
+        new_user = eu.get()
+        new_password = ep.get()
+        state = file_database.write_to_file(new_user, new_password)
+        if state == 1:
+            talk(f'Successfully added {new_user}')
+            s.destroy()
+        elif state == -1:
+            talk("user aldready exists Try again")
+            s.destroy()
 
     add_user_layout()
     add_user_button = Button(s, text="Add User", bd=0, command=add)
