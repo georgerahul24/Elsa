@@ -23,8 +23,9 @@ def user_page():
 
     def close_window():
         s.destroy()
-    lu = Label(s, text="Enter the username:",bg="light green")
-    lp = Label(s, text="Enter the password:",bg="light green")
+
+    lu = Label(s, text="Enter the username:", bg="light green")
+    lp = Label(s, text="Enter the password:", bg="light green")
     eu = Entry(s)
     ep = Entry(s)
 
@@ -47,9 +48,19 @@ def user_page():
             s.destroy()
 
     add_user_layout()
-    add_user_button = Button(s, text="Add User",fg="black", bd=2, command=add,bg="light green")
+    add_user_button = Button(s,
+                             text="Add User",
+                             fg="black",
+                             bd=2,
+                             command=add,
+                             bg="light green")
     add_user_button.grid(row=3, column=1)
-    close_button=Button(s,text="X",font="Bold",bg="light green",command=close_window,bd=0).grid(row=3, column=0)
+    close_button = Button(s,
+                          text="X",
+                          font="Bold",
+                          bg="light green",
+                          command=close_window,
+                          bd=0).grid(row=3, column=0)
     s.bind("<Return>", add)
     s.mainloop()
 

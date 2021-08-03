@@ -13,15 +13,22 @@ def about_page():
     ab.geometry("+600+340")
 
     ab.deiconify()  # show the tkinter window back
+
     def close_window():
         ab.destroy()
-    h = Label(ab, text="Created by:",bg="light green",font="bold").pack()
-    g = Label(ab, text="Austin Bert",bg="light green").pack()
-    a = Label(ab, text="George Rahul",bg="light green").pack()
-    e = Label(ab, text="Elizabeth Jaison",bg="light green").pack()
+
+    h = Label(ab, text="Created by:", bg="light green", font="bold").pack()
+    g = Label(ab, text="Austin Bert", bg="light green").pack()
+    a = Label(ab, text="George Rahul", bg="light green").pack()
+    e = Label(ab, text="Elizabeth Jaison", bg="light green").pack()
     #img=PhotoImage(file='close_button.png')
     #ex=Button(ab,text="close",command=close_window,image=img).pack()
-    ex = Button(ab, text="X",font="bold",bg="green" , command=close_window,bd=1).pack()
+    ex = Button(ab,
+                text="X",
+                font="bold",
+                bg="green",
+                command=close_window,
+                bd=1).pack()
     ab.mainloop()
 
 
