@@ -15,13 +15,14 @@ else:
 try:
     import tSK_ver_1 as task
     from talk1 import *
-    import settings, playsound
-
-    print('loaded settings.py, playsound')
+    import settings
 except Exception as e:
     print(e, "it seems some system files are missing")
     time.sleep(2)
     exit()
+
+print('loaded settings.py, playsound')
+
 
 try:
     print("Loading usernames.py")
@@ -96,8 +97,9 @@ eo = Entry(t1, bg="light green")
 eo.pack()
 t1.deiconify()  #show the tkinter window back
 
-
 # ..............tkinter initialising ends...............................
+
+
 #................command input and processing starts.....................
 def work(event):
     ord = eo.get()
@@ -210,15 +212,8 @@ def work(event):
         if ord.lower() == "clear history":
             history.clear_history(name)
             talk('Cleared history')
-
-        if ord.lower() == "play rhyme":
-            #use wisound if playsound isnt working
-            playsound.playsound('rhyme.mp3')
-            print('Playing rhyme')
-           #winsound.PlaySound(None, winsound.SND_PURGE)
             
-            history.user_file(name, ord, f"played 'rhyme.mp3'")
-
+       
         if ord.lower() == "tell jokes" or ord.lower(
         ) == "tell a joke" or ord.lower() == "joke":
             task.joke()

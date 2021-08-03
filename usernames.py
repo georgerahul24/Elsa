@@ -1,14 +1,10 @@
 '''Created by George Rahul
-Calls the login page(Gui.py) and verifies the username and password entered'''
+Calls the login page and verifies the username and password entered'''
 
 from GUI import SecurityUI
 from talk1 import *
+import file_database
 
-try:
-    import mysqlmake
-    mysqlmake.makesql()
-except:
-    print("Could not connect with database")
 
 
 def verify_usernames():
@@ -24,11 +20,10 @@ def check_user():
         # ...running GUI.py............
         username, password = SecurityUI()
         # verifying with database
-        mysqlmake.makesql.cur.execute(
-            f"select passw from usernames where username='{username}' ")
-        passw = mysqlmake.makesql.cur.fetchall()
+        passw=file_database.check_user_from_file(username)
 
-        if password == passw[0][0]:
+
+        if password == passw:
             check_user.security = True
 
             pass

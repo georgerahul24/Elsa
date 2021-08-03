@@ -1,5 +1,3 @@
-#......Settings page........
-#......Created by George Rahul.........
 from tkinter import *
 import add_user
 import about_page
@@ -32,3 +30,5 @@ def setting_page(username='', state=True):
             command=lambda: history.clear_history(username)).pack()
     about.pack()
     a.mainloop()
+if __name__=="__main__":
+    setting_page()
