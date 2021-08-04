@@ -1,13 +1,14 @@
 from tkinter import *
 from talk1 import *
 import file_database
-
+import theme
 
 def user_page():
     s = Tk()
+    bg_colour, text_color, button_colour = theme.read_theme()
     s.withdraw()
     s.attributes("-alpha", 0.8)
-    s.configure(bg="light blue")
+    s.configure(bg=bg_colour)
     s.overrideredirect(True)
     try:
         s.iconbitmap(r'icon.ico')
@@ -24,8 +25,8 @@ def user_page():
     def close_window():
         s.destroy()
 
-    lu = Label(s, text="Enter the username:", bg="light blue")
-    lp = Label(s, text="Enter the password:", bg="light blue")
+    lu = Label(s, text="Enter the username:",bg=bg_colour,fg=text_color)
+    lp = Label(s, text="Enter the password:",bg=bg_colour,fg=text_color)
     eu = Entry(s)
     ep = Entry(s)
 
@@ -44,21 +45,21 @@ def user_page():
             talk(f'Successfully added {new_user}')
             s.destroy()
         elif state == -1:
-            talk("user aldready exists Try again")
+            talk("user aldready exists. Try again")
             s.destroy()
 
     add_user_layout()
     add_user_button = Button(s,
                              text="Add User",
-                             fg="black",
+
                              bd=2,
-                             command=add,
-                             bg="light blue")
+                             command=add,bg = button_colour,fg=text_color
+                             )
     add_user_button.grid(row=3, column=1)
     close_button = Button(s,
                           text="X",
-                          font="Bold",
-                          bg="light blue",
+                          font="Bold"
+    , bg = button_colour, fg = text_color,
                           command=close_window,
                           bd=0).grid(row=3, column=0)
     s.bind("<Return>", add)

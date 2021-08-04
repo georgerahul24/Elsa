@@ -3,6 +3,7 @@ from tkinter import *
 from pathlib import Path
 import initial_setup, history
 
+
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
 if my_file.exists():
@@ -15,6 +16,9 @@ else:
 try:
     import tSK_ver_1 as task
     from talk1 import *
+    print("Loading themes")
+    import theme
+    print("loaded themes")
     import settings
     print('loaded settings.py,tsk_ver_1.py,talk1.py')
 except Exception as e:
@@ -71,7 +75,7 @@ while security_state == True:
             exit()
         else:
             talk("Access Denied")
-            talk("Please Try Again dear")
+            talk("Please Try Again")
 
 name = usernames.check_user.loginname
 
@@ -80,6 +84,7 @@ t1 = Tk()
 t1.withdraw()  #hide the tkinter window to initialise logo,opacity etc
 t1.overrideredirect(True)  #remove borders
 t1.attributes("-alpha", 0.6)  #opacity
+bg_colour,text_color,button_colour=theme.read_theme()
 
 try:
     t1.iconbitmap(r'icon.ico')
@@ -91,7 +96,7 @@ t1.attributes("-topmost", 1)
 t1.title("Vira Version 1.1")
 t1.resizable(0, 0)
 t1.geometry("+1200+680")
-eo = Entry(t1, bg="light green")
+eo = Entry(t1, bg=bg_colour,fg=text_color)
 eo.pack()
 t1.deiconify()  #show the tkinter window back
 
