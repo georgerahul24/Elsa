@@ -3,6 +3,7 @@ from talk1 import *
 import file_database
 import theme
 
+
 def user_page():
     s = Tk()
     bg_colour, text_color, button_colour = theme.read_theme()
@@ -25,8 +26,8 @@ def user_page():
     def close_window():
         s.destroy()
 
-    lu = Label(s, text="Enter the username:",bg=bg_colour,fg=text_color)
-    lp = Label(s, text="Enter the password:",bg=bg_colour,fg=text_color)
+    lu = Label(s, text="Enter the username:", bg=bg_colour, fg=text_color)
+    lp = Label(s, text="Enter the password:", bg=bg_colour, fg=text_color)
     eu = Entry(s)
     ep = Entry(s)
 
@@ -51,15 +52,16 @@ def user_page():
     add_user_layout()
     add_user_button = Button(s,
                              text="Add User",
-
                              bd=2,
-                             command=add,bg = button_colour,fg=text_color
-                             )
+                             command=add,
+                             bg=button_colour,
+                             fg=text_color)
     add_user_button.grid(row=3, column=1)
     close_button = Button(s,
                           text="X",
-                          font="Bold"
-    , bg = button_colour, fg = text_color,
+                          font="Bold",
+                          bg=button_colour,
+                          fg=text_color,
                           command=close_window,
                           bd=0).grid(row=3, column=0)
     s.bind("<Return>", add)

@@ -1,6 +1,7 @@
 from tkinter import *
 import theme
 
+
 def about_page():
     bg_colour, text_color, button_colour = theme.read_theme()
     ab = Tk()
@@ -18,16 +19,18 @@ def about_page():
     def close_window():
         ab.destroy()
 
-    h = Label(ab, text="Created by:", bg=bg_colour,fg=text_color, font="bold").pack()
-    g = Label(ab, text="Austin Bert",  bg=bg_colour,fg=text_color).pack()
-    a = Label(ab, text="George Rahul", bg=bg_colour,fg=text_color).pack()
-    e = Label(ab, text="Elizabeth Jaison",  bg=bg_colour,fg=text_color).pack()
+    h = Label(ab, text="Created by:", bg=bg_colour, fg=text_color,
+              font="bold").pack()
+    g = Label(ab, text="Austin Bert", bg=bg_colour, fg=text_color).pack()
+    a = Label(ab, text="George Rahul", bg=bg_colour, fg=text_color).pack()
+    e = Label(ab, text="Elizabeth Jaison", bg=bg_colour, fg=text_color).pack()
     #img=PhotoImage(file='close_button.png')
     #ex=Button(ab,text="close",command=close_window,image=img).pack()
     ex = Button(ab,
                 text="X",
                 font="bold",
-                bg=button_colour, fg=text_color,
+                bg=button_colour,
+                fg=text_color,
                 command=close_window,
                 bd=1).pack()
     ab.mainloop()
