@@ -82,10 +82,9 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 bg_colour, text_color, button_colour = theme.read_theme()
-tkinterlib.tkinter_initialise(t1,1200,680)
-eo = Entry(t1, bg=bg_colour,fg=text_color)
+tkinterlib.tkinter_initialise(t1, 1200, 680)
+eo = Entry(t1, bg=bg_colour, fg=text_color)
 eo.pack()
-
 
 # ..............tkinter initialising ends...............................
 
