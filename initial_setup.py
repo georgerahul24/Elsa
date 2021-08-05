@@ -13,9 +13,7 @@ def install_packages():
     install_package('pyttsx3')
     print("Installed 'pyttsx3'")
     f = open('initial.vira', 'w')
-    f.write(
-        "  light green  ;   black;   light green \n #The order is bg,font color,button colour \n#Please remember to use ';' to separate colours :D"
-    )
+    f.write("  light green  ;   black;   light green \n #The order is bg,font color,button colour \n#Please remember to use ';' to separate colours :D")
     f.close()
     f = open('users.vira', 'w')
     f.write("admin-1234")
