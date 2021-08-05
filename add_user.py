@@ -12,8 +12,6 @@ def user_page():
     bg_colour, text_color, button_colour = theme.read_theme()
     tkinterlib.tkinter_initialise(s, 600, 340)
 
-    def close_window():
-        s.destroy()
 
     lu = Label(s, text="Enter the username:", bg=bg_colour, fg=text_color)
     lp = Label(s, text="Enter the password:", bg=bg_colour, fg=text_color)
