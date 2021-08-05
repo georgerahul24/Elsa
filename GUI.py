@@ -4,19 +4,18 @@ GUI for the login page'''
 from tkinter import *
 import settings
 import theme
-import tkinterlib
-from functools import partial
+
+
 def SecurityUI():
     bg_colour, text_color, button_colour = theme.read_theme()
     #.................initialising tkinter........................
     t = Tk()
-    t.withdraw()
     t.geometry("1x1")
     try:
         t.iconbitmap(r'icon.ico')
     except:
         print('Could not open icon in gui.py')
-
+    t.withdraw()
     # t.deiconify() to make it appear again
     win = Toplevel(t)
     win.title("Vira Ver 1.1")
@@ -29,15 +28,21 @@ def SecurityUI():
     win.iconbitmap(r'icon.ico')
     # win.overrideredirect(1)
     #........entry fileds for username and password.............
-    e = Entry(win, show="*",fg=text_color, width=10)
+    e = Entry(win, show="*", fg=text_color, width=10)
     e.place(x=104, y=30)
-    e1 = Entry(win, width=10,fg=text_color)
+    e1 = Entry(win, width=10, fg=text_color)
     e1.place(x=104, y=10)
 
     #..........Labels for username and password............................................
-    t1 = Label(win, text="Username:", bg=bg_colour,fg=text_color,
+    t1 = Label(win,
+               text="Username:",
+               bg=bg_colour,
+               fg=text_color,
                font="Nebula 10 bold").place(x=20, y=10)
-    t2 = Label(win, text="Password:", bg=bg_colour,fg=text_color,
+    t2 = Label(win,
+               text="Password:",
+               bg=bg_colour,
+               fg=text_color,
                font="Nebula 10 bold").place(x=20, y=30)
 
     win1 = Toplevel(t)
@@ -52,32 +57,34 @@ def SecurityUI():
 
         t.destroy()
 
+    def button(a):
 
+        b = Button(win,
+                   text=a,
+                   bd=0,
+                   command=password,
+                   bg=button_colour,
+                   fg=text_color)
+        b.place(x=70, y=60)
 
-
+    def close_window():
+        exit()
 
     setins = Button(win,
                     text="Settings",
-                    bd=0,bg=bg_colour,fg=text_color,
+                    bd=0,
+                    bg=button_colour,
+                    fg=text_color,
                     command=lambda: settings.setting_page(state=False))
     close_button = Button(win,
-                    text="x",font="bold",
-                    bd=0, bg=bg_colour, fg=text_color,
-                    command=exit)
-    close_button.place(x=30,y=60)
-    close_button.bind('<Enter>', partial(tkinterlib.on_enter, but=close_button))
-    close_button.bind('<Leave>', partial(tkinterlib.on_leave, but=close_button))
-
-
-
+                          text="X",
+                          font="bold",
+                          bd=0,
+                          bg=button_colour,
+                          fg=text_color,
+                          command=close_window).place(x=30, y=60)
     setins.place(x=120, y=60)
-    setins.bind('<Enter>', partial(tkinterlib.on_enter, but=setins))
-    setins.bind('<Leave>', partial(tkinterlib.on_leave, but=setins))
-
-    ver = Button(win, text='Verify', bd=0, command=password, bg=bg_colour, fg=text_color)
-    ver.place(x=70, y=60)
-    ver.bind('<Enter>', partial(tkinterlib.on_enter, but=ver))
-    ver.bind('<Leave>', partial(tkinterlib.on_leave, but=ver))
+    button("Verify")
     win.bind("<Return>", password)
     t.mainloop()
     return password.usergui, password.passgui
