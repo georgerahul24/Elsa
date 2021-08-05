@@ -1,9 +1,12 @@
 '''Created by George Rahul
 Contains all the necessary code to run various features'''
-import pyttsx3,datetime,subprocess, webbrowser,random,getpass,os
+import pyttsx3, datetime, subprocess, webbrowser, random, getpass, os
 from pathlib import Path
 from talk1 import talk
+
 usr = getpass.getuser()
+
+
 # .....Time and Greeting............
 def greeting(nam):
     try:
