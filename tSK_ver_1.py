@@ -1,20 +1,9 @@
 '''Created by George Rahul
 Contains all the necessary code to run various features'''
-import pyttsx3
-import datetime
-import subprocess
-import webbrowser
+import pyttsx3,datetime,subprocess, webbrowser,random,getpass,os
 from pathlib import Path
-import os
 from talk1 import talk
-import random
-import getpass
-
 usr = getpass.getuser()
-
-#rewrite the entire pyttsxe using the talk from talk1 to simplify the code
-
-
 # .....Time and Greeting............
 def greeting(nam):
     try:
