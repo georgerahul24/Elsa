@@ -5,8 +5,6 @@ from pathlib import Path
 from talk1 import talk
 
 
-
-
 # .....Time and Greeting............
 def greeting(nam):
     try:
@@ -37,8 +35,8 @@ def whatsapp():
     try:
 
         subprocess.Popen(
-            os.path.join(os.path.join(os.environ['USERPROFILE']),                             
-                             'AppData\\Local\\WhatsApp\\WhatsApp.exe'))
+            os.path.join(os.path.join(os.environ['USERPROFILE']),
+                         'AppData\\Local\\WhatsApp\\WhatsApp.exe'))
         print("Opened WhatsApp")
         talk(f"I have opened whatsapp for you")
 
