@@ -144,18 +144,25 @@ def download():
     except:
         talk("Sorry, could not open the downloads folder")
         print("Sorry i couldnt do what you requested Try again later")
-
-
+#TODO:Add open desktop to vira ver 1.1
+def desktop():
+    try:
+        os.startfile(
+            Path(
+                os.path.join(os.path.join(os.environ['USERPROFILE']),
+                             'Desktop')))
+        talk(f"Here is what you requested")
+    except:
+        talk("Sorry, could not open the downloads folder")
+        print("Sorry i couldnt do what you requested Try again later")
 def joke():
     try:
-        jokeslist = [
-            'My friend was explaining electricity to me, but I was like, wat ?',
+        jokeslist = ['My friend was explaining electricity to me, but I was like, wat ?',
             'I failed math so many times at school, I can’t even count',
-            'Never trust atoms; they make up everything',
+            'Never trust atoms; they make up everything','George is a fool',
             'The future, the present, and the past walk into a bar. Things got a little tense',
-            'It was an emotional wedding. Even the cake was in tiers'
-        ]
+            'It was an emotional wedding. Even the cake was in tiers']
         jokeselected = random.choice(jokeslist)
         talk(jokeselected)
     except:
-        talk('Let me think please try again')
+        talk('Let me think . please try again')
