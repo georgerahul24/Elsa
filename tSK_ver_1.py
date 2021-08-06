@@ -1,10 +1,10 @@
 '''Created by George Rahul
 Contains all the necessary code to run various features'''
-import pyttsx3, datetime, subprocess, webbrowser, random, getpass, os
+import pyttsx3, datetime, subprocess, webbrowser, random, os
 from pathlib import Path
 from talk1 import talk
 
-usr = getpass.getuser()
+
 
 
 # .....Time and Greeting............
@@ -37,7 +37,8 @@ def whatsapp():
     try:
 
         subprocess.Popen(
-            f'C:\\Users\\{usr}\\AppData\\Local\\WhatsApp\\WhatsApp.exe')
+            os.path.join(os.path.join(os.environ['USERPROFILE']),                             
+                             'AppData\\Local\\WhatsApp\\WhatsApp.exe'))
         print("Opened WhatsApp")
         talk(f"I have opened whatsapp for you")
 
