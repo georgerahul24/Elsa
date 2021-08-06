@@ -109,7 +109,7 @@ def work(event):
             ord = ord.replace("browser", "")
             ord = ord.replace("srch", "")
             task.web(ord)
-            eo.delete(0, END)
+            
             history.user_file(name, ord,
                               f'"Opened Firefox and searched:" {ord}')
             print("Opened Firefox and searched:", ord)
@@ -150,13 +150,12 @@ def work(event):
             if afterkeyword in ['telegram', 'tg']:
                 task.telegram()
             history.user_file(name, ord, f"Opened {afterkeyword}")
-            eo.delete(0, END)
+            
 
         if "firefox" in ord.lower():
             task.firefox()
             history.user_file(name, ord, "Opened firefox")
-            eo.delete(0, END)
-
+         
         if keyword == "settings" or keyword == "setting":
             talk('I have opened the settings page for you')
             settings.setting_page(name)
@@ -164,13 +163,14 @@ def work(event):
 
         if "time" in ord.lower():
             task.tell_time()
-            eo.delete(0, END)
+            
+      
             history.user_file(name, ord, "told Time ")
 
         if ord.lower() == "what is your version" or ord.lower() == "ver":
             talk("My version is 1 point 1")
             history.user_file(name, ord, "Vira Ver 1.1")
-            eo.delete(0, END)
+            
 
         if "what is your name" in ord.lower():
             talk("My name is vira and my version is 1.1")
@@ -179,14 +179,14 @@ def work(event):
         if ord.lower() in ["hello", "hlo"]:
             talk("Hi")
             talk("What can i do for you")
-            history.user_file(name, ord, "Greated user")
-            eo.delete(0, END)
+            history.user_file(name, ord, "Greeted user")
+            
 
         if ord.lower() == "hi":
             talk("Hello")
             talk("What can i do for you")
             history.user_file(name, ord, "Greated user")
-            eo.delete(0, END)
+            
 
         if "download" in ord.lower():
             task.download()
