@@ -1,6 +1,7 @@
-import time,initial_setup, history,tkinterlib
+import time, initial_setup, history, tkinterlib
 from tkinter import *
 from pathlib import Path
+
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
 if my_file.exists():
