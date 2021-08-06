@@ -204,7 +204,9 @@ def work(event):
 
         ord == ""
         print("Over")
-#Binds textbox so that if user presses enter work() is called        
+
+
+#Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
 t1.mainloop()
 #................command input and processing starts.....................
