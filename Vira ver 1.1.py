@@ -1,7 +1,8 @@
 import time, initial_setup, history, tkinterlib
 from tkinter import *
 from pathlib import Path
-
+#Checks if initial.vira exists...
+#If it doesnt exist the initial setup is run.....
 print("Checking for file 'initial.vira' ")
 my_file = Path("initial.vira")
 if my_file.exists():
@@ -10,10 +11,10 @@ else:
     print("'initial.vira' not found")
     initial_setup.install_packages()
     print('Necessary packages installed successfully')
-
+#TODO:Make a function to automatically call imports and mention the status instead of using prinr(loaded) etc multiple times....
 try:
     import tSK_ver_1 as task
-    from talk1 import *
+    from talk1 import talk
     print("Loading themes")
     import theme
     print("loaded themes")
@@ -203,10 +204,8 @@ def work(event):
 
         ord == ""
         print("Over")
-
-
+#Binds textbox so that if user presses enter work() is called        
 t1.bind("<Return>", work)
-
 t1.mainloop()
 #................command input and processing starts.....................
 #................end of programme........................................
