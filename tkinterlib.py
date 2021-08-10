@@ -1,8 +1,6 @@
 import theme
 
 
-
-
 def tkinter_initialise(a, x, y, top=1):
     bg_colour, text_color, button_colour = theme.read_theme()
     a.withdraw()  #Hide tkinter windows to finsih intialsa==zation

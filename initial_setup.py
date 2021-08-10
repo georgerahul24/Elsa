@@ -1,6 +1,3 @@
-
-
-
 def install_files():
     f = open('initial.vira', 'w')
     f.write(

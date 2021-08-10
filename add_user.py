@@ -12,7 +12,7 @@ def user_page():
     bg_colour, text_color, button_colour = theme.read_theme()
     tkinterlib.tkinter_initialise(userpage, 600, 340)
     s = LabelFrame(userpage, text="Add New User", bg=bg_colour, fg=text_color)
-    s.grid(row=0,column=0)
+    s.grid(row=0, column=0)
 
     lu = Label(s, text="Enter the username:", bg=bg_colour, fg=text_color)
     lp = Label(s, text="Enter the password:", bg=bg_colour, fg=text_color)

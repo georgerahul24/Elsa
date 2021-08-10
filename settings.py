@@ -1,9 +1,7 @@
-import random,add_user,about_page,tkinterlib,history,theme
+import random, add_user, about_page, tkinterlib, history, theme
 from functools import partial
 from tkinter import *
 from talk1 import talk
-
-
 
 
 def setting_page(username='', state=True):
@@ -45,16 +43,16 @@ def setting_page(username='', state=True):
     about.bind('<Leave>', partial(tkinterlib.on_leave, but=about))
 
     change_theme = Button(a,
-                   text="Change Theme",
-                   command=theme.theme_selector,
-                   bd=0,
-                   bg=bg_colour,
-                   fg=text_color)
+                          text="Change Theme",
+                          command=theme.theme_selector,
+                          bd=0,
+                          bg=bg_colour,
+                          fg=text_color)
     change_theme.pack(fill='x')
-    change_theme.bind('<Enter>', partial(tkinterlib.on_enter, but=change_theme))
-    change_theme.bind('<Leave>', partial(tkinterlib.on_leave, but=change_theme))
-
-
+    change_theme.bind('<Enter>', partial(tkinterlib.on_enter,
+                                         but=change_theme))
+    change_theme.bind('<Leave>', partial(tkinterlib.on_leave,
+                                         but=change_theme))
 
     if state == True:
         showhis = Button(a,

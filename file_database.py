@@ -1,5 +1,6 @@
 from talk1 import talk
 
+
 def check_user_from_file(username):
     try:
         file = open(f"users.vira", 'r')
@@ -28,7 +29,9 @@ def write_to_file(username, password):
             if part1 == username:
                 count += 1
 
-        if count == 0 and len(username) != 0 and username not in ['initial','cache','users','user','theme']:
+        if count == 0 and len(username) != 0 and username not in [
+                'initial', 'cache', 'users', 'user', 'theme'
+        ]:
             file = open("users.vira", 'a')
             file.write(f"\n{username}-{password}")
             file.close()
