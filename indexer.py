@@ -36,7 +36,9 @@ def index(pathn):
     except Exception as e:
         print(e)
 
-
+#TODO: Make a function call to index all file and store it in cache.vira
+#TODO: Make a fumction call to search the elements use diflib module to find the nearby matches
+#TODO: Remove the extensions while searching to make the life of user easier...Else user should input the extension also to get the sccurate results
 if __name__ == "__main__":
     #...........sending the directories.............
     for i in directories:
