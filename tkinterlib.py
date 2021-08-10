@@ -1,9 +1,10 @@
 import theme
 
-bg_colour, text_color, button_colour = theme.read_theme()
+
 
 
 def tkinter_initialise(a, x, y, top=1):
+    bg_colour, text_color, button_colour = theme.read_theme()
     a.withdraw()  #Hide tkinter windows to finsih intialsa==zation
     a.attributes("-alpha", 0.9)
     a.overrideredirect(True)
@@ -15,10 +16,10 @@ def tkinter_initialise(a, x, y, top=1):
 
 
 def on_enter(event, but):
-
+    bg_colour, text_color, button_colour = theme.read_theme()
     but.config(bg=button_colour)
 
 
 def on_leave(event, but):
-
+    bg_colour, text_color, button_colour = theme.read_theme()
     but.config(bg=bg_colour)

@@ -9,7 +9,7 @@ if my_file.exists():
     print("'initial.vira' found")
 else:
     print("'initial.vira' not found")
-    initial_setup.install_packages()
+    initial_setup.install_files()
     print('Necessary packages installed successfully')
 #TODO:Make a function to automatically call imports and mention the status instead of using prinr(loaded) etc multiple times....
 try:
@@ -151,7 +151,8 @@ def work(event):
             if afterkeyword in ['telegram', 'tg']:
                 task.telegram()
             history.user_file(name, ord, f"Opened {afterkeyword}")
-
+        if "theme" in ord.lower():
+            theme.theme_selector()
         if "firefox" in ord.lower():
             task.firefox()
             history.user_file(name, ord, "Opened firefox")

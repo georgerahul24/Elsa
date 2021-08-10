@@ -1,20 +1,19 @@
-import random
+import random,add_user,about_page,tkinterlib,history,theme
 from functools import partial
 from tkinter import *
-import add_user
-import about_page
-import tkinterlib
-from talk1 import *
-import history
-import theme
+from talk1 import talk
+
+
 
 
 def setting_page(username='', state=True):
-    a = Tk()
+    settingspage = Tk()
 
     bg_colour, text_color, button_colour = theme.read_theme()
 
-    tkinterlib.tkinter_initialise(a, 400, 340, top=0)
+    tkinterlib.tkinter_initialise(settingspage, 400, 340, top=0)
+    a = LabelFrame(settingspage, text="Settings", bg=bg_colour, fg=text_color)
+    a.pack()
 
     def usr_page(event=''):
         talk('Please add a new user')
@@ -44,6 +43,19 @@ def setting_page(username='', state=True):
     about.pack(fill='x')
     about.bind('<Enter>', partial(tkinterlib.on_enter, but=about))
     about.bind('<Leave>', partial(tkinterlib.on_leave, but=about))
+
+    change_theme = Button(a,
+                   text="Change Theme",
+                   command=theme.theme_selector,
+                   bd=0,
+                   bg=bg_colour,
+                   fg=text_color)
+    change_theme.pack(fill='x')
+    change_theme.bind('<Enter>', partial(tkinterlib.on_enter, but=change_theme))
+    change_theme.bind('<Leave>', partial(tkinterlib.on_leave, but=change_theme))
+
+
+
     if state == True:
         showhis = Button(a,
                          text="Show History",
@@ -66,19 +78,19 @@ def setting_page(username='', state=True):
         clearhis.bind('<Enter>', partial(tkinterlib.on_enter, but=clearhis))
         clearhis.bind('<Leave>', partial(tkinterlib.on_leave, but=clearhis))
 
-    close = Button(a,
+    close = Button(settingspage,
                    text="x",
                    font='bold',
                    bd=0,
                    bg=bg_colour,
                    fg=text_color,
-                   command=a.destroy)
+                   command=settingspage.destroy)
     close.pack()
 
     close.bind('<Enter>', partial(tkinterlib.on_enter, but=close))
     close.bind('<Leave>', partial(tkinterlib.on_leave, but=close))
 
-    a.mainloop()
+    settingspage.mainloop()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,4 @@
 from tkinter import *
-
 import tkinterlib
 from talk1 import *
 import file_database
@@ -8,9 +7,12 @@ from functools import partial
 
 
 def user_page():
-    s = Tk()
+    userpage = Tk()
+
     bg_colour, text_color, button_colour = theme.read_theme()
-    tkinterlib.tkinter_initialise(s, 600, 340)
+    tkinterlib.tkinter_initialise(userpage, 600, 340)
+    s = LabelFrame(userpage, text="Add New User", bg=bg_colour, fg=text_color)
+    s.grid(row=0,column=0)
 
     lu = Label(s, text="Enter the username:", bg=bg_colour, fg=text_color)
     lp = Label(s, text="Enter the password:", bg=bg_colour, fg=text_color)
@@ -30,10 +32,10 @@ def user_page():
         state = file_database.write_to_file(new_user, new_password)
         if state == 1:
             talk(f'Successfully added {new_user}')
-            s.destroy()
+
         elif state == -1:
             talk("user aldready exists. Try again")
-            s.destroy()
+        userpage.destroy()
 
     add_user_layout()
     add_user_button = Button(s,
@@ -52,7 +54,7 @@ def user_page():
                           font="Bold",
                           bg=bg_colour,
                           fg=text_color,
-                          command=s.destroy,
+                          command=userpage.destroy,
                           bd=0)
 
     close_button.grid(row=3, column=0)
@@ -61,8 +63,8 @@ def user_page():
                                          but=close_button))
     close_button.bind('<Leave>', partial(tkinterlib.on_leave,
                                          but=close_button))
-    s.bind("<Return>", add)
-    s.mainloop()
+    userpage.bind("<Return>", add)
+    userpage.mainloop()
 
 
 if __name__ == '__main__':

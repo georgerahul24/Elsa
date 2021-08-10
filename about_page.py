@@ -6,31 +6,38 @@ from functools import partial
 
 def about_page():
     bg_colour, text_color, button_colour = theme.read_theme()
-    ab = Tk()
-    tkinterlib.tkinter_initialise(ab, 640, 340)
+    aboutpage=Tk()
 
-    h = Label(ab, text="Created by:", bg=bg_colour, fg=text_color,
-              font="bold").pack()
-    g = Label(ab, text="Austin Bert", bg=bg_colour, fg=text_color).pack()
-    a = Label(ab, text="George Rahul", bg=bg_colour, fg=text_color).pack()
+    tkinterlib.tkinter_initialise(aboutpage, 640, 340)
+    version = LabelFrame(aboutpage, text="Version", bg=bg_colour, fg=text_color)
+    verlabel=Label(version,text="Vira 1.1.111",bg=bg_colour,fg=text_color)
+    verlabel.pack()
+    version.pack(fill="both")
+
+
+    ab = LabelFrame(aboutpage, text="Created By",bg=bg_colour,fg=text_color)
+    ab.pack()
+    a = Label(ab, text="Austin Bert", bg=bg_colour, fg=text_color).pack()
     e = Label(ab, text="Elizabeth Jaison", bg=bg_colour, fg=text_color).pack()
+    g = Label(ab, text="George Rahul", bg=bg_colour, fg=text_color).pack()
+
 
     #img=PhotoImage(file='close_button.png')
     #ex=Button(ab,text="close",command=close_window,image=img).pack()
 
-    ex = Button(ab,
+    ex = Button(aboutpage,
                 text="X",
                 font="bold",
                 bg=bg_colour,
                 fg=text_color,
-                command=ab.destroy,
+                command= aboutpage.destroy,
                 bd=0)
     ex.pack()
 
     ex.bind('<Enter>', partial(tkinterlib.on_enter, but=ex))
     ex.bind('<Leave>', partial(tkinterlib.on_leave, but=ex))
 
-    ab.mainloop()
+    aboutpage.mainloop()
 
 
 if __name__ == '__main__':
