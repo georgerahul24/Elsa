@@ -12,7 +12,7 @@ def check_user_from_file(username):
             part2 = parts[1]  #passwords
             if part1 == username:
                 break
-        #Returns password if username is found else returns None        
+        #Returns password if username is found else returns None
         return part2
     except Exception as e:
         print('It seems that some error has happened', e)
