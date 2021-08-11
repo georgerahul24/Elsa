@@ -13,19 +13,17 @@ def about_page():
                          text="Version",
                          bg=bg_colour,
                          fg=text_color)
-    verlabel = Label(version, text="Vira 1.1.111", bg=bg_colour, fg=text_color)
+    verlabel = Label(version, text="Vira 1.1.120", bg=bg_colour, fg=text_color)
     verlabel.pack()
     version.pack(fill="both")
 
     ab = LabelFrame(aboutpage, text="Created By", bg=bg_colour, fg=text_color)
     ab.pack()
+    #Name labels
     a = Label(ab, text="Austin Bert", bg=bg_colour, fg=text_color).pack()
     e = Label(ab, text="Elizabeth Jaison", bg=bg_colour, fg=text_color).pack()
     g = Label(ab, text="George Rahul", bg=bg_colour, fg=text_color).pack()
-
-    #img=PhotoImage(file='close_button.png')
-    #ex=Button(ab,text="close",command=close_window,image=img).pack()
-
+    #exit button
     ex = Button(aboutpage,
                 text="X",
                 font="bold",
@@ -34,7 +32,7 @@ def about_page():
                 command=aboutpage.destroy,
                 bd=0)
     ex.pack()
-
+    #hover effect
     ex.bind('<Enter>', partial(tkinterlib.on_enter, but=ex))
     ex.bind('<Leave>', partial(tkinterlib.on_leave, but=ex))
 
@@ -43,4 +41,3 @@ def about_page():
 
 if __name__ == '__main__':
     about_page()
-    print('Complete')
