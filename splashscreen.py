@@ -1,11 +1,6 @@
-#............Austin has reserved this space..............................
-
 from tkinter import *
-
 s = Tk()
-
-
-def splash_screen():
+   def splash_screen():
 
     #tkinter labels
     s.geometry("+500+300")
@@ -14,7 +9,7 @@ def splash_screen():
 
     l = Label(s, text="Vira 1.1", fg="green").pack()
     l1 = Label(s, text="loading", bg="green").pack()
-    l2 = Label(s, text="George is great", bg="black", fg="yellow").pack()
+    
     s.mainloop()
 
 
