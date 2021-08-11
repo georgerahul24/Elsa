@@ -10,10 +10,10 @@ def about_page():
 
     tkinterlib.tkinter_initialise(aboutpage, 640, 340)
     version = LabelFrame(aboutpage,
-                         text="Version",
+                         text="Version", 
                          bg=bg_colour,
                          fg=text_color)
-    verlabel = Label(version, text="Vira 1.1.118", bg=bg_colour, fg=text_color)
+    verlabel = Label(version, text="Vira 1.1.120", bg=bg_colour, fg=text_color)
     verlabel.pack()
     version.pack(fill="both")
 
