@@ -10,7 +10,7 @@ def about_page():
 
     tkinterlib.tkinter_initialise(aboutpage, 640, 340)
     version = LabelFrame(aboutpage,
-                         text="Version", 
+                         text="Version",
                          bg=bg_colour,
                          fg=text_color)
     verlabel = Label(version, text="Vira 1.1.120", bg=bg_colour, fg=text_color)
@@ -37,6 +37,7 @@ def about_page():
     ex.bind('<Leave>', partial(tkinterlib.on_leave, but=ex))
 
     aboutpage.mainloop()
+
+
 if __name__ == '__main__':
     about_page()
-    
