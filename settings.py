@@ -18,6 +18,7 @@ def setting_page(username='', state=True):
     def abt_page():
         talk('Here is the about page')
         about_page.about_page()
+
     #Learn abt partial methods here: https://www.geeksforgeeks.org/partial-functions-python/(used to partial arguments.Rest will be given by python itself)
     adduser = Button(a,
                      text="Add User",
@@ -61,7 +62,7 @@ def setting_page(username='', state=True):
                          bg=bg_colour,
                          fg=text_color,
                          command=lambda: history.user_read(username))
-        
+
         showhis.pack(fill='x')
         #hover effect
         showhis.bind('<Enter>', partial(tkinterlib.on_enter, but=showhis))
