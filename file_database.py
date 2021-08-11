@@ -14,7 +14,7 @@ def check_user_from_file(username):
                 break
         return part2
     except Exception as e:
-        print('It seems that some error has happened',e)
+        print('It seems that some error has happened', e)
 
 
 def write_to_file(username, password):
