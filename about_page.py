@@ -13,7 +13,7 @@ def about_page():
                          text="Version",
                          bg=bg_colour,
                          fg=text_color)
-    verlabel = Label(version, text="Vira 1.1.127", bg=bg_colour, fg=text_color)
+    verlabel = Label(version, text="Vira 1.1.130", bg=bg_colour, fg=text_color)
     verlabel.pack()
     version.pack(fill="both")
 
