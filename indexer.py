@@ -1,4 +1,4 @@
-import os,webbrowser,talk1
+import os, webbrowser, talk1
 from difflib import get_close_matches
 from pathlib import Path
 from functools import lru_cache
@@ -15,6 +15,7 @@ videos = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Videos'))
 directories = [desktop, documents, downloads, music, videos]
 
 cache = open('indexer.vira', 'w')
+
 
 #enable cacging on index function to speed up the output
 @lru_cache(maxsize=50, typed=False)
@@ -41,6 +42,7 @@ def index(pathn):
 #TODO: Make a fumction call to search the elements use diflib module to find the nearby matches
 #TODO: Remove the extensions while searching to make the life of user easier...Else user should input the extension also to get the sccurate results
 
+
 def index_files():
     for paths in directories:
         index(paths)
@@ -58,31 +60,28 @@ def search_indexed_file(filename):
             data = data.split(' @#$%^& ')
             cachedict[data[0]] = data[1]
             filenames.append(data[0])
-        approx_file=get_close_matches(filename, filenames, n=1,cutoff=0.7)
+        approx_file = get_close_matches(filename, filenames, n=1, cutoff=0.7)
         print(approx_file)
-        if len(approx_file)!=0:
-            srched_filepath=cachedict[approx_file[0]]
+        if len(approx_file) != 0:
+            srched_filepath = cachedict[approx_file[0]]
             webbrowser.open(srched_filepath)
             print(f'Opened {srched_filepath}')
             talk1.talk(f'Opened {approx_file[0]}')
         else:
             print(f'Could not find any files')
             talk1.talk(f'Could not find any files')
-    except Exception as e:print('Error:',e)
-
-
+    except Exception as e:
+        print('Error:', e)
 
 
 #run index files when indexer module is imported in vira
 index_files()
 
-if __name__=="__main__":
+if __name__ == "__main__":
     index_files()
     while True:
-        inp=input('Enter the filename: ')
+        inp = input('Enter the filename: ')
         search_indexed_file(inp)
-
-
 '''
 if __name__ == "__main__":
     #...........sending the directories.............

@@ -1,5 +1,8 @@
 from tkinter import *
+
 s = Tk()
+
+
 def splash_screen():
 
     #tkinter labels
@@ -9,7 +12,7 @@ def splash_screen():
 
     l = Label(s, text="Vira 1.1", fg="green").pack()
     l1 = Label(s, text="loading", bg="green").pack()
-    
+
     s.mainloop()
 
 
