@@ -1,6 +1,6 @@
 from tkinter import *
 s = Tk()
-   def splash_screen():
+def splash_screen():
 
     #tkinter labels
     s.geometry("+500+300")
