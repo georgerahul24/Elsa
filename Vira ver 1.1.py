@@ -12,6 +12,8 @@ else:
     initial_setup.install_files()
     print('Necessary packages installed successfully')
 #TODO:Make a function to automatically call imports and mention the status instead of using prinr(loaded) etc multiple times....
+
+
 try:
     import tSK_ver_1 as task
     from talk1 import talk
@@ -24,7 +26,14 @@ except Exception as e:
     print(e, "it seems some system files are missing")
     time.sleep(2)
     exit()
-
+try:
+    print('Indexing files')
+    import indexer
+    print('Indexed files')
+except Exception as e:
+   print(e)
+   time.sleep(2)
+   exit()
 try:
     print("Loading usernames.py")
     import usernames
@@ -119,12 +128,13 @@ def work(event):
             task.whatsapp()
             history.user_file(name, ord, "Opened Whatsapp")
 
-        if "bye" == ord.lower() or "close" == ord.lower(
-        ) or "exit" == ord.lower() or "tata" == ord.lower():
+        if keyword in ['bye','tata','close','exit'] :
             talk("Tata Bye Bye ")
             history.user_file(name, ord, "User closed")
             t1.destroy()
-
+        if keyword in ['file','f']:
+            indexer.search_indexed_file(afterkeyword)
+            history.user_file(name, ord, "Tried to open the file. Status:Unknown")
         if keyword == 'run':
             if afterkeyword in ['firefox', 'ff']:
                 task.firefox()
@@ -183,13 +193,13 @@ def work(event):
         if ord.lower() == "hi":
             talk("Hello")
             talk("What can i do for you")
-            history.user_file(name, ord, "Greated user")
+            history.user_file(name, ord, "Greeted user")
 
         if "download" in ord.lower():
             task.download()
             history.user_file(name, ord, "Opened downloads folder")
 
-        if ord.lower() == "show history":
+        if keyword in  ["show history",'sh']:
             history.user_file(name, ord, "Opened history")
             history.user_read(name)
             talk('Opened history')
