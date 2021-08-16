@@ -212,13 +212,13 @@ def work(event):
         ) == "tell a joke" or ord.lower() == "joke":
             task.joke()
             history.user_file(name, ord, f"Told joke")
-        if keyword=="shutdown":
+        if keyword == "shutdown":
             history.user_file(name, ord, f"Shutdown the computer")
             task.shutdown()
-        if keyword=="restart":
+        if keyword == "restart":
             history.user_file(name, ord, f"Restarted the computer")
             task.restart()
-        
+
         ord == ""
         print("Over")
 
