@@ -144,6 +144,8 @@ def download():
     except:
         talk("Sorry, could not open the downloads folder")
         print("Sorry i couldnt do what you requested Try again later")
+
+
 def desktop():
     try:
         os.startfile(
@@ -154,19 +156,17 @@ def desktop():
     except:
         talk("Sorry, could not open the desktop folder")
         print("Sorry i couldnt do what you requested Try again later")
+
+
 def musicFolder():
     try:
         os.startfile(
-            Path(
-                os.path.join(os.path.join(os.environ['USERPROFILE']),
-                             'Music')))
+            Path(os.path.join(os.path.join(os.environ['USERPROFILE']),
+                              'Music')))
         talk(f"Here is what you requested")
     except:
         talk("Sorry, could not open the Music folder")
-        print("Sorry i couldnt do what you requested Try again later")        
-
-
-
+        print("Sorry i couldnt do what you requested Try again later")
 
 
 #TODO:Add open desktop to vira ver 1.1

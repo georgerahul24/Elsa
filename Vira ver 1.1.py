@@ -147,7 +147,7 @@ def work(event):
             talk("Tata Bye Bye ")
             history.user_file(name, ord, "User closed")
             t1.destroy()
-        #open files....    
+        #open files....
         elif keyword in ['file', 'f']:
             indexer.search_indexed_file(afterkeyword)
             history.user_file(name, ord,
@@ -179,10 +179,10 @@ def work(event):
             elif afterkeyword in ['telegram', 'tg']:
                 task.telegram()
             history.user_file(name, ord, f"Opened {afterkeyword}")
-        #..select a new theme.....    
+        #..select a new theme.....
         elif "theme" in ord.lower():
             theme.theme_selector()
-        #...open firefox    
+        #...open firefox
         elif "firefox" in ord.lower():
             task.firefox()
             history.user_file(name, ord, "Opened firefox")
@@ -223,8 +223,7 @@ def work(event):
             history.user_file(name, ord, "Opened desktop folder")
         elif "music" in ord.lower():
             task.musicFolder()
-            history.user_file(name, ord, "Opened music folder")    
-
+            history.user_file(name, ord, "Opened music folder")
 
         #...history settings.......
         elif keyword in ["show history", 'sh']:
@@ -241,9 +240,7 @@ def work(event):
             task.joke()
             history.user_file(name, ord, f"Told joke")
 
-
-
-        #...shutting down and restarting......    
+        #...shutting down and restarting......
         elif keyword == "shutdown":
             history.user_file(name, ord, f"Shutdown the computer")
             task.shutdown()
