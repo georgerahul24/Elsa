@@ -171,4 +171,20 @@ def joke():
         jokeselected = random.choice(jokeslist)
         talk(jokeselected)
     except:
-        talk('Let me think . please try again')
+        talk('Let me think. please try again')
+
+#...........shutdown,restart and log off.....
+def shutdown():
+    try:
+        #/s is for shutdown and 15 is for a 15 seconds delay when shutdowning
+        talk("Shutting down your computer in 15 seconds. Bye bye")
+        subprocess.call(["shutdown",'/s','/t',"15"])
+    except:talk("Sorry.Something went wrong")    
+
+def restart():
+    try:
+        #/r is for restart and 15 is for a 15 seconds delay when shutdowning
+        talk("Restarting your computer in 15 seconds. Bye bye")
+        subprocess.call(["shutdown",'/r','/t',"15"])
+    except:talk("Sorry.Something went wrong")    
+       
