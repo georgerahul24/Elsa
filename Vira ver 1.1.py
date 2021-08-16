@@ -22,7 +22,7 @@ bg_colour, text_color, button_colour = theme.read_theme()
 splash = Tk()
 tkinterlib.tkinter_initialise(splash, 450, 300)
 l = Label(splash,
-          text="Vira 1.1.x",
+          text="Vira 1.1.140",
           bg=bg_colour,
           fg=text_color,
           font="nebula 100 bold").pack()
@@ -127,7 +127,7 @@ def work(event):
     keyword = keyword.lower()
 
     if run_state == True:
-
+        #srch in net
         if keyword == "search" or keyword == "browse" or keyword == "srch":
             ord = ord.replace("search", "")
             ord = ord.replace("SEARCH", "")
@@ -138,100 +138,116 @@ def work(event):
             history.user_file(name, ord,
                               f'"Opened Firefox and searched:" {ord}')
             print("Opened Firefox and searched:", ord)
-
-        if "msg" == ord.lower() or "whatsapp" == ord.lower():
+        #open whatsapp......
+        elif "msg" == ord.lower() or "whatsapp" == ord.lower():
             task.whatsapp()
             history.user_file(name, ord, "Opened Whatsapp")
-
-        if keyword in ['bye', 'tata', 'close', 'exit']:
+        #end the program
+        elif keyword in ['bye', 'tata', 'close', 'exit']:
             talk("Tata Bye Bye ")
             history.user_file(name, ord, "User closed")
             t1.destroy()
-        if keyword in ['file', 'f']:
+        #open files....    
+        elif keyword in ['file', 'f']:
             indexer.search_indexed_file(afterkeyword)
             history.user_file(name, ord,
                               "Tried to open the file. Status:Unknown")
-        if keyword == 'run':
+        #open programs......
+        elif keyword == 'run':
             if afterkeyword in ['firefox', 'ff']:
                 task.firefox()
-            if afterkeyword in ['photoshop', 'ps']:
+            elif afterkeyword in ['photoshop', 'ps']:
                 task.photoshop()
-            if afterkeyword in ['word', 'msword', 'doc']:
+            elif afterkeyword in ['word', 'msword', 'doc']:
                 task.msword()
-            if afterkeyword in ['powerpoint', 'ppt']:
+            elif afterkeyword in ['powerpoint', 'ppt']:
                 task.powerpoint()
-            if afterkeyword in ['vsc', 'vscode']:
+            elif afterkeyword in ['vsc', 'vscode']:
                 task.vscode()
-            if afterkeyword in ['wa', 'msg', 'whatsapp']:
+            elif afterkeyword in ['wa', 'msg', 'whatsapp']:
                 task.whatsapp()
-            if afterkeyword in ['wordpad', 'wp']:
+            elif afterkeyword in ['wordpad', 'wp']:
                 task.wordpad()
-            if afterkeyword in [
+            elif afterkeyword in [
                     'gimp',
             ]:
                 task.gimp()
-            if afterkeyword in [
+            elif afterkeyword in [
                     'vlc',
             ]:
                 task.vlc()
-            if afterkeyword in ['telegram', 'tg']:
+            elif afterkeyword in ['telegram', 'tg']:
                 task.telegram()
             history.user_file(name, ord, f"Opened {afterkeyword}")
-        if "theme" in ord.lower():
+        #..select a new theme.....    
+        elif "theme" in ord.lower():
             theme.theme_selector()
-        if "firefox" in ord.lower():
+        #...open firefox    
+        elif "firefox" in ord.lower():
             task.firefox()
             history.user_file(name, ord, "Opened firefox")
-
-        if keyword == "settings" or keyword == "setting":
+        #settings page.....
+        elif keyword == "settings" or keyword == "setting":
             talk('I have opened the settings page for you')
             settings.setting_page(name)
             history.user_file(name, ord, "Opened Settings")
-
-        if "time" in ord.lower():
+        #....wishes,time and questions....
+        elif "time" in ord.lower():
             task.tell_time()
 
             history.user_file(name, ord, "told Time ")
 
-        if ord.lower() == "what is your version" or ord.lower() == "ver":
+        elif ord.lower() == "what is your version" or ord.lower() == "ver":
             talk("My version is 1 point 1")
             history.user_file(name, ord, "Vira Ver 1.1")
 
-        if "what is your name" in ord.lower():
+        elif "what is your name" in ord.lower():
             talk("My name is vira and my version is 1.1")
             history.user_file(name, ord, "Told Vira version")
 
-        if ord.lower() in ["hello", "hlo"]:
+        elif ord.lower() in ["hello", "hlo"]:
             talk("Hi")
             talk("What can i do for you")
             history.user_file(name, ord, "Greeted user")
 
-        if ord.lower() == "hi":
+        elif ord.lower() == "hi":
             talk("Hello")
             talk("What can i do for you")
             history.user_file(name, ord, "Greeted user")
-
-        if "download" in ord.lower():
+        #opening folders
+        elif "download" in ord.lower():
             task.download()
             history.user_file(name, ord, "Opened downloads folder")
+        elif "desktop" in ord.lower():
+            task.desktop()
+            history.user_file(name, ord, "Opened desktop folder")
+        elif "music" in ord.lower():
+            task.musicFolder()
+            history.user_file(name, ord, "Opened music folder")    
 
-        if keyword in ["show history", 'sh']:
+
+        #...history settings.......
+        elif keyword in ["show history", 'sh']:
             history.user_file(name, ord, "Opened history")
             history.user_read(name)
             talk('Opened history')
 
-        if ord.lower() == "clear history":
+        elif ord.lower() == "clear history":
             history.clear_history(name)
             talk('Cleared history')
-
-        if ord.lower() == "tell jokes" or ord.lower(
+        #....jokes..........
+        elif ord.lower() == "tell jokes" or ord.lower(
         ) == "tell a joke" or ord.lower() == "joke":
             task.joke()
             history.user_file(name, ord, f"Told joke")
-        if keyword == "shutdown":
+
+
+
+        #...shutting down and restarting......    
+        elif keyword == "shutdown":
             history.user_file(name, ord, f"Shutdown the computer")
             task.shutdown()
-        if keyword == "restart":
+        elif keyword == "restart":
             history.user_file(name, ord, f"Restarted the computer")
             task.restart()
 
