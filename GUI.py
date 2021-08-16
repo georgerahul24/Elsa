@@ -12,23 +12,15 @@ def SecurityUI():
     bg_colour, text_color, button_colour = theme.read_theme()
     #.................initialising tkinter........................
     t = Tk()
-    t.withdraw()
-    t.geometry("1x1")
-    try:
-        t.iconbitmap(r'icon.ico')
-    except:
-        print('Could not open icon in gui.py')
-
+    t.withdraw() 
     # t.deiconify() to make it appear again
-    win = Toplevel(t)
-    win.title("Vira Ver 1.1")
-    win.resizable(0, 0)
+    win = Toplevel(t)    
     win.geometry("200x100+700+300")
     win.config(bg=bg_colour)
     win.overrideredirect(True)
     win.attributes("-topmost", 1)
     win.attributes("-alpha", 0.8)
-    win.iconbitmap(r'icon.ico')
+   
     # win.overrideredirect(1)
     #........entry fileds for username and password.............
     e = Entry(win, show="*", fg=text_color, width=10)

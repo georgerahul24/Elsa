@@ -1,24 +1,36 @@
 import time, initial_setup, history, tkinterlib
 from tkinter import *
 from pathlib import Path
+
 #Checks if initial.vira exists...
 #If it doesnt exist the initial setup is run.....
 print("Checking for file 'initial.vira' ")
-my_file = Path("initial.vira")
-if my_file.exists():
+initial_file = Path("initial.vira")
+if initial_file.exists():
     print("'initial.vira' found")
 else:
     print("'initial.vira' not found")
     initial_setup.install_files()
     print('Necessary packages installed successfully')
-#TODO:Make a function to automatically call imports and mention the status instead of using prinr(loaded) etc multiple times....
+
+print("Loading themes")
+import theme
+print("loaded themes")
+bg_colour, text_color, button_colour = theme.read_theme()
+#...splash screen........
+splash=Tk()
+tkinterlib.tkinter_initialise(splash,450,300)
+l = Label(splash, text="Vira 1.1.x", bg=bg_colour,fg=text_color,font="nebula 100 bold").pack()
+l1 = Label(splash, text="Loading....", bg=bg_colour,fg=text_color).pack()
+splash.after(5000, splash.destroy)
+splash.mainloop()
+#...splash screen ends........
+
 
 try:
     import tSK_ver_1 as task
     from talk1 import talk
-    print("Loading themes")
-    import theme
-    print("loaded themes")
+    
     import settings
     print('loaded settings.py,tsk_ver_1.py,talk1.py')
 except Exception as e:
@@ -51,6 +63,10 @@ except:
     time.sleep(2)
     exit()
 run_state = True
+
+
+
+
 
 print("Starting to verify the user")
 talk("Hello")
@@ -89,7 +105,7 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 #Read the theme from intial.vira
-bg_colour, text_color, button_colour = theme.read_theme()
+
 tkinterlib.tkinter_initialise(t1, 1200, 680)
 eo = Entry(t1, bg=bg_colour, fg=text_color)
 eo.pack()

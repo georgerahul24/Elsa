@@ -34,7 +34,7 @@ def write_to_file(username, password):
         #username should not be empty as it can cause problems when reading it
         #usernames shld not be have the name of program file as history files will overwrite the program files
         if count == 0 and len(username) != 0 and username not in [
-                'initial', 'cache', 'users', 'user', 'theme'
+                'initial', 'cache', 'users', 'user', 'theme','indexer'
         ]:
             file = open("users.vira", 'a')
             file.write(f"\n{username}-{password}")
