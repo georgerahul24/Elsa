@@ -16,17 +16,18 @@ directories = [desktop, documents, downloads, music, videos]
 
 cache = open('indexer.vira', 'w')
 
+
 def index(pathn):
     try:
         for name in os.listdir(pathn):
             i = os.path.join(pathn, name)
             i = Path(i)
             if i.is_file() == True:
-                name=name.split('.')[0]
+                name = name.split('.')[0]
                 print(i, name, sep=" !@#$%^& ")
 
                 cache.write(f"{name} @#$%^& {i} @#$%^& \n")
-               
+
             else:  #check for the files in a directories by calling the function recursively
                 if name.startswith('.') == False and name.startswith(
                         '__') == False:
@@ -39,16 +40,14 @@ def index(pathn):
         print(e)
 
 
-
-
 def index_files():
     for paths in directories:
         index(paths)
- 
+
 
 def search_indexed_file(filename):
     try:
-        
+
         cache = open('indexer.vira', 'r')
         datas = cache.readlines()
         cache.close()
@@ -62,7 +61,8 @@ def search_indexed_file(filename):
         print(approx_file)
         if len(approx_file) != 0:
             srched_filepath = cachedict[approx_file[0]]
-            webbrowser.open(srched_filepath);print(f'Opened {srched_filepath}')
+            webbrowser.open(srched_filepath)
+            print(f'Opened {srched_filepath}')
             talk1.talk(f'Opened {approx_file[0]}')
         else:
             print(f'Could not find any files')
