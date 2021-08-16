@@ -12,15 +12,15 @@ def SecurityUI():
     bg_colour, text_color, button_colour = theme.read_theme()
     #.................initialising tkinter........................
     t = Tk()
-    t.withdraw() 
+    t.withdraw()
     # t.deiconify() to make it appear again
-    win = Toplevel(t)    
+    win = Toplevel(t)
     win.geometry("200x100+700+300")
     win.config(bg=bg_colour)
     win.overrideredirect(True)
     win.attributes("-topmost", 1)
     win.attributes("-alpha", 0.8)
-   
+
     # win.overrideredirect(1)
     #........entry fileds for username and password.............
     e = Entry(win, show="*", fg=text_color, width=10)

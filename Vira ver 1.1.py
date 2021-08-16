@@ -15,22 +15,26 @@ else:
 
 print("Loading themes")
 import theme
+
 print("loaded themes")
 bg_colour, text_color, button_colour = theme.read_theme()
 #...splash screen........
-splash=Tk()
-tkinterlib.tkinter_initialise(splash,450,300)
-l = Label(splash, text="Vira 1.1.x", bg=bg_colour,fg=text_color,font="nebula 100 bold").pack()
-l1 = Label(splash, text="Loading....", bg=bg_colour,fg=text_color).pack()
+splash = Tk()
+tkinterlib.tkinter_initialise(splash, 450, 300)
+l = Label(splash,
+          text="Vira 1.1.x",
+          bg=bg_colour,
+          fg=text_color,
+          font="nebula 100 bold").pack()
+l1 = Label(splash, text="Loading....", bg=bg_colour, fg=text_color).pack()
 splash.after(5000, splash.destroy)
 splash.mainloop()
 #...splash screen ends........
 
-
 try:
     import tSK_ver_1 as task
     from talk1 import talk
-    
+
     import settings
     print('loaded settings.py,tsk_ver_1.py,talk1.py')
 except Exception as e:
@@ -63,10 +67,6 @@ except:
     time.sleep(2)
     exit()
 run_state = True
-
-
-
-
 
 print("Starting to verify the user")
 talk("Hello")

@@ -41,12 +41,12 @@ def index(pathn):
 
 
 def index_files():
- cache_file = Path("indexer.vira")
- if cache_file.exists():
-    print("'indexer.vira' found")
- else:
+    cache_file = Path("indexer.vira")
+    if cache_file.exists():
+        print("'indexer.vira' found")
+    else:
         for paths in directories:
-         index(paths)
+            index(paths)
 
 
 def search_indexed_file(filename):
