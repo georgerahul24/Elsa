@@ -14,11 +14,13 @@ music = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Music'))
 videos = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Videos'))
 directories = [desktop, documents, downloads, music, videos]
 
-cache = open('indexer.elsa', 'w')
+
 
 
 def index(pathn):
+    cache = open('indexer.elsa', 'a')
     try:
+        
         for name in os.listdir(pathn):
             i = os.path.join(pathn, name)
             i = Path(i)
@@ -38,13 +40,18 @@ def index(pathn):
         cache.flush()
     except Exception as e:
         print(e)
-
+    cache.close()
 
 def index_files():
     cache_file = Path("indexer.elsa")
-    if cache_file.exists():
+   
+    if cache_file.exists() == True:
         print("'indexer.elsa' found")
     else:
+        cache = open('indexer.elsa', 'w')
+        cache.close()
+        print("'indexer.elsa' not found")
+        print("Indexing files...Wait a moment...")
         for paths in directories:
             index(paths)
 
@@ -77,7 +84,6 @@ def search_indexed_file(filename):
 
 #run index files when indexer module is imported in Elsa
 index_files()
-
 if __name__ == "__main__":
     index_files()
     while True:
