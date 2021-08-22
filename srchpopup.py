@@ -10,11 +10,9 @@ def popups(srch):
         popups.destroy()
         web(srch)
     Yes=Button(popups,text='Yes',bg=button_colour,fg=text_color,command=srchYes)
-    def destroyPop():
-        try:
+    def destroyPop():        
             popups.destroy()
-        except:
-           print('Popup aldready destroyed')
+        
     No = Button(popups,text='No', bg=button_colour, fg=text_color,command=popups.destroy)
     Yes.grid(row=1,column=0)
     No.grid(row=1,column=1)
