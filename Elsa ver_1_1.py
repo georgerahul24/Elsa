@@ -15,17 +15,18 @@ else:
 
 print("Loading themes")
 import theme
+
 print("loaded themes")
 
 print("Importing popups")
 import srchpopup
+
 print("Popups imported")
 bg_colour, text_color, button_colour = theme.read_theme()
 #...splash screen........
 splashscr = Tk()
 tkinterlib.tkinter_initialise(splashscr, 350, 300)
-splash=LabelFrame(splashscr,text="Loading",bg=bg_colour,
-                         fg=text_color)
+splash = LabelFrame(splashscr, text="Loading", bg=bg_colour, fg=text_color)
 splash.pack()
 
 l = Label(splash,
@@ -50,7 +51,7 @@ except Exception as e:
 try:
     print('Indexing files')
     import indexer
-    print('Indexed files')
+    print('Indexing complete')
 except Exception as e:
     print(e)
     time.sleep(2)
@@ -152,7 +153,7 @@ def work(event):
         elif keyword in ['bye', 'tata', 'close', 'exit']:
             talk("Tata Bye Bye ")
             history.user_file(name, ord, "User closed")
-            t1.destroy()
+            exit()
         #open files....
         elif keyword in ['file', 'f']:
             indexer.search_indexed_file(afterkeyword)
@@ -211,10 +212,10 @@ def work(event):
             talk("My name is Elsa and my version is 1.1")
             history.user_file(name, ord, "Told version of Elsa")
 
-        elif ord.lower() in ["hello", "hlo",'hey']:
+        elif ord.lower() in ["hello", "hlo", 'hey']:
             talk("Hi")
 
-            history.user_file(name, ord, "Greeted user")
+            history.user_file(name, ord, "Greated user")
 
         elif ord.lower() == "hi":
             talk("Hello")
@@ -254,13 +255,21 @@ def work(event):
             history.user_file(name, ord, f"Restarted the computer")
             task.restart()
         else:
-            srchpopup.popups.destroyPop()
+            talk(
+                'I could not understand what you meant. Do you wanna find it in the internet?'
+            )
             srchpopup.popups(ord)
 
-            talk('I could not understand what you meant. Do you wanna find it in the internet?')
+            history.user_file(name, ord, f"Searched {ord} in internet")
 
+        #Destroy in case any yes or no popups are there
         ord == ""
         print("Over")
+
+        try:
+            srchpopup.popups.destroyPop()
+        except:
+            pass
 
 
 #Binds textbox so that if user presses enter work() is called

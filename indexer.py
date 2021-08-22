@@ -15,12 +15,10 @@ videos = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Videos'))
 directories = [desktop, documents, downloads, music, videos]
 
 
-
-
 def index(pathn):
     cache = open('indexer.elsa', 'a')
     try:
-        
+
         for name in os.listdir(pathn):
             i = os.path.join(pathn, name)
             i = Path(i)
@@ -42,9 +40,10 @@ def index(pathn):
         print(e)
     cache.close()
 
+
 def index_files():
     cache_file = Path("indexer.elsa")
-   
+
     if cache_file.exists() == True:
         print("'indexer.elsa' found")
     else:
