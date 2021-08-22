@@ -15,17 +15,18 @@ else:
 
 print("Loading themes")
 import theme
+
 print("loaded themes")
 
 print("Importing popups")
 import srchpopup
+
 print("Popups imported")
 bg_colour, text_color, button_colour = theme.read_theme()
 #...splash screen........
 splashscr = Tk()
 tkinterlib.tkinter_initialise(splashscr, 350, 300)
-splash=LabelFrame(splashscr,text="Loading",bg=bg_colour,
-                         fg=text_color)
+splash = LabelFrame(splashscr, text="Loading", bg=bg_colour, fg=text_color)
 splash.pack()
 
 l = Label(splash,
@@ -211,7 +212,7 @@ def work(event):
             talk("My name is Elsa and my version is 1.1")
             history.user_file(name, ord, "Told version of Elsa")
 
-        elif ord.lower() in ["hello", "hlo",'hey']:
+        elif ord.lower() in ["hello", "hlo", 'hey']:
             talk("Hi")
 
             history.user_file(name, ord, "Greated user")
@@ -254,19 +255,22 @@ def work(event):
             history.user_file(name, ord, f"Restarted the computer")
             task.restart()
         else:
-             talk('I could not understand what you meant. Do you wanna find it in the internet?')
-             srchpopup.popups(ord)
-             
-             history.user_file(name, ord, f"Searched {ord} in internet")
-             
+            talk(
+                'I could not understand what you meant. Do you wanna find it in the internet?'
+            )
+            srchpopup.popups(ord)
+
+            history.user_file(name, ord, f"Searched {ord} in internet")
+
         #Destroy in case any yes or no popups are there
         ord == ""
         print("Over")
 
         try:
             srchpopup.popups.destroyPop()
-        except:pass    
-       
+        except:
+            pass
+
 
 #Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
