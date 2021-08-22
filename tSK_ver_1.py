@@ -169,7 +169,6 @@ def musicFolder():
         print("Sorry i couldnt do what you requested Try again later")
 
 
-
 def desktop():
     try:
         os.startfile(
