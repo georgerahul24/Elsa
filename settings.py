@@ -1,6 +1,11 @@
-import random, add_user, about_page, tkinterlib, history, theme
 from functools import partial
 from tkinter import *
+
+import about_page
+import add_user
+import history
+import theme
+import tkinterlib
 from talk1 import talk
 
 

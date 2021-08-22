@@ -169,7 +169,7 @@ def musicFolder():
         print("Sorry i couldnt do what you requested Try again later")
 
 
-#TODO:Add open desktop to vira ver 1.1
+
 def desktop():
     try:
         os.startfile(

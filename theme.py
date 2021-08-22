@@ -3,7 +3,7 @@ from tkinter import *
 
 def read_theme():
     try:
-        f = open("initial.vira")
+        f = open("initial.elsa")
         datas = f.read()
         colours = datas.split(';')
         bg_colour = colours[0].rstrip().lstrip()
@@ -13,12 +13,12 @@ def read_theme():
         button_colour = colours[0].rstrip().lstrip()
         return bg_colour, text_color, button_colour
     except Exception as e:
-        print('initial.vira is corrupted')
+        print('initial.elsa is corrupted')
         print(e)
 
 
 def theme_writer(bg_colour, font_colour, button_colour):
-    f = open('initial.vira', 'w')
+    f = open('initial.elsa', 'w')
     f.write(
         f"{bg_colour};{font_colour};{button_colour}\n #The order is bg,font color,button colour \n#Please remember to use ';' to separate colours :D"
     )

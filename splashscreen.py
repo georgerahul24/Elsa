@@ -10,7 +10,7 @@ def splash_screen():
     s.overrideredirect(True)
     s.attributes("-topmost", 1)
 
-    l = Label(s, text="Vira 1.1", fg="green").pack()
+    l = Label(s, text="Elsa 1.1", fg="green").pack()
     l1 = Label(s, text="loading", bg="green").pack()
 
     s.mainloop()

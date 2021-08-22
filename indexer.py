@@ -14,7 +14,7 @@ music = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Music'))
 videos = Path(os.path.join(os.path.join(os.environ['USERPROFILE']), 'Videos'))
 directories = [desktop, documents, downloads, music, videos]
 
-cache = open('indexer.vira', 'w')
+cache = open('indexer.elsa', 'w')
 
 
 def index(pathn):
@@ -41,9 +41,9 @@ def index(pathn):
 
 
 def index_files():
-    cache_file = Path("indexer.vira")
+    cache_file = Path("indexer.elsa")
     if cache_file.exists():
-        print("'indexer.vira' found")
+        print("'indexer.elsa' found")
     else:
         for paths in directories:
             index(paths)
@@ -52,7 +52,7 @@ def index_files():
 def search_indexed_file(filename):
     try:
 
-        cache = open('indexer.vira', 'r')
+        cache = open('indexer.elsa', 'r')
         datas = cache.readlines()
         cache.close()
         cachedict = dict()
@@ -75,7 +75,7 @@ def search_indexed_file(filename):
         print('Error:', e)
 
 
-#run index files when indexer module is imported in vira
+#run index files when indexer module is imported in Elsa
 index_files()
 
 if __name__ == "__main__":

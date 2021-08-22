@@ -1,7 +1,7 @@
 import theme
 
 
-def tkinter_initialise(a, x, y, top=1, noborders=True, opacity=0.9):
+def tkinter_initialise(a, x=0, y=0, top=1, noborders=True, opacity=0.9):
     bg_colour, text_color, button_colour = theme.read_theme()
     a.withdraw()  #Hide tkinter windows to finsih intialsa==zation
     a.attributes("-alpha", opacity)  #Opacity of tkinter window

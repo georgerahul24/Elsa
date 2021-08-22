@@ -3,7 +3,7 @@ from talk1 import talk
 
 def check_user_from_file(username):
     try:
-        file = open(f"users.vira", 'r')
+        file = open(f"users.elsa", 'r')
         lines = file.read().splitlines()
         part2 = None
         for line in lines:
@@ -20,7 +20,7 @@ def check_user_from_file(username):
 
 def write_to_file(username, password):
     try:
-        file = open("users.vira")
+        file = open("users.elsa")
         lines = file.read().splitlines()
         #Check if username is new or old with count variable
         count = 0
@@ -36,7 +36,7 @@ def write_to_file(username, password):
         if count == 0 and len(username) != 0 and username not in [
                 'initial', 'cache', 'users', 'user', 'theme', 'indexer'
         ]:
-            file = open("users.vira", 'a')
+            file = open("users.elsa", 'a')
             file.write(f"\n{username}-{password}")
             file.close()
             print(f"Added user {username} ")

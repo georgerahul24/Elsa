@@ -2,32 +2,38 @@ import time, initial_setup, history, tkinterlib
 from tkinter import *
 from pathlib import Path
 
-#Checks if initial.vira exists...
+#Checks if initial.elsa exists...
 #If it doesnt exist the initial setup is run.....
-print("Checking for file 'initial.vira' ")
-initial_file = Path("initial.vira")
+print("Checking for file 'initial.elsa' ")
+initial_file = Path("initial.elsa")
 if initial_file.exists():
-    print("'initial.vira' found")
+    print("'initial.elsa' found")
 else:
-    print("'initial.vira' not found")
+    print("'initial.elsa' not found")
     initial_setup.install_files()
     print('Necessary packages installed successfully')
 
 print("Loading themes")
 import theme
-
 print("loaded themes")
+
+print("Importing popups")
+import srchpopup
+print("Popups imported")
 bg_colour, text_color, button_colour = theme.read_theme()
 #...splash screen........
-splash = Tk()
-tkinterlib.tkinter_initialise(splash, 450, 300)
+splashscr = Tk()
+tkinterlib.tkinter_initialise(splashscr, 350, 300)
+splash=LabelFrame(splashscr,text="Loading",bg=bg_colour,
+                         fg=text_color)
+splash.pack()
+
 l = Label(splash,
-          text="Vira 1.1.140",
+          text="Elsa 1.1.141",
           bg=bg_colour,
           fg=text_color,
           font="nebula 100 bold").pack()
-l1 = Label(splash, text="Loading....", bg=bg_colour, fg=text_color).pack()
-splash.after(5000, splash.destroy)
+splash.after(5000, splashscr.destroy)
 splash.mainloop()
 #...splash screen ends........
 
@@ -70,7 +76,7 @@ run_state = True
 
 print("Starting to verify the user")
 talk("Hello")
-talk("I am Vira version 1 point 1")
+talk("I am Elsa version 1 point 1")
 security_state = True
 security_trial = 0
 
@@ -104,7 +110,7 @@ name = usernames.check_user.loginname
 
 # ..............tkinter initialising starts...............................
 t1 = Tk()
-#Read the theme from intial.vira
+#Read the theme from intial.elsa
 
 tkinterlib.tkinter_initialise(t1, 1200, 680)
 eo = Entry(t1, bg=bg_colour, fg=text_color)
@@ -199,15 +205,15 @@ def work(event):
 
         elif ord.lower() == "what is your version" or ord.lower() == "ver":
             talk("My version is 1 point 1")
-            history.user_file(name, ord, "Vira Ver 1.1")
+            history.user_file(name, ord, "Elsa Ver 1.1")
 
         elif "what is your name" in ord.lower():
-            talk("My name is vira and my version is 1.1")
-            history.user_file(name, ord, "Told Vira version")
+            talk("My name is Elsa and my version is 1.1")
+            history.user_file(name, ord, "Told version of Elsa")
 
-        elif ord.lower() in ["hello", "hlo"]:
+        elif ord.lower() in ["hello", "hlo",'hey']:
             talk("Hi")
-            talk("What can i do for you")
+
             history.user_file(name, ord, "Greeted user")
 
         elif ord.lower() == "hi":
@@ -247,7 +253,9 @@ def work(event):
         elif keyword == "restart":
             history.user_file(name, ord, f"Restarted the computer")
             task.restart()
-
+        else:
+            talk('I could not understand what you meant. Do you wanna find it in the internet?')
+            srchpopup.popups(ord)
         ord == ""
         print("Over")
 
