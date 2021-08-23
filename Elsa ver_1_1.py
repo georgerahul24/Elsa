@@ -1,7 +1,7 @@
 import time, initial_setup, history, tkinterlib
 from tkinter import *
 from pathlib import Path
-
+from functools import partial
 #Checks if initial.elsa exists...
 #If it doesnt exist the initial setup is run.....
 print("Checking for file 'initial.elsa' ")
@@ -273,6 +273,11 @@ def work(event):
 
 
 #Binds textbox so that if user presses enter work() is called
+t1.bind("<Control-h>", partial(history.user_read, username=name))
+t1.bind("<Control-t>", theme.theme_selector)
+t1.bind("<Control-s>", partial(settings.setting_page,
+                               username=name,
+                               state=True))
 t1.bind("<Return>", work)
 t1.mainloop()
 #................command input and processing starts.....................

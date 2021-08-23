@@ -9,7 +9,7 @@ def user_file(username, command, task_did):
     history.close()
 
 
-def user_read(username):
+def user_read(event="", username="admin"):
     webbrowser.open(f"{username}.elsa")
 
 

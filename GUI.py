@@ -6,6 +6,7 @@ import settings
 import theme
 import tkinterlib
 from functools import partial
+from add_user import user_page
 
 
 def SecurityUI():
@@ -53,11 +54,11 @@ def SecurityUI():
         t.destroy()
 
     setins = Button(win,
-                    text="Settings",
+                    text="Add User",
                     bd=0,
                     bg=bg_colour,
                     fg=text_color,
-                    command=lambda: settings.setting_page(state=False))
+                    command=user_page)
     close_button = Button(win,
                           text="x",
                           font="bold",

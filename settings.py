@@ -9,7 +9,7 @@ import tkinterlib
 from talk1 import talk
 
 
-def setting_page(username='', state=True):
+def setting_page(event="", username='', state=True):
     settingspage = Tk()
     bg_colour, text_color, button_colour = theme.read_theme()
     tkinterlib.tkinter_initialise(settingspage, 400, 340, top=0)
