@@ -273,9 +273,11 @@ def work(event):
 
 
 #Binds textbox so that if user presses enter work() is called
-t1.bind("<Control-h>",partial(history.user_read,username=name))
-t1.bind("<Control-t>",theme.theme_selector)
-t1.bind("<Control-s>",partial(settings.setting_page,username=name,state=True))
+t1.bind("<Control-h>", partial(history.user_read, username=name))
+t1.bind("<Control-t>", theme.theme_selector)
+t1.bind("<Control-s>", partial(settings.setting_page,
+                               username=name,
+                               state=True))
 t1.bind("<Return>", work)
 t1.mainloop()
 #................command input and processing starts.....................

@@ -8,6 +8,7 @@ import tkinterlib
 from functools import partial
 from add_user import user_page
 
+
 def SecurityUI():
     bg_colour, text_color, button_colour = theme.read_theme()
     #.................initialising tkinter........................
