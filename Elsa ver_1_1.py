@@ -112,9 +112,9 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 #Read the theme from intial.elsa
-screen_height=t1.winfo_screenheight()
-screen_width=t1.winfo_screenwidth()
-tkinterlib.tkinter_initialise(t1, screen_width-150, screen_height-100)
+screen_height = t1.winfo_screenheight()
+screen_width = t1.winfo_screenwidth()
+tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 eo = Entry(t1, bg=bg_colour, fg=text_color)
 eo.pack()
 
