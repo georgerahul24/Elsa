@@ -146,8 +146,7 @@ def work(event):
             ord = ord.replace("srch", "")
             task.web(ord)
 
-            history.user_file(name, ord,
-                              f'"Searched:" {ord}')
+            history.user_file(name, ord, f'"Searched:" {ord}')
 
         #open whatsapp......
         elif "msg" == ord.lower() or "whatsapp" == ord.lower():
@@ -266,7 +265,6 @@ def work(event):
 
             history.user_file(name, ord, f"Searched {ord} in internet")
         #Destroy in case any yes or no popups are there
-
 
         try:
             srchpopup.popups.destroyPop()

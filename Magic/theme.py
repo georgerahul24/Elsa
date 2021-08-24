@@ -107,4 +107,3 @@ def theme_selector(event=''):
     close.bind('<Enter>', partial(tkinterlib.on_enter, but=close))
     close.bind('<Leave>', partial(tkinterlib.on_leave, but=close))
     selectorpage.mainloop()
-

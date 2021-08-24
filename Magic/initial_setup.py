@@ -11,6 +11,3 @@ def install_files():
     f.write("admin-1234")
     f.close()
     print("added file 'initial.Elsa'")
-
-
-

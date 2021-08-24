@@ -84,4 +84,3 @@ def search_indexed_file(filename):
 
 #run index files when indexer module is imported in Elsa
 index_files()
-
