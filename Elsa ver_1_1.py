@@ -30,7 +30,7 @@ splash = LabelFrame(splashscr, text="Loading", bg=bg_colour, fg=text_color)
 splash.pack()
 
 l = Label(splash,
-          text="Elsa 1.1.141",
+          text="Elsa 1.1.150",
           bg=bg_colour,
           fg=text_color,
           font="nebula 100 bold").pack()
