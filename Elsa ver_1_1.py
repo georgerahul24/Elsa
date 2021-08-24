@@ -40,7 +40,9 @@ splash.mainloop()
 
 try:
     import tSK_ver_1 as task
-    from talk1 import talk
+    from talk1 import talk1
+
+    talk = talk1.talk
 
     import settings
     print('loaded settings.py,tsk_ver_1.py,talk1.py')
@@ -220,7 +222,7 @@ def work(event):
         elif ord.lower() == "hi":
             talk("Hello")
             talk("What can i do for you")
-            history.user_file(name, ord, "Greeted user")
+            history.user_file(name, ord, "Greated user")
         #opening folders
         elif "download" in ord.lower():
             task.download()

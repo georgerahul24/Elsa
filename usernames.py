@@ -2,7 +2,9 @@
 Calls the login page and verifies the username and password entered'''
 
 from GUI import SecurityUI
-from talk1 import *
+from talk1 import talk1
+
+talk = talk1.talk
 import file_database
 
 

@@ -1,6 +1,12 @@
 from tkinter import *
 import tkinterlib
-from talk1 import *
+from talk1 import talk1
+
+
+def talk(speak):
+    talk1.talk(speak)
+
+
 import file_database
 import theme
 from functools import partial

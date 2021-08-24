@@ -1,4 +1,6 @@
-from talk1 import talk
+from talk1 import talk1
+
+talk = talk1.talk
 
 
 def check_user_from_file(username):

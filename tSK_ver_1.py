@@ -1,8 +1,10 @@
 '''Created by George Rahul
 Contains all the necessary code to run various features'''
-import pyttsx3, datetime, subprocess, webbrowser, random, os
+import datetime, subprocess, webbrowser, random, os
 from pathlib import Path
-from talk1 import talk
+from talk1 import talk1
+
+talk = talk1.talk
 
 
 # .....Time and Greeting............
