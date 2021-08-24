@@ -34,7 +34,7 @@ l = Label(splash,
           bg=bg_colour,
           fg=text_color,
           font="nebula 100 bold").pack()
-splash.after(5000, splashscr.destroy)
+splash.after(3000, splashscr.destroy)
 splash.mainloop()
 #...splash screen ends........
 
@@ -114,8 +114,9 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 #Read the theme from intial.elsa
-
-tkinterlib.tkinter_initialise(t1, 1200, 680)
+screen_height = t1.winfo_screenheight()
+screen_width = t1.winfo_screenwidth()
+tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 eo = Entry(t1, bg=bg_colour, fg=text_color)
 eo.pack()
 
