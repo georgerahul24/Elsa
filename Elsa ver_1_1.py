@@ -39,13 +39,11 @@ splash.mainloop()
 #...splash screen ends........
 
 try:
-    import tSK_ver_1 as task
-    from talk1 import talk1
-
-    talk = talk1.talk
+    from task1 import task
+    from talk1.talk1 import talk
 
     import settings
-    print('loaded settings.py,tsk_ver_1.py,talk1.py')
+    print('loaded settings.py,task,talk1')
 except Exception as e:
     print(e, "it seems some system files are missing")
     time.sleep(2)

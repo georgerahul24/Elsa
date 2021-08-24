@@ -1,11 +1,6 @@
 from tkinter import *
 import tkinterlib
-from talk1 import talk1
-
-
-def talk(speak):
-    talk1.talk(speak)
-
+from talk1.talk1 import talk
 
 import file_database
 import theme

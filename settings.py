@@ -6,9 +6,7 @@ import add_user
 import history
 import theme
 import tkinterlib
-from talk1 import talk1
-
-talk = talk1.talk
+from talk1.talk1 import talk
 
 
 def setting_page(event="", username='', state=True):

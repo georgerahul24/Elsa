@@ -1,5 +1,5 @@
 from tkinter import *
-from tSK_ver_1 import web
+from task1.task import web
 import tkinterlib, theme
 
 
