@@ -1,4 +1,5 @@
-import os, webbrowser, talk1
+import os, webbrowser
+from talk1 import talk1
 from difflib import get_close_matches
 from pathlib import Path
 
@@ -83,8 +84,4 @@ def search_indexed_file(filename):
 
 #run index files when indexer module is imported in Elsa
 index_files()
-if __name__ == "__main__":
-    index_files()
-    while True:
-        inp = input('Enter the filename: ')
-        search_indexed_file(inp)
+

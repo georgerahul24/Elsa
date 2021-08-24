@@ -1,4 +1,7 @@
-import time, initial_setup, history, tkinterlib
+import time
+import Magic.initial_setup as initial_setup
+import Magic.history as history
+import Magic.tkinterlib as tkinterlib
 from tkinter import *
 from pathlib import Path
 from functools import partial
@@ -14,12 +17,12 @@ else:
     print('Necessary packages installed successfully')
 
 print("Loading themes")
-import theme
+import Magic.theme as theme
 
 print("loaded themes")
 
 print("Importing popups")
-import srchpopup
+import Magic.srchpopup as srchpopup
 
 print("Popups imported")
 bg_colour, text_color, button_colour = theme.read_theme()
@@ -42,7 +45,7 @@ try:
     from task1 import task
     from talk1.talk1 import talk
 
-    import settings
+    import Magic.settings as settings
     print('loaded settings.py,task,talk1')
 except Exception as e:
     print(e, "it seems some system files are missing")
@@ -50,7 +53,7 @@ except Exception as e:
     exit()
 try:
     print('Indexing files')
-    import indexer
+    import Magic.indexer as indexer
     print('Indexing complete')
 except Exception as e:
     print(e)
@@ -58,7 +61,7 @@ except Exception as e:
     exit()
 try:
     print("Loading usernames.py")
-    import usernames
+    import Magic.usernames as usernames
 
     print("Loaded usernames.py is successfully")
     print("Starting to verify the module")
@@ -144,8 +147,8 @@ def work(event):
             task.web(ord)
 
             history.user_file(name, ord,
-                              f'"Opened Firefox and searched:" {ord}')
-            print("Opened Firefox and searched:", ord)
+                              f'"Searched:" {ord}')
+
         #open whatsapp......
         elif "msg" == ord.lower() or "whatsapp" == ord.lower():
             task.whatsapp()
@@ -236,7 +239,7 @@ def work(event):
         #...history settings.......
         elif keyword in ["show history", 'sh']:
             history.user_file(name, ord, "Opened history")
-            history.user_read(name)
+            history.user_read(username=name)
             talk('Opened history')
 
         elif ord.lower() == "clear history":
@@ -262,10 +265,8 @@ def work(event):
             srchpopup.popups(ord)
 
             history.user_file(name, ord, f"Searched {ord} in internet")
-
         #Destroy in case any yes or no popups are there
-        ord == ""
-        print("Over")
+
 
         try:
             srchpopup.popups.destroyPop()
@@ -273,12 +274,13 @@ def work(event):
             pass
 
 
-#Binds textbox so that if user presses enter work() is called
+#Binding keyboard shortcuts
 t1.bind("<Control-h>", partial(history.user_read, username=name))
 t1.bind("<Control-t>", theme.theme_selector)
 t1.bind("<Control-s>", partial(settings.setting_page,
                                username=name,
                                state=True))
+#Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
 t1.mainloop()
 #................command input and processing starts.....................

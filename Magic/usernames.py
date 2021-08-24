@@ -1,9 +1,9 @@
 '''Created by George Rahul
 Calls the login page and verifies the username and password entered'''
 
-from GUI import SecurityUI
+from Magic.GUI import SecurityUI
 from talk1.talk1 import talk
-import file_database
+import Magic.file_database as file_database
 
 
 def verify_usernames():
@@ -34,7 +34,3 @@ def check_user():
         print(e)
         check_user.security = False
 
-
-if __name__ == "__main__":
-    verify_usernames()
-    check_user()

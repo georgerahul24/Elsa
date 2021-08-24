@@ -27,9 +27,9 @@ def theme_writer(bg_colour, font_colour, button_colour):
 
 def theme_selector(event=''):
     from tkinter.colorchooser import askcolor
-    import tkinterlib
+    import Magic.tkinterlib as tkinterlib
     from functools import partial
-    import theme
+    import Magic.theme as theme
 
     bg_colour, text_color, button_colour = theme.read_theme()
 
@@ -108,8 +108,3 @@ def theme_selector(event=''):
     close.bind('<Leave>', partial(tkinterlib.on_leave, but=close))
     selectorpage.mainloop()
 
-
-if __name__ == "__main__":
-    bg_colour, text_color, button_colour = read_theme()
-    print(bg_colour, text_color, button_colour)
-    theme_selector()

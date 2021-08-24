@@ -13,5 +13,4 @@ def install_files():
     print("added file 'initial.Elsa'")
 
 
-if __name__ == "__main__":
-    install_files()
+

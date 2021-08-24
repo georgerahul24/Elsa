@@ -1,6 +1,6 @@
 from tkinter import *
-import theme
-import tkinterlib
+import Magic.theme as theme
+import Magic.tkinterlib as tkinterlib
 from functools import partial
 
 
@@ -39,5 +39,3 @@ def about_page():
     aboutpage.mainloop()
 
 
-if __name__ == '__main__':
-    about_page()

@@ -1,9 +1,9 @@
 from tkinter import *
-import tkinterlib
+import Magic.tkinterlib as tkinterlib
 from talk1.talk1 import talk
 
-import file_database
-import theme
+import Magic.file_database as file_database
+import Magic.theme as theme
 from functools import partial
 
 
@@ -68,5 +68,3 @@ def user_page():
     userpage.mainloop()
 
 
-if __name__ == '__main__':
-    user_page()
