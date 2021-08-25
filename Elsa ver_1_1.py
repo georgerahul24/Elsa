@@ -127,7 +127,6 @@ tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 eo = Entry(t1, bg=bg_colour, fg=text_color)
 eo.pack()
 
-
 # ..............tkinter initialising ends...............................
 
 
@@ -191,11 +190,11 @@ def work(event=""):
             elif afterkeyword in ['wordpad', 'wp']:
                 task.wordpad()
             elif afterkeyword in [
-                'gimp',
+                    'gimp',
             ]:
                 task.gimp()
             elif afterkeyword in [
-                'vlc',
+                    'vlc',
             ]:
                 task.vlc()
             elif afterkeyword in ['telegram', 'tg']:
