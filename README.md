@@ -3,7 +3,7 @@ Elsa is a personal assistant in development
 ### Disclaimer 
 <u>Requirements:</u>
 - A computer running Windows 10 with python 3.9.6(preferably) installed
-- task1 to be installed from pypi using `pip install task1`
+- magicForElsa to be installed from pypi using `pip install magicForElsa`
 - It is highly preferable the default browser is firefox
 ### Issues 
 - Elsa has no bugs....It just has some unexpected features.<br>
