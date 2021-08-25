@@ -1,4 +1,4 @@
-import time
+import time,os
 import Magic.initial_setup as initial_setup
 import Magic.history as history
 import Magic.tkinterlib as tkinterlib
@@ -8,7 +8,8 @@ from functools import partial
 #Checks if initial.elsa exists...
 #If it doesnt exist the initial setup is run.....
 print("Checking for file 'initial.elsa' ")
-initial_file = Path("initial.elsa")
+initpth = os.getcwd() + '\\resources\\ initial.elsa'
+initial_file = Path(initpth)
 if initial_file.exists():
     print("'initial.elsa' found")
 else:
@@ -26,21 +27,6 @@ import Magic.srchpopup as srchpopup
 
 print("Popups imported")
 bg_colour, text_color, button_colour = theme.read_theme()
-#...splash screen........
-splashscr = Tk()
-tkinterlib.tkinter_initialise(splashscr, 350, 300)
-splash = LabelFrame(splashscr, text="Loading", bg=bg_colour, fg=text_color)
-splash.pack()
-
-l = Label(splash,
-          text="Elsa 1.1",
-          bg=bg_colour,
-          fg=text_color,
-          font="nebula 100 bold").pack()
-splash.after(3000, splashscr.destroy)
-splash.mainloop()
-#...splash screen ends........
-
 try:
     from task1 import task
     from talk1.talk1 import talk
