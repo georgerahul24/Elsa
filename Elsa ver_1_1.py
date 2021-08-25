@@ -1,4 +1,4 @@
-import time,os
+import time, os
 import Magic.initial_setup as initial_setup
 import Magic.history as history
 import Magic.tkinterlib as tkinterlib
