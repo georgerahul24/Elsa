@@ -1,9 +1,9 @@
 import time, os
-
-print('importing intial_setup')
+#Todo:organise try and except blocks
+print('importing initial_setup')
 import Magic.initial_setup as initial_setup
 
-print('imported intial_setup')
+print('imported initial_setup')
 print('importing history')
 import Magic.history as history
 
@@ -76,7 +76,17 @@ talk("Hello")
 talk("I am Elsa version 1 point 1")
 security_state = True
 security_trial = 0
-
+def quit(event=""):
+    '''
+    To exit the program
+    :param event: Not imp
+    :type event: str
+    :return:None
+    :rtype: None
+    '''
+    talk("Tata Bye Bye ")
+    history.user_file(name, ord, "User closed")
+    exit()
 # password and username checks
 while security_state == True:
     usernames.check_user()
@@ -92,9 +102,7 @@ while security_state == True:
         if security_trial >= 3:
             print("You have reached th maximum error limit")
             talk("You have reached the maximum error limit")
-            talk("Bye Bye")
-            time.sleep(2)
-            exit()
+            quit()
         else:
             talk("Access Denied")
             talk("Please Try Again")
@@ -111,7 +119,14 @@ eo.pack()
 
 
 #................command input and processing starts.....................
-def work(event):
+def work(event=""):
+    '''
+    This is the main function where user input is read and proper actions are taken
+    :param event: not imp
+    :type event: str
+    :return: None
+    :rtype: None
+    '''
     ord = eo.get()
     eo.delete(0, END)
     parts = ord.split()
@@ -140,9 +155,7 @@ def work(event):
             history.user_file(name, ord, "Opened Whatsapp")
         #end the program
         elif keyword in ['bye', 'tata', 'close', 'exit']:
-            talk("Tata Bye Bye ")
-            history.user_file(name, ord, "User closed")
-            exit()
+            quit()
         #open files....
         elif keyword in ['file', 'f']:
             indexer.search_indexed_file(afterkeyword)
@@ -260,6 +273,7 @@ def work(event):
 
 #Binding keyboard shortcuts
 t1.bind("<Control-h>", partial(history.user_read, username=name))
+t1.bind("<Control-e>", quit)
 t1.bind("<Control-t>", theme.theme_selector)
 t1.bind("<Control-s>", partial(settings.setting_page,
                                username=name,
