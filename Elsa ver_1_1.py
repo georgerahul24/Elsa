@@ -1,12 +1,16 @@
 import time, os
+
 print('importing intial_setup')
 import Magic.initial_setup as initial_setup
+
 print('imported intial_setup')
 print('importing history')
 import Magic.history as history
+
 print('imported history')
 print('imported tkinterlib')
 import Magic.tkinterlib as tkinterlib
+
 print('imported tkinterlib')
 from tkinter import *
 from pathlib import Path
@@ -25,9 +29,11 @@ else:
 
 print("Loading themes")
 import Magic.theme as theme
+
 print("loaded themes")
 print("Importing popups")
 import Magic.srchpopup as srchpopup
+
 print("Popups imported")
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
@@ -44,7 +50,9 @@ try:
     import Magic.indexer as indexer
     print('Indexing complete')
 except Exception as e:
-    print(e);time.sleep(2);exit()
+    print(e)
+    time.sleep(2)
+    exit()
 try:
     print("Loading usernames.py")
     import Magic.usernames as usernames
@@ -94,9 +102,11 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
 #Reading the screen height and width
-screen_height,screen_width = t1.winfo_screenheight(),t1.winfo_screenwidth()  
+screen_height, screen_width = t1.winfo_screenheight(), t1.winfo_screenwidth()
 tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
-eo = Entry(t1, bg=bg_colour, fg=text_color);eo.pack()
+eo = Entry(t1, bg=bg_colour, fg=text_color)
+eo.pack()
+
 # ..............tkinter initialising ends...............................
 
 
