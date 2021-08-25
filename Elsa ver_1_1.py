@@ -1,5 +1,7 @@
-import time, os
-#Todo:organise try and except blocks
+import time
+import os
+
+# Todo:organise try and except blocks
 print('importing initial_setup')
 import Magic.initial_setup as initial_setup
 
@@ -15,8 +17,9 @@ print('imported tkinterlib')
 from tkinter import *
 from pathlib import Path
 from functools import partial
-#Checks if initial.elsa exists...
-#If it doesnt exist the initial setup is run.....
+
+# Checks if initial.elsa exists...
+# If it doesnt exist the initial setup is run.....
 print("Checking for file 'initial.elsa' ")
 initpth = os.getcwd() + '\\resources\\ initial.elsa'
 initial_file = Path(initpth)
@@ -35,11 +38,13 @@ print("Importing popups")
 import Magic.srchpopup as srchpopup
 
 print("Popups imported")
+# Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
     from task1 import task
     from talk1.talk1 import talk
     import Magic.settings as settings
+
     print('loaded settings.py,task,talk1')
 except Exception as e:
     print(e, "it seems some system files are missing")
@@ -48,6 +53,7 @@ except Exception as e:
 try:
     print('Indexing files')
     import Magic.indexer as indexer
+
     print('Indexing complete')
 except Exception as e:
     print(e)
@@ -56,10 +62,12 @@ except Exception as e:
 try:
     print("Loading usernames.py")
     import Magic.usernames as usernames
+
     print("Loaded usernames.py is successfully")
     print("Starting to verify the module")
     usernames.verify_usernames()
-    if usernames.verify_usernames.verify == False:
+    #see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
+    if not usernames.verify_usernames.verify:
         print("'Usernames.py' verified successfully")
     else:
         print("ERROR:Verification failed")
@@ -76,21 +84,25 @@ talk("Hello")
 talk("I am Elsa version 1 point 1")
 security_state = True
 security_trial = 0
+
+
 def quit(event=""):
-    '''
+    """
     To exit the program
     :param event: Not imp
     :type event: str
     :return:None
     :rtype: None
-    '''
+    """
     talk("Tata Bye Bye ")
     history.user_file(name, ord, "User closed")
     exit()
+
+
 # password and username checks
-while security_state == True:
+while security_state:
     usernames.check_user()
-    if usernames.check_user.security == True:
+    if usernames.check_user.security:
         print("Access Granted")
         talk("Access Granted")
         task.greeting(usernames.check_user.loginname)
@@ -109,24 +121,25 @@ while security_state == True:
 name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 t1 = Tk()
-#Reading the screen height and width
+# Reading the screen height and width
 screen_height, screen_width = t1.winfo_screenheight(), t1.winfo_screenwidth()
 tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 eo = Entry(t1, bg=bg_colour, fg=text_color)
 eo.pack()
 
+
 # ..............tkinter initialising ends...............................
 
 
-#................command input and processing starts.....................
+# ................command input and processing starts.....................
 def work(event=""):
-    '''
+    """
     This is the main function where user input is read and proper actions are taken
     :param event: not imp
     :type event: str
     :return: None
     :rtype: None
-    '''
+    """
     ord = eo.get()
     eo.delete(0, END)
     parts = ord.split()
@@ -138,8 +151,8 @@ def work(event=""):
         pass
     keyword = keyword.lower()
 
-    if run_state == True:
-        #srch in net
+    if run_state:
+        # srch in net
         if keyword == "search" or keyword == "browse" or keyword == "srch":
             ord = ord.replace("search", "")
             ord = ord.replace("SEARCH", "")
@@ -149,19 +162,19 @@ def work(event=""):
 
             history.user_file(name, ord, f'"Searched:" {ord}')
 
-        #open whatsapp......
+        # open whatsapp......
         elif "msg" == ord.lower() or "whatsapp" == ord.lower():
             task.whatsapp()
             history.user_file(name, ord, "Opened Whatsapp")
-        #end the program
+        # end the program
         elif keyword in ['bye', 'tata', 'close', 'exit']:
             quit()
-        #open files....
+        # open files....
         elif keyword in ['file', 'f']:
             indexer.search_indexed_file(afterkeyword)
             history.user_file(name, ord,
                               "Tried to open the file. Status:Unknown")
-        #open programs......
+        # open programs......
         elif keyword == 'run':
             if afterkeyword in ['firefox', 'ff']:
                 task.firefox()
@@ -178,29 +191,29 @@ def work(event=""):
             elif afterkeyword in ['wordpad', 'wp']:
                 task.wordpad()
             elif afterkeyword in [
-                    'gimp',
+                'gimp',
             ]:
                 task.gimp()
             elif afterkeyword in [
-                    'vlc',
+                'vlc',
             ]:
                 task.vlc()
             elif afterkeyword in ['telegram', 'tg']:
                 task.telegram()
             history.user_file(name, ord, f"Opened {afterkeyword}")
-        #..select a new theme.....
+        # ..select a new theme.....
         elif "theme" in ord.lower():
             theme.theme_selector()
-        #...open firefox
+        # ...open firefox
         elif "firefox" in ord.lower():
             task.firefox()
             history.user_file(name, ord, "Opened firefox")
-        #settings page.....
+        # settings page.....
         elif keyword == "settings" or keyword == "setting":
             talk('I have opened the settings page for you')
             settings.setting_page(name)
             history.user_file(name, ord, "Opened Settings")
-        #....wishes,time and questions....
+        # ....wishes,time and questions....
         elif "time" in ord.lower():
             task.tell_time()
 
@@ -223,7 +236,7 @@ def work(event=""):
             talk("Hello")
             talk("What can i do for you")
             history.user_file(name, ord, "Greated user")
-        #opening folders
+        # opening folders
         elif "download" in ord.lower():
             task.download()
             history.user_file(name, ord, "Opened downloads folder")
@@ -234,7 +247,7 @@ def work(event=""):
             task.musicFolder()
             history.user_file(name, ord, "Opened music folder")
 
-        #...history settings.......
+        # ...history settings.......
         elif keyword in ["show history", 'sh']:
             history.user_file(name, ord, "Opened history")
             history.user_read(username=name)
@@ -243,13 +256,13 @@ def work(event=""):
         elif ord.lower() == "clear history":
             history.clear_history(name)
             talk('Cleared history')
-        #....jokes..........
+        # ....jokes..........
         elif ord.lower() == "tell jokes" or ord.lower(
         ) == "tell a joke" or ord.lower() == "joke":
             task.joke()
             history.user_file(name, ord, f"Told joke")
 
-        #...shutting down and restarting......
+        # ...shutting down and restarting......
         elif keyword == "shutdown":
             history.user_file(name, ord, f"Shutdown the computer")
             task.shutdown()
@@ -263,7 +276,7 @@ def work(event=""):
             srchpopup.popups(ord)
 
             history.user_file(name, ord, f"Searched {ord} in internet")
-        #Destroy in case any yes or no popups are there
+        # Destroy in case any yes or no popups are there
 
         try:
             srchpopup.popups.destroyPop()
@@ -271,15 +284,15 @@ def work(event=""):
             pass
 
 
-#Binding keyboard shortcuts
+# Binding keyboard shortcuts
 t1.bind("<Control-h>", partial(history.user_read, username=name))
 t1.bind("<Control-e>", quit)
 t1.bind("<Control-t>", theme.theme_selector)
 t1.bind("<Control-s>", partial(settings.setting_page,
                                username=name,
                                state=True))
-#Binds textbox so that if user presses enter work() is called
+# Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
 t1.mainloop()
-#................command input and processing starts.....................
-#................end of programme........................................
+# ................command input and processing starts.....................
+# ................end of programme........................................
