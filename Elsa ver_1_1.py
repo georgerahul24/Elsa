@@ -76,6 +76,8 @@ talk("Hello")
 talk("I am Elsa version 1 point 1")
 security_state = True
 security_trial = 0
+
+
 def quit(event=""):
     '''
     To exit the program
@@ -87,6 +89,8 @@ def quit(event=""):
     talk("Tata Bye Bye ")
     history.user_file(name, ord, "User closed")
     exit()
+
+
 # password and username checks
 while security_state == True:
     usernames.check_user()
