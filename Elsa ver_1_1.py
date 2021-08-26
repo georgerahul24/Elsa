@@ -1,16 +1,20 @@
 import os
 import time
+from tkinter import Tk, Entry, END
+from pathlib import Path
+from functools import partial
 # Todo:organise try and except blocks
+#Todo:make crash logs
 print("Importing the package 'Magic'")
-from Magic import initial_setup, history, tkinterlib, srchpopup, program_run, theme, settings, indexer, usernames
+from Magic import initial_setup, history, tkinterlib, \
+    srchpopup, program_run, theme, settings, indexer, usernames
 
 print(
     'Succesfully imported initial_setup,history,'
     'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic'
 )
-from tkinter import Tk, Entry, END
-from pathlib import Path
-from functools import partial
+
+
 # Checks if initial.elsa exists...
 # If it doesnt exist the initial setup is run.....
 print("Checking for file 'initial.elsa' ")
@@ -36,10 +40,10 @@ except Exception as e:
     time.sleep(2)
     exit()
     print("Starting to verify username module")
-    chk = usernames.verify_usernames()
+    CHK = usernames.verify_usernames()
     print("Checking username")
     # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
-    if not chk:
+    if not CHK:
         print("'Usernames.py' verified successfully")
     else:
         print("ERROR:Verification failed")
@@ -52,8 +56,8 @@ except:
 RUN_STATE = True
 print("Starting to verify the user")
 talk("Hello. I am Elsa version 1 point 1")
-security_state = True
-security_trial = 0
+SECURITY_STATE = True
+SECURITY_TRIAL = 0
 
 
 def quit(event=""):
@@ -70,7 +74,7 @@ def quit(event=""):
 
 
 # password and username checks
-while security_state:
+while SECURITY_STATE:
     usernames.check_user()
     if usernames.check_user.security:
         print("Access Granted")
@@ -80,8 +84,8 @@ while security_state:
 
     else:
         print("Access Denied")
-        security_trial += 1
-        if security_trial >= 3:
+        SECURITY_TRIAL += 1
+        if SECURITY_TRIAL >= 3:
             print("You have reached th maximum error limit")
             talk("You have reached the maximum error limit")
             quit()
