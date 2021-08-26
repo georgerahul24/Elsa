@@ -1,5 +1,5 @@
-import time
 import os
+import time
 
 # Todo:organise try and except blocks
 print('importing initial_setup')
@@ -29,7 +29,6 @@ else:
     print("'initial.elsa' not found")
     initial_setup.install_files()
     print('Necessary packages installed successfully')
-
 print("Loading themes")
 import Magic.theme as theme
 
@@ -37,10 +36,10 @@ print("loaded themes")
 print("Importing popups")
 import Magic.srchpopup as srchpopup
 
-
 print("Popups imported")
 print("Importing program list")
 from Magic.program_run import program_run
+
 print("Imported program list")
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
@@ -52,7 +51,7 @@ try:
     print('loaded settings.py,task,talk1')
 except Exception as e:
     print(e, "it seems some system files are missing")
-    time.sleep(2)
+    time.sleep(2);
     exit()
 try:
     print('Indexing files')
@@ -60,8 +59,8 @@ try:
 
     print('Indexing complete')
 except Exception as e:
-    print(e)
-    time.sleep(2)
+    print(e);
+    time.sleep(2);
     exit()
 try:
     print("Loading usernames.py")
@@ -70,22 +69,20 @@ try:
     print("Loaded usernames.py is successfully")
     print("Starting to verify the module")
     usernames.verify_usernames()
-    #see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
+    # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
     if not usernames.verify_usernames.verify:
         print("'Usernames.py' verified successfully")
     else:
         print("ERROR:Verification failed")
-        time.sleep(2)
+        time.sleep(2);
         exit()
 except:
     print("ERROR:Could not load usernames.py")
-    time.sleep(2)
+    time.sleep(2);
     exit()
 run_state = True
-
 print("Starting to verify the user")
-talk("Hello")
-talk("I am Elsa version 1 point 1")
+talk("Hello. I am Elsa version 1 point 1")
 security_state = True
 security_trial = 0
 
@@ -107,7 +104,7 @@ def quit(event=""):
 while security_state:
     usernames.check_user()
     if usernames.check_user.security:
-        print("Access Granted")
+        print("Access Granted");
         talk("Access Granted")
         task.greeting(usernames.check_user.loginname)
         break
@@ -116,7 +113,7 @@ while security_state:
         print("Access Denied")
         security_trial += 1
         if security_trial >= 3:
-            print("You have reached th maximum error limit")
+            print("You have reached th maximum error limit");
             talk("You have reached the maximum error limit")
             quit()
         else:
@@ -128,14 +125,16 @@ t1 = Tk()
 # Reading the screen height and width
 screen_height, screen_width = t1.winfo_screenheight(), t1.winfo_screenwidth()
 tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
-eo = Entry(t1, bg=bg_colour, fg=text_color)
-eo.pack()
+Search_box = Entry(t1, bg=bg_colour, fg=text_color)
+Search_box.pack()
+
 
 # ..............tkinter initialising ends...............................
 
 
 # ................command input and processing starts.....................
 def work(event=""):
+    # sourcery skip: extract-method, flip-comparison, merge-comparisons
     """
     This is the main function where user input is read and proper actions are taken
     :param event: not imp
@@ -143,8 +142,8 @@ def work(event=""):
     :return: None
     :rtype: None
     """
-    ord = eo.get()
-    eo.delete(0, END)
+    ord = Search_box.get()
+    Search_box.delete(0, END)
     parts = ord.split()
     keyword = parts[0]
     try:
@@ -156,13 +155,10 @@ def work(event=""):
 
     if run_state:
         # srch in net
-        if keyword == "search" or keyword == "browse" or keyword == "srch":
-            ord = ord.replace("search", "")
-            ord = ord.replace("SEARCH", "")
-            ord = ord.replace("browser", "")
-            ord = ord.replace("srch", "")
+        if keyword in ["search", "browse", "srch"]:
+            # To remove the srch,search,etc wprds before searching with web()
+            ord = task.ordShortenSrch(ord)
             task.web(ord)
-
             history.user_file(name, ord, f'"Searched:" {ord}')
 
         # open whatsapp......
