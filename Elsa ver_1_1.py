@@ -25,7 +25,7 @@ try:
         print('Necessary packages installed successfully')
     from Magic import history, tkinterlib, srchpopup, program_run, theme, settings, indexer, usernames
 except Exception as e:
-    print('Error loading Magic',e)
+    print('Error loading Magic', e)
     time.sleep(5)
     exit()
 
