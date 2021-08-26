@@ -51,7 +51,7 @@ try:
     print('loaded settings.py,task,talk1')
 except Exception as e:
     print(e, "it seems some system files are missing")
-    time.sleep(2);
+    time.sleep(2)
     exit()
 try:
     print('Indexing files')
@@ -59,8 +59,8 @@ try:
 
     print('Indexing complete')
 except Exception as e:
-    print(e);
-    time.sleep(2);
+    print(e)
+    time.sleep(2)
     exit()
 try:
     print("Loading usernames.py")
@@ -74,11 +74,11 @@ try:
         print("'Usernames.py' verified successfully")
     else:
         print("ERROR:Verification failed")
-        time.sleep(2);
+        time.sleep(2)
         exit()
 except:
     print("ERROR:Could not load usernames.py")
-    time.sleep(2);
+    time.sleep(2)
     exit()
 run_state = True
 print("Starting to verify the user")
@@ -104,7 +104,7 @@ def quit(event=""):
 while security_state:
     usernames.check_user()
     if usernames.check_user.security:
-        print("Access Granted");
+        print("Access Granted")
         talk("Access Granted")
         task.greeting(usernames.check_user.loginname)
         break
@@ -113,7 +113,7 @@ while security_state:
         print("Access Denied")
         security_trial += 1
         if security_trial >= 3:
-            print("You have reached th maximum error limit");
+            print("You have reached th maximum error limit")
             talk("You have reached the maximum error limit")
             quit()
         else:
@@ -127,7 +127,6 @@ screen_height, screen_width = t1.winfo_screenheight(), t1.winfo_screenwidth()
 tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
-
 
 # ..............tkinter initialising ends...............................
 
