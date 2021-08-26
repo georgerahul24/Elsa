@@ -37,7 +37,11 @@ print("loaded themes")
 print("Importing popups")
 import Magic.srchpopup as srchpopup
 
+
 print("Popups imported")
+print("Importing program list")
+from Magic.program_run import program_run
+print("Imported program list")
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
@@ -175,30 +179,7 @@ def work(event=""):
                               "Tried to open the file. Status:Unknown")
         # open programs......
         elif keyword == 'run':
-            if afterkeyword in ['firefox', 'ff']:
-                task.firefox()
-            elif afterkeyword in ['photoshop', 'ps']:
-                task.photoshop()
-            elif afterkeyword in ['word', 'msword', 'doc']:
-                task.msword()
-            elif afterkeyword in ['powerpoint', 'ppt']:
-                task.powerpoint()
-            elif afterkeyword in ['vsc', 'vscode']:
-                task.vscode()
-            elif afterkeyword in ['wa', 'msg', 'whatsapp']:
-                task.whatsapp()
-            elif afterkeyword in ['wordpad', 'wp']:
-                task.wordpad()
-            elif afterkeyword in [
-                    'gimp',
-            ]:
-                task.gimp()
-            elif afterkeyword in [
-                    'vlc',
-            ]:
-                task.vlc()
-            elif afterkeyword in ['telegram', 'tg']:
-                task.telegram()
+            program_run(afterkeyword)
             history.user_file(name, ord, f"Opened {afterkeyword}")
         # ..select a new theme.....
         elif "theme" in ord.lower():
