@@ -3,12 +3,11 @@ import time
 from functools import partial
 from pathlib import Path
 from tkinter import Tk, Entry, END
-
-# Todo:organise try and except blocks
+#TODO:Resolve opening blank history documents
 # Todo:make crash logs
+
 print("Importing the package 'Magic'")
-from Magic import initial_setup, history, tkinterlib, \
-    srchpopup, program_run, theme, settings, indexer, usernames
+from Magic import initial_setup
 
 print(
     'Succesfully imported initial_setup,history,'
@@ -26,7 +25,7 @@ else:
     print("'initial.elsa' not found")
     initial_setup.install_files()
     print('Necessary packages installed successfully')
-
+from Magic import history, tkinterlib,srchpopup, program_run, theme, settings, indexer, usernames
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
