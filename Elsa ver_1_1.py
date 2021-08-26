@@ -1,23 +1,15 @@
 import os
 import time
-
 # Todo:organise try and except blocks
-print('importing initial_setup')
-import Magic.initial_setup as initial_setup
+print("Importing the package 'Magic'")
+from Magic import initial_setup, history, tkinterlib, srchpopup, program_run, theme, settings, indexer, usernames
 
-print('imported initial_setup')
-print('importing history')
-import Magic.history as history
-
-print('imported history')
-print('imported tkinterlib')
-import Magic.tkinterlib as tkinterlib
-
-print('imported tkinterlib')
-from tkinter import *
+print(
+    'Succesfully imported initial_setup,history,'
+    'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic')
+from tkinter import Tk,Entry,END
 from pathlib import Path
 from functools import partial
-
 # Checks if initial.elsa exists...
 # If it doesnt exist the initial setup is run.....
 print("Checking for file 'initial.elsa' ")
@@ -29,48 +21,24 @@ else:
     print("'initial.elsa' not found")
     initial_setup.install_files()
     print('Necessary packages installed successfully')
-print("Loading themes")
-import Magic.theme as theme
 
-print("loaded themes")
-print("Importing popups")
-import Magic.srchpopup as srchpopup
-
-print("Popups imported")
-print("Importing program list")
-from Magic.program_run import program_run
-
-print("Imported program list")
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
+    print('loading task and talk')
     from task1 import task
     from talk1.talk1 import talk
-    import Magic.settings as settings
 
-    print('loaded settings.py,task,talk1')
+    print('Loaded task and talk')
 except Exception as e:
     print(e, "it seems some system files are missing")
     time.sleep(2)
     exit()
-try:
-    print('Indexing files')
-    import Magic.indexer as indexer
-
-    print('Indexing complete')
-except Exception as e:
-    print(e)
-    time.sleep(2)
-    exit()
-try:
-    print("Loading usernames.py")
-    import Magic.usernames as usernames
-
-    print("Loaded usernames.py is successfully")
-    print("Starting to verify the module")
-    usernames.verify_usernames()
+    print("Starting to verify username module")
+    chk=usernames.verify_usernames()
+    print("Checking username")
     # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
-    if not usernames.verify_usernames.verify:
+    if not chk:
         print("'Usernames.py' verified successfully")
     else:
         print("ERROR:Verification failed")
@@ -80,7 +48,7 @@ except:
     print("ERROR:Could not load usernames.py")
     time.sleep(2)
     exit()
-run_state = True
+RUN_STATE = True
 print("Starting to verify the user")
 talk("Hello. I am Elsa version 1 point 1")
 security_state = True
@@ -128,12 +96,13 @@ tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
+
 # ..............tkinter initialising ends...............................
 
 
 # ................command input and processing starts.....................
 def work(event=""):
-    # sourcery skip: extract-method, flip-comparison, merge-comparisons
+
     """
     This is the main function where user input is read and proper actions are taken
     :param event: not imp
@@ -146,55 +115,47 @@ def work(event=""):
     parts = ord.split()
     keyword = parts[0]
     try:
-        afterkeyword = parts[1]
-        afterkeyword = afterkeyword.lower()
+        afterword = parts[1]
+        afterword = afterword.lower()
     except:
-        pass
+        afterword=''
     keyword = keyword.lower()
 
-    if run_state:
+    if RUN_STATE:
         # srch in net
         if keyword in ["search", "browse", "srch"]:
-            # To remove the srch,search,etc wprds before searching with web()
+            # To remove the srch,search,etc words before searching with web()
             ord = task.ordShortenSrch(ord)
             task.web(ord)
             history.user_file(name, ord, f'"Searched:" {ord}')
 
-        # open whatsapp......
-        elif "msg" == ord.lower() or "whatsapp" == ord.lower():
+        elif ord.lower() in ["msg", "whatsapp"]:
             task.whatsapp()
             history.user_file(name, ord, "Opened Whatsapp")
-        # end the program
         elif keyword in ['bye', 'tata', 'close', 'exit']:
             quit()
-        # open files....
         elif keyword in ['file', 'f']:
-            indexer.search_indexed_file(afterkeyword)
+            indexer.search_indexed_file(afterword)
             history.user_file(name, ord,
                               "Tried to open the file. Status:Unknown")
-        # open programs......
         elif keyword == 'run':
-            program_run(afterkeyword)
-            history.user_file(name, ord, f"Opened {afterkeyword}")
-        # ..select a new theme.....
+            program_run.program_run(afterword)
+            history.user_file(name, ord, f"Opened {afterword}")
         elif "theme" in ord.lower():
             theme.theme_selector()
-        # ...open firefox
         elif "firefox" in ord.lower():
             task.firefox()
             history.user_file(name, ord, "Opened firefox")
-        # settings page.....
-        elif keyword == "settings" or keyword == "setting":
+        elif keyword in ["settings", "setting"]:
             talk('I have opened the settings page for you')
             settings.setting_page(name)
             history.user_file(name, ord, "Opened Settings")
-        # ....wishes,time and questions....
         elif "time" in ord.lower():
             task.tell_time()
 
             history.user_file(name, ord, "told Time ")
 
-        elif ord.lower() == "what is your version" or ord.lower() == "ver":
+        elif ord.lower() in ["what is your version", "ver"]:
             talk("My version is 1 point 1")
             history.user_file(name, ord, "Elsa Ver 1.1")
 
@@ -211,7 +172,6 @@ def work(event=""):
             talk("Hello")
             talk("What can i do for you")
             history.user_file(name, ord, "Greated user")
-        # opening folders
         elif "download" in ord.lower():
             task.download()
             history.user_file(name, ord, "Opened downloads folder")
@@ -222,7 +182,6 @@ def work(event=""):
             task.musicFolder()
             history.user_file(name, ord, "Opened music folder")
 
-        # ...history settings.......
         elif keyword in ["show history", 'sh']:
             history.user_file(name, ord, "Opened history")
             history.user_read(username=name)
@@ -231,18 +190,15 @@ def work(event=""):
         elif ord.lower() == "clear history":
             history.clear_history(name)
             talk('Cleared history')
-        # ....jokes..........
-        elif ord.lower() == "tell jokes" or ord.lower(
-        ) == "tell a joke" or ord.lower() == "joke":
+        elif ord.lower() in ["tell jokes", "tell a joke", "joke"]:
             task.joke()
-            history.user_file(name, ord, f"Told joke")
+            history.user_file(name, ord, "Told a joke")
 
-        # ...shutting down and restarting......
         elif keyword == "shutdown":
-            history.user_file(name, ord, f"Shutdown the computer")
+            history.user_file(name, ord, "Shutdown the computer")
             task.shutdown()
         elif keyword == "restart":
-            history.user_file(name, ord, f"Restarted the computer")
+            history.user_file(name, ord, "Restarted the computer")
             task.restart()
         else:
             talk(
