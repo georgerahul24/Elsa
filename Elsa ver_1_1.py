@@ -37,10 +37,10 @@ print("loaded themes")
 print("Importing popups")
 import Magic.srchpopup as srchpopup
 
-
 print("Popups imported")
 print("Importing program list")
 from Magic.program_run import program_run
+
 print("Imported program list")
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
