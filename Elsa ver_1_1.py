@@ -14,7 +14,6 @@ print(
     'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic'
 )
 
-
 # Checks if initial.elsa exists...
 # If it doesnt exist the initial setup is run.....
 print("Checking for file 'initial.elsa' ")
