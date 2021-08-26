@@ -44,11 +44,11 @@ CHK = usernames.verify_usernames()
 print("Checking username")
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 if not CHK:
-        print("'Usernames.py' verified successfully")
+    print("'Usernames.py' verified successfully")
 else:
-        print("ERROR:Verification failed")
-        time.sleep(2)
-        exit()
+    print("ERROR:Verification failed")
+    time.sleep(2)
+    exit()
 RUN_STATE = True
 print("Starting to verify the user")
 talk("Hello. I am Elsa version 1 point 1")
@@ -96,7 +96,6 @@ screen_height, screen_width = t1.winfo_screenheight(), t1.winfo_screenwidth()
 tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
-
 
 # ..............tkinter initialising ends...............................
 
