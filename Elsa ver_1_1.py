@@ -6,8 +6,9 @@ from Magic import initial_setup, history, tkinterlib, srchpopup, program_run, th
 
 print(
     'Succesfully imported initial_setup,history,'
-    'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic')
-from tkinter import Tk,Entry,END
+    'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic'
+)
+from tkinter import Tk, Entry, END
 from pathlib import Path
 from functools import partial
 # Checks if initial.elsa exists...
@@ -35,7 +36,7 @@ except Exception as e:
     time.sleep(2)
     exit()
     print("Starting to verify username module")
-    chk=usernames.verify_usernames()
+    chk = usernames.verify_usernames()
     print("Checking username")
     # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
     if not chk:
@@ -96,13 +97,11 @@ tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
-
 # ..............tkinter initialising ends...............................
 
 
 # ................command input and processing starts.....................
 def work(event=""):
-
     """
     This is the main function where user input is read and proper actions are taken
     :param event: not imp
@@ -118,7 +117,7 @@ def work(event=""):
         afterword = parts[1]
         afterword = afterword.lower()
     except:
-        afterword=''
+        afterword = ''
     keyword = keyword.lower()
 
     if RUN_STATE:
