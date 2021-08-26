@@ -3,29 +3,32 @@ import time
 from functools import partial
 from pathlib import Path
 from tkinter import Tk, Entry, END
-#TODO:Resolve opening blank history documents
-# Todo:make crash logs
+try:
+    print("Importing the package 'Magic'")
+    from Magic import initial_setup
 
-print("Importing the package 'Magic'")
-from Magic import initial_setup
+    print(
+        'Succesfully imported initial_setup,history,'
+        'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic'
+    )
 
-print(
-    'Succesfully imported initial_setup,history,'
-    'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic'
-)
+    # Checks if initial.elsa exists...
+    # If it doesnt exist the initial setup is run.....
+    print("Checking for file 'initial.elsa' ")
+    initpth = os.getcwd() + '\\resources\\ initial.elsa'
+    initial_file = Path(initpth)
+    if initial_file.exists():
+        print("'initial.elsa' found")
+    else:
+        print("'initial.elsa' not found")
+        initial_setup.install_files()
+        print('Necessary packages installed successfully')
+    from Magic import history, tkinterlib, srchpopup, program_run, theme, settings, indexer, usernames
+except Exception as e:
+    print('Error loading Magic',e)
+    time.sleep(5)
+    exit()
 
-# Checks if initial.elsa exists...
-# If it doesnt exist the initial setup is run.....
-print("Checking for file 'initial.elsa' ")
-initpth = os.getcwd() + '\\resources\\ initial.elsa'
-initial_file = Path(initpth)
-if initial_file.exists():
-    print("'initial.elsa' found")
-else:
-    print("'initial.elsa' not found")
-    initial_setup.install_files()
-    print('Necessary packages installed successfully')
-from Magic import history, tkinterlib, srchpopup, program_run, theme, settings, indexer, usernames
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
@@ -35,8 +38,8 @@ try:
 
     print('Loaded task and talk')
 except Exception as e:
-    print(e, "it seems some system files are missing")
-    time.sleep(2)
+    print(e, "it seems there some problem with task1 or talk1")
+    time.sleep(5)
     exit()
 #verifying userenames module
 print("Starting to verify username module")
