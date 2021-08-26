@@ -1,10 +1,11 @@
 import os
 import time
-from tkinter import Tk, Entry, END
-from pathlib import Path
 from functools import partial
+from pathlib import Path
+from tkinter import Tk, Entry, END
+
 # Todo:organise try and except blocks
-#Todo:make crash logs
+# Todo:make crash logs
 print("Importing the package 'Magic'")
 from Magic import initial_setup, history, tkinterlib, \
     srchpopup, program_run, theme, settings, indexer, usernames
@@ -38,20 +39,17 @@ except Exception as e:
     print(e, "it seems some system files are missing")
     time.sleep(2)
     exit()
-    print("Starting to verify username module")
-    CHK = usernames.verify_usernames()
-    print("Checking username")
-    # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
-    if not CHK:
+#verifying userenames module
+print("Starting to verify username module")
+CHK = usernames.verify_usernames()
+print("Checking username")
+# see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
+if not CHK:
         print("'Usernames.py' verified successfully")
-    else:
+else:
         print("ERROR:Verification failed")
         time.sleep(2)
         exit()
-except:
-    print("ERROR:Could not load usernames.py")
-    time.sleep(2)
-    exit()
 RUN_STATE = True
 print("Starting to verify the user")
 talk("Hello. I am Elsa version 1 point 1")
@@ -99,6 +97,7 @@ screen_height, screen_width = t1.winfo_screenheight(), t1.winfo_screenwidth()
 tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
+
 
 # ..............tkinter initialising ends...............................
 
@@ -210,11 +209,6 @@ def work(event=""):
 
             history.user_file(name, ord, f"Searched {ord} in internet")
         # Destroy in case any yes or no popups are there
-
-        try:
-            srchpopup.popups.destroyPop()
-        except:
-            pass
 
 
 # Binding keyboard shortcuts
