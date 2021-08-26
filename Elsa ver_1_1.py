@@ -25,7 +25,7 @@ else:
     print("'initial.elsa' not found")
     initial_setup.install_files()
     print('Necessary packages installed successfully')
-from Magic import history, tkinterlib,srchpopup, program_run, theme, settings, indexer, usernames
+from Magic import history, tkinterlib, srchpopup, program_run, theme, settings, indexer, usernames
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
