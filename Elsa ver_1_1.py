@@ -101,7 +101,6 @@ tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
-
 # ..............tkinter initialising ends...............................
 
 
@@ -221,9 +220,8 @@ def syntax_highlighting(event=''):
         keyword = ord.split()[0]
         keywords = [
             'run', 'f', 'open', 'file', 'hi', 'hello', 'bye', 'tata',
-            'shutdown', 'restart', 'sh', 'show', 'clear', 'exit', 'msg', 'whatsapp', 'theme', 'firefox', 'music',
-            'desktop', 'joke,'
-
+            'shutdown', 'restart', 'sh', 'show', 'clear', 'exit', 'msg',
+            'whatsapp', 'theme', 'firefox', 'music', 'desktop', 'joke,'
         ]
         if keyword in keywords:
             Search_box.delete(0, END)
