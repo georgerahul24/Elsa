@@ -5,3 +5,4 @@
 *.elsa
 *.json
 *.txt
+/.idea/*

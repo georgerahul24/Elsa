@@ -9,35 +9,44 @@ try:
     from Magic import initial_setup
 
     print(
-        'Successfully imported initial_setup,history,'
-        'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic'
+        "Successfully imported initial_setup,history,"
+        "tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic"
     )
 
     # Checks if initial.elsa exists...
     # If it doesnt exist the initial setup is run.....
     print("Checking for file 'initial.elsa' ")
-    initpth = os.getcwd() + '\\resources\\ initial.elsa'
+    initpth = os.getcwd() + "\\resources\\ initial.elsa"
     initial_file = Path(initpth)
     if initial_file.exists():
         print("'initial.elsa' found")
     else:
         print("'initial.elsa' not found")
         initial_setup.install_files()
-        print('Necessary packages installed successfully')
-    from Magic import history, tkinterlib, srchpopup, program_run, theme, settings, indexer, usernames
+        print("Necessary packages installed successfully")
+    from Magic import (
+        history,
+        tkinterlib,
+        srchpopup,
+        program_run,
+        theme,
+        settings,
+        indexer,
+        usernames,
+    )
 except Exception as e:
-    print('Error loading Magic', e)
+    print("Error loading Magic", e)
     time.sleep(5)
     exit()
 
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
-    print('loading task and talk')
+    print("loading task and talk")
     from task1 import task
     from talk1.talk1 import talk
 
-    print('Loaded task and talk')
+    print("Loaded task and talk")
 except Exception as e:
     print(e, "it seems there some problem with task1 or talk1")
     time.sleep(5)
@@ -60,7 +69,7 @@ SECURITY_STATE = True
 SECURITY_TRIAL = 0
 
 
-def quit(event="") ->None:
+def quit(event="") -> None:
     """
     To exit the program
     :param event: Not imp
@@ -101,7 +110,6 @@ tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
-
 # ..............tkinter initialising ends...............................
 
 
@@ -122,7 +130,7 @@ def work(event="") -> None:
         afterword = parts[1]
         afterword = afterword.lower()
     except:
-        afterword = ''
+        afterword = ""
     keyword = keyword.lower()
 
     if RUN_STATE:
@@ -136,13 +144,13 @@ def work(event="") -> None:
         elif ord.lower() in ["msg", "whatsapp"]:
             task.whatsapp()
             history.user_file(name, ord, "Opened Whatsapp")
-        elif keyword in ['bye', 'tata', 'close', 'exit']:
+        elif keyword in ["bye", "tata", "close", "exit"]:
             quit()
-        elif keyword in ['file', 'f']:
+        elif keyword in ["file", "f"]:
             indexer.search_indexed_file(afterword)
             history.user_file(name, ord,
                               "Tried to open the file. Status:Unknown")
-        elif keyword == 'run':
+        elif keyword == "run":
             program_run.program_run(afterword)
             history.user_file(name, ord, f"Opened {afterword}")
         elif "theme" in ord.lower():
@@ -151,7 +159,7 @@ def work(event="") -> None:
             task.firefox()
             history.user_file(name, ord, "Opened firefox")
         elif keyword in ["settings", "setting"]:
-            talk('I have opened the settings page for you')
+            talk("I have opened the settings page for you")
             settings.setting_page(name)
             history.user_file(name, ord, "Opened Settings")
         elif "time" in ord.lower():
@@ -166,7 +174,7 @@ def work(event="") -> None:
             talk("My name is Elsa and my version is 1.1")
             history.user_file(name, ord, "Told version of Elsa")
 
-        elif ord.lower() in ["hello", "hlo", 'hey']:
+        elif ord.lower() in ["hello", "hlo", "hey"]:
             talk("Hi")
 
             history.user_file(name, ord, "Greeted user")
@@ -185,14 +193,14 @@ def work(event="") -> None:
             task.musicFolder()
             history.user_file(name, ord, "Opened music folder")
 
-        elif keyword in ["show history", 'sh']:
+        elif keyword in ["show history", "sh"]:
             history.user_file(name, ord, "Opened history")
             history.user_read(username=name)
-            talk('Opened history')
+            talk("Opened history")
 
         elif ord.lower() == "clear history":
             history.clear_history(name)
-            talk('Cleared history')
+            talk("Cleared history")
         elif ord.lower() in ["tell jokes", "tell a joke", "joke"]:
             task.joke()
             history.user_file(name, ord, "Told a joke")
@@ -205,7 +213,7 @@ def work(event="") -> None:
             task.restart()
         else:
             talk(
-                'I could not understand what you meant. Do you wanna find it in the internet?'
+                "I could not understand what you meant. Do you wanna find it in the internet?"
             )
             srchpopup.popups(ord)
 
@@ -214,32 +222,59 @@ def work(event="") -> None:
 
 
 # syntax highlighting
-def syntax_highlighting(event='') -> None:
+def syntax_highlighting(event="") -> None:
     try:
         ord = Search_box.get()
 
         keyword = ord.split()[0].lower()
-        keywords = ["search", "browse", "srch","msg", "whatsapp",'bye', 'tata', 'close', 'exit',
-                    'file', 'f','run','theme','firefox',"settings", "setting","time","ver","what",
-                    "hello", "hlo", 'hey','hi','download','desktop','music','sh','show','clear','joke',
-                    'shutdown','restart'
-
+        keywords = [
+            "search",
+            "browse",
+            "srch",
+            "msg",
+            "whatsapp",
+            "bye",
+            "tata",
+            "close",
+            "exit",
+            "file",
+            "f",
+            "run",
+            "theme",
+            "firefox",
+            "settings",
+            "setting",
+            "time",
+            "ver",
+            "what",
+            "hello",
+            "hlo",
+            "hey",
+            "hi",
+            "download",
+            "desktop",
+            "music",
+            "sh",
+            "show",
+            "clear",
+            "joke",
+            "shutdown",
+            "restart",
+            "open",
         ]
         if keyword in keywords:
             Search_box.delete(0, END)
-            Search_box.config(fg='light green')
+            Search_box.config(fg="light green")
         else:
             Search_box.delete(0, END)
             Search_box.config(fg=text_color)
         Search_box.insert(0, ord)
 
-
-
-
     except:
         pass
 
-def clearTextbox(event=''):
+
+def clearTextbox(event=""):
     Search_box.delete(0, END)
 
 
@@ -250,10 +285,10 @@ t1.bind("<Control-t>", theme.theme_selector)
 t1.bind("<Control-s>", partial(settings.setting_page,
                                username=name,
                                state=True))
-t1.bind('<KeyRelease>', syntax_highlighting)
+t1.bind("<KeyRelease>", syntax_highlighting)
 # Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
-t1.bind("<Control-BackSpace>",clearTextbox)
+t1.bind("<Control-BackSpace>", clearTextbox)
 t1.mainloop()
 # ................command input and processing starts.....................
 # ................end of programme........................................
