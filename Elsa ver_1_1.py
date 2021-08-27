@@ -105,8 +105,6 @@ Search_box.pack()
 
 # ................command input and processing starts.....................
 def work(event=""):
-
-
     """
     This is the main function where user input is read and proper actions are taken
     :param event: not imp
@@ -124,11 +122,6 @@ def work(event=""):
     except:
         afterword = ''
     keyword = keyword.lower()
-
-
-
-
-
 
     if RUN_STATE:
         # srch in net
@@ -217,22 +210,28 @@ def work(event=""):
 
             history.user_file(name, ord, f"Searched {ord} in internet")
         # Destroy in case any yes or no popups are there
- #syntax highlighting
+
+
+#syntax highlighting
 def syntax_highlighting(event=''):
     try:
         ord = Search_box.get()
 
         keyword = ord.split()[0]
-        keywords=['run','f','open','file','hi','hello','bye','tata','shutdown','restart','sh','show','clear']
+        keywords = [
+            'run', 'f', 'open', 'file', 'hi', 'hello', 'bye', 'tata',
+            'shutdown', 'restart', 'sh', 'show', 'clear'
+        ]
         if keyword in keywords:
-                Search_box.delete(0,END)
-                Search_box.config(fg='light green')
+            Search_box.delete(0, END)
+            Search_box.config(fg='light green')
         else:
-                Search_box.delete(0, END)
-                Search_box.config(fg=text_color)
-        Search_box.insert(0,ord)
+            Search_box.delete(0, END)
+            Search_box.config(fg=text_color)
+        Search_box.insert(0, ord)
     except:
         pass
+
 
 # Binding keyboard shortcuts
 t1.bind("<Control-h>", partial(history.user_read, username=name))
@@ -241,7 +240,7 @@ t1.bind("<Control-t>", theme.theme_selector)
 t1.bind("<Control-s>", partial(settings.setting_page,
                                username=name,
                                state=True))
-t1.bind('<KeyRelease>',syntax_highlighting)
+t1.bind('<KeyRelease>', syntax_highlighting)
 # Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
 t1.mainloop()
