@@ -60,7 +60,7 @@ SECURITY_STATE = True
 SECURITY_TRIAL = 0
 
 
-def quit(event=""):
+def quit(event="") ->None:
     """
     To exit the program
     :param event: Not imp
@@ -106,7 +106,7 @@ Search_box.pack()
 
 
 # ................command input and processing starts.....................
-def work(event=""):
+def work(event="") -> None:
     """
     This is the main function where user input is read and proper actions are taken
     :param event: not imp
@@ -214,15 +214,15 @@ def work(event=""):
 
 
 # syntax highlighting
-def syntax_highlighting(event=''):
+def syntax_highlighting(event='') -> None:
     try:
         ord = Search_box.get()
 
-        keyword = ord.split()[0]
-        keywords = [
-            'run', 'f', 'open', 'file', 'hi', 'hello', 'bye', 'tata',
-            'shutdown', 'restart', 'sh', 'show', 'clear', 'exit', 'msg', 'whatsapp', 'theme', 'firefox', 'music',
-            'desktop', 'joke,'
+        keyword = ord.split()[0].lower()
+        keywords = ["search", "browse", "srch","msg", "whatsapp",'bye', 'tata', 'close', 'exit',
+                    'file', 'f','run','theme','firefox',"settings", "setting","time","ver","what",
+                    "hello", "hlo", 'hey','hi','download','desktop','music','sh','show','clear','joke',
+                    'shutdown','restart'
 
         ]
         if keyword in keywords:
@@ -232,8 +232,15 @@ def syntax_highlighting(event=''):
             Search_box.delete(0, END)
             Search_box.config(fg=text_color)
         Search_box.insert(0, ord)
+
+
+
+
     except:
         pass
+
+def clearTextbox(event=''):
+    Search_box.delete(0, END)
 
 
 # Binding keyboard shortcuts
@@ -246,6 +253,7 @@ t1.bind("<Control-s>", partial(settings.setting_page,
 t1.bind('<KeyRelease>', syntax_highlighting)
 # Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
+t1.bind("<Control-BackSpace>",clearTextbox)
 t1.mainloop()
 # ................command input and processing starts.....................
 # ................end of programme........................................
