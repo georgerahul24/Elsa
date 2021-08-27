@@ -3,12 +3,13 @@ import time
 from functools import partial
 from pathlib import Path
 from tkinter import Tk, Entry, END
+
 try:
     print("Importing the package 'Magic'")
     from Magic import initial_setup
 
     print(
-        'Succesfully imported initial_setup,history,'
+        'Successfully imported initial_setup,history,'
         'tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic'
     )
 
@@ -41,7 +42,7 @@ except Exception as e:
     print(e, "it seems there some problem with task1 or talk1")
     time.sleep(5)
     exit()
-#verifying userenames module
+# verifying usernames module
 print("Starting to verify username module")
 CHK = usernames.verify_usernames()
 print("Checking username")
@@ -85,7 +86,7 @@ while SECURITY_STATE:
         print("Access Denied")
         SECURITY_TRIAL += 1
         if SECURITY_TRIAL >= 3:
-            print("You have reached th maximum error limit")
+            print("You have reached the maximum error limit")
             talk("You have reached the maximum error limit")
             quit()
         else:
@@ -99,6 +100,7 @@ screen_height, screen_width = t1.winfo_screenheight(), t1.winfo_screenwidth()
 tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
+
 
 # ..............tkinter initialising ends...............................
 
@@ -154,7 +156,6 @@ def work(event=""):
             history.user_file(name, ord, "Opened Settings")
         elif "time" in ord.lower():
             task.tell_time()
-
             history.user_file(name, ord, "told Time ")
 
         elif ord.lower() in ["what is your version", "ver"]:
@@ -168,12 +169,12 @@ def work(event=""):
         elif ord.lower() in ["hello", "hlo", 'hey']:
             talk("Hi")
 
-            history.user_file(name, ord, "Greated user")
+            history.user_file(name, ord, "Greeted user")
 
         elif ord.lower() == "hi":
             talk("Hello")
             talk("What can i do for you")
-            history.user_file(name, ord, "Greated user")
+            history.user_file(name, ord, "Greeted user")
         elif "download" in ord.lower():
             task.download()
             history.user_file(name, ord, "Opened downloads folder")
@@ -212,7 +213,7 @@ def work(event=""):
         # Destroy in case any yes or no popups are there
 
 
-#syntax highlighting
+# syntax highlighting
 def syntax_highlighting(event=''):
     try:
         ord = Search_box.get()
@@ -220,7 +221,9 @@ def syntax_highlighting(event=''):
         keyword = ord.split()[0]
         keywords = [
             'run', 'f', 'open', 'file', 'hi', 'hello', 'bye', 'tata',
-            'shutdown', 'restart', 'sh', 'show', 'clear'
+            'shutdown', 'restart', 'sh', 'show', 'clear', 'exit', 'msg', 'whatsapp', 'theme', 'firefox', 'music',
+            'desktop', 'joke,'
+
         ]
         if keyword in keywords:
             Search_box.delete(0, END)
