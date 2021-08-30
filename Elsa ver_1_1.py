@@ -110,7 +110,6 @@ tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
-
 # ..............tkinter initialising ends...............................
 
 
@@ -130,7 +129,7 @@ def work(event="") -> None:
     afterword = ""
     try:
         for index in range(1, len(parts)):
-            afterword += ' '+parts[index]
+            afterword += ' ' + parts[index]
 
         afterword = afterword.lower().lstrip().rstrip()
 
