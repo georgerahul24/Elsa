@@ -64,7 +64,7 @@ else:
     exit()
 RUN_STATE = True
 print("Starting to verify the user")
-talk("Hello. I am Elsa version 1 point 1")
+talk("Hi. I am Elsa")
 SECURITY_STATE = True
 SECURITY_TRIAL = 0
 
@@ -110,6 +110,7 @@ tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
 Search_box = Entry(t1, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
+
 # ..............tkinter initialising ends...............................
 
 
@@ -126,11 +127,16 @@ def work(event="") -> None:
     Search_box.delete(0, END)
     parts = ord.split()
     keyword = parts[0]
+    afterword = ""
     try:
-        afterword = parts[1]
-        afterword = afterword.lower()
+        for index in range(1, len(parts)):
+            afterword += ' '+parts[index]
+
+        afterword = afterword.lower().lstrip().rstrip()
+
     except:
         afterword = ""
+
     keyword = keyword.lower()
 
     if RUN_STATE:
@@ -171,7 +177,7 @@ def work(event="") -> None:
             history.user_file(name, ord, "Elsa Ver 1.1")
 
         elif "what is your name" in ord.lower():
-            talk("My name is Elsa and my version is 1.1")
+            talk("My name is Elsa")
             history.user_file(name, ord, "Told version of Elsa")
 
         elif ord.lower() in ["hello", "hlo", "hey"]:
