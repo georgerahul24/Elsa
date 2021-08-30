@@ -148,7 +148,8 @@ def work(event="") -> None:
             quit()
         elif keyword in ["file", "f"]:
             indexer.search_indexed_file(afterword)
-            history.user_file(name, ord, "Tried to open the file. Status:Unknown")
+            history.user_file(name, ord,
+                              "Tried to open the file. Status:Unknown")
         elif keyword == "run":
             program_run.program_run(afterword)
             history.user_file(name, ord, f"Opened {afterword}")
@@ -281,7 +282,9 @@ def clearTextbox(event=""):
 t1.bind("<Control-h>", partial(history.user_read, username=name))
 t1.bind("<Control-e>", quit)
 t1.bind("<Control-t>", theme.theme_selector)
-t1.bind("<Control-s>", partial(settings.setting_page, username=name, state=True))
+t1.bind("<Control-s>", partial(settings.setting_page,
+                               username=name,
+                               state=True))
 t1.bind("<KeyRelease>", syntax_highlighting)
 # Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
