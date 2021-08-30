@@ -8,10 +8,7 @@ try:
     print("Importing the package 'Magic'")
     from Magic import initial_setup
 
-    print(
-        "Successfully imported initial_setup,history,"
-        "tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic"
-    )
+    print("Successfully imported initial_setup")
 
     # Checks if initial.elsa exists...
     # If it doesnt exist the initial setup is run.....
@@ -23,7 +20,7 @@ try:
     else:
         print("'initial.elsa' not found")
         initial_setup.install_files()
-        print("Necessary packages installed successfully")
+        print("Necessary files installed successfully")
     from Magic import (
         history,
         tkinterlib,
@@ -34,6 +31,10 @@ try:
         indexer,
         usernames,
     )
+
+    print(
+        "history,tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames imported from Magic"
+    )
 except Exception as e:
     print("Error loading Magic", e)
     time.sleep(5)
@@ -42,19 +43,18 @@ except Exception as e:
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
-    print("loading task and talk")
+    print("loading task and talk modules")
     from task1 import task
     from talk1.talk1 import talk
 
-    print("Loaded task and talk")
+    print("Loaded task and talk modules successfully")
 except Exception as e:
-    print(e, "it seems there some problem with task1 or talk1")
+    print(e, "it seems there some problem with task1 and/or talk1 package")
     time.sleep(5)
     exit()
 # verifying usernames module
-print("Starting to verify username module")
+print("Starting to verify the integrity username module")
 CHK = usernames.verify_usernames()
-print("Checking username")
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 if not CHK:
     print("'Usernames.py' verified successfully")
