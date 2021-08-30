@@ -3,3 +3,6 @@
 *.iml
 *.vira
 *.elsa
+*.json
+*.txt
+/.idea/*
