@@ -4,8 +4,6 @@ from functools import partial
 from pathlib import Path
 from tkinter import Tk, Entry, END
 
-
-
 try:
     print("Importing the package 'Magic'")
     from Magic import initial_setup
