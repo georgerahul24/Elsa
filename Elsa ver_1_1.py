@@ -227,9 +227,6 @@ def work(event="") -> None:
         # Destroy in case any yes or no popups are there
 
 
-
-
-
 def clearTextbox(event=""):
     Search_box.delete(0, END)
 
@@ -242,7 +239,8 @@ t1.bind("<Control-s>", partial(settings.setting_page,
                                username=name,
                                state=True))
 # syntax highlighting
-t1.bind("<KeyRelease>", partial(highlighter.syntax_highlighting,Search_box=Search_box))
+t1.bind("<KeyRelease>",
+        partial(highlighter.syntax_highlighting, Search_box=Search_box))
 # Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
 t1.bind("<Control-BackSpace>", clearTextbox)
