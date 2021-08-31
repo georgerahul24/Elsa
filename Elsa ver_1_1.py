@@ -35,10 +35,13 @@ try:
     print(
         "history,tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames imported from Magic"
     )
+
 except Exception as e:
     print("Error loading Magic", e)
-    print('''Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa
-        or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1 ''')
+    print(
+        "Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
+        "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1"
+    )
     input("Press any key to exit....")
 
     exit()
@@ -53,8 +56,10 @@ try:
     print("Loaded task and talk modules successfully")
 except Exception as e:
     print(e, "it seems there some problem with task1 and/or talk1 package")
-    print('''Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa
-    or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1''')
+    print(
+        "Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
+        "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1"
+    )
     input("Press any key to exit....")
     exit()
 # verifying usernames module
@@ -65,8 +70,10 @@ if not CHK:
     print("'Usernames.py' verified successfully")
 else:
     print("ERROR:Verification failed")
-    print('''Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa
-        or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1''')
+    print(
+        "Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
+        "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1"
+    )
     input("Press any key to exit....")
 
     exit()
@@ -137,7 +144,7 @@ def work(event="") -> None:
     afterword = ""
     try:
         for index in range(1, len(parts)):
-            afterword += ' ' + parts[index]
+            afterword += " " + parts[index]
 
         afterword = afterword.lower().lstrip().rstrip()
 

@@ -16,7 +16,7 @@ The package is pretty powerful that without that Elsa won't even load up.
 
 ### Installation
 -   Just run the `Elsa ver_1_1.py` in  the repo after installing `magicForElsa`
-###Usage
+### Usage
 #### Initial Setup
 - Accept the licence terms
 - Select a new username and password for your account(defaults to `admin` and `1234` respectively if none is selected)
@@ -67,12 +67,12 @@ The package is pretty powerful that without that Elsa won't even load up.
 - <kbd>Ctrl + H</kbd> - To show the history.
 - <kbd>Ctrl + T</kbd> - To show the theme selection page.
 - <kbd>Ctrl + S</kbd> - To show the settings page.
-- <kbd>Ctrl + T</kbd> - To delete everything you types in the search box at one go.
+- <kbd>Ctrl + Backspace</kbd> - To delete everything you types in the search box at one go.
 
 ### Issues and suggestions
 - Elsa has no bugs....It just has some unexpected features.<br>
 - In case you come across any `unexpected features` 🙄 just go to [issues](https://github.com/georgerahul24/Viraver1.1/issues)  and report.
-- Just create a issue [here](https://github.com/georgerahul24/Viraver1.1/issues) and type out your valuable suggestions for Elsa
+- Incase you want to give out anu valuable suggestions, just create a issue [here](https://github.com/georgerahul24/Viraver1.1/issues) and type out your valuable suggestions for Elsa
  
 ### Note
 To know more about <b>magicForElsa</b> package,  [click me](https://github.com/georgerahul24/MagicForElsa).
