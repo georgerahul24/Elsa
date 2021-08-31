@@ -30,6 +30,7 @@ try:
         settings,
         indexer,
         usernames,
+        highlighter,
     )
 
     print(
@@ -226,57 +227,7 @@ def work(event="") -> None:
         # Destroy in case any yes or no popups are there
 
 
-# syntax highlighting
-def syntax_highlighting(event="") -> None:
-    try:
-        ord = Search_box.get()
 
-        keyword = ord.split()[0].lower()
-        keywords = [
-            "search",
-            "browse",
-            "srch",
-            "msg",
-            "whatsapp",
-            "bye",
-            "tata",
-            "close",
-            "exit",
-            "file",
-            "f",
-            "run",
-            "theme",
-            "firefox",
-            "settings",
-            "setting",
-            "time",
-            "ver",
-            "what",
-            "hello",
-            "hlo",
-            "hey",
-            "hi",
-            "download",
-            "desktop",
-            "music",
-            "sh",
-            "show",
-            "clear",
-            "joke",
-            "shutdown",
-            "restart",
-            "open",
-        ]
-        if keyword in keywords:
-            Search_box.delete(0, END)
-            Search_box.config(fg="light green")
-        else:
-            Search_box.delete(0, END)
-            Search_box.config(fg=text_color)
-        Search_box.insert(0, ord)
-
-    except:
-        pass
 
 
 def clearTextbox(event=""):
@@ -290,7 +241,8 @@ t1.bind("<Control-t>", theme.theme_selector)
 t1.bind("<Control-s>", partial(settings.setting_page,
                                username=name,
                                state=True))
-t1.bind("<KeyRelease>", syntax_highlighting)
+# syntax highlighting
+t1.bind("<KeyRelease>", partial(highlighter.syntax_highlighting,Search_box=Search_box))
 # Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
 t1.bind("<Control-BackSpace>", clearTextbox)
