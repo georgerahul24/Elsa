@@ -14,19 +14,19 @@ The package is pretty powerful that without that Elsa won't even load up.
 - magicForElsa to be installed from pypi using `pip install magicForElsa`.
 - It is highly preferable that the default browser is firefox.
 
-###Installation
-- Just use the `Elsa ver_1_1.py` in  the repo after installing `magicForElsa`
+### Installation
+-   Just run the `Elsa ver_1_1.py` in  the repo after installing `magicForElsa`
 ###Usage
 #### Initial Setup
 - Accept the licence terms
 - Select a new username and password for your account(defaults to `admin` and `1234` respectively if none is selected)
 - Select a new theme if needed
 - After that refer to the below section
-####Normal Usage
+#### Normal Usage
 - Enter the username and password to login
 - For various commands see the commands section below
 
-###Commands for Elsa
+### Commands for Elsa
 - `search` or `browse` <term to search> - To search in the net for the term
 - `msg` or `whatsapp` - To open up whatsapp desktop without using the `run` keyword
 - `bye`, `tata`, `close` or `exit` - To exit the program
@@ -57,12 +57,12 @@ The package is pretty powerful that without that Elsa won't even load up.
 - `clear history` - To clear your history
 - `shutdown` - To shut down your computer
 - `restart` - To restart your computer
-- `tell jokes`, `tell a joke` or  `joke` - To tell a joke(at least according to me those are jokes)<br>
+- `tell jokes`, `tell a joke` or  `joke` - To tell a joke(at least according to me those are jokes)<br><br>
 <b>Note</b>:
 - In case Elsa comes across any commands it does not know it gives you a prompt if you want to search it in the internet.
 - The syntax highlighting is still in development and so is the opening  files one. 
 
-###Keyboard shortcuts
+### Keyboard shortcuts
 - <kbd>Ctrl + E</kbd> - To exit the program.
 - <kbd>Ctrl + H</kbd> - To show the history.
 - <kbd>Ctrl + T</kbd> - To show the theme selection page.
