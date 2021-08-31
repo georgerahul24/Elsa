@@ -1,5 +1,4 @@
 import os
-import time
 from functools import partial
 from pathlib import Path
 from tkinter import Tk, Entry, END
@@ -38,7 +37,10 @@ try:
     )
 except Exception as e:
     print("Error loading Magic", e)
-    time.sleep(5)
+    print('''Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa
+        or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1 ''')
+    input("Press any key to exit....")
+
     exit()
 
 # Reading the themes for the tkinter window and all
@@ -51,7 +53,9 @@ try:
     print("Loaded task and talk modules successfully")
 except Exception as e:
     print(e, "it seems there some problem with task1 and/or talk1 package")
-    time.sleep(5)
+    print('''Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa
+    or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1''')
+    input("Press any key to exit....")
     exit()
 # verifying usernames module
 print("Starting to verify the integrity username module")
@@ -61,7 +65,10 @@ if not CHK:
     print("'Usernames.py' verified successfully")
 else:
     print("ERROR:Verification failed")
-    time.sleep(2)
+    print('''Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa
+        or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1''')
+    input("Press any key to exit....")
+
     exit()
 RUN_STATE = True
 print("Starting to verify the user")
