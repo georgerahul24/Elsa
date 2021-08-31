@@ -4,6 +4,8 @@ from functools import partial
 from pathlib import Path
 from tkinter import Tk, Entry, END
 
+
+
 try:
     print("Importing the package 'Magic'")
     from Magic import initial_setup
@@ -203,7 +205,6 @@ def work(event="") -> None:
             history.user_file(name, ord, "Opened history")
             history.user_read(username=name)
             talk("Opened history")
-
         elif ord.lower() == "clear history":
             history.clear_history(name)
             talk("Cleared history")
