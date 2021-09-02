@@ -11,10 +11,6 @@ class ElsaTest(unittest.TestCase):
     def testindexfiles(self):
         self.assertIsNone(indexer.index_files())
 
-
-
-
-
     def testtheme(self):
         self.assertEqual(len(theme.read_theme()), 3)
 

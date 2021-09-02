@@ -5,7 +5,6 @@ from pathlib import Path
 from tkinter import Tk, Entry, END
 from sys import exit
 
-
 try:
     print("Importing the package 'Magic'")
     from Magic import initial_setup
@@ -29,7 +28,6 @@ try:
         popups,
         program_run,
         theme,
-
         settings,
         indexer,
         usernames,
