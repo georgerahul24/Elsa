@@ -1,17 +1,14 @@
 import os
-import time
 from functools import partial
 from pathlib import Path
 from tkinter import Tk, Entry, END
+from sys import exit
 
 try:
     print("Importing the package 'Magic'")
     from Magic import initial_setup
 
-    print(
-        "Successfully imported initial_setup,history,"
-        "tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames from Magic"
-    )
+    print("Successfully imported initial_setup")
 
     # Checks if initial.elsa exists...
     # If it doesnt exist the initial setup is run.....
@@ -23,48 +20,67 @@ try:
     else:
         print("'initial.elsa' not found")
         initial_setup.install_files()
-        print("Necessary packages installed successfully")
+        print("Necessary files installed successfully")
     from Magic import (
         history,
         tkinterlib,
-        srchpopup,
+        popups,
         program_run,
         theme,
         settings,
         indexer,
         usernames,
+        highlighter,
     )
+
+    print(
+        "history,tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames imported from Magic"
+    )
+
 except Exception as e:
     print("Error loading Magic", e)
-    time.sleep(5)
+    print(
+        "Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
+        "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1"
+    )
+    input("Press any key to exit....")
+
     exit()
 
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
-    print("loading task and talk")
+    print("loading task and talk modules")
     from task1 import task
     from talk1.talk1 import talk
 
-    print("Loaded task and talk")
+    print("Loaded task and talk modules successfully")
 except Exception as e:
-    print(e, "it seems there some problem with task1 or talk1")
-    time.sleep(5)
+    print(e, "it seems there some problem with task1 and/or talk1 package")
+    print(
+        "Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
+        "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1"
+    )
+    input("Press any key to exit....")
     exit()
 # verifying usernames module
-print("Starting to verify username module")
+print("Starting to verify the integrity username module")
 CHK = usernames.verify_usernames()
-print("Checking username")
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 if not CHK:
     print("'Usernames.py' verified successfully")
 else:
     print("ERROR:Verification failed")
-    time.sleep(2)
+    print(
+        "Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
+        "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1"
+    )
+    input("Press any key to exit....")
+
     exit()
 RUN_STATE = True
 print("Starting to verify the user")
-talk("Hello. I am Elsa version 1 point 1")
+talk("Hi. I am Elsa")
 SECURITY_STATE = True
 SECURITY_TRIAL = 0
 
@@ -126,11 +142,16 @@ def work(event="") -> None:
     Search_box.delete(0, END)
     parts = ord.split()
     keyword = parts[0]
+    afterword = ""
     try:
-        afterword = parts[1]
-        afterword = afterword.lower()
+        for index in range(1, len(parts)):
+            afterword += " " + parts[index]
+
+        afterword = afterword.lower().lstrip().rstrip()
+
     except:
         afterword = ""
+
     keyword = keyword.lower()
 
     if RUN_STATE:
@@ -171,7 +192,7 @@ def work(event="") -> None:
             history.user_file(name, ord, "Elsa Ver 1.1")
 
         elif "what is your name" in ord.lower():
-            talk("My name is Elsa and my version is 1.1")
+            talk("My name is Elsa")
             history.user_file(name, ord, "Told version of Elsa")
 
         elif ord.lower() in ["hello", "hlo", "hey"]:
@@ -197,7 +218,6 @@ def work(event="") -> None:
             history.user_file(name, ord, "Opened history")
             history.user_read(username=name)
             talk("Opened history")
-
         elif ord.lower() == "clear history":
             history.clear_history(name)
             talk("Cleared history")
@@ -215,63 +235,10 @@ def work(event="") -> None:
             talk(
                 "I could not understand what you meant. Do you wanna find it in the internet?"
             )
-            srchpopup.popups(ord)
+            popups.popups(ord)
 
             history.user_file(name, ord, f"Searched {ord} in internet")
         # Destroy in case any yes or no popups are there
-
-
-# syntax highlighting
-def syntax_highlighting(event="") -> None:
-    try:
-        ord = Search_box.get()
-
-        keyword = ord.split()[0].lower()
-        keywords = [
-            "search",
-            "browse",
-            "srch",
-            "msg",
-            "whatsapp",
-            "bye",
-            "tata",
-            "close",
-            "exit",
-            "file",
-            "f",
-            "run",
-            "theme",
-            "firefox",
-            "settings",
-            "setting",
-            "time",
-            "ver",
-            "what",
-            "hello",
-            "hlo",
-            "hey",
-            "hi",
-            "download",
-            "desktop",
-            "music",
-            "sh",
-            "show",
-            "clear",
-            "joke",
-            "shutdown",
-            "restart",
-            "open",
-        ]
-        if keyword in keywords:
-            Search_box.delete(0, END)
-            Search_box.config(fg="light green")
-        else:
-            Search_box.delete(0, END)
-            Search_box.config(fg=text_color)
-        Search_box.insert(0, ord)
-
-    except:
-        pass
 
 
 def clearTextbox(event=""):
@@ -285,7 +252,9 @@ t1.bind("<Control-t>", theme.theme_selector)
 t1.bind("<Control-s>", partial(settings.setting_page,
                                username=name,
                                state=True))
-t1.bind("<KeyRelease>", syntax_highlighting)
+# syntax highlighting
+t1.bind("<KeyRelease>",
+        partial(highlighter.syntax_highlighting, Search_box=Search_box))
 # Binds textbox so that if user presses enter work() is called
 t1.bind("<Return>", work)
 t1.bind("<Control-BackSpace>", clearTextbox)
