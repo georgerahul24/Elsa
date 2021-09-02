@@ -1,6 +1,5 @@
 import os
 from functools import partial
-
 from pathlib import Path
 from tkinter import Tk, Entry, END
 from sys import exit
@@ -8,6 +7,7 @@ from sys import exit
 try:
     print("Importing the package 'Magic'")
     from Magic import initial_setup
+
     print("Successfully imported initial_setup")
 
     # Checks if initial.elsa exists...
@@ -36,6 +36,7 @@ try:
     print(
         "history,tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames imported from Magic"
     )
+
 except Exception as e:
     print("Error loading Magic", e)
     print(
