@@ -2,6 +2,7 @@ import os
 from functools import partial
 from pathlib import Path
 from tkinter import Tk, Entry, END
+from sys import exit
 
 try:
     print("Importing the package 'Magic'")
