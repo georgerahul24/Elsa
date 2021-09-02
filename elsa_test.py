@@ -1,13 +1,13 @@
 """This file is just for testing the components"""
 import unittest
-from Magic import indexer, theme, usernames, settings, history, program_run
+
+from Magic import indexer, theme, usernames, settings, history
 from talk1.talk1 import talk
 from task1 import task
 
 
 class ElsaTest(unittest.TestCase):
     # def test<anyname>(self): should be the format for making a function to test
-
     def testindexfiles(self):
         self.assertIsNone(indexer.index_files())
 
