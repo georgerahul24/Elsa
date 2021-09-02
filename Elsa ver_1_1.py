@@ -23,7 +23,7 @@ try:
     from Magic import (
         history,
         tkinterlib,
-        srchpopup,
+        popups,
         program_run,
         theme,
         settings,
@@ -234,7 +234,7 @@ def work(event="") -> None:
             talk(
                 "I could not understand what you meant. Do you wanna find it in the internet?"
             )
-            srchpopup.popups(ord)
+            popups.popups(ord)
 
             history.user_file(name, ord, f"Searched {ord} in internet")
         # Destroy in case any yes or no popups are there
