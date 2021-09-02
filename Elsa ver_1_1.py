@@ -3,7 +3,7 @@ Version 1.1.230
 """
 import os
 from functools import partial
-
+import threading
 from pathlib import Path
 from tkinter import Tk, Entry, END
 from sys import exit
@@ -123,11 +123,11 @@ while SECURITY_STATE:
             talk("Please Try Again")
 name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
-t1 = Tk()
+elsagui = Tk()
 # Reading the screen height and width
-screen_height, screen_width = t1.winfo_screenheight(), t1.winfo_screenwidth()
-tkinterlib.tkinter_initialise(t1, screen_width - 150, screen_height - 100)
-Search_box = Entry(t1, bg=bg_colour, fg=text_color)
+screen_height, screen_width = elsagui.winfo_screenheight(), elsagui.winfo_screenwidth()
+tkinterlib.tkinter_initialise(elsagui, screen_width - 150, screen_height - 100)
+Search_box = Entry(elsagui, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
 # ..............tkinter initialising ends...............................
@@ -160,34 +160,51 @@ def work(event="") -> None:
 
     if RUN_STATE:
         # srch in net
-        if keyword in ["search", "browse", "srch"]:
+        if keyword in ["search", "browse", "srch", "s"]:
             # To remove the srch,search,etc words before searching with web()
             ord = task.ordShortenSrch(ord)
-            task.web(ord)
+
+            newThread = threading.Thread(target=task.web, args=(ord,))
+            newThread.start()
+            # task.web(ord)
             history.user_file(name, ord, f'"Searched:" {ord}')
 
         elif ord.lower() in ["msg", "whatsapp"]:
-            task.whatsapp()
+
+            newThread = threading.Thread(target=task.whatsapp)
+            newThread.start()
             history.user_file(name, ord, "Opened Whatsapp")
         elif keyword in ["bye", "tata", "close", "exit"]:
             quit()
         elif keyword in ["file", "f"]:
-            indexer.search_indexed_file(afterword)
-            history.user_file(name, ord,
-                              "Tried to open the file. Status:Unknown")
+
+            newThread = threading.Thread(
+                target=indexer.search_indexed_file, args=(afterword,)
+            )
+            newThread.start()
+
+            history.user_file(name, ord, "Tried to open the file. Status:Unknown")
         elif keyword == "run":
-            program_run.program_run(afterword)
+
+            newThread = threading.Thread(
+                target=program_run.program_run, args=(afterword,)
+            )
+            newThread.start()
+
             history.user_file(name, ord, f"Opened {afterword}")
         elif "theme" in ord.lower():
             theme.theme_selector()
         elif "firefox" in ord.lower():
-            task.firefox()
+            newThread = threading.Thread(target=task.firefox)
+            newThread.start()
+
             history.user_file(name, ord, "Opened firefox")
         elif keyword in ["settings", "setting"]:
             talk("I have opened the settings page for you")
             settings.setting_page(name)
+
             history.user_file(name, ord, "Opened Settings")
-        elif "time" in ord.lower():
+        elif keyword == "time":
             task.tell_time()
             history.user_file(name, ord, "told Time ")
 
@@ -200,13 +217,13 @@ def work(event="") -> None:
             history.user_file(name, ord, "Told version of Elsa")
 
         elif ord.lower() in ["hello", "hlo", "hey"]:
-            talk("Hi")
+            talk("Hi. What can I do for you")
 
             history.user_file(name, ord, "Greeted user")
 
         elif ord.lower() == "hi":
-            talk("Hello")
-            talk("What can i do for you")
+            talk(f"Hello {name}")
+
             history.user_file(name, ord, "Greeted user")
         elif "download" in ord.lower():
             task.download()
@@ -236,11 +253,15 @@ def work(event="") -> None:
             history.user_file(name, ord, "Restarted the computer")
             task.restart()
         else:
-            talk(
-                "I could not understand what you meant. Do you wanna find it in the internet?"
-            )
-            popups.popups(ord)
 
+            def srchUserInput():
+                talk(
+                    "I could not understand what you meant. Do you wanna find it in the internet?"
+                )
+                popups.popups(ord)
+
+            newThread = threading.Thread(target=srchUserInput)
+            newThread.start()
             history.user_file(name, ord, f"Searched {ord} in internet")
         # Destroy in case any yes or no popups are there
 
@@ -250,18 +271,17 @@ def clearTextbox(event=""):
 
 
 # Binding keyboard shortcuts
-t1.bind("<Control-h>", partial(history.user_read, username=name))
-t1.bind("<Control-e>", quit)
-t1.bind("<Control-t>", theme.theme_selector)
-t1.bind("<Control-s>", partial(settings.setting_page,
-                               username=name,
-                               state=True))
+elsagui.bind("<Control-h>", partial(history.user_read, username=name))
+elsagui.bind("<Control-e>", quit)
+elsagui.bind("<Control-t>", theme.theme_selector)
+elsagui.bind("<Control-s>", partial(settings.setting_page, username=name, state=True))
 # syntax highlighting
-t1.bind("<KeyRelease>",
-        partial(highlighter.syntax_highlighting, Search_box=Search_box))
+elsagui.bind(
+    "<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box)
+)
 # Binds textbox so that if user presses enter work() is called
-t1.bind("<Return>", work)
-t1.bind("<Control-BackSpace>", clearTextbox)
-t1.mainloop()
+elsagui.bind("<Return>", work)
+elsagui.bind("<Control-BackSpace>", clearTextbox)
+elsagui.mainloop()
 # ................command input and processing starts.....................
 # ................end of programme........................................
