@@ -1,5 +1,5 @@
 """
-Version 1.1.230
+Version 1.1.231
 """
 import os
 from functools import partial
@@ -116,7 +116,7 @@ while SECURITY_STATE:
         if SECURITY_TRIAL >= 3:
             print("You have reached the maximum error limit")
             talk("You have reached the maximum error limit")
-            quit()
+            exit()
         else:
             talk("Access Denied")
             talk("Please Try Again")
