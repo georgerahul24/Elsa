@@ -27,7 +27,7 @@ The package is pretty powerful that without that Elsa won't even load up.
 - For various commands see the commands section below
 
 ### Commands for Elsa
-- `search` or `browse` <term to search> - To search in the net for the term
+- `search` or `browse` or `srch` <term to search> - To search in the net for the term
 - `msg` or `whatsapp` - To open up whatsapp desktop without using the `run` keyword
 - `bye`, `tata`, `close` or `exit` - To exit the program
 - `file` or `f` <filename> - To open that file from your computer
@@ -39,7 +39,6 @@ The package is pretty powerful that without that Elsa won't even load up.
      - `msword` (also can use `word`, `msword`, `doc`).There is a high probability that it won't work 😇
      - `powerpoint` (also can use `ppt`).This also has  a high probability of not working 😁
      - `vscode` (also can use `vsc`)
-     - `wordpad` (also can use `wp`)
      - `gimp` 
      - `wordpad` (also can use `wp`)
      - `telegram` (also can use `tg`).This also has  a high probability of not working 🙄.
