@@ -1,10 +1,14 @@
 """
-Version 1.1.231 (multithreading enabled)
+Version 1.1.26x (TCP Chat)
 """
+
 import os
+import gc
+
+gc.disable()
 from functools import partial
-from threading import Thread
 from pathlib import Path
+from threading import Thread
 from tkinter import Tk, Entry, END
 
 try:
@@ -24,6 +28,7 @@ try:
         print("'initial.elsa' not found")
         initial_setup.install_files()
         print("Necessary files installed successfully")
+    del initial_file
     from Magic import (
         history,
         tkinterlib,
@@ -34,6 +39,7 @@ try:
         indexer,
         usernames,
         highlighter,
+        chat_client,
     )
 
     print(
@@ -52,6 +58,7 @@ except Exception as e:
 
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
+del button_colour
 try:
     print("loading task and talk modules")
     from task1 import task
@@ -72,6 +79,7 @@ CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 if not CHK:
     print("'Usernames.py' verified successfully")
+
 else:
     print("ERROR:Verification failed")
     print(
@@ -81,7 +89,6 @@ else:
     input("Press any key to exit....")
     exit()
 
-RUN_STATE = True
 print("Starting to verify the user")
 talk("Hi. I am Elsa")
 SECURITY_TRIAL = 0
@@ -95,6 +102,10 @@ def quit(event="") -> None:
     :return:None
     :rtype: None
     """
+    try:
+        chat_client.closeClient()
+    except:
+        pass
     talk("Tata Bye Bye ")
     history.user_file(name, ord, "User closed")
     exit()
@@ -119,17 +130,28 @@ while True:
         else:
             talk("Access Denied")
             talk("Please Try Again")
+
 name = usernames.check_user.loginname
+del CHK, SECURITY_TRIAL
 # ..............tkinter initialising starts...............................
 elsagui = Tk()
 # Reading the screen height and width
 screen_height, screen_width = elsagui.winfo_screenheight(
 ), elsagui.winfo_screenwidth()
 tkinterlib.tkinter_initialise(elsagui, screen_width - 150, screen_height - 100)
+del screen_width, screen_height
 Search_box = Entry(elsagui, bg=bg_colour, fg=text_color)
 Search_box.pack()
-
+gc.collect()
 # ..............tkinter initialising ends...............................
+# ...initialising chat client..........
+chat_client.getNickname(name)
+try:
+    print("Connecting to a server")
+    chat_client.startclient()
+    print("Connected to a server")
+except:
+    print("Could not establish a connection with server")
 
 
 # ................command input and processing starts.....................
@@ -151,107 +173,103 @@ def work(event="") -> None:
     except:
         afterword = ""
 
-    if RUN_STATE:
-        # srch in net
-        if keyword in ["search", "browse", "srch", "s"]:
+    # srch in net
+    if keyword in ["search", "browse", "srch", "s"]:
 
-            newThread = Thread(target=task.web, args=(afterword, ))
-            newThread.start()
-            history.user_file(name, ord, f'"Searched:" {ord}')
+        Thread(target=task.web, args=(afterword, )).start()
+        history.user_file(name, ord, f'"Searched:" {ord}')
 
-        elif ord.lower() in ["msg", "whatsapp"]:
+    elif keyword in ["msg"]:
+        nameToSend = parts[1]
+        msgToSend = " ".join(parts[2:])
+        chat_client.sendtoserver(nameToSend, msgToSend)
+        del nameToSend, msgToSend
+        history.user_file(name, ord, "Snd msg")
+    elif keyword in ["bye", "tata", "close", "exit"]:
+        quit()
+    elif keyword in ["file", "f"]:
 
-            newThread = Thread(target=task.whatsapp)
-            newThread.start()
-            history.user_file(name, ord, "Opened Whatsapp")
-        elif keyword in ["bye", "tata", "close", "exit"]:
-            quit()
-        elif keyword in ["file", "f"]:
+        Thread(target=indexer.search_indexed_file, args=(afterword, )).start()
 
-            newThread = Thread(target=indexer.search_indexed_file,
-                               args=(afterword, ))
-            newThread.start()
+        history.user_file(name, ord, "Tried to open the file. Status:Unknown")
+    elif keyword == "run":
 
-            history.user_file(name, ord,
-                              "Tried to open the file. Status:Unknown")
-        elif keyword == "run":
+        Thread(target=program_run.program_run, args=(afterword, )).start()
 
-            newThread = Thread(target=program_run.program_run,
-                               args=(afterword, ))
-            newThread.start()
+        history.user_file(name, ord, f"Opened {afterword}")
+    elif keyword == "theme":
+        theme.theme_selector()
+    elif keyword == "firefox":
+        Thread(target=task.firefox).start()
 
-            history.user_file(name, ord, f"Opened {afterword}")
-        elif "theme" in ord.lower():
-            theme.theme_selector()
-        elif "firefox" in ord.lower():
-            newThread = Thread(target=task.firefox)
-            newThread.start()
+        history.user_file(name, ord, "Opened firefox")
+    elif keyword in ["settings", "setting"]:
+        talk("I have opened the settings page for you")
+        settings.setting_page(name)
 
-            history.user_file(name, ord, "Opened firefox")
-        elif keyword in ["settings", "setting"]:
-            talk("I have opened the settings page for you")
-            settings.setting_page(name)
+        history.user_file(name, ord, "Opened Settings")
+    elif keyword == "time":
+        task.tell_time()
+        history.user_file(name, ord, "told Time ")
 
-            history.user_file(name, ord, "Opened Settings")
-        elif keyword == "time":
-            task.tell_time()
-            history.user_file(name, ord, "told Time ")
+    elif ord in ["what is your version", "ver"]:
+        talk("My version is 1 point 1")
+        history.user_file(name, ord, "Elsa Ver 1.1")
 
-        elif ord.lower() in ["what is your version", "ver"]:
-            talk("My version is 1 point 1")
-            history.user_file(name, ord, "Elsa Ver 1.1")
+    elif keyword == "what is your name":
+        talk("My name is Elsa")
+        history.user_file(name, ord, "Told version of Elsa")
 
-        elif "what is your name" in ord.lower():
-            talk("My name is Elsa")
-            history.user_file(name, ord, "Told version of Elsa")
+    elif keyword in ["hello", "hlo", "hey"]:
+        talk("Hi. What can I do for you")
 
-        elif ord.lower() in ["hello", "hlo", "hey"]:
-            talk("Hi. What can I do for you")
+        history.user_file(name, ord, "Greeted user")
 
-            history.user_file(name, ord, "Greeted user")
+    elif keyword == "hi":
+        talk(f"Hello {name}")
 
-        elif ord.lower() == "hi":
-            talk(f"Hello {name}")
+        history.user_file(name, ord, "Greeted user")
+    elif ord == "download":
+        task.download()
+        history.user_file(name, ord, "Opened downloads folder")
+    elif ord == "desktop":
+        task.desktop()
+        history.user_file(name, ord, "Opened desktop folder")
+    elif ord == "music":
+        task.musicFolder()
+        history.user_file(name, ord, "Opened music folder")
 
-            history.user_file(name, ord, "Greeted user")
-        elif "download" in ord.lower():
-            task.download()
-            history.user_file(name, ord, "Opened downloads folder")
-        elif "desktop" in ord.lower():
-            task.desktop()
-            history.user_file(name, ord, "Opened desktop folder")
-        elif "music" in ord.lower():
-            task.musicFolder()
-            history.user_file(name, ord, "Opened music folder")
+    elif ord in ["show history", "sh"]:
+        history.user_file(name, ord, "Opened history")
+        history.user_read(username=name)
+        talk("Opened history")
+    elif ord == "clear history":
+        history.clear_history(name)
+        talk("Cleared history")
+    elif ord in ["tell jokes", "tell a joke", "joke"]:
+        task.joke()
+        history.user_file(name, ord, "Told a joke")
 
-        elif keyword in ["show history", "sh"]:
-            history.user_file(name, ord, "Opened history")
-            history.user_read(username=name)
-            talk("Opened history")
-        elif ord.lower() == "clear history":
-            history.clear_history(name)
-            talk("Cleared history")
-        elif ord.lower() in ["tell jokes", "tell a joke", "joke"]:
-            task.joke()
-            history.user_file(name, ord, "Told a joke")
+    elif ord == "shutdown":
+        history.user_file(name, ord, "Shutdown the computer")
+        task.shutdown()
+    elif ord == "restart":
+        history.user_file(name, ord, "Restarted the computer")
+        task.restart()
+    else:
 
-        elif keyword == "shutdown":
-            history.user_file(name, ord, "Shutdown the computer")
-            task.shutdown()
-        elif keyword == "restart":
-            history.user_file(name, ord, "Restarted the computer")
-            task.restart()
-        else:
+        def srchUserInput():
+            talk(
+                "I could not understand what you meant. Do you wanna find it in the internet?"
+            )
+            popups.popups(ord)
 
-            def srchUserInput():
-                talk(
-                    "I could not understand what you meant. Do you wanna find it in the internet?"
-                )
-                popups.popups(ord)
+        Thread(target=srchUserInput).start()
 
-            newThread = Thread(target=srchUserInput)
-            newThread.start()
-            history.user_file(name, ord, f"Searched {ord} in internet")
+        history.user_file(name, ord, f"Searched {ord} in internet")
+    del parts, keyword, afterword
+    gc.collect()
+    print("Command processed,Garbage deleted")
 
 
 def clearTextbox(event=""):

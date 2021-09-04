@@ -1,0 +1,21 @@
+facebook
+insta
+netflix
+hotstar
+prime video,music
+spotify
+brilliant
+pininterest
+quora
+wikipedia
+yotube
+meet
+elizabeth,austin,george
+NB
+Add them to syntax highlighting
+run notepad
+open folders like how we index files
+
+settings page shld have a tab to for help issues and feedback.....
+Label of delete user is still add user...
+syntax highlighting not optimised
