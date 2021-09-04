@@ -123,7 +123,8 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 elsagui = Tk()
 # Reading the screen height and width
-screen_height, screen_width = elsagui.winfo_screenheight(), elsagui.winfo_screenwidth()
+screen_height, screen_width = elsagui.winfo_screenheight(
+), elsagui.winfo_screenwidth()
 tkinterlib.tkinter_initialise(elsagui, screen_width - 150, screen_height - 100)
 Search_box = Entry(elsagui, bg=bg_colour, fg=text_color)
 Search_box.pack()
@@ -154,7 +155,7 @@ def work(event="") -> None:
         # srch in net
         if keyword in ["search", "browse", "srch", "s"]:
 
-            newThread = Thread(target=task.web, args=(afterword,))
+            newThread = Thread(target=task.web, args=(afterword, ))
             newThread.start()
             history.user_file(name, ord, f'"Searched:" {ord}')
 
@@ -167,13 +168,16 @@ def work(event="") -> None:
             quit()
         elif keyword in ["file", "f"]:
 
-            newThread = Thread(target=indexer.search_indexed_file, args=(afterword,))
+            newThread = Thread(target=indexer.search_indexed_file,
+                               args=(afterword, ))
             newThread.start()
 
-            history.user_file(name, ord, "Tried to open the file. Status:Unknown")
+            history.user_file(name, ord,
+                              "Tried to open the file. Status:Unknown")
         elif keyword == "run":
 
-            newThread = Thread(target=program_run.program_run, args=(afterword,))
+            newThread = Thread(target=program_run.program_run,
+                               args=(afterword, ))
             newThread.start()
 
             history.user_file(name, ord, f"Opened {afterword}")
@@ -258,11 +262,11 @@ def clearTextbox(event=""):
 elsagui.bind("<Control-h>", partial(history.user_read, username=name))
 elsagui.bind("<Control-e>", quit)
 elsagui.bind("<Control-t>", theme.theme_selector)
-elsagui.bind("<Control-s>", partial(settings.setting_page, username=name, state=True))
+elsagui.bind("<Control-s>",
+             partial(settings.setting_page, username=name, state=True))
 # syntax highlighting
-elsagui.bind(
-    "<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box)
-)
+elsagui.bind("<KeyRelease>",
+             partial(highlighter.syntax_highlighting, Search_box=Search_box))
 # Binds textbox so that if user presses enter work() is called
 elsagui.bind("<Return>", work)
 elsagui.bind("<Control-BackSpace>", clearTextbox)
