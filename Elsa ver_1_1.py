@@ -1,9 +1,9 @@
 """
-Version 1.1.231
+Version 1.1.231 (multithreading enabled)
 """
 import os
 from functools import partial
-import threading
+from threading import Thread
 from pathlib import Path
 from tkinter import Tk, Entry, END
 
@@ -79,12 +79,11 @@ else:
         "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1"
     )
     input("Press any key to exit....")
-
     exit()
+
 RUN_STATE = True
 print("Starting to verify the user")
 talk("Hi. I am Elsa")
-SECURITY_STATE = True
 SECURITY_TRIAL = 0
 
 
@@ -100,9 +99,8 @@ def quit(event="") -> None:
     history.user_file(name, ord, "User closed")
     exit()
 
-
 # password and username checks
-while SECURITY_STATE:
+while True:
     usernames.check_user()
     if usernames.check_user.security:
         print("Access Granted")
@@ -164,21 +162,21 @@ def work(event="") -> None:
             # To remove the srch,search,etc words before searching with web()
             ord = task.ordShortenSrch(ord)
 
-            newThread = threading.Thread(target=task.web, args=(ord, ))
+            newThread = Thread(target=task.web, args=(ord, ))
             newThread.start()
             # task.web(ord)
             history.user_file(name, ord, f'"Searched:" {ord}')
 
         elif ord.lower() in ["msg", "whatsapp"]:
 
-            newThread = threading.Thread(target=task.whatsapp)
+            newThread = Thread(target=task.whatsapp)
             newThread.start()
             history.user_file(name, ord, "Opened Whatsapp")
         elif keyword in ["bye", "tata", "close", "exit"]:
             quit()
         elif keyword in ["file", "f"]:
 
-            newThread = threading.Thread(target=indexer.search_indexed_file,
+            newThread = Thread(target=indexer.search_indexed_file,
                                          args=(afterword, ))
             newThread.start()
 
@@ -186,7 +184,7 @@ def work(event="") -> None:
                               "Tried to open the file. Status:Unknown")
         elif keyword == "run":
 
-            newThread = threading.Thread(target=program_run.program_run,
+            newThread = Thread(target=program_run.program_run,
                                          args=(afterword, ))
             newThread.start()
 
@@ -194,7 +192,7 @@ def work(event="") -> None:
         elif "theme" in ord.lower():
             theme.theme_selector()
         elif "firefox" in ord.lower():
-            newThread = threading.Thread(target=task.firefox)
+            newThread = Thread(target=task.firefox)
             newThread.start()
 
             history.user_file(name, ord, "Opened firefox")
@@ -259,7 +257,7 @@ def work(event="") -> None:
                 )
                 popups.popups(ord)
 
-            newThread = threading.Thread(target=srchUserInput)
+            newThread = Thread(target=srchUserInput)
             newThread.start()
             history.user_file(name, ord, f"Searched {ord} in internet")
         # Destroy in case any yes or no popups are there
