@@ -149,7 +149,7 @@ def work(event="") -> None:
         for index in range(1, len(parts)):
             afterword += " " + parts[index]
 
-        afterword = afterword.lower().lstrip().rstrip()
+        afterword = afterword.lower().lstrip()
 
     except:
         afterword = ""
@@ -159,12 +159,10 @@ def work(event="") -> None:
     if RUN_STATE:
         # srch in net
         if keyword in ["search", "browse", "srch", "s"]:
-            # To remove the srch,search,etc words before searching with web()
-            ord = task.ordShortenSrch(ord)
 
-            newThread = Thread(target=task.web, args=(ord, ))
+
+            newThread = Thread(target=task.web, args=(afterword, ))
             newThread.start()
-            # task.web(ord)
             history.user_file(name, ord, f'"Searched:" {ord}')
 
         elif ord.lower() in ["msg", "whatsapp"]:
@@ -260,7 +258,7 @@ def work(event="") -> None:
             newThread = Thread(target=srchUserInput)
             newThread.start()
             history.user_file(name, ord, f"Searched {ord} in internet")
-        # Destroy in case any yes or no popups are there
+
 
 
 def clearTextbox(event=""):
