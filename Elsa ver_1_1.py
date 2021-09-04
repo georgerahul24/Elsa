@@ -145,12 +145,12 @@ def work(event="") -> None:
     Search_box.delete(0, END)
     parts = ord.split()
     keyword = parts[0]
-    afterword = ""
-    try:
-        for index in range(1, len(parts)):
-            afterword += " " + parts[index]
 
-        afterword = afterword.lower().lstrip()
+    try:
+        afterword = " ".join(parts[1:])
+
+
+
 
     except:
         afterword = ""
