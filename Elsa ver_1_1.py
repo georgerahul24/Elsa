@@ -99,6 +99,7 @@ def quit(event="") -> None:
     history.user_file(name, ord, "User closed")
     exit()
 
+
 # password and username checks
 while True:
     usernames.check_user()
@@ -175,7 +176,7 @@ def work(event="") -> None:
         elif keyword in ["file", "f"]:
 
             newThread = Thread(target=indexer.search_indexed_file,
-                                         args=(afterword, ))
+                               args=(afterword, ))
             newThread.start()
 
             history.user_file(name, ord,
@@ -183,7 +184,7 @@ def work(event="") -> None:
         elif keyword == "run":
 
             newThread = Thread(target=program_run.program_run,
-                                         args=(afterword, ))
+                               args=(afterword, ))
             newThread.start()
 
             history.user_file(name, ord, f"Opened {afterword}")
