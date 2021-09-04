@@ -141,21 +141,20 @@ def work(event="") -> None:
     :return: None
     :rtype: None
     """
-    ord = Search_box.get()
+    ord = Search_box.get().lower()
     Search_box.delete(0, END)
     parts = ord.split()
     keyword = parts[0]
-
+    #ord srch george rahul
+    #[ord,george,rahul]
+    #parts[1:] -> [george,rahul]
     try:
         afterword = " ".join(parts[1:])
-
-
-
 
     except:
         afterword = ""
 
-    keyword = keyword.lower()
+
 
     if RUN_STATE:
         # srch in net
