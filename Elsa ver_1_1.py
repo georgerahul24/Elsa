@@ -123,8 +123,7 @@ name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 elsagui = Tk()
 # Reading the screen height and width
-screen_height, screen_width = elsagui.winfo_screenheight(
-), elsagui.winfo_screenwidth()
+screen_height, screen_width = elsagui.winfo_screenheight(), elsagui.winfo_screenwidth()
 tkinterlib.tkinter_initialise(elsagui, screen_width - 150, screen_height - 100)
 Search_box = Entry(elsagui, bg=bg_colour, fg=text_color)
 Search_box.pack()
@@ -155,11 +154,11 @@ def work(event="") -> None:
         # srch in net
         if keyword in ["search", "browse", "srch", "s"]:
 
-            newThread = Thread(target=task.web, args=(afterword, ))
+            newThread = Thread(target=task.web, args=(afterword,))
             newThread.start()
             history.user_file(name, ord, f'"Searched:" {ord}')
 
-        elif ord.lower() in ["msg", "whatsapp"]:
+        elif keyword in ["msg", "whatsapp"]:
 
             newThread = Thread(target=task.whatsapp)
             newThread.start()
@@ -168,22 +167,19 @@ def work(event="") -> None:
             quit()
         elif keyword in ["file", "f"]:
 
-            newThread = Thread(target=indexer.search_indexed_file,
-                               args=(afterword, ))
+            newThread = Thread(target=indexer.search_indexed_file, args=(afterword,))
             newThread.start()
 
-            history.user_file(name, ord,
-                              "Tried to open the file. Status:Unknown")
+            history.user_file(name, ord, "Tried to open the file. Status:Unknown")
         elif keyword == "run":
 
-            newThread = Thread(target=program_run.program_run,
-                               args=(afterword, ))
+            newThread = Thread(target=program_run.program_run, args=(afterword,))
             newThread.start()
 
             history.user_file(name, ord, f"Opened {afterword}")
-        elif "theme" in ord.lower():
+        elif keyword == "theme":
             theme.theme_selector()
-        elif "firefox" in ord.lower():
+        elif keyword == "firefox":
             newThread = Thread(target=task.firefox)
             newThread.start()
 
@@ -197,48 +193,48 @@ def work(event="") -> None:
             task.tell_time()
             history.user_file(name, ord, "told Time ")
 
-        elif ord.lower() in ["what is your version", "ver"]:
+        elif ord in ["what is your version", "ver"]:
             talk("My version is 1 point 1")
             history.user_file(name, ord, "Elsa Ver 1.1")
 
-        elif "what is your name" in ord.lower():
+        elif keyword == "what is your name":
             talk("My name is Elsa")
             history.user_file(name, ord, "Told version of Elsa")
 
-        elif ord.lower() in ["hello", "hlo", "hey"]:
+        elif keyword in ["hello", "hlo", "hey"]:
             talk("Hi. What can I do for you")
 
             history.user_file(name, ord, "Greeted user")
 
-        elif ord.lower() == "hi":
+        elif keyword == "hi":
             talk(f"Hello {name}")
 
             history.user_file(name, ord, "Greeted user")
-        elif "download" in ord.lower():
+        elif ord == "download":
             task.download()
             history.user_file(name, ord, "Opened downloads folder")
-        elif "desktop" in ord.lower():
+        elif ord == "desktop":
             task.desktop()
             history.user_file(name, ord, "Opened desktop folder")
-        elif "music" in ord.lower():
+        elif ord == "music":
             task.musicFolder()
             history.user_file(name, ord, "Opened music folder")
 
-        elif keyword in ["show history", "sh"]:
+        elif ord in ["show history", "sh"]:
             history.user_file(name, ord, "Opened history")
             history.user_read(username=name)
             talk("Opened history")
-        elif ord.lower() == "clear history":
+        elif ord == "clear history":
             history.clear_history(name)
             talk("Cleared history")
-        elif ord.lower() in ["tell jokes", "tell a joke", "joke"]:
+        elif ord in ["tell jokes", "tell a joke", "joke"]:
             task.joke()
             history.user_file(name, ord, "Told a joke")
 
-        elif keyword == "shutdown":
+        elif ord == "shutdown":
             history.user_file(name, ord, "Shutdown the computer")
             task.shutdown()
-        elif keyword == "restart":
+        elif ord == "restart":
             history.user_file(name, ord, "Restarted the computer")
             task.restart()
         else:
@@ -262,11 +258,11 @@ def clearTextbox(event=""):
 elsagui.bind("<Control-h>", partial(history.user_read, username=name))
 elsagui.bind("<Control-e>", quit)
 elsagui.bind("<Control-t>", theme.theme_selector)
-elsagui.bind("<Control-s>",
-             partial(settings.setting_page, username=name, state=True))
+elsagui.bind("<Control-s>", partial(settings.setting_page, username=name, state=True))
 # syntax highlighting
-elsagui.bind("<KeyRelease>",
-             partial(highlighter.syntax_highlighting, Search_box=Search_box))
+elsagui.bind(
+    "<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box)
+)
 # Binds textbox so that if user presses enter work() is called
 elsagui.bind("<Return>", work)
 elsagui.bind("<Control-BackSpace>", clearTextbox)
