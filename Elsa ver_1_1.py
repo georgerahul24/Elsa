@@ -154,8 +154,6 @@ def work(event="") -> None:
     except:
         afterword = ""
 
-
-
     if RUN_STATE:
         # srch in net
         if keyword in ["search", "browse", "srch", "s"]:
