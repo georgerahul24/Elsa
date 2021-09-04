@@ -149,9 +149,6 @@ def work(event="") -> None:
     try:
         afterword = " ".join(parts[1:])
 
-
-
-
     except:
         afterword = ""
 
