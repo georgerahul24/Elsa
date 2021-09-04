@@ -161,7 +161,6 @@ def work(event="") -> None:
         # srch in net
         if keyword in ["search", "browse", "srch", "s"]:
 
-
             newThread = Thread(target=task.web, args=(afterword, ))
             newThread.start()
             history.user_file(name, ord, f'"Searched:" {ord}')
@@ -259,7 +258,6 @@ def work(event="") -> None:
             newThread = Thread(target=srchUserInput)
             newThread.start()
             history.user_file(name, ord, f"Searched {ord} in internet")
-
 
 
 def clearTextbox(event=""):
