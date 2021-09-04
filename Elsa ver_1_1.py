@@ -145,9 +145,6 @@ def work(event="") -> None:
     Search_box.delete(0, END)
     parts = ord.split()
     keyword = parts[0]
-    #ord srch george rahul
-    #[ord,george,rahul]
-    #parts[1:] -> [george,rahul]
     try:
         afterword = " ".join(parts[1:])
 
