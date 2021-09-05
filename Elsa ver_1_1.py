@@ -123,7 +123,9 @@ Search_box.pack()
 # ..............tkinter initialising ends...............................
 
 chat_client.getNickname(name)
-chat_client.startclient()
+chatThread=Thread(target=chat_client.startclient)
+chatThread.daemonic=True
+chatThread.start()
 
 
 # ................command input and processing starts.....................
