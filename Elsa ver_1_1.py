@@ -1,5 +1,5 @@
 """
-Version 1.1.231 (multithreading enabled)
+Version 1.1.252 (multithreading enabled)
 """
 import os
 from functools import partial
@@ -34,6 +34,7 @@ try:
         indexer,
         usernames,
         highlighter,
+        chat_client
     )
 
     print(
@@ -131,6 +132,13 @@ Search_box.pack()
 
 # ..............tkinter initialising ends...............................
 
+chat_client.getNickname(name)
+chat_client.startclient()
+
+
+
+
+
 
 # ................command input and processing starts.....................
 def work(event="") -> None:
@@ -159,11 +167,11 @@ def work(event="") -> None:
             newThread.start()
             history.user_file(name, ord, f'"Searched:" {ord}')
 
-        elif keyword in ["msg", "whatsapp"]:
-
-            newThread = Thread(target=task.whatsapp)
-            newThread.start()
-            history.user_file(name, ord, "Opened Whatsapp")
+        elif keyword in ["msg"]:
+            nameToSend=parts[1]
+            msgToSend = " ".join(parts[2:])
+            chat_client.sendtoserver(nameToSend,msgToSend)
+            history.user_file(name, ord, "Snd msg")
         elif keyword in ["bye", "tata", "close", "exit"]:
             quit()
         elif keyword in ["file", "f"]:
