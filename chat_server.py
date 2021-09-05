@@ -44,7 +44,7 @@ def handle(client):
             index = clients.index(client)
             clients.remove(client)
             client.close()
-            nickname = nicknames[index]            
+            nickname = nicknames[index]
             nicknames.remove(nickname)
             break
 

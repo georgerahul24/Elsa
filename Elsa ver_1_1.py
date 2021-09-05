@@ -126,7 +126,6 @@ chat_client.getNickname(name)
 chat_client.startclient()
 
 
-
 # ................command input and processing starts.....................
 def work(event="") -> None:
     """
