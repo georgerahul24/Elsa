@@ -24,18 +24,8 @@ try:
         print("'initial.elsa' not found")
         initial_setup.install_files()
         print("Necessary files installed successfully")
-    from Magic import (
-        history,
-        tkinterlib,
-        popups,
-        program_run,
-        theme,
-        settings,
-        indexer,
-        usernames,
-        highlighter,
-        chat_client
-    )
+    from Magic import (history, tkinterlib, popups, program_run, theme,
+                       settings, indexer, usernames, highlighter, chat_client)
 
     print(
         "history,tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames imported from Magic"
@@ -136,10 +126,6 @@ chat_client.getNickname(name)
 chat_client.startclient()
 
 
-
-
-
-
 # ................command input and processing starts.....................
 def work(event="") -> None:
     """
@@ -168,9 +154,9 @@ def work(event="") -> None:
             history.user_file(name, ord, f'"Searched:" {ord}')
 
         elif keyword in ["msg"]:
-            nameToSend=parts[1]
+            nameToSend = parts[1]
             msgToSend = " ".join(parts[2:])
-            chat_client.sendtoserver(nameToSend,msgToSend)
+            chat_client.sendtoserver(nameToSend, msgToSend)
             history.user_file(name, ord, "Snd msg")
         elif keyword in ["bye", "tata", "close", "exit"]:
             quit()
