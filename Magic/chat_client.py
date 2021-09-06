@@ -2,8 +2,8 @@ import json
 import socket
 import threading
 import win10toast
-noti=win10toast.ToastNotifier()
 
+noti = win10toast.ToastNotifier()
 
 host = '127.0.0.1'
 port = 24094
@@ -26,7 +26,7 @@ def recievefromserver():
                 client.send(nickname.encode('ascii'))
             else:
                 print('msg recieved', msg)
-                noti.show_toast("Elsa",msg)
+                noti.show_toast("Elsa", msg)
                 del msg
 
         except:
@@ -40,7 +40,7 @@ def sendtoserver(nickname, msg):
         print("Sending", msg, "to", nickname)
         msg = json.dumps((nickname, msg))
         client.send(msg.encode('ascii'))
-        del msg,nickname
+        del msg, nickname
 
     except:
         pass
@@ -54,4 +54,3 @@ def startclient():
     client.connect((host, port))
     recievethread = threading.Thread(target=recievefromserver)
     recievethread.start()
-

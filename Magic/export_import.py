@@ -29,7 +29,8 @@ def export():
     json.dump(data, f)
     print("Successfully exported the data")
     f.close()
-    del f,themedata,indexerdata,USERNAMEPATH
+    del f, themedata, indexerdata, USERNAMEPATH
+
 
 def import_data():
     try:
@@ -68,7 +69,7 @@ def import_data():
             json.dump(usernamedata, userfile)
         print("Imported usernames")
         f.close()
-        del initpth,indexerpth,f,data,indexdata,themedata,usernamedata,USERNAMEPATH
+        del initpth, indexerpth, f, data, indexdata, themedata, usernamedata, USERNAMEPATH
     except Exception as e:
         print("Some error happened", e)
         del e
