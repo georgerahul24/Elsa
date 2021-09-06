@@ -1,8 +1,11 @@
 """
-Version 1.1.252 (TCP Chat protoype)
+Version 1.1.26x (TCP Chat)
 """
 
 import os
+import gc
+gc.disable()
+del gc
 from functools import partial
 from pathlib import Path
 from threading import Thread
@@ -25,7 +28,7 @@ try:
         print("'initial.elsa' not found")
         initial_setup.install_files()
         print("Necessary files installed successfully")
-
+    del initial_file
     from Magic import (history, tkinterlib, popups, program_run, theme,
                        settings, indexer, usernames, highlighter, chat_client)
 
@@ -45,7 +48,7 @@ except Exception as e:
 
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
-
+del button_colour
 try:
     print("loading task and talk modules")
     from task1 import task
@@ -119,13 +122,14 @@ while True:
             talk("Please Try Again")
 
 name = usernames.check_user.loginname
+del CHK,SECURITY_TRIAL
 # ..............tkinter initialising starts...............................
 elsagui = Tk()
 # Reading the screen height and width
 screen_height, screen_width = elsagui.winfo_screenheight(
 ), elsagui.winfo_screenwidth()
 tkinterlib.tkinter_initialise(elsagui, screen_width - 150, screen_height - 100)
-
+del screen_width,screen_height
 Search_box = Entry(elsagui, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
@@ -170,6 +174,7 @@ def work(event="") -> None:
         nameToSend = parts[1]
         msgToSend = " ".join(parts[2:])
         chat_client.sendtoserver(nameToSend, msgToSend)
+        del nameToSend,msgToSend
         history.user_file(name, ord, "Snd msg")
     elif keyword in ["bye", "tata", "close", "exit"]:
         quit()
@@ -257,8 +262,8 @@ def work(event="") -> None:
         newThread = Thread(target=srchUserInput)
         newThread.start()
         history.user_file(name, ord, f"Searched {ord} in internet")
-
-    print("Completed work")
+    del ord,parts,keyword,afterword
+    print("Command processed,Garbage deleted")
 
 
 def clearTextbox(event=""):
