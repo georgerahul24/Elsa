@@ -163,7 +163,7 @@ def work(event="") -> None:
     # srch in net
     if keyword in ["search", "browse", "srch", "s"]:
 
-        newThread = Thread(target=task.web, args=(afterword,))
+        newThread = Thread(target=task.web, args=(afterword, ))
         newThread.start()
         history.user_file(name, ord, f'"Searched:" {ord}')
 
@@ -177,15 +177,13 @@ def work(event="") -> None:
     elif keyword in ["file", "f"]:
 
         newThread = Thread(target=indexer.search_indexed_file,
-                           args=(afterword,))
+                           args=(afterword, ))
         newThread.start()
 
-        history.user_file(name, ord,
-                          "Tried to open the file. Status:Unknown")
+        history.user_file(name, ord, "Tried to open the file. Status:Unknown")
     elif keyword == "run":
 
-        newThread = Thread(target=program_run.program_run,
-                           args=(afterword,))
+        newThread = Thread(target=program_run.program_run, args=(afterword, ))
         newThread.start()
 
         history.user_file(name, ord, f"Opened {afterword}")

@@ -62,7 +62,7 @@ def recieve():
         nicknames.append(nickname)
         clients.append(client)
         print(f"{nickname} {address}")
-        thread = threading.Thread(target=handle, args=(client,))
+        thread = threading.Thread(target=handle, args=(client, ))
         thread.start()
 
 
