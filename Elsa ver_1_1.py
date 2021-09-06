@@ -1,14 +1,13 @@
 """
 Version 1.1.252 (TCP Chat protoype)
 """
-import gc
+
 import os
 from functools import partial
 from pathlib import Path
 from threading import Thread
 from tkinter import Tk, Entry, END
 
-gc.disable()
 try:
     print("Importing the package 'Magic'")
     from Magic import initial_setup
@@ -26,7 +25,7 @@ try:
         print("'initial.elsa' not found")
         initial_setup.install_files()
         print("Necessary files installed successfully")
-    del initial_file
+
     from Magic import (history, tkinterlib, popups, program_run, theme,
                        settings, indexer, usernames, highlighter, chat_client)
 
@@ -46,7 +45,7 @@ except Exception as e:
 
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
-del button_colour
+
 try:
     print("loading task and talk modules")
     from task1 import task
@@ -67,7 +66,7 @@ CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 if not CHK:
     print("'Usernames.py' verified successfully")
-    del CHK
+
 else:
     print("ERROR:Verification failed")
     print(
@@ -118,7 +117,7 @@ while True:
         else:
             talk("Access Denied")
             talk("Please Try Again")
-del SECURITY_TRIAL
+
 name = usernames.check_user.loginname
 # ..............tkinter initialising starts...............................
 elsagui = Tk()
@@ -126,7 +125,7 @@ elsagui = Tk()
 screen_height, screen_width = elsagui.winfo_screenheight(
 ), elsagui.winfo_screenwidth()
 tkinterlib.tkinter_initialise(elsagui, screen_width - 150, screen_height - 100)
-del screen_height, screen_width
+
 Search_box = Entry(elsagui, bg=bg_colour, fg=text_color)
 Search_box.pack()
 
