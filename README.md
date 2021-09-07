@@ -48,6 +48,7 @@ The package is pretty powerful that without that Elsa won't even load up.
 - `settings` or `setting` - To open the settings window so that you can tinker with things
 - `time`- To know the time
 - `ver` - To know the version (you can also use `what is your version` but honestly who types that much❓)  
+  🐁🦛🐩🐩🐲🐻🦊🐱‍👤😱🥵🥶🤬🥳😈👺🦠😤😂😄👍👍😀🎂🙏🔥👏🙄😕
 - `hello`,`hi`,`hlo`,`hey` - Pretty much useless...still manners are manners
 - `download` - To open the `Downloads` folder
 - `desktop` - To open the `Desktop` folder
