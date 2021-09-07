@@ -3,7 +3,6 @@ import socket
 import threading
 import json
 
-
 host = '127.0.0.1'
 port = 24094
 # SOCK_STREAM. AF_INET refers to the address-family ipv4. The SOCK_STREAM means connection-oriented TCP protocol.
@@ -66,7 +65,6 @@ def recieve():
             thread.start()
         except Exception as e:
             print(e)
-
 
 
 print('Server has started')

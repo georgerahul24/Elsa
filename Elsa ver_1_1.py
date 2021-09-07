@@ -4,6 +4,7 @@ Version 1.1.26x (TCP Chat)
 
 import os
 import gc
+
 gc.disable()
 from functools import partial
 from pathlib import Path
@@ -178,22 +179,18 @@ def work(event="") -> None:
         quit()
     elif keyword in ["file", "f"]:
 
-        Thread(target=indexer.search_indexed_file,
-                           args=(afterword, )).start()
-
+        Thread(target=indexer.search_indexed_file, args=(afterword, )).start()
 
         history.user_file(name, ord, "Tried to open the file. Status:Unknown")
     elif keyword == "run":
 
-       Thread(target=program_run.program_run, args=(afterword, )).start()
+        Thread(target=program_run.program_run, args=(afterword, )).start()
 
-
-       history.user_file(name, ord, f"Opened {afterword}")
+        history.user_file(name, ord, f"Opened {afterword}")
     elif keyword == "theme":
         theme.theme_selector()
     elif keyword == "firefox":
         Thread(target=task.firefox).start()
-
 
         history.user_file(name, ord, "Opened firefox")
     elif keyword in ["settings", "setting"]:
@@ -260,7 +257,7 @@ def work(event="") -> None:
         Thread(target=srchUserInput).start()
 
         history.user_file(name, ord, f"Searched {ord} in internet")
-    del  parts, keyword, afterword
+    del parts, keyword, afterword
     gc.collect()
     print("Command processed,Garbage deleted")
 
