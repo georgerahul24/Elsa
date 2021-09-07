@@ -2,8 +2,7 @@
 import socket
 import threading
 import json
-import datetime
-from os import getcwd
+
 
 host = '127.0.0.1'
 port = 24094
@@ -55,15 +54,19 @@ def handle(client):
 
 def recieve():
     while True:
-        client, address = server.accept()
-        print(f"connected with address: {address}")
-        client.send('NICK'.encode('ascii'))
-        nickname = client.recv(1024).decode('ascii')
-        nicknames.append(nickname)
-        clients.append(client)
-        print(f"{nickname} {address}")
-        thread = threading.Thread(target=handle, args=(client, ))
-        thread.start()
+        try:
+            client, address = server.accept()
+            print(f"connected with address: {address}")
+            client.send('NICK'.encode('ascii'))
+            nickname = client.recv(1024).decode('ascii')
+            nicknames.append(nickname)
+            clients.append(client)
+            print(f"{nickname} {address}")
+            thread = threading.Thread(target=handle, args=(client, ))
+            thread.start()
+        except Exception as e:
+            print(e)
+
 
 
 print('Server has started')

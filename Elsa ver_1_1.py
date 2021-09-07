@@ -4,9 +4,7 @@ Version 1.1.26x (TCP Chat)
 
 import os
 import gc
-
 gc.disable()
-del gc
 from functools import partial
 from pathlib import Path
 from threading import Thread
@@ -133,7 +131,7 @@ tkinterlib.tkinter_initialise(elsagui, screen_width - 150, screen_height - 100)
 del screen_width, screen_height
 Search_box = Entry(elsagui, bg=bg_colour, fg=text_color)
 Search_box.pack()
-
+gc.collect()
 # ..............tkinter initialising ends...............................
 # ...initialising chat client..........
 chat_client.getNickname(name)
@@ -167,8 +165,7 @@ def work(event="") -> None:
     # srch in net
     if keyword in ["search", "browse", "srch", "s"]:
 
-        newThread = Thread(target=task.web, args=(afterword, ))
-        newThread.start()
+        Thread(target=task.web, args=(afterword, )).start()
         history.user_file(name, ord, f'"Searched:" {ord}')
 
     elif keyword in ["msg"]:
@@ -181,22 +178,22 @@ def work(event="") -> None:
         quit()
     elif keyword in ["file", "f"]:
 
-        newThread = Thread(target=indexer.search_indexed_file,
-                           args=(afterword, ))
-        newThread.start()
+        Thread(target=indexer.search_indexed_file,
+                           args=(afterword, )).start()
+
 
         history.user_file(name, ord, "Tried to open the file. Status:Unknown")
     elif keyword == "run":
 
-        newThread = Thread(target=program_run.program_run, args=(afterword, ))
-        newThread.start()
+       Thread(target=program_run.program_run, args=(afterword, )).start()
 
-        history.user_file(name, ord, f"Opened {afterword}")
+
+       history.user_file(name, ord, f"Opened {afterword}")
     elif keyword == "theme":
         theme.theme_selector()
     elif keyword == "firefox":
-        newThread = Thread(target=task.firefox)
-        newThread.start()
+        Thread(target=task.firefox).start()
+
 
         history.user_file(name, ord, "Opened firefox")
     elif keyword in ["settings", "setting"]:
@@ -260,10 +257,11 @@ def work(event="") -> None:
             )
             popups.popups(ord)
 
-        newThread = Thread(target=srchUserInput)
-        newThread.start()
+        Thread(target=srchUserInput).start()
+
         history.user_file(name, ord, f"Searched {ord} in internet")
-    del ord, parts, keyword, afterword
+    del  parts, keyword, afterword
+    gc.collect()
     print("Command processed,Garbage deleted")
 
 
