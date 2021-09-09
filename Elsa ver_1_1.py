@@ -4,7 +4,6 @@ Version 1.1.26x (TCP Chat)
 
 import os
 import gc
-
 gc.disable()
 from functools import partial
 from pathlib import Path
@@ -266,7 +265,7 @@ def work(event="") -> None:
 
         Thread(target=srchUserInput).start()
 
-        history.user_file(name, ord, f"Searched {ord} in internet")
+        history.user_file(name, ord, f"{ord} in internet?")
     del parts, keyword, afterword
     gc.collect()
     print("Command processed,Garbage deleted")
