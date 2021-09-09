@@ -4,6 +4,7 @@ Version 1.1.26x (TCP Chat)
 
 import os
 import gc
+
 gc.disable()
 from functools import partial
 from pathlib import Path
