@@ -1,5 +1,5 @@
 """
-Version 1.1.26x (TCP Chat)
+Version 1.1.25x-1.1.26x (TCP Chat and website enabled)
 """
 
 import os
@@ -211,6 +211,9 @@ def work(event="") -> None:
     elif keyword == "time":
         task.tell_time()
         history.user_file(name, ord, "told Time ")
+    elif keyword in ["website", "w"]:
+        task.websiteopen(afterword)
+        history.user_file(name, ord, f"Trie to open the website {afterword}")
 
     elif ord in ["what is your version", "ver"]:
         talk("My version is 1 point 1")
