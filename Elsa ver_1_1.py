@@ -187,11 +187,20 @@ def work(event="") -> None:
         history.user_file(name, ord, "Snd msg")
     elif keyword in ["bye", "tata", "close", "exit"]:
         quit()
+    elif keyword in ["open", "o","folder"]:
+
+        Thread(target=indexer.search_indexed_folder, args=(afterword, )).start()
+
+        history.user_file(name, ord, f"Tried to open the folder {afterword}. Status:Unknown")
+
+
+
+
     elif keyword in ["file", "f"]:
 
         Thread(target=indexer.search_indexed_file, args=(afterword, )).start()
 
-        history.user_file(name, ord, "Tried to open the file. Status:Unknown")
+        history.user_file(name, ord, f"Tried to open the file {afterword}. Status:Unknown")
     elif keyword == "run":
 
         Thread(target=program_run.program_run, args=(afterword, )).start()
