@@ -1,7 +1,7 @@
 # see https://www.youtube.com/watch?v=3UOyky9sEQY
+import json
 import socket
 import threading
-import json
 
 host = "127.0.0.1"
 port = 24094

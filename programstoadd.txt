@@ -15,8 +15,8 @@ elizabeth,austin,george
 NB
 Add them to syntax highlighting
 run notepad
-open folders like how we index files
+open folders like how we index files-done
 
 settings page shld have a tab to for help issues and feedback.....
-Label of delete user is still add user...
+Label of delete user is still add user...  -done
 syntax highlighting not optimised

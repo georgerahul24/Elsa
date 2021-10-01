@@ -1,9 +1,10 @@
 """This file is just for testing the components"""
 import unittest
 
-from Magic import indexer, theme, usernames, settings, history
 from talk1.talk1 import talk
 from task1 import task
+
+from Magic import indexer, theme, usernames, settings, history
 
 
 class ElsaTest(unittest.TestCase):

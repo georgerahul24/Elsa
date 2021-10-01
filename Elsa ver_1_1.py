@@ -2,8 +2,8 @@
 Version 1.1.25x-1.1.26x (TCP Chat and website enabled)
 """
 
-import os
 import gc
+import os
 
 gc.disable()
 from functools import partial
