@@ -41,6 +41,7 @@ try:
         highlighter,
         chat_client,
     )
+    indexer.index_files()
 
     print(
         "history,tkinterlib,srchpopup,program_run,theme,settings,indexer and usernames imported from Magic"
@@ -206,11 +207,8 @@ def work(event="") -> None:
         Thread(target=program_run.program_run, args=(afterword, )).start()
 
         history.user_file(name, ord, f"Opened {afterword}")
-    elif keyword == "theme":
-        theme.theme_selector()
     elif keyword == "firefox":
         Thread(target=task.firefox).start()
-
         history.user_file(name, ord, "Opened firefox")
     elif keyword in ["settings", "setting"]:
         talk("I have opened the settings page for you")
@@ -291,7 +289,7 @@ def clearTextbox(event=""):
 # Binding keyboard shortcuts
 elsagui.bind("<Control-h>", partial(history.user_read, username=name))
 elsagui.bind("<Control-e>", quit)
-elsagui.bind("<Control-t>", theme.theme_selector)
+
 elsagui.bind("<Control-s>",
              partial(settings.setting_page, username=name, state=True))
 # syntax highlighting
