@@ -164,9 +164,9 @@ def work(event="") -> None:
     :return: None
     :rtype: None
     """
-    ord = Search_box.get().lower()
+    order = Search_box.get().lower()
     Search_box.delete(0, END)
-    parts = ord.split()
+    parts = order.split()
     keyword = parts[0]
     try:
         afterword = " ".join(parts[1:])
@@ -178,14 +178,14 @@ def work(event="") -> None:
     if keyword in ["search", "browse", "srch", "s"]:
 
         Thread(target=task.web, args=(afterword, )).start()
-        history.user_file(name, ord, f'"Searched:" {ord}')
+        history.user_file(name, order, f'"Searched:" {order}')
 
     elif keyword in ["msg"]:
         nameToSend = parts[1]
         msgToSend = " ".join(parts[2:])
         chat_client.sendtoserver(nameToSend, msgToSend)
         del nameToSend, msgToSend
-        history.user_file(name, ord, "Snd msg")
+        history.user_file(name, order, "Snd msg")
     elif keyword in ["bye", "tata", "close", "exit"]:
         quit()
     elif keyword in ["open", "o", "folder"]:
@@ -194,77 +194,77 @@ def work(event="") -> None:
                args=(afterword, )).start()
 
         history.user_file(
-            name, ord, f"Tried to open the folder {afterword}. Status:Unknown")
+            name, order, f"Tried to open the folder {afterword}. Status:Unknown")
 
     elif keyword in ["file", "f"]:
 
         Thread(target=indexer.search_indexed_file, args=(afterword, )).start()
 
         history.user_file(
-            name, ord, f"Tried to open the file {afterword}. Status:Unknown")
+            name, order, f"Tried to open the file {afterword}. Status:Unknown")
     elif keyword == "run":
 
         Thread(target=program_run.program_run, args=(afterword, )).start()
 
-        history.user_file(name, ord, f"Opened {afterword}")
+        history.user_file(name, order, f"Opened {afterword}")
     elif keyword == "firefox":
         Thread(target=task.firefox).start()
-        history.user_file(name, ord, "Opened firefox")
+        history.user_file(name, order, "Opened firefox")
     elif keyword in ["settings", "setting"]:
         talk("I have opened the settings page for you")
         settings.setting_page(name)
 
-        history.user_file(name, ord, "Opened Settings")
+        history.user_file(name, order, "Opened Settings")
     elif keyword == "time":
         task.tell_time()
-        history.user_file(name, ord, "told Time ")
+        history.user_file(name, order, "told Time ")
     elif keyword in ["website", "w"]:
         task.websiteopen(afterword)
-        history.user_file(name, ord, f"Trie to open the website {afterword}")
+        history.user_file(name, order, f"Trie to open the website {afterword}")
 
-    elif ord in ["what is your version", "ver"]:
+    elif order in ["what is your version", "ver"]:
         talk("My version is 1 point 1")
-        history.user_file(name, ord, "Elsa Ver 1.1")
+        history.user_file(name, order, "Elsa Ver 1.1")
 
     elif keyword == "what is your name":
         talk("My name is Elsa")
-        history.user_file(name, ord, "Told version of Elsa")
+        history.user_file(name, order, "Told version of Elsa")
 
     elif keyword in ["hello", "hlo", "hey"]:
         talk("Hi. What can I do for you")
 
-        history.user_file(name, ord, "Greeted user")
+        history.user_file(name, order, "Greeted user")
 
     elif keyword == "hi":
         talk(f"Hello {name}")
 
-        history.user_file(name, ord, "Greeted user")
-    elif ord == "download":
+        history.user_file(name, order, "Greeted user")
+    elif order == "download":
         task.download()
-        history.user_file(name, ord, "Opened downloads folder")
-    elif ord == "desktop":
+        history.user_file(name, order, "Opened downloads folder")
+    elif order == "desktop":
         task.desktop()
-        history.user_file(name, ord, "Opened desktop folder")
-    elif ord == "music":
+        history.user_file(name, order, "Opened desktop folder")
+    elif order == "music":
         task.musicFolder()
-        history.user_file(name, ord, "Opened music folder")
+        history.user_file(name, order, "Opened music folder")
 
-    elif ord in ["show history", "sh"]:
-        history.user_file(name, ord, "Opened history")
+    elif order in ["show history", "sh"]:
+        history.user_file(name, order, "Opened history")
         history.user_read(username=name)
         talk("Opened history")
-    elif ord == "clear history":
+    elif order == "clear history":
         history.clear_history(name)
         talk("Cleared history")
-    elif ord in ["tell jokes", "tell a joke", "joke"]:
+    elif order in ["tell jokes", "tell a joke", "joke"]:
         task.joke()
-        history.user_file(name, ord, "Told a joke")
+        history.user_file(name, order, "Told a joke")
 
-    elif ord == "shutdown":
-        history.user_file(name, ord, "Shutdown the computer")
+    elif order == "shutdown":
+        history.user_file(name, order, "Shutdown the computer")
         task.shutdown()
-    elif ord == "restart":
-        history.user_file(name, ord, "Restarted the computer")
+    elif order == "restart":
+        history.user_file(name, order, "Restarted the computer")
         task.restart()
     else:
 
@@ -272,11 +272,11 @@ def work(event="") -> None:
             talk(
                 "I could not understand what you meant. Do you wanna find it in the internet?"
             )
-            popups.popups(ord)
+            popups.popups(order)
 
         Thread(target=srchUserInput).start()
 
-        history.user_file(name, ord, f"{ord} in internet?")
+        history.user_file(name, order, f"{order} in internet?")
     del parts, keyword, afterword
     gc.collect()
     print("Command processed,Garbage deleted")
