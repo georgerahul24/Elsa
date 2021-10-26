@@ -47,10 +47,7 @@ SECURITY_TRIAL = 0
 
 def quit(event="") -> None:
     """To exit the program"""
-    try:
-        chat_client.closeClient()
-    except:
-        pass
+    exec("try: chat_client.closeClient()\nexcept:pass")
     talk("Tata Bye Bye ")
     history.user_file(name, ord, "User closed")
     exit()
@@ -92,8 +89,7 @@ try:
     print("Connecting to a server")
     chat_client.startclient()
     print("Connected to a server")
-except:
-    print("Could not establish a connection with server")
+except: print("Could not establish a connection with server")
 
 
 # ................command input and processing starts.....................
