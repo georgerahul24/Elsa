@@ -5,20 +5,18 @@ from pathlib import Path
 from threading import Thread
 from tkinter import Tk, Entry, END
 
+import elsabackend
+from elsabackend import quit, print_talk
+
 gc.disable()  # disabling garbage collection as it causes problem with tkinter threads
 
 
-def loading_error_warning(e=''):
+def loading_error_warning(e: Exception = ''):
     print(e, "It seems there some problem with task1 and/or talk1 package and/or magic package and/or the main file is outdated")
     print("Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
           "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1")
     input("Press any key to exit....")
     exit()
-
-
-def ptalk(pri=None, tal=None):
-    print(pri) if pri is not None else 1
-    talk(tal) if tal is not None else 1
 
 
 try:
@@ -45,33 +43,24 @@ except Exception as e:
 CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 print("'Usernames.py' verified successfully") if not CHK else loading_error_warning()
-ptalk("Starting the login page", "Hi. I am Elsa")
+print_talk("Starting the login page", "Hi. I am Elsa")
 SECURITY_TRIAL = 0
-
-
-def quit(event="") -> None:
-    """To exit the program"""
-    exec("try: chat_client.closeClient()\nexcept:pass")
-    ptalk("Tata Bye Bye", "Tata Bye Bye")
-    history.user_file(name, ord, "User closed")
-    exit()
-
 
 # password and username checks
 while True:
     usernames.check_user()
     if usernames.check_user.security:
-        ptalk("Access Granted", "Access Granted")
+        print_talk("Access Granted", "Access Granted")
         task.greeting(usernames.check_user.loginname)
         break
     else:
         print("Access Denied")
         SECURITY_TRIAL += 1
         if SECURITY_TRIAL >= 3:
-            ptalk("You have reached the maximum error limit", "You have reached the maximum error limit")
+            print_talk("You have reached the maximum error limit", "You have reached the maximum error limit")
             exit()
         else:
-            ptalk("Access Denied. Please Try Again","Access Denied. Please Try Again")
+            print_talk("Access Denied. Please Try Again", "Access Denied. Please Try Again")
 
 name = usernames.check_user.loginname
 del CHK, SECURITY_TRIAL
@@ -91,6 +80,8 @@ try:
     print("Connected to a server")
 except: print("Could not establish a connection with server")
 
+backend1list = elsabackend.get_keywords()  # Converting to tuple to increase efficiency
+
 
 # ................command input and processing starts.....................
 def work(event="") -> None:
@@ -103,94 +94,57 @@ def work(event="") -> None:
         afterword = " ".join(parts[1:])
     except:
         afterword = ""
-
     # srch in net
     if keyword in ["search", "browse", "srch", "s"]:
         Thread(target=task.web, args=(afterword,)).start()
         history.user_file(name, order, f'"Searched:" {order}')
-
     elif keyword in ["msg"]:
         chat_client.sendtoserver(nameToSend := parts[1], msgTosend := " ".join(parts[2:]))
         history.user_file(name, order, f"Snd msg to {nameToSend}.Msg was {msgTosend}")
-
-    elif keyword in ["bye", "tata", "close", "exit"]:
-        quit()
-
     elif keyword in ["open", "o", "folder"]:
         Thread(target=indexer.search_indexed_folder, args=(afterword,)).start()
         history.user_file(name, order, f"Tried to open the folder {afterword}. Status:Unknown")
-
     elif keyword in ["file", "f"]:
         Thread(target=indexer.search_indexed_file, args=(afterword,)).start()
         history.user_file(name, order, f"Tried to open the file {afterword}. Status:Unknown")
-
     elif keyword == "run":
         Thread(target=program_run.program_run, args=(afterword,)).start()
         history.user_file(name, order, f"Opened {afterword}")
-
     elif keyword == "firefox":
         Thread(target=task.firefox).start()
         history.user_file(name, order, "Opened firefox")
-
     elif keyword in ["settings", "setting"]:
         talk("I have opened the settings page for you")
         settings.setting_page(name)
         history.user_file(name, order, "Opened Settings")
-
-    elif keyword == "time":
-        task.tell_time()
-        history.user_file(name, order, "told Time ")
-
     elif keyword in ["website", "w"]:
         task.websiteopen(afterword)
         history.user_file(name, order, f"Tried to open the website {afterword}")
-
     elif order in ["what is your version", "ver"]:
         talk("My version is 1 point 1")
-
     elif keyword == "what is your name":
         talk("My name is Elsa")
-
     elif keyword in ["hello", "hlo", "hey"]:
         talk("Hi. What can I do for you")
-
     elif keyword == "hi":
         talk(f"Hello {name}")
-
-    elif order == "download":
-        task.download()
-        history.user_file(name, order, "Opened downloads folder")
-
-    elif order == "desktop":
-        task.desktop()
-        history.user_file(name, order, "Opened desktop folder")
-
-    elif order == "music":
-        task.musicFolder()
-        history.user_file(name, order, "Opened music folder")
-
     elif order in ["show history", "sh"]:
         history.user_read(username=name)
         talk("Opened history")
-
     elif order == "clear history":
         history.clear_history(name)
         talk("Cleared history")
-
-    elif order in ["tell jokes", "tell a joke", "joke"]:
-        task.joke()
-        history.user_file(name, order, "Told a joke")
-
     elif order == "shutdown":
         history.user_file(name, order, "Shutdown the computer")
         task.shutdown()
-
     elif order == "restart":
         history.user_file(name, order, "Restarted the computer")
         task.restart()
+    elif order in backend1list:
+        elsabackend.backend1_1(order, name)
     else:
         def srchUserInput():
-            ptalk(tal="I could not understand what you meant. Do you wanna find it in the internet?")
+            print_talk(tal="I could not understand what you meant. Do you wanna find it in the internet?")
             popups.popups(order)
 
         Thread(target=srchUserInput).start()
@@ -204,10 +158,8 @@ def clearTextbox(event=""):
 
 
 # Binding keyboard shortcuts
-elsagui.bind("<Control-h>", partial(history.user_read, username=name))  # To open histroy page
-elsagui.bind("<Control-e>", quit)  # exiting the program
-elsagui.bind("<Control-s>", partial(settings.setting_page, username=name, state=True))  # To open setting page
-elsagui.bind("<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box))  # syntax highlighting
-elsagui.bind("<Return>", work)  # Binds textbox so that if user presses enter work() is called
-elsagui.bind("<Control-BackSpace>", clearTextbox)
+keybindings = [("<Control-h>", partial(history.user_read, username=name)), ("<Control-e>", quit),
+               ("<Control-s>", partial(settings.setting_page, username=name, state=True)),
+               ("<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box)), ("<Return>", work), ("<Control-BackSpace>", clearTextbox)]
+[elsagui.bind(i[0], i[1]) for i in keybindings]
 elsagui.mainloop()
