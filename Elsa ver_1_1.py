@@ -16,6 +16,11 @@ def loading_error_warning(e=''):
     exit()
 
 
+def ptalk(pri=None, tal=None):
+    print(pri) if pri is not None else 1
+    talk(tal) if tal is not None else 1
+
+
 try:
     from Magic import initial_setup
 
@@ -40,15 +45,14 @@ except Exception as e:
 CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 print("'Usernames.py' verified successfully") if not CHK else loading_error_warning()
-print("Starting the login page")
-talk("Hi. I am Elsa")
+ptalk("Starting the login page", "Hi. I am Elsa")
 SECURITY_TRIAL = 0
 
 
 def quit(event="") -> None:
     """To exit the program"""
     exec("try: chat_client.closeClient()\nexcept:pass")
-    talk("Tata Bye Bye ")
+    ptalk("Tata Bye Bye", "Tata Bye Bye")
     history.user_file(name, ord, "User closed")
     exit()
 
@@ -57,20 +61,17 @@ def quit(event="") -> None:
 while True:
     usernames.check_user()
     if usernames.check_user.security:
-        print("Access Granted")
-        talk("Access Granted")
+        ptalk("Access Granted", "Access Granted")
         task.greeting(usernames.check_user.loginname)
         break
-
     else:
         print("Access Denied")
         SECURITY_TRIAL += 1
         if SECURITY_TRIAL >= 3:
-            print("You have reached the maximum error limit")
-            talk("You have reached the maximum error limit")
+            ptalk("You have reached the maximum error limit", "You have reached the maximum error limit")
             exit()
         else:
-            talk("Access Denied. Please Try Again")
+            ptalk("Access Denied. Please Try Again","Access Denied. Please Try Again")
 
 name = usernames.check_user.loginname
 del CHK, SECURITY_TRIAL
@@ -79,7 +80,6 @@ elsagui = Tk()
 # Reading the screen height and width
 screen_height, screen_width = elsagui.winfo_screenheight(), elsagui.winfo_screenwidth()
 tkinterlib.tkinter_initialise(elsagui, screen_width - 150, screen_height - 100)
-del screen_width, screen_height
 Search_box = Entry(elsagui, bg=bg_colour, fg=text_color)
 Search_box.pack()
 # ..............tkinter initialising ends...............................
@@ -190,7 +190,7 @@ def work(event="") -> None:
         task.restart()
     else:
         def srchUserInput():
-            talk("I could not understand what you meant. Do you wanna find it in the internet?")
+            ptalk(tal="I could not understand what you meant. Do you wanna find it in the internet?")
             popups.popups(order)
 
         Thread(target=srchUserInput).start()
