@@ -15,10 +15,7 @@ def loading_error_warning(e: Exception = ''):
     print(e, "It seems there some problem with task1 and/or talk1 package and/or magic package and/or the main file is outdated")
     print("Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
           "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1")
-    input("Press any key to exit....")
-    exit()
-
-
+    exit(input("Press any key to exit...."))
 try:
     from Magic import initial_setup
 
@@ -28,12 +25,9 @@ try:
     from Magic import history, tkinterlib, popups, program_run, theme, settings, indexer, usernames, highlighter, chat_client
 
     indexer.index_files()
-except Exception as e:
-    loading_error_warning(e)
-
+except Exception as e: loading_error_warning(e)
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
-
 try:
     from task1 import task
     from talk1.talk1 import talk
@@ -45,7 +39,6 @@ CHK = usernames.verify_usernames()
 print("'Usernames.py' verified successfully") if not CHK else loading_error_warning()
 print_talk("Starting the login page", "Hi. I am Elsa")
 SECURITY_TRIAL = 0
-
 # password and username checks
 while True:
     usernames.check_user()
@@ -56,12 +49,8 @@ while True:
     else:
         print("Access Denied")
         SECURITY_TRIAL += 1
-        if SECURITY_TRIAL >= 3:
-            print_talk("You have reached the maximum error limit", "You have reached the maximum error limit")
-            exit()
-        else:
-            print_talk("Access Denied. Please Try Again", "Access Denied. Please Try Again")
-
+        if SECURITY_TRIAL >= 3:exit(print_talk("You have reached the maximum error limit", "You have reached the maximum error limit"))
+        else: print_talk("Access Denied. Please Try Again", "Access Denied. Please Try Again")
 name = usernames.check_user.loginname
 del CHK, SECURITY_TRIAL
 # ..............tkinter initialising starts...............................
@@ -79,10 +68,7 @@ try:
     chat_client.startclient()
     print("Connected to a server")
 except: print("Could not establish a connection with server")
-
 backend1list = elsabackend.get_keywords()  # Converting to tuple to increase efficiency
-
-
 # ................command input and processing starts.....................
 def work(event="") -> None:
     """This is the main function where user input is read and proper actions are taken"""
@@ -151,15 +137,10 @@ def work(event="") -> None:
         history.user_file(name, order, f"Tried to search {order} in internet.Status unknown")
     del parts, keyword, afterword
     gc.collect()
-
-
 def clearTextbox(event=""):
     Search_box.delete(0, END)
-
-
 # Binding keyboard shortcuts
-keybindings = [("<Control-h>", partial(history.user_read, username=name)), ("<Control-e>", quit),
+[elsagui.bind(i[0], i[1]) for i in [("<Control-h>", partial(history.user_read, username=name)), ("<Control-e>", quit),
                ("<Control-s>", partial(settings.setting_page, username=name, state=True)),
-               ("<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box)), ("<Return>", work), ("<Control-BackSpace>", clearTextbox)]
-[elsagui.bind(i[0], i[1]) for i in keybindings]
+               ("<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box)), ("<Return>", work), ("<Control-BackSpace>", clearTextbox)]]
 elsagui.mainloop()
