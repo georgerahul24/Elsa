@@ -11,11 +11,14 @@ from elsabackend import quit, print_talk
 gc.disable()  # disabling garbage collection as it causes problem with tkinter threads
 
 
-def loading_error_warning(e: Exception = ''):
+def loading_error_warning(e: Exception = '')->None:
+    """To load the warning and then exit out of the program"""
     print(e, "It seems there some problem with task1 and/or talk1 package and/or magic package and/or the main file is outdated")
     print("Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
           "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1")
     exit(input("Press any key to exit...."))
+
+
 try:
     from Magic import initial_setup
 
@@ -49,7 +52,7 @@ while True:
     else:
         print("Access Denied")
         SECURITY_TRIAL += 1
-        if SECURITY_TRIAL >= 3:exit(print_talk("You have reached the maximum error limit", "You have reached the maximum error limit"))
+        if SECURITY_TRIAL >= 3: exit(print_talk("You have reached the maximum error limit", "You have reached the maximum error limit"))
         else: print_talk("Access Denied. Please Try Again", "Access Denied. Please Try Again")
 name = usernames.check_user.loginname
 del CHK, SECURITY_TRIAL
@@ -68,12 +71,17 @@ try:
     chat_client.startclient()
     print("Connected to a server")
 except: print("Could not establish a connection with server")
-backend1list = elsabackend.get_keywords()  # Converting to tuple to increase efficiency
+backend1list = elsabackend.get_keywords()
+
+def clearTextbox(event="")->None:
+    """To clear the textbox"""
+    Search_box.delete(0, END)
+
 # ................command input and processing starts.....................
 def work(event="") -> None:
     """This is the main function where user input is read and proper actions are taken"""
     order = Search_box.get().lower()
-    Search_box.delete(0, END)
+    clearTextbox()
     parts = order.split()
     keyword = parts[0]
     try:
@@ -137,10 +145,14 @@ def work(event="") -> None:
         history.user_file(name, order, f"Tried to search {order} in internet.Status unknown")
     del parts, keyword, afterword
     gc.collect()
-def clearTextbox(event=""):
-    Search_box.delete(0, END)
+
+
+
+
+
 # Binding keyboard shortcuts
 [elsagui.bind(i[0], i[1]) for i in [("<Control-h>", partial(history.user_read, username=name)), ("<Control-e>", quit),
-               ("<Control-s>", partial(settings.setting_page, username=name, state=True)),
-               ("<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box)), ("<Return>", work), ("<Control-BackSpace>", clearTextbox)]]
+                                    ("<Control-s>", partial(settings.setting_page, username=name, state=True)),
+                                    ("<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box=Search_box)), ("<Return>", work),
+                                    ("<Control-BackSpace>", clearTextbox)]]
 elsagui.mainloop()
