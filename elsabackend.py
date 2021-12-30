@@ -3,6 +3,15 @@ from Magic import history
 from talk1.talk1 import talk
 from task1 import task
 
+
+def quit(event = "") -> None:
+    """To exit the program"""
+    try: chat_client.closeClient()
+    except: pass
+    print_talk("Tata Bye Bye", "Tata Bye Bye")
+    exit()
+
+
 backend1_1_dict = {"bye": (quit, "User exited"), "tata": (quit, "User exited"), "close": (quit, "User exited"), "exit": (quit, "User exited"),
                    "time": (task.tell_time, "Told the time"), "download": (task.download, "Opened downloads folder"),
                    "desktop": (task.desktop, "Opened desktop folder"), "music": (task.musicFolder, "Opened music folder"),
@@ -14,14 +23,6 @@ def print_talk(pri: str = None, tal: str = None) -> None:
     """To print aas well as talk the necessary input"""
     print(pri) if pri is not None else None
     talk(tal) if tal is not None else None
-
-
-def quit(event="") -> None:
-    """To exit the program"""
-    try: chat_client.closeClient()
-    except: pass
-    print_talk("Tata Bye Bye", "Tata Bye Bye")
-    exit()
 
 
 def get_keywords() -> tuple:

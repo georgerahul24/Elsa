@@ -5,6 +5,8 @@ from pathlib import Path
 from threading import Thread
 from tkinter import Tk, Entry, END
 
+import Magic.highlighter
+
 import task1.todo
 from task1.todo import todohandler
 import elsabackend
@@ -81,7 +83,8 @@ try:
 except:
     print("Could not establish a connection with server")
 backend1list = elsabackend.get_keywords()
-#.....initialising reminder...
+
+# .....initialising reminder...
 Thread(target = todohandler.start).start()
 
 
@@ -95,73 +98,73 @@ def work(event = "") -> None:
     """This is the main function where user input is read and proper actions are taken"""
     order = Search_box.get().lower()
     clearTextbox()
-    parts = order.split()
-    keyword = parts[0]
-    try:
-        afterword = " ".join(parts[1:])
-    except:
-        afterword = ""
-    # srch in net
-    if keyword in {"search", "browse", "srch", "s"}:
-        Thread(target = task.web, args = (afterword,)).start()
-        history.user_file(name, order, f'"Searched:" {order}')
-    elif keyword in {"msg"}:
-        chat_client.sendtoserver(nameToSend := parts[1], msgTosend := " ".join(parts[2:]))
-        history.user_file(name, order, f"Snd msg to {nameToSend}.Msg was {msgTosend}")
-    elif keyword in {"open", "o", "folder"}:
-        Thread(target = indexer.search_indexed_folder, args = (afterword,)).start()
-        history.user_file(name, order, f"Tried to open the folder {afterword}. Status:Unknown")
-    elif keyword in {"file", "f"}:
-        Thread(target = indexer.search_indexed_file, args = (afterword,)).start()
-        history.user_file(name, order, f"Tried to open the file {afterword}. Status:Unknown")
-    elif keyword == "run":
-        Thread(target = program_run.program_run, args = (afterword,)).start()
-        history.user_file(name, order, f"Opened {afterword}")
-    elif keyword == "firefox":
-        Thread(target = task.firefox).start()
-        history.user_file(name, order, "Opened firefox")
-    elif keyword in {"settings", "setting"}:
-        talk("I have opened the settings page for you")
-        settings.setting_page(name)
-        history.user_file(name, order, "Opened Settings")
-    elif keyword in {"website", "w"}:
-        task.websiteopen(afterword)
-        history.user_file(name, order, f"Tried to open the website {afterword}")
-    elif keyword in {"rem","rm","reminder"}:
+    parts = order.split(maxsplit = 1)
+    if len(parts) < 2: parts += ['', ]
+    keyword, afterword = parts[0], parts[1]
 
-            task1.todo.addTodos(parts[1],parts[2])
+    match keyword:
+        case "search" | "browse" | "srch" | "s":
+            Thread(target = task.web, args = (afterword,)).start()
+            history.user_file(name, order, f'"Searched:" {order}')
+        case "msg":
+            chat_client.sendtoserver(nameToSend := parts[1], msgTosend := " ".join(parts[2:]))
+            history.user_file(name, order, f"Snd msg to {nameToSend}.Msg was {msgTosend}")
+        case "open" | "o" | "folder":
+            Thread(target = indexer.search_indexed_folder, args = (afterword,)).start()
+            history.user_file(name, order, f"Tried to open the folder {afterword}. Status:Unknown")
+        case "file" | "f":
+            Thread(target = indexer.search_indexed_file, args = (afterword,)).start()
+            history.user_file(name, order, f"Tried to open the file {afterword}. Status:Unknown")
+        case "run":
+            Thread(target = program_run.program_run, args = (afterword,)).start()
+            history.user_file(name, order, f"Opened {afterword}")
+        case "firefox":
+            Thread(target = task.firefox).start()
+            history.user_file(name, order, "Opened firefox")
+        case "settings"|"setting":
+            talk("I have opened the settings page for you")
+            settings.setting_page(name)
+            history.user_file(name, order, "Opened Settings")
+        case "website" | "w":
+            task.websiteopen(afterword)
+            history.user_file(name, order, f"Tried to open the website {afterword}")
+        case "rem" | "rm" | "reminder":
+            task1.todo.addTodos(parts[1], parts[2])
             talk(f"Added reminder for {parts[1]}")
-            history.user_file(name, order,f"Added reminder name:{parts[1]} date:{parts[2]}")
+            history.user_file(name, order, f"Added reminder name:{parts[1]} date:{parts[2]}")
+        case "hello" | "hlo" | "hey":
+            talk("Hi. What can I do for you")
+        case "hi":
+            talk(f"Hello {name}")
+        case _:
+            match order:
+                case "what is your version" | "ver":
+                    talk("My version is 1 point 1")
+                case "what is your name":
+                    talk("My name is Elsa")
+                case "show history" | "sh":
+                    history.user_read(username = name)
+                    talk("Opened history")
+                case "clear history":
+                    history.clear_history(name)
+                    talk("Cleared history")
+                case "shutdown":
+                    history.user_file(name, order, "Shutdown the computer")
+                    task.shutdown()
+                case "restart":
+                    history.user_file(name, order, "Restarted the computer")
+                    task.restart()
+                case _:
+                    if order in backend1list:
+                        elsabackend.backend1_1(order, name)
+                    else:
+                        def srchUserInput():
+                            print_talk(tal = "I could not understand what you meant. Do you wanna find it in the internet?")
+                            popups.popups(order)
 
-    elif order in {"what is your version", "ver"}:
-        talk("My version is 1 point 1")
-    elif keyword == "what is your name":
-        talk("My name is Elsa")
-    elif keyword in {"hello", "hlo", "hey"}:
-        talk("Hi. What can I do for you")
-    elif keyword == "hi":
-        talk(f"Hello {name}")
-    elif order in {"show history", "sh"}:
-        history.user_read(username = name)
-        talk("Opened history")
-    elif order == "clear history":
-        history.clear_history(name)
-        talk("Cleared history")
-    elif order == "shutdown":
-        history.user_file(name, order, "Shutdown the computer")
-        task.shutdown()
-    elif order == "restart":
-        history.user_file(name, order, "Restarted the computer")
-        task.restart()
-    elif order in backend1list:
-        elsabackend.backend1_1(order, name)
-    else:
-        def srchUserInput():
-            print_talk(tal = "I could not understand what you meant. Do you wanna find it in the internet?")
-            popups.popups(order)
+                        Thread(target = srchUserInput).start()
+                        history.user_file(name, order, f"Tried to search {order} in internet.Status unknown")
 
-        Thread(target = srchUserInput).start()
-        history.user_file(name, order, f"Tried to search {order} in internet.Status unknown")
     del parts, keyword, afterword
     gc.collect()
 
