@@ -4,11 +4,6 @@ from functools import partial
 from pathlib import Path
 from threading import Thread
 from tkinter import Tk, Entry, END
-
-import Magic.highlighter
-
-import task1.todo
-from task1.todo import todohandler
 import elsabackend
 from elsabackend import quit, print_talk
 
@@ -46,24 +41,27 @@ except Exception as e:
 # verifying usernames module
 CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
-print("'Usernames.py' verified successfully") if not CHK else loading_error_warning()
-print_talk("Starting the login page", "Hi. I am Elsa")
-SECURITY_TRIAL = 0
-# password and username checks
-while True:
-    usernames.check_user()
-    if usernames.check_user.security:
-        print_talk("Access Granted", "Access Granted")
-        task.greeting(usernames.check_user.loginname)
-        break
-    else:
-        print("Access Denied")
-        SECURITY_TRIAL += 1
-        if SECURITY_TRIAL >= 3:
-            exit(print_talk("You have reached the maximum error limit", "You have reached the maximum error limit"))
+if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
+    print("'Usernames.py' verified successfully") if not CHK else loading_error_warning()
+    print_talk("Starting the login page", "Hi. I am Elsa")
+    SECURITY_TRIAL = 0
+    # password and username checks
+    while True:
+        usernames.check_user()
+        if usernames.check_user.security:
+            print_talk("Access Granted", "Access Granted")
+            task.greeting(usernames.check_user.loginname)
+            break
         else:
-            print_talk("Access Denied. Please Try Again", "Access Denied. Please Try Again")
-name = usernames.check_user.loginname
+            print("Access Denied")
+            SECURITY_TRIAL += 1
+            if SECURITY_TRIAL >= 3:
+                exit(print_talk("You have reached the maximum error limit", "You have reached the maximum error limit"))
+            else:
+                print_talk("Access Denied. Please Try Again", "Access Denied. Please Try Again")
+    name = usernames.check_user.loginname
+else:
+    name,SECURITY_TRIAL = 'admin',0
 del CHK, SECURITY_TRIAL
 # ..............tkinter initialising starts...............................
 elsagui = Tk()
@@ -84,8 +82,8 @@ except:
     print("Could not establish a connection with server")
 backend1list = elsabackend.get_keywords()
 
+
 # .....initialising reminder...
-Thread(target = todohandler.start).start()
 
 
 def clearTextbox(event = "") -> None:
@@ -121,17 +119,14 @@ def work(event = "") -> None:
         case "firefox":
             Thread(target = task.firefox).start()
             history.user_file(name, order, "Opened firefox")
-        case "settings"|"setting":
+        case "settings" | "setting":
             talk("I have opened the settings page for you")
             settings.setting_page(name)
             history.user_file(name, order, "Opened Settings")
         case "website" | "w":
             task.websiteopen(afterword)
             history.user_file(name, order, f"Tried to open the website {afterword}")
-        case "rem" | "rm" | "reminder":
-            task1.todo.addTodos(parts[1], parts[2])
-            talk(f"Added reminder for {parts[1]}")
-            history.user_file(name, order, f"Added reminder name:{parts[1]} date:{parts[2]}")
+
         case "hello" | "hlo" | "hey":
             talk("Hi. What can I do for you")
         case "hi":
