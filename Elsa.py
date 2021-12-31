@@ -99,6 +99,7 @@ def work(event = "") -> None:
     parts = order.split(maxsplit = 1)
     if len(parts) < 2: parts += ['', ]
     keyword, afterword = parts[0], parts[1]
+    parts=order.split()
 
     match keyword:
         case "search" | "browse" | "srch" | "s":

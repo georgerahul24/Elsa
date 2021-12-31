@@ -5,3 +5,5 @@
 *.elsa
 *.json
 /.idea/*
+/Magic/*
+/task1/*
