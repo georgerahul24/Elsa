@@ -7,7 +7,7 @@ from tkinter import Tk, Entry, END
 import elsabackend
 from elsabackend import quit, print_talk
 import updater
-updater.updater()
+Thread(target=updater.updater).start()
 gc.disable()  # disabling garbage collection as it causes problem with tkinter threads
 
 
