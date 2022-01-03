@@ -19,7 +19,6 @@ def updater():
         # Updating packages
         subprocess.Popen("pip install --upgrade magicforelsa", stdout = subprocess.DEVNULL)
         subprocess.Popen("pip install --upgrade task1", stdout = subprocess.DEVNULL)
-        subprocess.Popen("pip install --upgrade talk1", stdout = subprocess.DEVNULL)
         # Finding the latest version
         url = "https://api.github.com/repos/georgerahul24/viraver1.1/tags"
         result = json.load(urllib.request.urlopen(url))
@@ -54,3 +53,6 @@ def updater():
         print("Closing updater...")
     except Exception as e:
         print(f"Error in updater: {e}")
+
+
+if __name__ == "__main__": updater()

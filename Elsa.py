@@ -133,6 +133,10 @@ def work(event = "") -> None:
             talk("Hi. What can I do for you")
         case "hi":
             talk(f"Hello {name}")
+        case "fsync":
+            chat_client.sendThemeToServer()
+        case "sync":
+            chat_client.requestSync()
         case _:
             match order:
                 case "what is your version" | "ver":
