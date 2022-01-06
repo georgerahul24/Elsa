@@ -24,7 +24,7 @@ try:
     from Magic import initial_setup
 
     # Checks if initial.elsa exists.If it doesn't exist the initial setup is run.....
-    initial_file = Path((os.getcwd() + "\\resources\\ initial.elsa"))
+    initial_file = Path((os.getcwd() + "/resources/ initial.elsa"))
     print("'initial.elsa' found") if initial_file.exists() else initial_setup.install_files()
     from Magic import (history, tkinterlib, popups, program_run, theme, settings, indexer, usernames, highlighter,
                        chat_client)
