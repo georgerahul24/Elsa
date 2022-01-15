@@ -8,7 +8,7 @@ def quit(event = "") -> None:
     """To exit the program"""
     try: chat_client.closeClient()
     except: pass
-    print_talk("Tata Bye Bye", "Tata Bye Bye")
+    talk("Tata Bye Bye", True)
     exit()
 
 
@@ -17,12 +17,6 @@ backend1_1_dict = {"bye": (quit, "User exited"), "tata": (quit, "User exited"), 
                    "desktop": (task.desktop, "Opened desktop folder"), "music": (task.musicFolder, "Opened music folder"),
                    "tell jokes": (task.joke, "Told a joke"),
                    "tell a joke": (task.joke, "Told a joke"), "joke": (task.joke, "Told a joke")}
-
-
-def print_talk(pri: str = None, tal: str = None) -> None:
-    """To print aas well as talk the necessary input"""
-    print(pri) if pri is not None else None
-    talk(tal) if tal is not None else None
 
 
 def get_keywords() -> tuple:

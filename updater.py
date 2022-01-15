@@ -9,7 +9,7 @@ current_version = 273
 download_path = 'resources/newver.zip'
 
 
-def updater():
+def updater()->None:
     """This function is used to update the program.
     It uses pip install --upgrade <package> to update the package.
     Then, it connects to the internet and uses git api toget all the release details of Elsa

@@ -5,9 +5,10 @@ from pathlib import Path
 from threading import Thread
 from tkinter import Tk, Entry, END
 import elsabackend
-from elsabackend import quit, print_talk
+from elsabackend import quit
 import updater
-Thread(target=updater.updater).start()
+
+Thread(target = updater.updater).start()
 gc.disable()  # disabling garbage collection as it causes problem with tkinter threads
 
 
@@ -43,26 +44,26 @@ except Exception as e:
 CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
-    print("'Usernames.py' verified successfully") if not CHK else loading_error_warning()
-    print_talk("Starting the login page", "Hi. I am Elsa")
+    print("'Usernames.py' verified successfully\nStarting the login page") if not CHK else loading_error_warning()
+    talk("Hi. I am Elsa")
     SECURITY_TRIAL = 0
     # password and username checks
     while True:
         usernames.check_user()
         if usernames.check_user.security:
-            print_talk("Access Granted", "Access Granted")
+            talk("Access Granted", True)
             task.greeting(usernames.check_user.loginname)
             break
         else:
             print("Access Denied")
             SECURITY_TRIAL += 1
             if SECURITY_TRIAL >= 3:
-                exit(print_talk("You have reached the maximum error limit", "You have reached the maximum error limit"))
+                exit(talk("You have reached the maximum error limit", True))
             else:
-                print_talk("Access Denied. Please Try Again", "Access Denied. Please Try Again")
+                talk("Access Denied. Please Try Again", True)
     name = usernames.check_user.loginname
 else:
-    name,SECURITY_TRIAL = 'admin',0
+    name, SECURITY_TRIAL = 'admin', 0
 del CHK, SECURITY_TRIAL
 # ..............tkinter initialising starts...............................
 elsagui = Tk()
@@ -100,7 +101,7 @@ def work(event = "") -> None:
     parts = order.split(maxsplit = 1)
     if len(parts) < 2: parts += ['', ]
     keyword, afterword = parts[0], parts[1]
-    parts=order.split()
+    parts = order.split()
 
     match keyword:
         case "search" | "browse" | "srch" | "s":
@@ -160,7 +161,7 @@ def work(event = "") -> None:
                         elsabackend.backend1_1(order, name)
                     else:
                         def srchUserInput():
-                            print_talk(tal = "I could not understand what you meant. Do you wanna find it in the internet?")
+                            talk("I could not understand what you meant. Do you wanna find it in the internet?")
                             popups.popups(order)
 
                         Thread(target = srchUserInput).start()
