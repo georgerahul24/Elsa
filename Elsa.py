@@ -111,17 +111,14 @@ def work(event = "") -> None:
             chat_client.sendtoserver(nameToSend := parts[1], msgTosend := " ".join(parts[2:]))
             history.user_file(name, order, f"Snd msg to {nameToSend}.Msg was {msgTosend}")
         case "open" | "o" | "folder":
-            Thread(target = indexer.search_indexed_folder, args = (afterword,)).start()
+            Thread(target = indexer.fsearch, args = ('folder',afterword)).start()
             history.user_file(name, order, f"Tried to open the folder {afterword}. Status:Unknown")
         case "file" | "f":
-            Thread(target = indexer.search_indexed_file, args = (afterword,)).start()
+            Thread(target = indexer.fsearch, args = ('file',afterword)).start()
             history.user_file(name, order, f"Tried to open the file {afterword}. Status:Unknown")
         case "run":
             Thread(target = program_run.program_run, args = (afterword,)).start()
             history.user_file(name, order, f"Opened {afterword}")
-        case "firefox":
-            Thread(target = task.firefox).start()
-            history.user_file(name, order, "Opened firefox")
         case "settings" | "setting":
             talk("I have opened the settings page for you")
             settings.setting_page(name)
