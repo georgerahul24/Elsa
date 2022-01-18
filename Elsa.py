@@ -31,8 +31,7 @@ try:
                        chat_client)
 
     indexer.index_files()
-except Exception as e:
-    loading_error_warning(e)
+except Exception as e: loading_error_warning(e)
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
@@ -64,7 +63,6 @@ if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
     name = usernames.check_user.loginname
 else:
     name, SECURITY_TRIAL = 'admin', 0
-del CHK, SECURITY_TRIAL
 # ..............tkinter initialising starts...............................
 elsagui = Tk()
 # Reading the screen height and width
@@ -84,13 +82,8 @@ except:
     print("Could not establish a connection with server")
 backend1list = elsabackend.get_keywords()
 
-
 # .....initialising reminder...
-
-
-def clearTextbox(event = "") -> None:
-    """To clear the textbox"""
-    Search_box.delete(0, END)
+clearTextbox = lambda event = "": Search_box.delete(0, END)  # TO clear the textbox
 
 
 # ................command input and processing starts.....................
@@ -111,10 +104,10 @@ def work(event = "") -> None:
             chat_client.sendtoserver(nameToSend := parts[1], msgTosend := " ".join(parts[2:]))
             history.user_file(name, order, f"Snd msg to {nameToSend}.Msg was {msgTosend}")
         case "open" | "o" | "folder":
-            Thread(target = indexer.fsearch, args = ('folder',afterword)).start()
+            Thread(target = indexer.fsearch, args = ('folder', afterword)).start()
             history.user_file(name, order, f"Tried to open the folder {afterword}. Status:Unknown")
         case "file" | "f":
-            Thread(target = indexer.fsearch, args = ('file',afterword)).start()
+            Thread(target = indexer.fsearch, args = ('file', afterword)).start()
             history.user_file(name, order, f"Tried to open the file {afterword}. Status:Unknown")
         case "run":
             Thread(target = program_run.program_run, args = (afterword,)).start()
@@ -126,7 +119,6 @@ def work(event = "") -> None:
         case "website" | "w":
             task.websiteopen(afterword)
             history.user_file(name, order, f"Tried to open the website {afterword}")
-
         case "hello" | "hlo" | "hey":
             talk("Hi. What can I do for you")
         case "hi":
@@ -164,7 +156,6 @@ def work(event = "") -> None:
                         Thread(target = srchUserInput).start()
                         history.user_file(name, order, f"Tried to search {order} in internet.Status unknown")
 
-    del parts, keyword, afterword
     gc.collect()
 
 
@@ -172,6 +163,5 @@ def work(event = "") -> None:
 [elsagui.bind(i[0], i[1]) for i in [("<Control-h>", partial(history.user_read, username = name)), ("<Control-e>", quit),
                                     ("<Control-s>", partial(settings.setting_page, username = name, state = True)),
                                     ("<KeyRelease>", partial(highlighter.syntax_highlighting, Search_box = Search_box)),
-                                    ("<Return>", work),
-                                    ("<Control-BackSpace>", clearTextbox)]]
+                                    ("<Return>", work), ("<Control-BackSpace>", clearTextbox)]]
 elsagui.mainloop()
