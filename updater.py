@@ -5,7 +5,7 @@ import zipfile
 import shutil
 import os
 
-current_version = 273
+current_version = 286
 download_path = 'resources/newver.zip'
 
 
