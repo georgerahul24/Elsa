@@ -42,7 +42,8 @@ except Exception as e:
 # verifying usernames module
 CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
-if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
+if True:
+#if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
     print("'Usernames.py' verified successfully\nStarting the login page") if not CHK else loading_error_warning()
     talk("Hi. I am Elsa")
     SECURITY_TRIAL = 0
