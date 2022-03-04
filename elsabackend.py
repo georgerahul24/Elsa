@@ -13,7 +13,7 @@ def quit(event = "") -> None:
 
 
 backend1_1_dict = {"bye": (quit, "User exited"), "tata": (quit, "User exited"), "close": (quit, "User exited"), "exit": (quit, "User exited"),
-                   "time": (task.tell_time, "Told the time"), "download": (task.download, "Opened downloads folder"),
+                   "download": (task.download, "Opened downloads folder"),
                    "desktop": (task.desktop, "Opened desktop folder"), "music": (task.musicFolder, "Opened music folder"),
                    "tell jokes": (task.joke, "Told a joke"),
                    "tell a joke": (task.joke, "Told a joke"), "joke": (task.joke, "Told a joke")}

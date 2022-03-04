@@ -6,7 +6,7 @@ from threading import Thread
 from tkinter import Tk, Entry, END
 import elsabackend
 from elsabackend import quit
-import updater
+import updater, plugin_loader
 
 Thread(target = updater.updater).start()
 gc.disable()  # disabling garbage collection as it causes problem with tkinter threads
@@ -42,8 +42,8 @@ except Exception as e:
 # verifying usernames module
 CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
-if True:
-#if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
+#if True:
+if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
     print("'Usernames.py' verified successfully\nStarting the login page") if not CHK else loading_error_warning()
     talk("Hi. I am Elsa")
     SECURITY_TRIAL = 0
@@ -85,7 +85,7 @@ backend1list = elsabackend.get_keywords()
 
 # .....initialising reminder...
 clearTextbox = lambda event = "": Search_box.delete(0, END)  # TO clear the textbox
-
+pluginwords=plugin_loader.pluginhandlerdict.keys()
 
 # ................command input and processing starts.....................
 def work(event = "") -> None:
@@ -149,6 +149,8 @@ def work(event = "") -> None:
                 case _:
                     if order in backend1list:
                         elsabackend.backend1_1(order, name)
+                    elif order in pluginwords:
+                        plugin_loader.plugin_handler(keyword,afterword)
                     else:
                         def srchUserInput():
                             talk("I could not understand what you meant. Do you wanna find it in the internet?")
