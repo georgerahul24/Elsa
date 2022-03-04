@@ -1,8 +1,6 @@
-username = 'gr'
-
-
 def greetuser(afterword):
-    print("Hello, " + username.title() + "!")
+    print("This program is created by GR!!!")
+
 
 
 plugin_loader = (('abcd', greetuser),)
