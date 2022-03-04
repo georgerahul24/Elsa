@@ -74,7 +74,7 @@ Search_box.pack()
 # ..............tkinter initialising ends...............................
 # ...initialising chat client..........
 chat_client.getNickname(name)
-
+history.currentuser= name
 try:
     print("Connecting to a server")
     chat_client.startclient()
@@ -100,26 +100,26 @@ def work(event = "") -> None:
     match keyword:
         case "search" | "browse" | "srch" | "s":
             Thread(target = task.web, args = (afterword,)).start()
-            history.user_file(name, order, f'"Searched:" {order}')
+            history.user_file(order, f'"Searched:" {order}')
         case "msg":
             chat_client.sendtoserver(nameToSend := parts[1], msgTosend := " ".join(parts[2:]))
-            history.user_file(name, order, f"Snd msg to {nameToSend}.Msg was {msgTosend}")
+            history.user_file(order, f"Snd msg to {nameToSend}.Msg was {msgTosend}")
         case "open" | "o" | "folder":
             Thread(target = indexer.fsearch, args = ('folder', afterword)).start()
-            history.user_file(name, order, f"Tried to open the folder {afterword}. Status:Unknown")
+            history.user_file(order, f"Tried to open the folder {afterword}. Status:Unknown")
         case "file" | "f":
             Thread(target = indexer.fsearch, args = ('file', afterword)).start()
-            history.user_file(name, order, f"Tried to open the file {afterword}. Status:Unknown")
+            history.user_file(order, f"Tried to open the file {afterword}. Status:Unknown")
         case "run":
             Thread(target = program_run.program_run, args = (afterword,)).start()
-            history.user_file(name, order, f"Opened {afterword}")
+            history.user_file(order, f"Opened {afterword}")
         case "settings" | "setting":
             talk("I have opened the settings page for you")
             settings.setting_page(name)
-            history.user_file(name, order, "Opened Settings")
+            history.user_file(order, "Opened Settings")
         case "website" | "w":
             task.websiteopen(afterword)
-            history.user_file(name, order, f"Tried to open the website {afterword}")
+            history.user_file(order, f"Tried to open the website {afterword}")
         case "hello" | "hlo" | "hey":
             talk("Hi. What can I do for you")
         case "hi":
@@ -141,14 +141,14 @@ def work(event = "") -> None:
                     history.clear_history(name)
                     talk("Cleared history")
                 case "shutdown":
-                    history.user_file(name, order, "Shutdown the computer")
+                    history.user_file(order, "Shutdown the computer")
                     task.shutdown()
                 case "restart":
-                    history.user_file(name, order, "Restarted the computer")
+                    history.user_file(order, "Restarted the computer")
                     task.restart()
                 case _:
                     if order in backend1list:
-                        elsabackend.backend1_1(order, name)
+                        elsabackend.backend1_1(order)
                     elif order in pluginwords:
                         plugin_loader.plugin_handler(keyword,afterword)
                     else:
@@ -157,7 +157,7 @@ def work(event = "") -> None:
                             popups.popups(order)
 
                         Thread(target = srchUserInput).start()
-                        history.user_file(name, order, f"Tried to search {order} in internet.Status unknown")
+                        history.user_file(order, f"Tried to search {order} in internet.Status unknown")
 
     gc.collect()
 

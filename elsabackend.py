@@ -24,8 +24,8 @@ def get_keywords() -> tuple:
     return tuple(backend1_1_dict.keys())
 
 
-def backend1_1(order: str, name: str) -> None:
+def backend1_1(order: str) -> None:
     """This function takes the necessary actions according to the input given and then writes
     it to the history file"""
     backend1_1_dict[order][0]()
-    history.user_file(name, order, backend1_1_dict[order][1])
+    history.user_file(order, backend1_1_dict[order][1])

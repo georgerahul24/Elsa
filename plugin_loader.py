@@ -1,5 +1,6 @@
 import os
 import shutil
+from Magic import history
 
 try:
     # __pycache__ causing some problems...so deleting it every time it starts...
@@ -21,3 +22,4 @@ print("Finished Loading Plugins")
 
 def plugin_handler(keyword, afterword):
     pluginhandlerdict[keyword](afterword)
+    history.user_file(keyword + afterword, "Using plugins to resolve the query")
