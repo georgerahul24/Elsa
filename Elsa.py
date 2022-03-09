@@ -1,5 +1,4 @@
-import gc
-import os
+import gc, os
 from functools import partial
 from pathlib import Path
 from threading import Thread
@@ -42,7 +41,7 @@ except Exception as e:
 # verifying usernames module
 CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
-#if True:
+# if True:
 if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
     print("'Usernames.py' verified successfully\nStarting the login page") if not CHK else loading_error_warning()
     talk("Hi. I am Elsa")
@@ -64,7 +63,8 @@ if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
     name = usernames.check_user.loginname
 else:
     name, SECURITY_TRIAL = 'admin', 0
-# ..............tkinter initialising starts...............................
+    # ..............tkinter initialising starts...............................
+
 elsagui = Tk()
 # Reading the screen height and width
 screen_height, screen_width = elsagui.winfo_screenheight(), elsagui.winfo_screenwidth()
@@ -74,7 +74,8 @@ Search_box.pack()
 # ..............tkinter initialising ends...............................
 # ...initialising chat client..........
 chat_client.getNickname(name)
-history.currentuser= name
+history.currentuser = name
+
 try:
     print("Connecting to a server")
     chat_client.startclient()
@@ -85,7 +86,8 @@ backend1list = elsabackend.get_keywords()
 
 # .....initialising reminder...
 clearTextbox = lambda event = "": Search_box.delete(0, END)  # TO clear the textbox
-pluginwords=plugin_loader.pluginhandlerdict.keys()
+pluginwords = plugin_loader.pluginhandlerdict.keys()
+
 
 # ................command input and processing starts.....................
 def work(event = "") -> None:
@@ -129,35 +131,35 @@ def work(event = "") -> None:
         case "sync":
             chat_client.requestSync()
         case _:
-            match order:
-                case "what is your version" | "ver":
-                    talk("My version is 1 point 1")
-                case "what is your name":
-                    talk("My name is Elsa")
-                case "show history" | "sh":
-                    history.user_read(username = name)
-                    talk("Opened history")
-                case "clear history":
-                    history.clear_history(name)
-                    talk("Cleared history")
-                case "shutdown":
-                    history.user_file(order, "Shutdown the computer")
-                    task.shutdown()
-                case "restart":
-                    history.user_file(order, "Restarted the computer")
-                    task.restart()
-                case _:
-                    if order in backend1list:
-                        elsabackend.backend1_1(order)
-                    elif order in pluginwords:
-                        plugin_loader.plugin_handler(keyword,afterword)
-                    else:
-                        def srchUserInput():
-                            talk("I could not understand what you meant. Do you wanna find it in the internet?")
-                            popups.popups(order)
+            if keyword in pluginwords:
+                plugin_loader.plugin_handler(keyword, afterword)
+            else:
+                match order:
+                    case "what is your version" | "ver":
+                        talk("My version is 1 point 1")
+                    case "show history" | "sh":
+                        history.user_read(username = name)
+                        talk("Opened history")
+                    case "clear history":
+                        history.clear_history(name)
+                        talk("Cleared history")
+                    case "shutdown":
+                        history.user_file(order, "Shutdown the computer")
+                        task.shutdown()
+                    case "restart":
+                        history.user_file(order, "Restarted the computer")
+                        task.restart()
+                    case _:
+                        if order in backend1list:
+                            elsabackend.backend1_1(order)
 
-                        Thread(target = srchUserInput).start()
-                        history.user_file(order, f"Tried to search {order} in internet.Status unknown")
+                        else:
+                            def srchUserInput():
+                                talk("I could not understand what you meant. Do you wanna find it in the internet?")
+                                popups.popups(order)
+
+                            Thread(target = srchUserInput).start()
+                            history.user_file(order, f"Tried to search {order} in internet.Status unknown")
 
     gc.collect()
 
