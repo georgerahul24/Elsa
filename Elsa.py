@@ -1,14 +1,8 @@
-import gc, os
-from functools import partial
+import gc, os, time
+import threading
 from pathlib import Path
-from threading import Thread
-from tkinter import Tk, Entry, END
-import elsabackend
-from elsabackend import quit
-import updater, plugin_loader
 
-Thread(target = updater.updater).start()
-gc.disable()  # disabling garbage collection as it causes problem with tkinter threads
+startuptime = time.time()
 
 
 def loading_error_warning(e: Exception = '') -> None:
@@ -31,6 +25,17 @@ try:
 
     indexer.index_files()
 except Exception as e: loading_error_warning(e)
+from functools import partial
+from threading import Thread
+from tkinter import Tk, Entry, END
+import elsabackend
+
+from elsabackend import quit
+import updater, plugin_loader
+
+Thread(target = updater.updater).start()
+gc.disable()  # disabling garbage collection as it causes problem with tkinter threads
+
 # Reading the themes for the tkinter window and all
 bg_colour, text_color, button_colour = theme.read_theme()
 try:
@@ -40,6 +45,7 @@ except Exception as e:
     loading_error_warning(e)
 # verifying usernames module
 CHK = usernames.verify_usernames()
+
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 # if True:
 if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
@@ -75,19 +81,17 @@ Search_box.pack()
 # ...initialising chat client..........
 chat_client.getNickname(name)
 history.currentuser = name
-
 try:
     print("Connecting to a server")
-    chat_client.startclient()
+    threading.Thread(target = chat_client.startclient).start()
     print("Connected to a server")
 except:
     print("Could not establish a connection with server")
 backend1list = elsabackend.get_keywords()
-
 # .....initialising reminder...
 clearTextbox = lambda event = "": Search_box.delete(0, END)  # TO clear the textbox
 pluginwords = plugin_loader.pluginhandlerdict.keys()
-
+print("Startuptime :", time.time() - startuptime)
 
 # ................command input and processing starts.....................
 def work(event = "") -> None:

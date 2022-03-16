@@ -23,7 +23,7 @@ def popups(srch: str) -> None:
 
 def resetelsapopup() -> None:
     """Gui and backend for resetting Elsa"""
-    import os
+    import os,subprocess
     import shutil
     from talk1.talk1 import talk
     from pathlib import Path
@@ -36,12 +36,13 @@ def resetelsapopup() -> None:
 
     def Yes(event = "") -> None:
         talk("Please wait for a moment. Elsa is being reset")
-        talk("Just run elsa after it shutdowns")
+
         print("Resetting Elsa")
         time.sleep(1)
         shutil.rmtree(Path(os.getcwd() + "/resources"))
         try: chat_client.closeClient()  # Closing chat client as it is not daemonic thread
         except: pass
+        talk("Reset Complete. Please run Elsa again.")
         exit()
 
     TButton(popupWindow, text = "Yes", command = Yes).place(x = 60, y = 20)

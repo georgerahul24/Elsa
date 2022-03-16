@@ -2,6 +2,7 @@ import json, os, pathlib
 from functools import partial
 from tkinter import Tk
 from Magic import theme, indexer, file_database
+from talk1.talk1 import talk
 
 
 def folderchooser() -> None:
@@ -13,16 +14,16 @@ def folderchooser() -> None:
 
 def filesInstaller() -> None:
     """Add all the files that should be initially written"""
-    folderpath = pathlib.Path((os.getcwd() + "/resources"))
+    folderpath = pathlib.Path(f'{os.getcwd()}/resources')
     if not os.path.exists(folderpath): os.makedirs(folderpath)  # Make the resources folder if it does not exists
-    dummytpth = os.getcwd() + "/resources/ dummy.elsa"
+    dummytpth = f'{os.getcwd()}/resources/ dummy.elsa'
     with open(dummytpth, "w") as f: f.write("Hey!The file you are looking is not found.Try again later")
-    initpth = os.getcwd() + "/resources/ initial.elsa"
+    initpth = f'{os.getcwd()}/resources/ initial.elsa'
     with open(initpth, "w") as f: f.write(
         "black;purple;light green\n#The order is bg,font color,button colour\n#Please remember to use ';' to separate colours :D")
-    indexerpth = os.getcwd() + "/resources/ indexerpaths.elsa"
+    indexerpth = f'{os.getcwd()}/resources/ indexerpaths.elsa'
     with open(indexerpth, "w") as f: json.dump([], f)  # Dumping an empty list for additional indexed paths
-    userpth = os.getcwd() + "/resources/ users.elsa"
+    userpth = f'{os.getcwd()}/resources/ users.elsa'
     with open(userpth, "w") as f: json.dump({"admin": "1234"}, f, indent = 4)
     print("Added initial files")
 
@@ -165,7 +166,7 @@ def install_files() -> None:
         def retranslateUi(self, MainWindow):
             MainWindow.setWindowTitle("Elsa-Initial Setup")
             self.StartPageConitnueButton.setText("Continue")
-            self.ElsaTitleLogo.setText("Elsa")
+            self.ElsaTitleLogo.setText("ELSA")
             self.LicenceLabel.setText("MIT License\n\nCopyright (c) 2021 George Rahul\n"
                                       "Permission is hereby granted, free of charge, to any person obtaining a copy\n"
                                       "of this software and associated documentation files (the \"Software\"), to deal\n"
@@ -198,6 +199,8 @@ def install_files() -> None:
             self.ContinueOtherButton.setText("Finish")
 
     import sys
+    talk("Hey. I am Elsa, your personal assistant.")
+    talk("But before we begin, I need to know a few things about you. So let us get started.")
     app = QtWidgets.QApplication(sys.argv)
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow := QtWidgets.QMainWindow())
@@ -206,3 +209,4 @@ def install_files() -> None:
     if ui.state is False: sys.exit(1)
     print("Initial setup finished successfully")
     del app, MainWindow, ui
+    talk("Alright! Let us  rock and roll")
