@@ -1,4 +1,4 @@
-import urllib.request, talk1.talk1, json, requests
+import urllib.request, talk1.talk1, json
 
 number_facts_url = "http://numbersapi.com/random/math"
 cat_facts_url = "https://catfact.ninja/fact"

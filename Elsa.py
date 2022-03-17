@@ -90,7 +90,10 @@ except:
 backend1list = elsabackend.get_keywords()
 # .....initialising reminder...
 clearTextbox = lambda event = "": Search_box.delete(0, END)  # TO clear the textbox
-pluginwords = plugin_loader.pluginhandlerdict.keys()
+plugin=plugin_loader.Plugin()
+plugin.load_plugins()
+
+pluginwords = plugin.pluginhandlerdict.keys()
 print("Startuptime :", time.time() - startuptime)
 
 # ................command input and processing starts.....................
@@ -136,7 +139,7 @@ def work(event = "") -> None:
             chat_client.requestSync()
         case _:
             if keyword in pluginwords:
-                plugin_loader.plugin_handler(keyword, afterword)
+                plugin.plugin_handler(keyword, afterword)
             else:
                 match order:
                     case "what is your version" | "ver":

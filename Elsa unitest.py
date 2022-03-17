@@ -24,6 +24,7 @@ class MyTestCase(unittest.TestCase):
         from Magic import indexer
         self.assertNotEqual(len(open(indexer.indexerfolderpth).read()), 0)
 
+    @unittest.skip("User Has to close the notepad window causing inconvenience")
     def test_program_run(self):
         from Magic import program_run
         print("Please close the notepad if it opens up to continue the test")
@@ -31,7 +32,11 @@ class MyTestCase(unittest.TestCase):
 
     def test_plugins(self):
         import plugin_loader
-        self.assertNotEqual(len(plugin_loader.pluginslist), 0)
+        plugin = plugin_loader.Plugin()
+        plugin.load_plugins()
+        self.assertNotEqual(len(plugin.pluginslist), 0)
+        self.assertEqual(plugin.plugin_handler("time", ''), None)
+        self.assertEqual(plugin.plugin_handler("numberfacts", ''), None)
 
 
 if __name__ == '__main__':
