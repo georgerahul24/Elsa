@@ -37,6 +37,17 @@ class MyTestCase(unittest.TestCase):
         self.assertNotEqual(len(plugin.pluginslist), 0)
         self.assertEqual(plugin.plugin_handler("time", ''), None)
         self.assertEqual(plugin.plugin_handler("numberfacts", ''), None)
+    def test_gui(self):
+        from Magic import tkinterlib
+        import tkinter as tk
+        root = tk.Tk()
+        root.geometry("300x300")
+        self.assertEqual(tkinterlib.tkinter_initialise(root,x=100,y=100),None)
+        tk.Label(root, text="Testing GUI. Closing in 2 seconds").pack()
+        root.after(2000, root.destroy)
+        root.mainloop()
+
+
 
 
 if __name__ == '__main__':

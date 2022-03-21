@@ -137,6 +137,10 @@ def work(event = "") -> None:
             chat_client.sendThemeToServer()
         case "sync":
             chat_client.requestSync()
+        case "test":
+            talk("Starting the self diagnosis test.This might take a while")
+            os.system('py "Elsa unitest.py"')
+            talk("Self diagnosis test completed. See the command prompt to see the results.")
         case _:
             if keyword in pluginwords:
                 plugin.plugin_handler(keyword, afterword)
