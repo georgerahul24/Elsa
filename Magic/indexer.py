@@ -87,14 +87,14 @@ def index_files() -> None:
 def add_indexer_folders(event = "", path: str = "") -> None:
     """Add additional folders that should be indexed"""
     folderpth = f'{os.getcwd()}/resources/ indexerpaths.elsa'
+
     try:
         with open(folderpth) as f:
             folders = json.load(f)
-            # ...Converting to set to avoid duplicates.....
-            # ...Keeping it as list itself because other files expect this to be a list due to legacy reasons,etc,etc
-            folders = list(set(folders.append(path)))  # ADDING PATH TO THE FOLDERS LIST
+            folders.append(path)
         with open(folderpth, "w") as f: json.dump(folders, f, indent = 4)
-    except:
+    except Exception as e:
+        print(e)
         with open(folderpth, "w") as f: json.dump([path], f, indent = 4)
     try:
         os.remove(f'{os.getcwd()}/resources/ indexer.elsa')

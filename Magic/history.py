@@ -4,7 +4,7 @@ from pathlib import Path
 currentuser = ''
 
 
-def user_file(command: str, task_did: str, username = None) -> None:
+def user_file(command: str = '', task_did: str = '',username = None, ) -> None:
     """[Used to save the history of the user]"""
     maxlength = 100
     username = currentuser if username is None else username
