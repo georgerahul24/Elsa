@@ -2,7 +2,7 @@ import subprocess, json, zipfile, shutil, os
 import urllib.request
 from Elsa_logging import log
 
-current_version = 285
+current_version = 286
 download_path = 'resources/newver.zip'
 log.info("Current Elsa version: ", str(current_version))
 

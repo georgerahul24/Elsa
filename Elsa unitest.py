@@ -22,7 +22,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_indexer(self):
         from Magic import indexer
-        self.assertNotEqual(len(open(indexer.indexerfolderpth).read()), 0)
+        import json,pathlib
+        self.assertNotEqual(len(json.load(open(pathlib.Path(indexer.indexerfolderpth)))))
 
     @unittest.skip("User Has to close the notepad window causing inconvenience")
     def test_program_run(self):
