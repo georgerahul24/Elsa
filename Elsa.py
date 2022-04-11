@@ -1,15 +1,16 @@
 import gc, os, time
 import threading
 from pathlib import Path
+from Elsa_logging import log
 
 startuptime = time.time()
 
 
 def loading_error_warning(e: Exception = '') -> None:
     """To load the warning and then exit out of the program"""
-    print(e,
-          "It seems there some problem with task1 and/or talk1 package and/or magic package and/or the main file is outdated")
-    print("Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
+    log.error(e,
+              "It seems there some problem with task1 and/or talk1 package and/or magic package and/or the main file is outdated")
+    log.error("Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
           "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1")
     exit(input("Press any key to exit...."))
 
@@ -49,7 +50,7 @@ CHK = usernames.verify_usernames()
 # see how 'not' operator works with 'if' in https://pythonexamples.org/python-if-not/
 # if True:
 if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
-    print("'Usernames.py' verified successfully\nStarting the login page") if not CHK else loading_error_warning()
+    log.info("'Usernames.py' verified successfully\nStarting the login page") if not CHK else loading_error_warning()
     talk("Hi. I am Elsa")
     SECURITY_TRIAL = 0
     # password and username checks
@@ -70,7 +71,7 @@ if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
 else:
     name, SECURITY_TRIAL = 'admin', 0
     # ..............tkinter initialising starts...............................
-
+log.info("User:",name,"has logged in.")
 elsagui = Tk()
 # Reading the screen height and width
 screen_height, screen_width = elsagui.winfo_screenheight(), elsagui.winfo_screenwidth()
@@ -82,19 +83,20 @@ Search_box.pack()
 chat_client.getNickname(name)
 history.currentuser = name
 try:
-    print("Connecting to a server")
+    log.info("Connecting to a server")
     threading.Thread(target = chat_client.startclient).start()
-    print("Connected to a server")
+    log.info("Connected to a server")
 except:
-    print("Could not establish a connection with server")
+    log.error("Could not establish a connection with server")
 backend1list = elsabackend.get_keywords()
 # .....initialising reminder...
 clearTextbox = lambda event = "": Search_box.delete(0, END)  # TO clear the textbox
-plugin=plugin_loader.Plugin()
+plugin = plugin_loader.Plugin()
 plugin.load_plugins()
 
 pluginwords = plugin.pluginhandlerdict.keys()
-print("Startuptime :", time.time() - startuptime)
+log.info("Startuptime :", time.time() - startuptime)
+
 
 # ................command input and processing starts.....................
 def work(event = "") -> None:

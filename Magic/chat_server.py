@@ -20,29 +20,28 @@ def jsondec(data: str) -> dict:
     return json.loads(data)
 
 
-def broadcast(username: str, message: str) -> None:
+def broadcast(sender_name: str, send_to_user: str, message: str) -> None:
     """To send the message to a specific client"""
     try:
-        message = str(message)
-        print("Client found: ", client := clients[nicknames.index(username)], 'Msg send: ', message)
-        client.send(jsonenc("msg", message).encode("ascii"))
+        print("Client found: ", client := clients[nicknames.index(send_to_user)], 'Msg send: ', message)
+        client.send(jsonenc("msg", (sender_name, message)).encode("ascii"))
     except Exception as e: print(e, "No user found")
 
 
-def handle(client: object) -> None:
-    """Recieve data from a client"""
+def handle(client: object, nickname: str) -> None:
+    """Receive data from a client"""
     while True:
         try:
             raw_message = client.recv(1024).decode("ascii")
             header = jsondec(raw_message)["rec"]
             match header:
                 case "msg":
-                    username, message = jsondec(raw_message)["data"][0], jsondec(raw_message)["data"][1]
+                    send_to_user, message = jsondec(raw_message)["data"][0], jsondec(raw_message)["data"][1]
                     print(raw_message)
                     print(jsondec(raw_message)["data"])
-                    print(f"{username} : {message}")
-                    print("Broadcasting message to ", username)
-                    broadcast(username, message)
+                    print(f"{send_to_user} : {message}")
+                    print("Broadcasting message to ", send_to_user)
+                    broadcast(nickname, send_to_user, message)
                 case "fsync":
                     nicname, jsonstr = jsondec(raw_message)["data"][0], jsondec(raw_message)["data"][1]
                     with open('./serverdata/' + nicname + '.json', 'w') as f:
@@ -83,7 +82,7 @@ def recieve() -> None:
             nicknames.append(nickname := (jsondec(nickname)["data"]))
             clients.append(client)
             print(f"{nickname} {address}")
-            threading.Thread(target = handle, args = (client,)).start()
+            threading.Thread(target = handle, args = (client, nickname)).start()
         except Exception as e:
             print(e)
 

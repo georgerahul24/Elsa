@@ -1,5 +1,5 @@
 import time
-
+from Elsa_logging import log
 from Magic import chat_client
 from Magic import history
 from talk1.talk1 import talk
@@ -43,8 +43,11 @@ def maintenance_of_files():
             os.remove(filename)
 
     file_list = ['resources/ indexer.elsa', 'resources/ indexerfolder.elsa']
+    log.info("Starting the maintenance of files")
     for file in file_list:
         _compare_and_delete_files(file)
+        log.info('Removed file: ', file)
+    log.info("Finished maintenance of files")
 
 
 try:

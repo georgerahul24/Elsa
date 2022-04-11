@@ -39,9 +39,9 @@ def recievefromserver() -> None:
                 case "Nick":
                     client.send(jsonenc("Nick", nickname).encode("ascii"))
                 case "msg":
-                    mesg = jsondec(msg)["data"]
-                    print("msg received", mesg)
-                    try: noti.show_toast("Elsa", mesg)
+                    sender_name, mesg = jsondec(msg)["data"]
+                    print(f"msg received from {sender_name}:", mesg)
+                    try: noti.show_toast(f"{sender_name}", mesg)
                     except: pass
                 case "sync":
                     print("Starting to sync from the server")

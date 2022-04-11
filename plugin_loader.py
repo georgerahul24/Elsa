@@ -1,7 +1,7 @@
 import os
 import shutil
 from Magic import history
-
+from Elsa_logging import log
 
 class Plugin:
     def __init__(self):
@@ -11,7 +11,7 @@ class Plugin:
         except: pass
 
     def load_plugins(self) -> None:
-        print("Starting to load the plugins...")
+        log.info("Starting to load the plugins...")
         self.pluginslist, self.pluginhandlerdict = os.listdir(os.path.join(os.path.dirname(__file__), "plugins")), {}
 
         for plugins in self.pluginslist:
@@ -22,7 +22,7 @@ class Plugin:
                 exec(f"""for  plugincmds in {plugins}.plugin_loader: # iterating through pluginloader variable
                    self.pluginhandlerdict[plugincmds[0]]=plugincmds[1]""")  # adding the keyword of the plugin and the func it calls to the dict
             except: pass
-        print("Finished Loading Plugins:", *self.pluginslist)
+        log.info("Finished Loading Plugins:", *self.pluginslist)
         history.user_file("Loaded plugins", f"Following plugins were loaded: {self.pluginslist}")
 
     def plugin_handler(self, keyword, afterword) -> None:
