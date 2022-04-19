@@ -11,7 +11,7 @@ def loading_error_warning(e: Exception = '') -> None:
     log.error(e,
               "It seems there some problem with task1 and/or talk1 package and/or magic package and/or the main file is outdated")
     log.error("Suggested fix:install/update magicForElsa using pip install --upgrade magicForElsa"
-          "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1")
+              "or reinstall the elsa ver1_1.py file from https://github.com/georgerahul24/Viraver1.1")
     exit(input("Press any key to exit...."))
 
 
@@ -71,7 +71,7 @@ if os.environ["USERPROFILE"] != 'C:\\Users\\George Rahul':
 else:
     name, SECURITY_TRIAL = 'admin', 0
     # ..............tkinter initialising starts...............................
-log.info("User:",name,"has logged in.")
+log.info("User:", name, "has logged in.")
 elsagui = Tk()
 # Reading the screen height and width
 screen_height, screen_width = elsagui.winfo_screenheight(), elsagui.winfo_screenwidth()
