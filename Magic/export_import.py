@@ -11,7 +11,7 @@ def export(mode = 'f') -> None | str:
         username_data = json.load(usernamefile)
     datadict = {"indexfolders": indexer.read_indexer_folders(), "theme": theme.read_theme(), "usernames": f"{username_data}"}
 
-    if mode == 'f':
+    if mode == 'f': # i.e. package data to be written to a file
         if (f := filedialog.asksaveasfile(mode = "w", defaultextension = ".json")) is not None:
             try:
                 json.dump(datadict, f, indent = 4)
@@ -20,7 +20,7 @@ def export(mode = 'f') -> None | str:
 
             except Exception as e: print("Some error happened", e)
         else: print("No file selected")
-    elif mode == 'j': return json.dumps(datadict)
+    elif mode == 's': return json.dumps(datadict) # i.e. package dta to be send to server
 
 
 def import_data(dat:dict|bool = None) -> None:

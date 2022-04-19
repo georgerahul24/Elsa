@@ -80,11 +80,11 @@ Search_box = Entry(elsagui, bg = bg_colour, fg = text_color)
 Search_box.pack()
 # ..............tkinter initialising ends...............................
 # ...initialising chat client..........
-chat_client.getNickname(name)
+chat_client.chat_handler.name=name
 history.currentuser = name
 try:
     log.info("Connecting to a server")
-    threading.Thread(target = chat_client.startclient).start()
+    threading.Thread(target = chat_client.chat_handler.startclient).start()
     log.info("Connected to a server")
 except:
     log.error("Could not establish a connection with server")
@@ -113,7 +113,7 @@ def work(event = "") -> None:
             Thread(target = task.web, args = (afterword,)).start()
             history.user_file(order, f'"Searched:" {order}')
         case "msg":
-            chat_client.sendtoserver(nameToSend := parts[1], msgTosend := " ".join(parts[2:]))
+            chat_client.chat_handler.sendtoserver(nameToSend := parts[1], msgTosend := " ".join(parts[2:]))
             history.user_file(order, f"Snd msg to {nameToSend}.Msg was {msgTosend}")
         case "open" | "o" | "folder":
             Thread(target = indexer.fsearch, args = ('folder', afterword)).start()
@@ -136,9 +136,9 @@ def work(event = "") -> None:
         case "hi":
             talk(f"Hello {name}")
         case "fsync":
-            chat_client.sendThemeToServer()
+            chat_client.chat_handler.sendThemeToServer()
         case "sync":
-            chat_client.requestSync()
+            chat_client.chat_handler.requestSync()
         case "test":
             talk("Starting the self diagnosis test.This might take a while")
             os.system('py "Elsa unitest.py"')

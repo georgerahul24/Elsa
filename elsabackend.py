@@ -10,7 +10,7 @@ import os
 def quit(event = "") -> None:
     """To exit the program"""
     try:
-        chat_client.closeClient()
+        chat_client.chat_handler.closeClient()
     except: pass
     talk("Tata Bye Bye", True)
     log.info('Exiting Elsa')
