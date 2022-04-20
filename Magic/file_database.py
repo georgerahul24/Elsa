@@ -1,6 +1,6 @@
 """This module deals with adding and verifying usernames"""
 import json, os
-
+from .Elsa_logging import log
 # Get the path of users.elsa
 userpth = os.getcwd() + "/resources/ users.elsa"
 
@@ -10,7 +10,7 @@ def check_user_from_file(username: str) -> str:
     try:
         with open(userpth, "r") as file:
             return json.load(file).get(username, None)
-    except Exception as e: print("It seems that some error has happened", e)
+    except Exception as e: log.error("It seems that some error occurred when checking the user from file", e)
 
 
 def write_to_file(username: str, password: str) -> int:
@@ -23,11 +23,11 @@ def write_to_file(username: str, password: str) -> int:
             with open(userpth, "w") as file:
                 data[username] = password
                 json.dump(data, file, indent = 4)
-            print(f"Added user {username} ")
+            log.info(f"Added user {username} ")
             # returns state = 1 so that program knows that writing was successful
             return 1
         else:
             print("User already exists or the username is reserved")
             # return state = -1 to know that user was not added mainly due to username repetitions or reserved words
             return -1
-    except Exception as e: print(e, "Try again")
+    except Exception as e: log.error(e)

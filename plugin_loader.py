@@ -1,7 +1,7 @@
 import os
 import shutil
 from Magic import history
-from Elsa_logging import log
+from Magic.Elsa_logging import log
 
 class Plugin:
     def __init__(self):

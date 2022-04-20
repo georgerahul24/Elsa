@@ -3,7 +3,7 @@ from difflib import get_close_matches
 from pathlib import Path
 from threading import Thread
 from talk1 import talk1
-
+from .Elsa_logging import log
 if platform.system() == 'Windows':
     homedir = os.environ["USERPROFILE"]
 else: homedir = os.path.expanduser('~')
@@ -15,7 +15,7 @@ directories = [desktop := Path(os.path.join(os.path.join(homedir), "Desktop")),
                music := Path(os.path.join(os.path.join(homedir), "Music")),
                videos := Path(os.path.join(os.path.join(homedir), "Videos"))]
 cacheDataFile, cacheDataFolder = dict(), dict()
-
+log.info('Currently indexing',*directories)
 
 def read_indexer_folders(event = "") -> list:
     """To get the list of folders that should be indexed additionally"""

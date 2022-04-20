@@ -1,6 +1,6 @@
 import subprocess, json, zipfile, shutil, os
 import urllib.request
-from Elsa_logging import log
+from Magic.Elsa_logging import log
 
 current_version = 286
 download_path = 'resources/newver.zip'

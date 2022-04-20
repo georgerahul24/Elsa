@@ -1,10 +1,8 @@
 import gc, os, time
 import threading
 from pathlib import Path
-from Elsa_logging import log
-
-startuptime = time.time()
-
+from Magic.Elsa_logging import log
+startuptime = time.perf_counter()
 
 def loading_error_warning(e: Exception = '') -> None:
     """To load the warning and then exit out of the program"""
@@ -19,7 +17,7 @@ try:
     from Magic import initial_setup
 
     # Checks if initial.elsa exists.If it doesn't exist the initial setup is run.....
-    initial_file = Path((os.getcwd() + "/resources/ initial.elsa"))
+    initial_file = Path(f'{os.getcwd()}/resources/ initial.elsa')
     print("'initial.elsa' found") if initial_file.exists() else initial_setup.install_files()
     from Magic import (history, tkinterlib, popups, program_run, theme, settings, indexer, usernames, highlighter,
                        chat_client)
@@ -80,7 +78,7 @@ Search_box = Entry(elsagui, bg = bg_colour, fg = text_color)
 Search_box.pack()
 # ..............tkinter initialising ends...............................
 # ...initialising chat client..........
-chat_client.chat_handler.name=name
+chat_client.chat_handler.name = name
 history.currentuser = name
 try:
     log.info("Connecting to a server")
@@ -95,7 +93,7 @@ plugin = plugin_loader.Plugin()
 plugin.load_plugins()
 
 pluginwords = plugin.pluginhandlerdict.keys()
-log.info("Startuptime :", time.time() - startuptime)
+log.info("Startuptime :", time.perf_counter() - startuptime)
 
 
 # ................command input and processing starts.....................

@@ -1,29 +1,30 @@
 import json
 from tkinter import filedialog
-from Magic import theme, indexer
+from Magic import theme, indexer,tkinterlib
+from .Elsa_logging import log
 
 
 def export(mode = 'f') -> None | str:
     """This function is to export the data"""
     from os import getcwd
     # see https://stackoverflow.com/questions/19476232/save-file-dialog-in-tkinter
-    with open((getcwd() + "/resources/ users.elsa")) as usernamefile:  # Opening user file
+    with open(f'{getcwd()}/resources/ users.elsa') as usernamefile:  # Opening user file
         username_data = json.load(usernamefile)
     datadict = {"indexfolders": indexer.read_indexer_folders(), "theme": theme.read_theme(), "usernames": f"{username_data}"}
 
-    if mode == 'f': # i.e. package data to be written to a file
+    if mode == 'f':  # i.e. package data to be written to a file
         if (f := filedialog.asksaveasfile(mode = "w", defaultextension = ".json")) is not None:
             try:
                 json.dump(datadict, f, indent = 4)
                 f.close()
-                print("Successfully exported the data")
+                log.info("Successfully exported the data")
 
-            except Exception as e: print("Some error happened", e)
+            except Exception as e: log.error("Some error happened while exporting data", e)
         else: print("No file selected")
-    elif mode == 's': return json.dumps(datadict) # i.e. package dta to be send to server
+    elif mode == 's': return json.dumps(datadict)  # i.e. package dta to be send to server
 
 
-def import_data(dat:dict|bool = None) -> None:
+def import_data(dat: dict | bool = None) -> None:
     """This function is to import the data"""
     try:
         from os import getcwd, remove
@@ -40,7 +41,7 @@ def import_data(dat:dict|bool = None) -> None:
             if indexdata is not None:
                 with open(indexerpth, "w") as indexfile:
                     json.dump(indexdata, indexfile, indent = 4)
-                try: remove((getcwd() + "/resources/ indexer.elsa"))  # To rebuilt the indexes
+                try: remove((getcwd() + "/resources/ indexer.elsa"))  # To re-built the indexes
                 except: pass
             with open(initpth, "w") as themefile:
                 themefile.write(f"{themedata[0]};{themedata[1]};{themedata[2]}")
@@ -49,7 +50,7 @@ def import_data(dat:dict|bool = None) -> None:
             usernamedata = json.loads(usernamedata.replace("'", '"'))
             with open((getcwd() + "/resources/ users.elsa"), "w") as userfile:
                 json.dump(usernamedata, userfile, indent = 4)
-            print("Imported usernames")
-
-            del initpth, indexerpth,  data, indexdata, themedata, usernamedata
-    except Exception as e: print("Some error happened", e)
+            log.info("Imported usernames from server")
+            tkinterlib.reset_colors()
+            del initpth, indexerpth, data, indexdata, themedata, usernamedata
+    except Exception as e: log.error("Some error happened", e)

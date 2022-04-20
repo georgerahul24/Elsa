@@ -1,9 +1,10 @@
 import json, socket, threading, os
+from .Elsa_logging import log
+
 from Magic import export_import
 from pathlib import Path
 
 
-# TODO: incorporate all the isolated functions into a class
 def jsonenc(rec, data):
     """To convert the json data"""
     return json.dumps({"rec": rec, "data": data})
@@ -18,8 +19,10 @@ try:
     import win10toast
 
     noti = win10toast.ToastNotifier()
-except ModuleNotFoundError: print("It would be great if win10toast module can be installed")
+except ModuleNotFoundError:
+    log.error('win10toast module not installed')
 host, port = "127.0.0.1", 24094
+log.info("Current host: ", host, "Current Port: ", port)
 # SOCK_STREAM. AF_INET  -> address-family ipv4 & SOCK_STREAM -> TCP protocol(see geek for geeks)
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -37,17 +40,10 @@ class ChatHandler:
         self.file_path = os.path.join(os.getcwd(), 'chat_data', self.name + '.json')
         if not Path(os.path.join(os.getcwd(), 'chat_data')).exists():  # Creating chat_data folder if it does not exist
             os.mkdir(os.path.join(os.getcwd(), "chat_data"))
+            log.info('Created directory', '"chat_data"')
         if not Path(self.file_path).exists():  # Creating the chat file if it does not exist
             with open(self.file_path, 'w') as f:
                 json.dump(dict(), f)  # Dumping the empty dictionary to the file
-
-    def jsonenc(self, rec, data):
-        """To convert the json data"""
-        return json.dumps({"rec": rec, "data": data})
-
-    def jsondec(self, data: str) -> dict:
-        """To convert the json data"""
-        return json.loads(data)
 
     def recievefromserver(self) -> None:
         """To receive data from the server"""
@@ -66,11 +62,12 @@ class ChatHandler:
                         try: noti.show_toast(f"{sender_name}", mesg)
                         except Exception as e: print(e)
                     case "sync":
-                        print("Starting to sync from the server")
+                        log.info("Starting to sync from the server")
                         export_import.import_data(jsondec(msg)["data"])
+                        log.info('Finished syncing data from Server.')
 
             except Exception as e:
-                print("Closing Connection", e)
+                log.error("Closing Connection", e)
                 client.close()
                 del client
                 break
@@ -95,28 +92,33 @@ class ChatHandler:
             client.send(jsonenc("msg", (reciever_name, msg)).encode("ascii"))
             print("Sending", msg, "to", reciever_name)
 
-        except Exception as e: print(e)
+        except Exception as e:
+            log.error(e)
 
     def sendThemeToServer(self) -> None:
         """To send the theme to the server"""
         data = (self.name, export_import.export(mode = 's'))
         client.send(jsonenc("fsync", data).encode("ascii"))
-        print('Trying to sync with server')
+        log.info('Trying to sync with server')
 
     def requestSync(self) -> None:
         """To request the file of the user from the server"""
         client.send(jsonenc("sync", self.name).encode("ascii"))
-        print('Trying to get the file from server')
+        log.info('Trying to get the file from server')
 
     def startclient(self) -> None:
         """To start the process of connecting the client with server"""
-        client.connect((host, port))
-        self.initialise_history()
-        threading.Thread(target = self.recievefromserver).start()
+        try:
+            client.connect((host, port))
+            self.initialise_history()
+            threading.Thread(target = self.recievefromserver).start()
+        except ConnectionRefusedError:
+            log.error('Could not connect to a server')
 
     def closeClient(self) -> None:
         """To close the connection of the client with the server"""
         client.close()
+        log.info('Closing Client')
 
 
 chat_handler = ChatHandler("")

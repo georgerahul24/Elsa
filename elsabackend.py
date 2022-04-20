@@ -1,5 +1,5 @@
 import time
-from Elsa_logging import log
+from Magic.Elsa_logging import log
 from Magic import chat_client
 from Magic import history
 from talk1.talk1 import talk
