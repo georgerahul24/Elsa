@@ -12,7 +12,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_adding_and_deleting_user(self):
         from Magic import export_import
-        self.assertEqual(bool(export_import.export(mode = 'j')), True)
+        self.assertEqual(bool(export_import.export(mode = 's')), True)
 
     def test_user_reading(self):
         from Magic import file_database

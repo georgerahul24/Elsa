@@ -1,4 +1,6 @@
 import json, socket, threading, os
+import tkinter
+from functools import partial
 from .Elsa_logging import log
 
 from Magic import export_import
@@ -27,9 +29,36 @@ log.info("Current host: ", host, "Current Port: ", port)
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
+class ChatGUI:
+    import tkinter
+    def __init__(self):
+        self.history = chat_handler.get_history()
+        self.root = tkinter.Tk()
+        self.assests = []
+        self.homepage()
+
+    def homepage(self):
+        [self.assests.pop().destroy() for _ in range(len(self.assests))]# Removing the elements from list as well as GUI
+        for chat_name in self.history:
+            b = tkinter.Button(self.root, text = chat_name, command = partial(self.selected_user, chat_name = chat_name))
+            b.pack()
+            self.assests.append(b)
+        self.root.mainloop()
+
+    def selected_user(self, chat_name):
+        [self.assests.pop().destroy() for _ in range(len(self.assests))]
+        for chats in self.history[chat_name]:
+            l = tkinter.Label(self.root, text = chats[1])
+            l.pack()
+            self.assests.append(l)
+        b = tkinter.Button(self.root, text = '<', command = lambda: self.homepage())
+        b.pack()
+        self.assests.append(b)
+
+
 class ChatHandler:
     def __init__(self, nickname):
-        self.name, self.client = nickname, client
+        self.name, self.client, self.file_path = nickname, client, None
 
     def initialise_history(self):
         """
@@ -44,6 +73,8 @@ class ChatHandler:
         if not Path(self.file_path).exists():  # Creating the chat file if it does not exist
             with open(self.file_path, 'w') as f:
                 json.dump(dict(), f)  # Dumping the empty dictionary to the file
+        # TODO: Testing
+        ChatGUI()
 
     def recievefromserver(self) -> None:
         """To receive data from the server"""
@@ -77,13 +108,17 @@ class ChatHandler:
         statuscode = 0 if user receiving msg
         statuscode = 1 if user is sending the msg
         client_name: from which client the msg is received from or  send to"""
-        with open(self.file_path, 'r+') as f:
+        with open(self.file_path, 'r') as f:
             chat_dict = json.load(f)
             history = chat_dict.get(client_name, [])  # Getting history of the 'client_name' person
             history.append((statuscode, msg))  # Since list is mutable, it will change in the dictionary too.
             chat_dict[client_name] = history
         with open(self.file_path, 'w') as f:
             json.dump(chat_dict, f)
+
+    def get_history(self):
+        with open(self.file_path, 'r') as f:
+            return json.load(f)
 
     def sendtoserver(self, reciever_name: str, msg: str) -> None:
         """To send the data to the server"""
