@@ -10,3 +10,15 @@ C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.dll
 C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\refint\Theme.dll
 C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.pdb
 C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\ref\Theme.dll
+D:\Github\Elsa\Elsa in C#\Theme\bin\Debug\net6.0\Theme.deps.json
+D:\Github\Elsa\Elsa in C#\Theme\bin\Debug\net6.0\Theme.dll
+D:\Github\Elsa\Elsa in C#\Theme\bin\Debug\net6.0\Theme.pdb
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\Theme.csproj.AssemblyReference.cache
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\Theme.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\Theme.AssemblyInfoInputs.cache
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\Theme.AssemblyInfo.cs
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\Theme.csproj.CoreCompileInputs.cache
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\Theme.dll
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\refint\Theme.dll
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\Theme.pdb
+D:\Github\Elsa\Elsa in C#\Theme\obj\Debug\net6.0\ref\Theme.dll

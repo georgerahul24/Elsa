@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿
+using System.Drawing;
+
 namespace Theme
 {
 
@@ -12,12 +14,18 @@ namespace Theme
 
             return File.ReadAllLines(fileLocation).First();
         }
-        public List<string> ThemeReader()
+        public List<Color> ThemeReader()
         {
             
-            string themeString=FileRead(@"C:\Users\George Rahul\Desktop\GUI\Theme\ initial.elsa");
+            string themeString=FileRead(@"D:\Github\Elsa\Elsa in C#\Theme\ initial.elsa");
 
-            List<string> themeData=themeString.Split(';').ToList();
+            string[]  themeDataString=themeString.Split(';');
+            List<Color> themeData = new List<Color>();
+            foreach (var themecolorstring in themeDataString)
+                
+            {
+                themeData.Add(ColorTranslator.FromHtml(themecolorstring));
+            }
             return themeData;
 
         }

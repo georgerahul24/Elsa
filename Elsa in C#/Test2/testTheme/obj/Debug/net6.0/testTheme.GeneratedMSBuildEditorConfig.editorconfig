@@ -6,5 +6,5 @@ build_property.ProjectTypeGuids =
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = Theme
-build_property.ProjectDir = D:\Github\Elsa\Elsa in C#\Theme\
+build_property.RootNamespace = testTheme
+build_property.ProjectDir = C:\Users\George Rahul\Desktop\Github\Elsa\Elsa in C#\Test2\testTheme\
