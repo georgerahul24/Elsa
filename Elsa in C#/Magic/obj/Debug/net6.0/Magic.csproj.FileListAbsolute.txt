@@ -1,0 +1,12 @@
+D:\Github\Elsa\Elsa in C#\Magic\bin\Debug\net6.0\Magic.deps.json
+D:\Github\Elsa\Elsa in C#\Magic\bin\Debug\net6.0\Magic.dll
+D:\Github\Elsa\Elsa in C#\Magic\bin\Debug\net6.0\Magic.pdb
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\Magic.csproj.AssemblyReference.cache
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\Magic.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\Magic.AssemblyInfoInputs.cache
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\Magic.AssemblyInfo.cs
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\Magic.csproj.CoreCompileInputs.cache
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\Magic.dll
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\refint\Magic.dll
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\Magic.pdb
+D:\Github\Elsa\Elsa in C#\Magic\obj\Debug\net6.0\ref\Magic.dll

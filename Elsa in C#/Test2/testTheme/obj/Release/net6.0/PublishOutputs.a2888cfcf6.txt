@@ -1,7 +1,0 @@
-C:\Users\George Rahul\Desktop\C#trials\testTheme.exe
-C:\Users\George Rahul\Desktop\C#trials\testTheme.dll
-C:\Users\George Rahul\Desktop\C#trials\testTheme.deps.json
-C:\Users\George Rahul\Desktop\C#trials\testTheme.runtimeconfig.json
-C:\Users\George Rahul\Desktop\C#trials\testTheme.pdb
-C:\Users\George Rahul\Desktop\C#trials\Theme.dll
-C:\Users\George Rahul\Desktop\C#trials\Theme.pdb
