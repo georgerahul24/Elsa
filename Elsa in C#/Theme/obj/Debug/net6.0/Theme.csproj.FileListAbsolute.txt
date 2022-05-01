@@ -1,0 +1,12 @@
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.csproj.AssemblyReference.cache
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.AssemblyInfoInputs.cache
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.AssemblyInfo.cs
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.csproj.CoreCompileInputs.cache
+C:\Users\George Rahul\Desktop\GUI\Theme\bin\Debug\net6.0\Theme.deps.json
+C:\Users\George Rahul\Desktop\GUI\Theme\bin\Debug\net6.0\Theme.dll
+C:\Users\George Rahul\Desktop\GUI\Theme\bin\Debug\net6.0\Theme.pdb
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.dll
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\refint\Theme.dll
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\Theme.pdb
+C:\Users\George Rahul\Desktop\GUI\Theme\obj\Debug\net6.0\ref\Theme.dll
