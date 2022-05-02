@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-
-namespace Magic;
 using System.Text.Json;
+namespace Magic;
+
 public class Usernames
 {
     private string fileURL = @"C:\Users\George Rahul\Desktop\Github\Elsa\Elsa in C#\Theme\usernames.elsa";
@@ -39,9 +39,14 @@ public class Usernames
         }
     }
 
-    public string check(string username)
-    {
-        return "To be implemented";
+    public string? check(string username)
+    {  // Returns password if the user exists
+        Dictionary<string, string>? userDictionary = jsonRead();
+        if (userDictionary.ContainsKey(username))
+        {
+            return userDictionary[username];
+        }
+        return null;
     }
 
 }

@@ -4,7 +4,7 @@
 using System.Drawing;
 public class Theme
     {
-
+    private string initialFileUrl = @"C:\Users\George Rahul\Desktop\Github\Elsa\resources\ initial.elsa";
         static private string FileRead(string fileLocation)
         {
 
@@ -13,7 +13,7 @@ public class Theme
         public List<Color> ThemeReader()
         {
             
-            string themeString=FileRead(@"D:\Github\Elsa\Elsa in C#\Theme\ initial.elsa");
+            string themeString=FileRead(initialFileUrl);
 
             string[]  themeDataString=themeString.Split(';');
             List<Color> themeData = new List<Color>();
@@ -25,6 +25,7 @@ public class Theme
             return themeData;
 
         }
+
 
     }
 

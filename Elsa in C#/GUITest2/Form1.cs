@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUITest2
@@ -14,14 +7,14 @@ namespace GUITest2
     public partial class Form1 : Form
     {
         Color background_leave = Color.FromArgb(30, 0, 61);
-        Color background_enter= Color.FromArgb(52, 0, 93);
+        Color background_enter = Color.FromArgb(52, 0, 93);
         Color forecolor_enter = Color.HotPink;
         Color forecolor_leave = Color.FromArgb(155, 89, 182);
 
         public Form1()
         {
             InitializeComponent();
-            
+
 
         }
         void Hover_Enter(Button button)
@@ -34,7 +27,7 @@ namespace GUITest2
         {
             button.BackColor = this.background_leave;
             button.ForeColor = this.forecolor_leave;
-           ;
+            ;
         }
         private void btnGeneral_Click(object sender, EventArgs e)
         {
@@ -78,11 +71,11 @@ namespace GUITest2
         private void btnTheme_Click(object sender, EventArgs e)
         {
             titleLabel.Text = "THEME";
-            ThemePage themePage = new ThemePage() { Dock=DockStyle.Fill,TopLevel=false,TopMost=true};
+            ThemePage themePage = new ThemePage() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             this.panelStage.Controls.Clear();
             this.panelStage.Controls.Add(themePage);
             themePage.Show();
-            
+
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
@@ -111,14 +104,14 @@ namespace GUITest2
 
         private void btnClose_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            
+
             this.Close();
-           
+
         }
     }
 }
