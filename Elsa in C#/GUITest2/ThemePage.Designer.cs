@@ -79,7 +79,7 @@
             // labelTextPreview
             // 
             this.labelTextPreview.AutoSize = true;
-            this.labelTextPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(0)))), ((int)(((byte)(93)))));
+            this.labelTextPreview.BackColor = System.Drawing.Color.Transparent;
             this.labelTextPreview.Font = new System.Drawing.Font("Segoe UI Symbol", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTextPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(185)))));
             this.labelTextPreview.Location = new System.Drawing.Point(459, 109);
@@ -88,11 +88,12 @@
             this.labelTextPreview.Size = new System.Drawing.Size(110, 84);
             this.labelTextPreview.TabIndex = 6;
             this.labelTextPreview.Text = "Text";
+            this.labelTextPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.labelTextPreview_Paint);
             // 
             // labelFgPreview
             // 
             this.labelFgPreview.AutoSize = true;
-            this.labelFgPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(0)))), ((int)(((byte)(93)))));
+            this.labelFgPreview.BackColor = System.Drawing.Color.Transparent;
             this.labelFgPreview.Font = new System.Drawing.Font("Segoe UI Symbol", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelFgPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(185)))));
             this.labelFgPreview.Location = new System.Drawing.Point(710, 94);
@@ -101,11 +102,12 @@
             this.labelFgPreview.Size = new System.Drawing.Size(263, 84);
             this.labelFgPreview.TabIndex = 7;
             this.labelFgPreview.Text = "Foreground";
+            this.labelFgPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.labelFgPreview_Paint);
             // 
             // labelBgPreview
             // 
             this.labelBgPreview.AutoSize = true;
-            this.labelBgPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(0)))), ((int)(((byte)(93)))));
+            this.labelBgPreview.BackColor = System.Drawing.Color.Transparent;
             this.labelBgPreview.Font = new System.Drawing.Font("Segoe UI Symbol", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelBgPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(185)))));
             this.labelBgPreview.Location = new System.Drawing.Point(43, 94);
@@ -114,12 +116,14 @@
             this.labelBgPreview.Size = new System.Drawing.Size(267, 84);
             this.labelBgPreview.TabIndex = 8;
             this.labelBgPreview.Text = "Background";
+            this.labelBgPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.labelBgPreview_Paint);
             // 
             // ThemePage
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(0)))), ((int)(((byte)(93)))));
             this.ClientSize = new System.Drawing.Size(1067, 514);
             this.Controls.Add(this.btnTextPreview);
@@ -133,6 +137,7 @@
             this.Name = "ThemePage";
             this.Text = "ThemePage";
             this.Load += new System.EventHandler(this.ThemePage_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ThemePage_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
 

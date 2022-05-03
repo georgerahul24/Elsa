@@ -15,6 +15,9 @@
     <_LastSelectedProfileId>C:\Users\George Rahul\Desktop\Github\Elsa\Elsa in C#\GUITest2\Properties\PublishProfiles\FolderProfile1.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="aboutPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

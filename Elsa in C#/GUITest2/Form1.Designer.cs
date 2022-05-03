@@ -28,37 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.navPanel1 = new System.Windows.Forms.Panel();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnIndexer = new System.Windows.Forms.Button();
             this.btnTheme = new System.Windows.Forms.Button();
             this.btnGeneral = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelUserName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.panelStage = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.navPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // navPanel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(61)))));
-            this.panel1.Controls.Add(this.btnAbout);
-            this.panel1.Controls.Add(this.btnIndexer);
-            this.panel1.Controls.Add(this.btnTheme);
-            this.panel1.Controls.Add(this.btnGeneral);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(317, 751);
-            this.panel1.TabIndex = 0;
+            this.navPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(61)))));
+            this.navPanel1.Controls.Add(this.btnAbout);
+            this.navPanel1.Controls.Add(this.btnIndexer);
+            this.navPanel1.Controls.Add(this.btnTheme);
+            this.navPanel1.Controls.Add(this.btnGeneral);
+            this.navPanel1.Controls.Add(this.panel2);
+            this.navPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.navPanel1.Location = new System.Drawing.Point(0, 0);
+            this.navPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.navPanel1.Name = "navPanel1";
+            this.navPanel1.Size = new System.Drawing.Size(317, 751);
+            this.navPanel1.TabIndex = 0;
+            this.navPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.navPanel1_Paint);
             // 
             // btnAbout
             // 
@@ -76,8 +77,7 @@
             this.btnAbout.Text = "ABOUT";
             this.btnAbout.UseVisualStyleBackColor = false;
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
-            this.btnAbout.MouseEnter += new System.EventHandler(this.btnAbout_MouseEnter);
-            this.btnAbout.MouseLeave += new System.EventHandler(this.btnAbout_MouseLeave);
+            this.btnAbout.Paint += new System.Windows.Forms.PaintEventHandler(this.btnAbout_Paint);
             // 
             // btnIndexer
             // 
@@ -94,9 +94,7 @@
             this.btnIndexer.TabIndex = 3;
             this.btnIndexer.Text = "INDEXER";
             this.btnIndexer.UseVisualStyleBackColor = false;
-            this.btnIndexer.Click += new System.EventHandler(this.btnIndexer_Click);
-            this.btnIndexer.MouseEnter += new System.EventHandler(this.btnIndexer_MouseEnter);
-            this.btnIndexer.MouseLeave += new System.EventHandler(this.btnIndexer_MouseLeave);
+            this.btnIndexer.Paint += new System.Windows.Forms.PaintEventHandler(this.btnIndexer_Paint);
             // 
             // btnTheme
             // 
@@ -114,8 +112,7 @@
             this.btnTheme.Text = "THEME";
             this.btnTheme.UseVisualStyleBackColor = false;
             this.btnTheme.Click += new System.EventHandler(this.btnTheme_Click);
-            this.btnTheme.MouseEnter += new System.EventHandler(this.btnTheme_MouseEnter);
-            this.btnTheme.MouseLeave += new System.EventHandler(this.btnTheme_MouseLeave);
+            this.btnTheme.Paint += new System.Windows.Forms.PaintEventHandler(this.btnTheme_Paint);
             // 
             // btnGeneral
             // 
@@ -133,13 +130,12 @@
             this.btnGeneral.Text = "GENERAL";
             this.btnGeneral.UseVisualStyleBackColor = false;
             this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
-            this.btnGeneral.MouseEnter += new System.EventHandler(this.btnGeneral_MouseEnter);
-            this.btnGeneral.MouseLeave += new System.EventHandler(this.btnGeneral_MouseLeave);
+            this.btnGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.btnGeneral_Paint);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(61)))));
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.labelUserName);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -147,28 +143,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(317, 301);
             this.panel2.TabIndex = 0;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // textBox1
+            // labelUserName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(61)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Mistral", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
-            this.textBox1.Location = new System.Drawing.Point(53, 244);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 37);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "GEORGE RAHUL";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(61)))));
+            this.labelUserName.Font = new System.Drawing.Font("Mistral", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
+            this.labelUserName.Location = new System.Drawing.Point(67, 229);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(149, 35);
+            this.labelUserName.TabIndex = 0;
+            this.labelUserName.Text = "George Rahul";
+            this.labelUserName.Paint += new System.Windows.Forms.PaintEventHandler(this.labelUserName_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GUITest2.Properties.Resources.login_avatar_2;
-            this.pictureBox1.Location = new System.Drawing.Point(53, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(53, 22);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(190, 221);
+            this.pictureBox1.Size = new System.Drawing.Size(208, 185);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -178,7 +174,7 @@
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(0)))), ((int)(((byte)(93)))));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.Color.Violet;
+            this.textBox2.ForeColor = System.Drawing.Color.GhostWhite;
             this.textBox2.Location = new System.Drawing.Point(949, 64);
             this.textBox2.Margin = new System.Windows.Forms.Padding(0);
             this.textBox2.Name = "textBox2";
@@ -189,16 +185,17 @@
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(0)))), ((int)(((byte)(93)))));
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI Symbol", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
             this.titleLabel.Location = new System.Drawing.Point(348, 22);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Padding = new System.Windows.Forms.Padding(0, 12, 0, 12);
-            this.titleLabel.Size = new System.Drawing.Size(228, 105);
+            this.titleLabel.Size = new System.Drawing.Size(291, 105);
             this.titleLabel.TabIndex = 4;
-            this.titleLabel.Text = "THEME";
-            this.titleLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.titleTheme_Paint);
+            this.titleLabel.Text = "GENERAL";
+            this.titleLabel.Click += new System.EventHandler(this.titleLabel_Click);
+            this.titleLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.titleLabel_Paint);
             // 
             // panelStage
             // 
@@ -218,7 +215,7 @@
             this.btnClose.Location = new System.Drawing.Point(1289, 64);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(57, 40);
+            this.btnClose.Size = new System.Drawing.Size(54, 32);
             this.btnClose.TabIndex = 6;
             this.btnClose.TabStop = false;
             this.btnClose.Text = "X";
@@ -236,12 +233,13 @@
             this.Controls.Add(this.panelStage);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.navPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.panel1.ResumeLayout(false);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.navPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -252,10 +250,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel navPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnIndexer;
         private System.Windows.Forms.Button btnTheme;
@@ -264,6 +261,7 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Panel panelStage;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label labelUserName;
     }
 }
 
