@@ -1,14 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Magic;
-using System.Text.Json;
-using System.Collections.Generic;
-/*
- Dictionary<string,string> dictionary= new Dictionary<string,string>(){{"GR","1234"}};
- string? jsonobj = JsonSerializer.Serialize(dictionary);
- Usernames user = new Usernames();
- File.WriteAllText(user.fileURL,jsonobj);
- Console.Write(jsonobj);
-*/
+﻿using Magic;
+
 Usernames user = new Usernames();
 Theme theme = new Theme();
 foreach (var color in theme.ThemeReader())
@@ -17,6 +8,24 @@ foreach (var color in theme.ThemeReader())
 }
 
 
-user.write("hello","hi");
-user.write("hello","hi9iii");
-user.write("hllo","hi");
+
+
+user.Write("hello","hi");
+user.Write("hello","hi9iii");
+user.Write("hllo","hi");
+
+string input(string inpText)
+{
+    Console.Write(inpText);
+    return Console.ReadLine();
+}
+while (true)
+{
+    string usr = input("Enter the username: ");
+    string passwd = input("Enter the password: ");
+    Console.WriteLine(user.Check(usr, passwd));
+    
+    
+}
+
+

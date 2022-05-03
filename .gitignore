@@ -9,3 +9,15 @@
 /talk1/*
 /resources/*
 *.log
+/Elsa in C#/GUITest2/.vs/*
+/Elsa in C#/GUITest2/.idea/*
+/Elsa in C#/GUITest2/obj/*
+/Elsa in C#/GUITest2/bin/*
+/Elsa in C#/Magic/obj/*
+/Elsa in C#/Magic/bin/*
+/Elsa in C#/Magic/.vs/*
+/Elsa in C#/Magic/.idea/*
+/Elsa in C#/Test_Magic/obj/*
+/Elsa in C#/Test_Magic/bin/*
+/Elsa in C#/Test_Magic/.vs/*
+/Elsa in C#/Test_Magic/.idea/*
