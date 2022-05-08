@@ -29,7 +29,7 @@ public class Usernames
         password = Hash(password);
         try
         {
-            Dictionary<string, string> userDictionary = _json.Read(_fileUrl);
+            Dictionary<string, string>? userDictionary = _json.Dictionary(_fileUrl);
             userDictionary[username] = password;
             _json.Write(_fileUrl, userDictionary);//TODO:Check if the jsonType is inferred automatically
             return 1;
@@ -46,7 +46,7 @@ public class Usernames
     {
         // Returns password if the user exists
         password = Hash(password);
-        Dictionary<string, string>? userDictionary = _json.Read(_fileUrl);
+        Dictionary<string, string>? userDictionary = _json.Dictionary(_fileUrl);
         if (userDictionary != null && userDictionary.ContainsKey(username))
         {
             return userDictionary[username] == password;

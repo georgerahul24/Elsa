@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Drawing;
+
 namespace Magic;
 
 public static class Locations
@@ -12,13 +14,13 @@ public static class Locations
 
 public class Json
 {
-    public Dictionary<string, string> Read(string fileUrl)
+    public Dictionary<string, string>? Dictionary(string fileUrl)
     {
         using FileStream fileRead = File.OpenRead(fileUrl);
         return JsonSerializer.Deserialize<Dictionary<string, string>>(fileRead);
     }
 
-    public static List<string> ReadList(string fileUrl)
+    public  List<string>? List(string fileUrl)
     {
         using FileStream fileRead = File.OpenRead(fileUrl);
         return JsonSerializer.Deserialize<List<string>>(fileRead);

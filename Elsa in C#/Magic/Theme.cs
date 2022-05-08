@@ -1,28 +1,25 @@
-﻿namespace Magic;
+﻿using System.Text.Json;
+
+namespace Magic;
 
 using System.Drawing;
 
 public class Theme
 {
     private static readonly string InitialFileUrl = Locations.ThemeFile;
+    private Json _json = new Json();
+    
 
-    private static string FileRead(string fileLocation)
+    public List<Color>? ThemeReader()
     {
-        return File.ReadAllLines(fileLocation).First();
-    }
-
-    public List<Color> ThemeReader()
-    {
-        string themeString = FileRead(InitialFileUrl);
-
-        string[] themeDataString = themeString.Split(';');
-        List<Color> themeData = new List<Color>();
-        foreach (var themeColorString in themeDataString)
-
+        List<string>? colorStrings = _json.List(InitialFileUrl);
+        List<Color> colorList = new List<Color>();
+        foreach (string color in colorStrings)
         {
-            themeData.Add(ColorTranslator.FromHtml(themeColorString));
+         colorList.Add(ColorTranslator.FromHtml(color));   
         }
 
-        return themeData;
+        return colorList;
+
     }
 }
