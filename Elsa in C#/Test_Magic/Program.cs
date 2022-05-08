@@ -1,6 +1,7 @@
 ﻿using System.Security.Authentication;
 using Magic;
 
+/*
 Usernames user = new Usernames();
 Theme theme = new Theme();
 
@@ -33,3 +34,5 @@ while (false)
     string passwd = input("Enter the password: ");
     Console.WriteLine(user.Check(usr, passwd));
 }
+
+*/

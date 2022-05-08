@@ -8,6 +8,7 @@
 /task1/*
 /talk1/*
 /resources/*
+/resourcesnew/*
 *.log
 /Elsa in C#/GUITest2/.vs/*
 /Elsa in C#/GUITest2/.idea/*

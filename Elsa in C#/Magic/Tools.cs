@@ -7,6 +7,7 @@ public static class Locations
 {
     public const string UserFile = @"C:\Users\George Rahul\Desktop\Github\Elsa\resourcesnew\users_hash.elsa";
     public const string ThemeFile = @"C:\Users\George Rahul\Desktop\Github\Elsa\resourcesnew\ initial.elsa";
+    public const string resourceFolder = @"C:\Users\George Rahul\Desktop\Github\Elsa\resourcesnew\";
 }
 
 public class Json
