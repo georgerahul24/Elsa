@@ -1,51 +1,57 @@
-﻿using System.Text.Json;
+﻿using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+
 namespace Magic;
 
 public class Usernames
 {
-    private string fileURL = @"C:\Users\George Rahul\Desktop\Github\Elsa\resources\ users.elsa";
+    private readonly string _fileUrl = Locations.UserFile;
+    private readonly Json _json = new Json();
 
-    private Dictionary<string, string>? JsonRead()
+    private string Hash(string text)
     {
-        using FileStream fileRead = File.OpenRead(fileURL);
-        
-        return JsonSerializer.Deserialize<Dictionary<string,string>>(fileRead);
-        
+        using SHA512 sha512Hash = SHA512.Create();
+        byte[] bytes = sha512Hash.ComputeHash(Encoding.UTF32.GetBytes(text + "Elsa"));
+
+        // Convert byte array to a string   
+        StringBuilder builder = new StringBuilder();
+        foreach (var t in bytes)
+        {
+            builder.Append(t.ToString("x2"));
+        }
+
+        return builder.ToString();
     }
+
     public int Write(string username, string password)
     {
+        password = Hash(password);
         try
         {
-            Dictionary<string, string>? userDictionary = JsonRead();
-            userDictionary?.Add(username, password);
-            File.WriteAllText(fileURL, JsonSerializer.Serialize(userDictionary));
+            Dictionary<string, string> userDictionary = _json.Read(_fileUrl);
+            userDictionary[username] = password;
+            _json.Write(_fileUrl, userDictionary);//TODO:Check if the jsonType is inferred automatically
             return 1;
         }
-        catch (ArgumentException)
-        {
-            Dictionary<string, string>? userDictionary = JsonRead();
-            userDictionary?.Remove(username);//Removing and adding user again to update the password
-            userDictionary?.Add(username,password);
-            File.WriteAllText(fileURL, JsonSerializer.Serialize(userDictionary));
-            return 1;
 
-        }
         catch (Exception e)
         {
             Console.WriteLine(e);
             return -1;
-            
         }
     }
 
-    public bool Check(string username,string password)
-    {  // Returns password if the user exists
-        Dictionary<string, string>? userDictionary = JsonRead();
+    public bool Check(string username, string password)
+    {
+        // Returns password if the user exists
+        password = Hash(password);
+        Dictionary<string, string>? userDictionary = _json.Read(_fileUrl);
         if (userDictionary != null && userDictionary.ContainsKey(username))
         {
-            return userDictionary[username]==password;
+            return userDictionary[username] == password;
         }
+
         return false;
     }
-
 }
