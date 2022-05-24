@@ -1,8 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json;
 
-namespace Magic;
+namespace MagicC;
 
 public class Usernames
 {
@@ -30,9 +29,15 @@ public class Usernames
         try
         {
             Dictionary<string, string>? userDictionary = _json.Dictionary(_fileUrl);
-            userDictionary[username] = password;
-            _json.Write(_fileUrl, userDictionary);//TODO:Check if the jsonType is inferred automatically
-            return 1;
+            if (userDictionary != null)
+            {
+                userDictionary[username] = password;
+                _json.Write(_fileUrl, userDictionary); //TODO:Check if the jsonType is inferred automatically
+                return 1;
+            }
+
+            return -1;
+
         }
 
         catch (Exception e)

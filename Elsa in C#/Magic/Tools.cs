@@ -3,13 +3,14 @@ using System.Text.Json;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Magic;
+namespace MagicC;
 
 public static class Locations
 {
-    public const string UserFile = @"C:\Users\George Rahul\Desktop\Github\Elsa\resourcesnew\users_hash.elsa";
-    public const string ThemeFile = @"C:\Users\George Rahul\Desktop\Github\Elsa\resourcesnew\ initial.elsa";
-    public const string resourceFolder = @"C:\Users\George Rahul\Desktop\Github\Elsa\resourcesnew\";
+    public const string ResourceFolder = @"C:\Users\George Rahul\Desktop\Github\Elsa\resourcesnew\";
+    public const string UserFile = @$"{ResourceFolder}users_hash.elsa";
+    public const string ThemeFile = @$"{ResourceFolder} initial.elsa";
+    
 }
 
 public class Json

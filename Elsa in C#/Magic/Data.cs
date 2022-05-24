@@ -1,4 +1,4 @@
-﻿namespace Magic;
+﻿namespace MagicC;
 
 public class Data
 {

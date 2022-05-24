@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-
-namespace Magic;
-
+﻿namespace MagicC;
 using System.Drawing;
 
 public class Theme
@@ -14,7 +11,7 @@ public class Theme
     {
         List<string>? colorStrings = _json.List(InitialFileUrl);
         List<Color> colorList = new List<Color>();
-        foreach (string color in colorStrings)
+        foreach (string color in colorStrings!)
         {
          colorList.Add(ColorTranslator.FromHtml(color));   
         }
