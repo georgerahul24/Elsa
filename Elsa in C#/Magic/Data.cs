@@ -2,9 +2,9 @@
 
 public class Data
 {
-    public void Export()
+    public static void Export()
     {
-        Json json = new Json();
+        Json json = new();
         Dictionary<string, string>? userdata = json.Dictionary(Locations.UserFile);
         
     }
