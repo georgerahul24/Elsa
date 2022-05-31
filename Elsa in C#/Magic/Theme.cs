@@ -1,15 +1,16 @@
-﻿namespace MagicC;
+﻿
+namespace Magic;
 using System.Drawing;
 
 public class Theme
 {
-    private static readonly string InitialFileUrl = Locations.ThemeFile;
-    private Json _json = new Json();
+   
+   
     
 
     public List<Color>? ThemeReader()
     {
-        List<string>? colorStrings = _json.List(InitialFileUrl);
+        List<string>? colorStrings = new List<string>(DataFileManager.Read("Theme").Values);
         List<Color> colorList = new List<Color>();
         foreach (string color in colorStrings!)
         {
