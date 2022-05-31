@@ -2,12 +2,11 @@
 
 namespace MagicC;
 
-public class Data
+public static class Data
 {
     public static void Export()
     {
-        
-        //Dictionary<string, string>? userdata = json.Dictionary(Resour);
-        
+
+        File.WriteAllText("Backup.Elsa",File.ReadAllText(DataFileManager.ResourceFile));
     }
 }

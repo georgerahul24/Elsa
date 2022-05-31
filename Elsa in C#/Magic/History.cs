@@ -10,7 +10,7 @@ public class History
 
     public History(string username)
     {
-        this._username = username;
+        _username = username;
     }
     public void Write(string userInput,string output)
     { 

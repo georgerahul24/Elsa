@@ -2,13 +2,13 @@
 namespace Magic;
 using System.Drawing;
 
-public class Theme
+public static class Theme
 {
    
    
     
 
-    public List<Color>? ThemeReader()
+    public static List<Color>? ThemeReader()
     {
         List<string>? colorStrings = new List<string>(DataFileManager.Read("Theme").Values);
         List<Color> colorList = new List<Color>();

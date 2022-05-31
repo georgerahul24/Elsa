@@ -86,6 +86,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.TopMost = true;
+            this.Leave += new System.EventHandler(this.SearchBar_Leave);
             this.SearchPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -46,7 +46,10 @@ public static class DataFileManager
             //Initialising Users
             {
                 "Users", new Dictionary<string, string> { { "admin", "1234" } }
-            }
+            },
+            {
+            "History", new Dictionary<string, string>()
+        }
         };
         
         _json.Write(DataDictionary);
@@ -117,19 +120,19 @@ public class Json
 
     }
 
-    public class Tools
+    public static class Tools
     {
-        public IEnumerable Range(int stop, int start = 0)
+        public static IEnumerable Range(int stop, int start = 0)
         {
             return Enumerable.Range(start, stop);
         }
 
-        public void Print<T>(T text)
+        public static void Print<T>(T text)
         {
             Console.WriteLine(text);
         }
 
-        string? Input(string inpText)
+        public  static string? Input(string inpText)
         {
             Console.Write(inpText);
             return Console.ReadLine();

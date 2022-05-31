@@ -9,10 +9,10 @@
             //string[] s = { "hi" };
             switch (keyword){
                 case "hi" or "hello":
-                    MagicC.Speech.Speak($"{keyword}. How do you Do?");
+                    Magic.Speech.Speak($"{keyword}. How do you Do?");
                     break;
                 case "bye" or "tata" or "exit":
-                    MagicC.Speech.Speak("Bye Bye See you soon later.");
+                    Magic.Speech.Speak("Bye Bye. See you soon later.");
                     Application.Exit();
                     break;
 
