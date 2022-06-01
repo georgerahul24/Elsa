@@ -5,16 +5,16 @@ namespace Magic;
 
 public class Usernames
 {
-    private Dictionary<string,string>  UserData= DataFileManager.Read("Users");
+    private readonly Dictionary<string,string>  UserData= DataFileManager.Read("Users");
    
 
-    private string Hash(string text)
+    private static string Hash(string text)
     {
         using SHA512 sha512Hash = SHA512.Create();
         byte[] bytes = sha512Hash.ComputeHash(Encoding.UTF32.GetBytes(text + "Elsa"));
 
         // Convert byte array to a string   
-        StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new();
         foreach (var t in bytes)
         {
             builder.Append(t.ToString("x2"));

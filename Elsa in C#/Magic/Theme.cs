@@ -10,8 +10,8 @@ public static class Theme
 
     public static List<Color>? ThemeReader()
     {
-        List<string>? colorStrings = new List<string>(DataFileManager.Read("Theme").Values);
-        List<Color> colorList = new List<Color>();
+        List<string>? colorStrings = new(DataFileManager.Read("Theme").Values);
+        List<Color> colorList = new();
         foreach (string color in colorStrings!)
         {
          colorList.Add(ColorTranslator.FromHtml(color));   

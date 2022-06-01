@@ -1,6 +1,7 @@
 ﻿using Magic;
+using System.IO;
 
-namespace MagicC;
+namespace Magic;
 
 public static class Data
 {

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 
@@ -9,7 +10,7 @@ public static class DataFileManager
     public const string ResourceFolder = @".\ResourceFolder\";
     public const string ResourceFile = @$"{ResourceFolder}data.elsa";
 
-    private static Json _json = new(ResourceFile);
+    private static readonly Json _json = new(ResourceFile);
     //public const string UserFile = @$"{ResourceFolder}users_hash.elsa";
     //public const string ThemeFile = @$"{ResourceFolder} initial.elsa";
     public static int InitializeResourceFile()

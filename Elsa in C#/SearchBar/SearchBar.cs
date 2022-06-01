@@ -5,11 +5,14 @@ namespace SearchBar
         public SearchBar()
         {
             InitializeComponent();
+
         }
+        
+        /*
         protected override void OnDeactivate(EventArgs e)
         {
            Application.Exit();//Close the application if it loses the focus.
-        }
+        }*/
         private void SearchBoxButton_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(SearchBoxTextInput.Text);
@@ -25,9 +28,15 @@ namespace SearchBar
             SearchBoxTextInput.Text = "";
         }
 
-        private void SearchBar_Leave(object sender, EventArgs e)
+    
+
+        private void SearchBar_KeyDown(object sender, KeyEventArgs e)
         {
-            Application.Exit();
+            
+            if (e.KeyCode == Keys.Escape)//Close the application if the 'Esc' key is pressed.
+            {
+                Application.Exit();
+            }
         }
     }
 }

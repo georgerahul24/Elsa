@@ -1,12 +1,12 @@
-﻿using System.Diagnostics;
-using Magic;
+﻿using HistoryGUI;
+using System.IO;
 
-namespace MagicC;
+namespace Magic;
 
 public class History
 
 {
-    private string _username;
+    private readonly string _username;
 
     public History(string username)
     {
@@ -21,7 +21,10 @@ public class History
 
     public void Read()
     {
-        Process.Start($"notepad.exe", $"{DataFileManager.ResourceFolder+_username+".ElsaHistory"}");
+        string historyData= File.ReadAllText(DataFileManager.ResourceFolder + _username + ".ElsaHistory");
+        HistoryDisplay.Display(_username,historyData);
+
+        //Process.Start($"notepad.exe", $"{DataFileManager.ResourceFolder+_username+".ElsaHistory"}");
     }
     
 }

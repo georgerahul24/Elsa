@@ -45,7 +45,7 @@
             // 
             // SearchBoxButton
             // 
-            this.SearchBoxButton.BackgroundImage = global::SearchBar.Properties.Resources._434_4341850_search_bar_png_white_icon_search_bar_png;
+            this.SearchBoxButton.BackgroundImage = global::SearchBarGUI.Properties.Resources._434_4341850_search_bar_png_white_icon_search_bar_png;
             this.SearchBoxButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SearchBoxButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchBoxButton.Location = new System.Drawing.Point(0, 0);
@@ -82,11 +82,12 @@
             this.Controls.Add(this.SearchBoxTextInput);
             this.Controls.Add(this.SearchPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "SearchBar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.TopMost = true;
-            this.Leave += new System.EventHandler(this.SearchBar_Leave);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchBar_KeyDown);
             this.SearchPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
