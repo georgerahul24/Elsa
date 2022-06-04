@@ -34,7 +34,12 @@
             // 
             // textBlockHistoryData
             // 
+            this.textBlockHistoryData.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBlockHistoryData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBlockHistoryData.CausesValidation = false;
             resources.ApplyResources(this.textBlockHistoryData, "textBlockHistoryData");
+            this.textBlockHistoryData.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBlockHistoryData.HideSelection = false;
             this.textBlockHistoryData.Name = "textBlockHistoryData";
             this.textBlockHistoryData.ReadOnly = true;
             this.textBlockHistoryData.TextChanged += new System.EventHandler(this.textBlockHistoryData_TextChanged);
@@ -43,9 +48,11 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CausesValidation = false;
             this.Controls.Add(this.textBlockHistoryData);
             this.Cursor = System.Windows.Forms.Cursors.No;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "HistoryPageGUI";
             this.Load += new System.EventHandler(this.HistoryPageGUI_Load);
             this.ResumeLayout(false);

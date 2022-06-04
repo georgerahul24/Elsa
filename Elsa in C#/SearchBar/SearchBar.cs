@@ -7,7 +7,7 @@ namespace SearchBar
             InitializeComponent();
 
         }
-        
+
         /*
         protected override void OnDeactivate(EventArgs e)
         {
@@ -19,8 +19,8 @@ namespace SearchBar
             SearchBoxButton.Focus();//To make sure that the focus has been moved away from the text box..when pressing the enter key also..
             ElsaBackend.Process(SearchBoxTextInput.Text);
             SearchBoxTextInput.Text = "Search....";
-               
-            
+
+
         }
 
         private void SearchBoxTextInput_Enter(object sender, EventArgs e)
@@ -28,11 +28,11 @@ namespace SearchBar
             SearchBoxTextInput.Text = "";
         }
 
-    
+
 
         private void SearchBar_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             if (e.KeyCode == Keys.Escape)//Close the application if the 'Esc' key is pressed.
             {
                 Application.Exit();
