@@ -1,14 +1,20 @@
 ﻿
+using Magic;
+
+
 namespace SearchBarGUI
 {
     public static class StartUp
     {
         public static void Start()
         {
-            Magic.DataFileManager.InitializeResourceFile();
-            Magic.History history = new Magic.History("admin");
+            DataFileManager dataFileManager = new Magic.DataFileManager("admin");
+            dataFileManager.InitializeResourceFile();
+            History history = new History("admin");
             history.Write("1", "2");
             history.Read();
+
+
         }
     }
 }

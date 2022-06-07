@@ -8,11 +8,11 @@ public static class Theme
    
     
 
-    public static List<Color>? ThemeReader()
+    public static List<Color> ThemeReader(string username)
     {
-        List<string>? colorStrings = new(DataFileManager.Read("Theme").Values);
+        DataFileManager dataFileManager = new(username);
         List<Color> colorList = new();
-        foreach (string color in colorStrings!)
+        foreach (string color in dataFileManager.GetTheme().Values)
         {
          colorList.Add(ColorTranslator.FromHtml(color));   
         }

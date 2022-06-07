@@ -5,10 +5,10 @@ namespace Magic;
 
 public class Usernames
 {
-    private readonly Dictionary<string,string>  UserData= DataFileManager.Read("Users");
+    //private readonly Dictionary<string,object>  UserData= DataFileManager.Data();
    
 
-    private static string Hash(string text)
+    public string Hash(string text)
     {
         using SHA512 sha512Hash = SHA512.Create();
         byte[] bytes = sha512Hash.ComputeHash(Encoding.UTF32.GetBytes(text + "Elsa"));
@@ -29,10 +29,10 @@ public class Usernames
         try
         {
             
-                UserData[username] = password;
-                return DataFileManager.Write("Users",UserData); //TODO:Check if the jsonType is inferred automatically
-               
+                return new DataFileManager(username).Write("Password",password); //TODO:Check if the jsonType is inferred automatically
                 
+
+
         }
 
         catch (Exception e)
@@ -46,10 +46,11 @@ public class Usernames
     {
         // Returns password if the user exists
         password = Hash(password);
+        DataFileManager dataFileManager = new DataFileManager(username);
         
-        if (UserData.ContainsKey(username))
+        if (dataFileManager.DataDictionary().ContainsKey(username))
         {
-            return UserData[username] == password;
+            return dataFileManager.GetPassword() == password;
         }
         return false;
     }
