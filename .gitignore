@@ -1,41 +1,16 @@
-*.pyc
-*.xml
-*.iml
-*.vira
-*.elsa
-*.json
-/.idea/*
-/task1/*
-/talk1/*
-/resources/*
-/resourcesnew/*
-*.log
-/Elsa in C#/GUITest2/.vs/*
-/Elsa in C#/GUITest2/.idea/*
-/Elsa in C#/GUITest2/obj/*
-/Elsa in C#/GUITest2/bin/*
-/Elsa in C#/Magic/obj/*
-/Elsa in C#/Magic/bin/*
-/Elsa in C#/Magic/.vs/*
-/Elsa in C#/Magic/.idea/*
-/Elsa in C#/Test_Magic/obj/*
-/Elsa in C#/Test_Magic/bin/*
-/Elsa in C#/Test_Magic/.vs/*
-/Elsa in C#/Test_Magic/.idea/*
-/Elsa in C#/LoginGUITest2/obj/*
-/Elsa in C#/LoginGUITest2/bin/*
-/Elsa in C#/LoginGUITest2/.vs/*
-/Elsa in C#/LoginGUITest2/.idea/*
-/Elsa in C#/LoginPageTest1/obj/*
-/Elsa in C#/LoginPageTest1/bin/*
-/Elsa in C#/LoginPageTest1/.vs/*
-/Elsa in C#/LoginPageTest1/.idea/*
-/Elsa in C#/LoginGUITest2/.idea/*
-/Elsa in C#/SearchBar/obj/*
-/Elsa in C#/SearchBar/bin/*
-/Elsa in C#/SearchBar/.vs/*
-/Elsa in C#/SearchBar/.idea/*
-/Elsa in C#/HistoryGUI/obj/*
-/Elsa in C#/HistoryGUI/bin/*
-/Elsa in C#/HistoryGUI/.vs/*
-/Elsa in C#/HistoryGUI/.idea/*
+Magic/.idea/*
+Magic/.vs/*
+Magic/bin/*
+Magic/obj/*
+
+HistoryGUI/.idea/*
+HistoryGUI/.vs/*
+HistoryGUI/bin/*
+HistoryGUI/obj/*
+
+SearchBar/.idea/*
+SearchBar/.vs/*
+SearchBar/bin/*
+SearchBar/obj/*
+
+Misc/*

@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="C:\Users\George Rahul\Desktop\Github\Elsa\Elsa in C#\HistoryGUI\HistoryGUI.csproj" />
+      <ProjectReference Include="..\HistoryGUI\HistoryGUI.csproj" />
     </ItemGroup>
 
 </Project>
