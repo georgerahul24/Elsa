@@ -3,12 +3,12 @@ using System.Text;
 
 namespace Magic;
 
-public class Usernames
+public static class Usernames
 {
     //private readonly Dictionary<string,object>  UserData= DataFileManager.Data();
    
 
-    public string Hash(string text)
+    public static string Hash(string text)
     {
         using SHA512 sha512Hash = SHA512.Create();
         byte[] bytes = sha512Hash.ComputeHash(Encoding.UTF32.GetBytes(text + "Elsa"));
@@ -23,7 +23,7 @@ public class Usernames
         return builder.ToString();
     }
 
-    public int Write(string username, string password)
+    public static int Write(string username, string password)
     {
         password = Hash(password);
         try
@@ -42,16 +42,13 @@ public class Usernames
         }
     }
 
-    public bool Check(string username, string password)
+    public static bool Check(string username, string password)
     {
         // Returns password if the user exists
         password = Hash(password);
         DataFileManager dataFileManager = new DataFileManager(username);
-        
-        if (dataFileManager.DataDictionary().ContainsKey(username))
-        {
-            return dataFileManager.GetPassword() == password;
-        }
-        return false;
+
+
+        return dataFileManager.GetPassword() == password;
     }
 }

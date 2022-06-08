@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SearchBarGUI": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

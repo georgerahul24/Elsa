@@ -13,7 +13,7 @@ public struct DataStruct
     {
         Password = null;
         History = new List<string>();
-        Theme = new Dictionary<string, string>()
+        Theme = new Dictionary<string, string>
         {
             { "fg", "#000000" },
             { "bg", "ffffff" },
@@ -41,7 +41,12 @@ public class DataFileManager
         catch (KeyNotFoundException e)
         {
             Debug.WriteLine(e);
-            _userData = new DataStruct();//just give the default values;
+            _userData = new (); //just to give the default values;
+        }
+        catch (FileNotFoundException)
+        {
+            InitializeResourceFile();
+            
         }
     }
 
@@ -54,7 +59,8 @@ public class DataFileManager
             //File.Delete(ResourceFile);
         
         Dictionary<string, DataStruct> dataDictionary = new();
-        _userData.Password = new Usernames().Hash("1234");
+        _userData = new();
+        _userData.Password = Usernames.Hash("1234");
         dataDictionary.Add("admin", _userData);
         _json.Write(dataDictionary);
     }

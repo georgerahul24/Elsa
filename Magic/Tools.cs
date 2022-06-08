@@ -17,7 +17,7 @@ public class Json
     }
    
 
-    public T? Read<T>()
+    public T Read<T>()
     {
         return JsonConvert.DeserializeObject<T>(File.ReadAllText(_fileUrl));
     }

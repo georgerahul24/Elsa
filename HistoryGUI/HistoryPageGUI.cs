@@ -6,7 +6,7 @@ namespace HistoryGUI
     public partial class HistoryPageGUI : Form
     {
 
-        public HistoryPageGUI(string username, string history)
+        public HistoryPageGUI(string? username, string history)
         {
 
             this.Text = username;
@@ -30,7 +30,7 @@ namespace HistoryGUI
     public static class HistoryDisplay
     {
        [STAThread]
-        public static void Display(string username, string history)
+        public static void Display(string? username, string history)
         {
 
             HistoryPageGUI hist = new(username,history);

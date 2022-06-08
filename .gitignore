@@ -14,3 +14,5 @@ SearchBar/bin/*
 SearchBar/obj/*
 
 Misc/*
+.vs/*
+.idea/*
