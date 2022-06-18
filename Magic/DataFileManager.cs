@@ -27,7 +27,7 @@ public class DataFileManager
 {
     private static string? _username;
     private const string ResourceFolder = @".\";
-    private const string ResourceFile = @$"{ResourceFolder}data.ElsaData";
+    public const string ResourceFile = @$"{ResourceFolder}data.ElsaData";
     private readonly Json _json;
     private DataStruct _userData;
 
@@ -42,23 +42,23 @@ public class DataFileManager
         catch (KeyNotFoundException e)
         {
             Debug.WriteLine(e);
-            _userData = new (); //just to give the default values;
+            _userData = new(); //just to give the default values;
         }
         catch (FileNotFoundException)
         {
             InitializeResourceFile();
-            
+
         }
     }
 
 
     public void InitializeResourceFile()
     {
-        
-        
-            File.Create(ResourceFile).Close();
-            //File.Delete(ResourceFile);
-        
+
+
+        File.Create(ResourceFile).Close();
+        //File.Delete(ResourceFile);
+
         Dictionary<string, DataStruct> dataDictionary = new();
         _userData = new();
         _userData.Password = Usernames.Hash("1234");
@@ -105,4 +105,32 @@ public class DataFileManager
         _json.Write(dataDict);
         return 1;
     }
+
+    public static class ExportData{
+
+        public static void  Export()
+        {
+            try
+            {
+
+                Speech.Speak("Hey! Choose a folder to where i should save the Data");
+                File.WriteAllText(FolderChooser.Choose() + @"\Elsa.ElsaData", File.ReadAllText(DataFileManager.ResourceFile));
+                Debug.Write("Data Exported Successfully");
+                Speech.Speak("Thank You for waiting!Finished Exporting your data");
+                
+            }
+            catch (System.UnauthorizedAccessException)
+            {
+                Speech.Speak("Hey! It seems that I do not have the necessary permissions to do this task.");
+                Debug.Write("Could Not Complete Exporting data since permission to wrote to file was denied");
+                
+            }
+            
+        ; 
+        }
+         
+
+        }
+
+
 }

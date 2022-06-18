@@ -5,6 +5,7 @@
     {
         private static  bool followupquestion = false;//know if the input should be evaluated as a followup question.
         private static string followupsection = "";
+        private static Magic.History history = new("admin");
         
         public static void Process(string command)
         {
@@ -18,6 +19,7 @@
                 {
                     case "greeting":
                         Magic.Speech.Speak(FollowUpManager.Greeting(command));
+                        history.Write(command, $"Replied the follow-up greeting");
                         break;
                 }
 
@@ -28,16 +30,26 @@
             switch (keyword){
                 case "hi" or "hello":
                     Magic.Speech.Speak($"{keyword}. How do you Do?");
+                    history.Write(command, "Replied to the Greeting");
                     followupquestion = true;
                     followupsection = "greeting";
                     break;
                 case "t":
-                    SearchBarGUI.StartUp.Start();                 
+                    SearchBarGUI.StartUp.Start();
+                    history.Write(command, "Ran Maintaninence Checks of Elsa");
                     break;
+                case "export":
+                    Magic.DataFileManager.ExportData.Export();
+                    history.Write(command, "Exported Data");
+                    break;
+
+
                 case "bye" or "tata" or "exit":
                     Magic.Speech.Speak("Bye Bye. See you soon later.");
+                    history.Write(command, "Exited Elsa");
                     Application.Exit();
                     break;
+
 
 
             }

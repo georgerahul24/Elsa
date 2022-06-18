@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows.Forms;
 using Newtonsoft.Json;
 
 
@@ -29,5 +30,26 @@ public class Json
     {
         File.WriteAllText(_fileUrl, JsonConvert.SerializeObject(jsonData));
        
+    }
+}
+
+public static class FolderChooser
+{
+    public static string Choose()
+    {
+        FolderBrowserDialog folderDlg = new();
+        folderDlg.ShowNewFolderButton = true;
+        folderDlg.UseDescriptionForTitle = true;
+        folderDlg.AutoUpgradeEnabled = true;
+        string FolderPath = @".\";
+        // Show the FolderBrowserDialog.  
+
+        if (folderDlg.ShowDialog() == DialogResult.OK)
+        {
+            FolderPath = folderDlg.SelectedPath;
+
+
+        }
+        return FolderPath;
     }
 }
