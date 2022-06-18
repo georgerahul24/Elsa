@@ -2,6 +2,7 @@ namespace SearchBar
 {
     public partial class SearchBar : Form
     {
+        private static readonly Dictionary<string, Color> colors = Magic.Theme.ThemeReader("admin");
         public SearchBar()
         {
             InitializeComponent();
@@ -38,5 +39,14 @@ namespace SearchBar
                 Application.Exit();
             }
         }
+
+        private void SearchBoxButton_Paint(object sender, PaintEventArgs e)
+        {
+            SearchBoxButton.ForeColor = colors["ButtonColor"];
+            SearchBoxTextInput.ForeColor = colors["ForeColor"];
+            SearchBoxTextInput.BackColor = colors["BackColor"];
+        }
+
+    
     }
 }

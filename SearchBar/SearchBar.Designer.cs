@@ -54,6 +54,7 @@
             this.SearchBoxButton.TabIndex = 0;
             this.SearchBoxButton.UseVisualStyleBackColor = true;
             this.SearchBoxButton.Click += new System.EventHandler(this.SearchBoxButton_Click);
+            this.SearchBoxButton.Paint += new System.Windows.Forms.PaintEventHandler(this.SearchBoxButton_Paint);
             // 
             // SearchBoxTextInput
             // 

@@ -3,7 +3,7 @@
     
     public static class ElsaBackend
     {
-        private static  bool followupquestion = false;//know if the input should be eva,uated as a followup question.
+        private static  bool followupquestion = false;//know if the input should be evaluated as a followup question.
         private static string followupsection = "";
         
         public static void Process(string command)

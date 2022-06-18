@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 
 namespace Magic;
@@ -6,25 +7,25 @@ namespace Magic;
 public struct DataStruct
 {
     public string? Password;
-    public Dictionary<string, string> Theme;
+    public Dictionary<string, Color> Theme;
     public List<string> History;
 
     public DataStruct()
     {
         Password = null;
         History = new List<string>();
-        Theme = new Dictionary<string, string>
+        Theme = new Dictionary<string, Color>
         {
-            { "fg", "#000000" },
-            { "bg", "ffffff" },
-            {"ButtonColor","#abc123"}
+            { "BackColor", ColorTranslator.FromHtml("#000000") },
+            { "ForeColor", ColorTranslator.FromHtml("#ffffff") },
+            {"ButtonColor",ColorTranslator.FromHtml("#abc123")}
         };
     }
 }
 
 public class DataFileManager
 {
-    private static string _username;
+    private static string? _username;
     private const string ResourceFolder = @".\";
     private const string ResourceFile = @$"{ResourceFolder}data.ElsaData";
     private readonly Json _json;
@@ -82,7 +83,7 @@ public class DataFileManager
         return _userData.Password;
     }
 
-    public Dictionary<string, string> GetTheme()
+    public Dictionary<string, Color> GetTheme()
     {
         return _userData.Theme;
     }

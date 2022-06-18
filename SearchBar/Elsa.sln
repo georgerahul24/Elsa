@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchBarGUI", "SearchBarGU
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Magic", "..\Magic\Magic.csproj", "{0E60022B-A763-4C33-86CB-2F9E3F964728}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HistoryGUI", "..\HistoryGUI\HistoryGUI.csproj", "{BB52795B-4313-41DC-B34E-68B194F4754F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HistoryGUI", "..\HistoryGUI\HistoryGUI.csproj", "{BB52795B-4313-41DC-B34E-68B194F4754F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
