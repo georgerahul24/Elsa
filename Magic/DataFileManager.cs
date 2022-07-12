@@ -26,7 +26,7 @@ public struct DataStruct
 public class DataFileManager
 {
     private static string? _username;
-    private const string ResourceFolder = @".\";
+    private const string ResourceFolder = @".\";//The folder location of the userdata
     public const string ResourceFile = @$"{ResourceFolder}data.ElsaData";
     private readonly Json _json;
     private DataStruct _userData;
@@ -42,7 +42,7 @@ public class DataFileManager
         catch (KeyNotFoundException e)
         {
             Debug.WriteLine(e);
-            _userData = new(); //just to give the default values;
+            _userData = new(); //just to give the default values incase the user is not found;
         }
         catch (FileNotFoundException)
         {
@@ -62,7 +62,7 @@ public class DataFileManager
         Dictionary<string, DataStruct> dataDictionary = new();
         _userData = new();
         _userData.Password = Usernames.Hash("1234");
-        dataDictionary.Add("admin", _userData);
+        dataDictionary.Add("admin", _userData);//Adding user Admin to the resource file.
         _json.Write(dataDictionary);
     }
 

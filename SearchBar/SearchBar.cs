@@ -47,6 +47,13 @@ namespace SearchBar
             SearchBoxTextInput.BackColor = colors["BackColor"];
         }
 
-    
+        private void SearchBoxTextInput_TextChanged(object sender, EventArgs e)
+        {
+            Magic.Autocomplete.Clear();
+            //SearchBoxTextInput.AutoCompleteCustomSource = Magic.Autocomplete.Suggestions();
+            
+            
+            
+        }
     }
 }

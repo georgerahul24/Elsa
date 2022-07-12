@@ -58,6 +58,8 @@
             // 
             // SearchBoxTextInput
             // 
+            this.SearchBoxTextInput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.SearchBoxTextInput.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.SearchBoxTextInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SearchBoxTextInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchBoxTextInput.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -70,6 +72,7 @@
             this.SearchBoxTextInput.Size = new System.Drawing.Size(737, 68);
             this.SearchBoxTextInput.TabIndex = 68;
             this.SearchBoxTextInput.Text = " Search.......";
+            this.SearchBoxTextInput.TextChanged += new System.EventHandler(this.SearchBoxTextInput_TextChanged);
             this.SearchBoxTextInput.Enter += new System.EventHandler(this.SearchBoxTextInput_Enter);
             // 
             // SearchBar
