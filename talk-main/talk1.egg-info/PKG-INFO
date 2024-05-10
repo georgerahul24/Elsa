@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: talk1
+Version: 1.5
+Summary: A simplified version of pyttsx3
+Home-page: https://github.com/georgerahul24/talk
+Author: George Rahul
+Author-email: georgerahul24@gmail.com
+License: MIT
+Keywords: program,talk
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE
+
+UNKNOWN
+

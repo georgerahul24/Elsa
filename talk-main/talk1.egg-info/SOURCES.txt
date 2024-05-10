@@ -1,0 +1,9 @@
+LICENSE
+setup.py
+talk1/__init__.py
+talk1/talk1.py
+talk1.egg-info/PKG-INFO
+talk1.egg-info/SOURCES.txt
+talk1.egg-info/dependency_links.txt
+talk1.egg-info/requires.txt
+talk1.egg-info/top_level.txt
