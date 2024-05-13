@@ -15,7 +15,7 @@ headers = {"accept-language": "en-US,en;q=0.9", "accept-encoding": "gzip, deflat
 
 def readGoodReadsSimilarPage(booklink):
    response = requests.get(booklink, headers=headers)
-   print(response.text)
+    # print(response.text)
 
 def searchGoogleForGoodBooksLinks(bookName):
     options = webdriver.ChromeOptions()

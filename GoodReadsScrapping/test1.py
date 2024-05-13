@@ -18,7 +18,6 @@ for book_item in book_items:
     book_author = book_item.select_one('[itemprop="author"] [itemprop="name"]').text.strip()
 
     # Extracting book title
-    book_title = book_item.select_one('[itemprop="name"]').text.strip()
 
     # Extracting book rating
     book_rating = book_item.select_one('.communityRating').text.strip()
@@ -26,6 +25,5 @@ for book_item in book_items:
     print("Book Name:", book_name)
     print("Book Summary:", book_summary)
     print("Book Author:", book_author)
-    print("Book Title:", book_title)
     print("Book Rating:", book_rating)
     print()  # Add a blank line for better readability between books
