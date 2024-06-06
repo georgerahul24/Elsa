@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 # TODO: Error when using the headless mode. Make this headless since it would be better
 driver = webdriver.Chrome()
 # Load the webpage
-driver.get("https://www.goodreads.com/book/similar/3346751-percy-jackson-and-the-lightning-thief")
+driver.get("https://www.goodreads.com/book/similar/2766512-lord-of-the-flies")
 
 # Wait for the "More" button to become clickable
 buttons = driver.find_elements(By.CSS_SELECTOR, ".gr-buttonAsLink.u-marginLeftTiny")
