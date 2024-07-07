@@ -1,1 +1,2 @@
-pyautogui
+pip install langchain PyPDF2
+pip install langchain-community  pypdf transformers

@@ -1,10 +1,9 @@
-import os
-from pynput.keyboard import Key, Controller
+
 from pynput import keyboard as KB
 import pyautogui as pag
 import webbrowser
 from time import sleep
-import pyscreeze
+
 
 
 def on_press(key):
