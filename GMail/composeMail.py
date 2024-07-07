@@ -11,8 +11,6 @@ def on_press(key):
     return False
 
 
-
-
 def send_mail(recipient, subject, body):
     webbrowser.open("https://mail.google.com/mail/u/0/#inbox?compose=new", new=1, autoraise=True)
 
@@ -20,13 +18,14 @@ def send_mail(recipient, subject, body):
             on_press=on_press,
     ) as listener:
         listener.join()
+    print("Got keystroke")
     # Selecting the recipient
     sleep(0.3)
     pag.write(recipient)
     sleep(0.5)
     pag.press('tab')
     pag.press('tab')
-
+    print("Hi")
     # Writing the subject
     pag.write(subject)
     pag.press('tab')
@@ -39,3 +38,4 @@ def send_mail(recipient, subject, body):
 
 if __name__ == "__main__":
     send_mail("georgerahul24@gmail.com", "Test Email", "Test")
+    
