@@ -1,6 +1,6 @@
 # Import necessary libraries
 from langchain.document_loaders import PyPDFLoader
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
 from langchain.chains import load_summarize_chain
 
 
