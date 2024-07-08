@@ -3,6 +3,7 @@ from langchain.document_loaders import PyPDFLoader
 from langchain.llms import Ollama
 from langchain.chains import load_summarize_chain
 
+
 # Define the PDF summarization function
 def summarize_pdf(pdf_file_path, custom_prompt=""):
     loader = PyPDFLoader(pdf_file_path)
@@ -12,10 +13,18 @@ def summarize_pdf(pdf_file_path, custom_prompt=""):
     summary = chain.invoke(docs)
     return summary
 
-# Define the main function to set up Gradio interface
+
+def summarize_txt(file_path, custom_prompt=""):
+    llm = Ollama(model="llama3")  # Replace "your_ollama_model" with your actual model name
+    return llm.invoke("Summarise this text file: \n" + open(file_path).read())
+
+
 def main():
-    pdf_path = "/Users/gr/Desktop/Elsa/CC 2640R2.pdf"
-    print(summarize_pdf(pdf_path)['output_text'])
+    file_path = "/Users/gr/Desktop/Elsa/test.txt"
+    if file_path.endswith(".pdf"):
+        print(summarize_pdf(file_path)['output_text'])
+    elif file_path.endswith(".txt"):
+        print(summarize_txt(file_path))
 
 
 # Run the main function to launch the application
