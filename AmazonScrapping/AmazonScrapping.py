@@ -1,16 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
 
 
 def get_product_list(url):
-    headers = {"accept-language": "en-US,en;q=0.9", "accept-encoding": "gzip, deflate, br",
-               "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
-               "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"}
+    headers = {
+        "accept-language": "en-US,en;q=0.9",
+        "accept-encoding": "gzip, deflate, br",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+    }
 
     response = requests.get(url, headers=headers).text
-
-
+    with open('product_list2.html', 'w', encoding='utf-8') as f:
+        f.write(response)
     soup = BeautifulSoup(response, 'html.parser')
 
     # Extract product details including price and correct delivery time
@@ -18,6 +20,7 @@ def get_product_list(url):
     for product in soup.find_all('div', class_='s-main-slot s-result-list s-search-results sg-row'):
         for item in product.find_all('div', {'data-component-type': 's-search-result'}):
             name = item.h2.text if item.h2 else 'N/A'
+            full_name = item.find('span', class_='a-size-base-plus a-color-base a-text-normal')
             avg_review = item.find('span', class_='a-size-base')
             avg_review = avg_review.text if avg_review else 'N/A'
             avg_rating = item.find('span', class_='a-icon-alt')
@@ -26,23 +29,31 @@ def get_product_list(url):
             price = price.text if price else 'N/A'
             delivery = item.find('span', class_='a-color-secondary')
             delivery = delivery.text if delivery and 'delivery' in delivery.text.lower() else 'N/A'
+            link = item.find('a', {'class': 'a-link-normal'}, href=True)
+            # print(link)
+            link = f"https://www.amazon.in{link['href']}" if link != 'N/A' else 'N/A'
 
             products.append({
                 'Product Name': name.strip(),
+                'Full Name': full_name.text if full_name else 'N/A',
                 'Average Review': avg_review.strip(),
                 'Average Rating': avg_rating.strip(),
                 'Price': price.strip(),
-                'Delivery Time': delivery.strip()
+                'Delivery Time': delivery.strip(),
+                'Link': link.strip()
             })
 
     details_string = ""
     for product in products:
-                details_string += f"Product Name: {product['Product Name']}\n"
-                details_string += f"Average Review: {product['Average Review']}\n"
-                details_string += f"Average Rating: {product['Average Rating']}\n"
-                details_string += f"Price: {product['Price']}\n"
-                details_string += f"Delivery Time: {product['Delivery Time']}\n"
-                details_string += "\n"
+        details_string += f"Product Name: {product['Product Name']}\n"
+        details_string += f"Full Name: {product['Full Name']}\n"
+        details_string += f"Average Review: {product['Average Review']}\n"
+        details_string += f"Average Rating: {product['Average Rating']}\n"
+        details_string += f"Price: {product['Price']}\n"
+        details_string += f"Delivery Time: {product['Delivery Time']}\n"
+        details_string += f"Link: {product['Link']}\n"
+        details_string += "\n"
     return details_string
 
-print(get_product_list('https://www.amazon.in/s?k=macbook+pro'))
+
+print(get_product_list('https://www.amazon.in/s?k=red+hat'))
