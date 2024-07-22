@@ -1,5 +1,5 @@
 # Import necessary libraries
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.llms import Ollama
 from langchain.chains import load_summarize_chain
 
@@ -8,14 +8,14 @@ from langchain.chains import load_summarize_chain
 def summarize_pdf(pdf_file_path, custom_prompt=""):
     loader = PyPDFLoader(pdf_file_path)
     docs = loader.load_and_split()
-    llm = Ollama(model="llama3")  # Replace "your_ollama_model" with your actual model name
+    llm = Ollama(model="llama3") 
     chain = load_summarize_chain(llm, chain_type="map_reduce")
     summary = chain.invoke(docs)
     return summary
 
 
 def summarize_txt(file_path, custom_prompt=""):
-    llm = Ollama(model="llama3")  # Replace "your_ollama_model" with your actual model name
+    llm = Ollama(model="llama3")
     return llm.invoke("Summarise this text file: \n" + open(file_path).read())
 
 
