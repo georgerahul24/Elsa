@@ -1,2 +1,0 @@
-- Press `/` to activate the searchbar.
-- Else, use `seleinium`
