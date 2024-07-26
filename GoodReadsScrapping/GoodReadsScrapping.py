@@ -105,6 +105,7 @@ def LLMRecommendation(dataSet, bookName):
 
 
 if __name__ == "__main__":
+    # Example on how to use it
     bookname = "Pride and Prejudice"
     print(LLMRecommendation(searchGoodReadsPage(searchGoogleForGoodBooksLinks('books like ' + bookname)),
                             bookName=bookname))

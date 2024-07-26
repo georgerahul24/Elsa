@@ -91,8 +91,8 @@ class LLMAssistant:
         return response
 
 
-def main():
-    item_name = "wireless headphones"
+def main(item_name=None):
+
     scraper = ProductScraper(item_name)
     llm_assistant = LLMAssistant()
 
@@ -113,4 +113,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # Example on how to use it
+    main(item_name= "waste basket")
