@@ -10,20 +10,18 @@
 ### Current Features
 
 1. **GoodReads Recommendation**
-   - **Description:** Elsa 3.0 can parse and analyze data from GoodReads to provide personalized book recommendations.
-   - **Functionality:** Based on user preferences, Elsa 3.0 identifies and suggests books that align with your interests.
+   - **Google Search Integration**: Searches Google for links to GoodReads pages with similar books.
+   - **GoodReads Scraping**: Extracts book information from the GoodReads similar books page.
+   - **LLM-Based Recommendations**: Uses the LLAMA 3 model to recommend books based on the scraped data
 
 2. **Amazon Scraping**
-   - **Description:** Elsa 3.0 can scrape Amazon for product information and recommendations.
-   - **Functionality:** Elsa uses web scraping techniques to find and recommend products based on user-defined criteria.
+   - **Amazon Product Scraping** : Scrapes product information from Amazon, including product name, full name, average review, average rating, price, delivery time, and product link.
+   - **LLM-Based Recommendations**: Uses the LLAMA 3 model to recommend products based on the scraped data.
+   - **Follow-Up Recommendations**: Allows users to ask follow-up questions to refine product recommendations.
 
 3. **Local PDF Summaries**
-   - **Description:** Elsa 3.0 can generate summaries of local PDF files.
-   - **Functionality:** By analyzing the content of PDF files stored on your computer, Elsa provides concise summaries to facilitate quicker understanding.
-
-4. **LLM Interaction**
-   - **Description:** Engage with the advanced LLAMA 3 language model for various tasks and queries.
-   - **Functionality:** Elsa can answer questions, provide information, and assist with a variety of tasks through natural language processing.
+   - **PDF Summarization**: Utilizes the PyPDFLoader to load and split PDF files, and the load_summarize_chain to create summaries using the LLAMA 3 model.
+   - **Text Summarization**: Directly summarizes .txt files using the LLAMA 3 model's natural language processing capabilities.
 
 ### Future Features
 
@@ -69,15 +67,8 @@
    pip install -r requirements.txt
    ```
 
-4. **Configure API Keys:**
-   - Obtain API keys for GoodReads and Amazon.
-   - Create a `.env` file in the root directory with the following content:
-     ```
-     GOODREADS_API_KEY=your_goodreads_api_key
-     AMAZON_API_KEY=your_amazon_api_key
-     ```
 
-5. **Run Elsa 3.0:**
+4. **Run Elsa 3.0:**
    ```bash
    python elsa.py
    ```
@@ -105,6 +96,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any questions or support, please contact us at support@elsa3.com.
+For any questions or support, please contact noone. Thank you
 
 ---
