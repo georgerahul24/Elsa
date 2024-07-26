@@ -1,5 +1,8 @@
-# TODO: Make a proper requirements file
-pip install langchain PyPDF2
-pip install langchain-community  pypdf transformers
-pip install selenium beautifulsoup4
-pip install pandas
+langchain
+PyPDF2
+langchain-community
+pypdf
+transformers
+selenium
+beautifulsoup4
+pandas
