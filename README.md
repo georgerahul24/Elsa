@@ -73,12 +73,9 @@
    python elsa.py
    ```
 
-## Usage
+## Visual Presentations
 
-- **GoodReads Recommendations:** Type `recommend books for [genre/author]` to get book suggestions.
-- **Amazon Scraping:** Type `find [product] on Amazon` for product recommendations.
-- **Local PDF Summaries:** Use the command `summarize [file_path]` to get a summary of the specified PDF file.
-- **LLM Interaction:** Directly type your questions or commands to interact with Elsa’s LLM capabilities.
+
 
 ## Contributing
 
