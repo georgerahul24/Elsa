@@ -3,7 +3,7 @@
 
 ## Overview
 
-**Elsa 3.0** is a sophisticated personal assistant designed to leverage the latest advancements in language models and web scraping technologies. Utilizing the LLAMA 3 language model (LLM) as its backbone, Elsa 3.0 offers intelligent support and seamless integration with various online resources to enhance productivity and user experience. The current release focuses on core functionalities, with plans for expanded features in the pipeline.
+**Elsa 3.0** is a simple personal assistant designed to leverage the latest advancements in language models and web scraping technologies. Utilizing the LLAMA 3 language model (LLM) as its backbone, Elsa 3.0 offers intelligent support and is a versatile and intelligent system designed to enhance your decision-making process across various domains. Combining recommendations for books and products with the ability to summarize PDFs, this tool provides comprehensive support for discovering new reads, finding the best deals, and quickly understanding documents.
 
 ## Features
 
