@@ -67,15 +67,29 @@
    pip install -r requirements.txt
    ```
 
-
-4. **Run Elsa 3.0:**
-   ```bash
-   python elsa.py
-   ```
+4. Now, you can use the various features that the library provides.
 
 ## Visual Presentations
 
+## EndPoints
 
+#### Amazon Scrapping
+
+1. Product Scrapper Class
+2. LLM Assistant Class
+
+#### GoodReads Scrapping
+
+1. searchGoogleForGoodBooksLinks Function
+2. searchGoodReadsPage Function
+3. LLMRecommendation Function
+
+#### Document Summariser
+
+1. summarize_pdf Function
+2. summarize_txt Function
+
+#### `N.B.: To read more about the Class and Functions, see the docstrings or the main function of the respective files to see how to use them to get the desired output`
 
 ## Contributing
 
