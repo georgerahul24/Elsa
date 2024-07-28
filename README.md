@@ -70,7 +70,12 @@
 4. Now, you can use the various features that the library provides.
 
 ## Visual Presentations
-
+##### Amazon Scrapping
+![](Readme Images/Amazon.png)
+##### GoodReads Scrapping
+![](Readme Images/GoodReads.png)
+##### PDF Summariser
+![](Readme Images/Summariser.png)
 ## EndPoints
 
 #### Amazon Scrapping
